@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiDungeon", "MultiDungeon\MultiDungeon\MultiDungeon.csproj", "{4060BE25-26E5-467E-A14F-A4578C2DCA76}"
+EndProject
+Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "MultiDungeonContent", "MultiDungeon\MultiDungeonContent\MultiDungeonContent.contentproj", "{721AC1D8-B294-4318-B80A-91E0C689E130}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DungeonServer", "DungeonServer\DungeonServer.csproj", "{8CB385BD-8148-4F43-AEF3-5525DEBAED6B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4060BE25-26E5-467E-A14F-A4578C2DCA76}.Debug|x86.ActiveCfg = Debug|x86
+		{4060BE25-26E5-467E-A14F-A4578C2DCA76}.Debug|x86.Build.0 = Debug|x86
+		{4060BE25-26E5-467E-A14F-A4578C2DCA76}.Release|x86.ActiveCfg = Release|x86
+		{4060BE25-26E5-467E-A14F-A4578C2DCA76}.Release|x86.Build.0 = Release|x86
+		{721AC1D8-B294-4318-B80A-91E0C689E130}.Debug|x86.ActiveCfg = Debug|x86
+		{721AC1D8-B294-4318-B80A-91E0C689E130}.Release|x86.ActiveCfg = Release|x86
+		{8CB385BD-8148-4F43-AEF3-5525DEBAED6B}.Debug|x86.ActiveCfg = Debug|x86
+		{8CB385BD-8148-4F43-AEF3-5525DEBAED6B}.Debug|x86.Build.0 = Debug|x86
+		{8CB385BD-8148-4F43-AEF3-5525DEBAED6B}.Release|x86.ActiveCfg = Release|x86
+		{8CB385BD-8148-4F43-AEF3-5525DEBAED6B}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
