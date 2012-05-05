@@ -28,6 +28,5 @@ obj/
 _ReSharper*/
 [Tt]est[Rr]esult*
 
-MultiDungeon/MultiDungeon/Properties/AssemblyInfo.cs
-DungeonServer/Properties/AssemblyInfo.cs
+
 MultiDungeon/MultiDungeon/Game.ico

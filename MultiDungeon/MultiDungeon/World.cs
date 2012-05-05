@@ -17,8 +17,6 @@ namespace MultiDungeon
 
         public static void Init()
         {
-            
-
             map = new TileSet();
 
             InitNetwork();
