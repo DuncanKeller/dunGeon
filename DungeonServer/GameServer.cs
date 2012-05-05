@@ -10,9 +10,10 @@ namespace DungeonServer
 {
     class GameServer
     {
+        Random rand = new Random();
         private TcpListener tcpListener;
         private Thread listenThread;
-        private List<TcpClient> clients = new List<TcpClient>();
+        private Dictionary<int, TcpClient> clients = new Dictionary<int, TcpClient>();
         private int newKey = 0;
 
         public GameServer()
@@ -43,7 +44,10 @@ namespace DungeonServer
             // cast client
             TcpClient tcpClient = (TcpClient)client;
             NetworkStream stream = tcpClient.GetStream();
-            clients.Add(tcpClient);
+            int key = rand.Next(1023);
+            clients.Add(key, tcpClient);
+
+            Send("id\n" + key.ToString(), key);
 
             byte[] message = new byte[4096];
             int bytesRead;
@@ -64,6 +68,8 @@ namespace DungeonServer
 
                 if (bytesRead == 0)
                 {
+                    Console.WriteLine("Client " + key + " disconnected");
+                    ClientDisconnected(key);
                     // nothing to read, disconnect
                     break;
                 }
@@ -72,14 +78,25 @@ namespace DungeonServer
                 string data = encoder.GetString(message, 0, bytesRead);
                 Console.WriteLine(data);
 
-                for(int i = 0; i < clients.Count; i++)
+                foreach (var k in clients)
                 {
-                    Send(data, i);
+                    Send(data, k.Key);
                 }
             }
 
             tcpClient.Close();
-            clients.Remove(tcpClient);
+            clients.Remove(key);
+        }
+
+        public void ClientDisconnected(int id)
+        {
+            foreach (var k in clients)
+            {
+                if (k.Key != id)
+                {
+                    Send("disconnect\n" + id.ToString(), k.Key);
+                }
+            }
         }
 
         public void Send(string data, int id)

@@ -11,6 +11,7 @@ namespace MultiDungeon
     class ServerClient
     {
         static TcpClient server;
+        public static bool connected = false;
 
         public static void Connect()
         {
@@ -20,6 +21,7 @@ namespace MultiDungeon
 
             Thread clientThread = new Thread(new ParameterizedThreadStart(Run));
             clientThread.Start();
+            connected = true;
         }
 
         private static void Run(object sender)
@@ -56,16 +58,25 @@ namespace MultiDungeon
                 World.RecieveData(data);
             }
 
-            server.Close();
+            Close();
         }
 
         public static void Close()
         {
-            NetworkStream clientStream = server.GetStream();
-            ASCIIEncoding encoder = new ASCIIEncoding();
-            byte[] b = encoder.GetBytes("");
-            clientStream.Write(b, 0, 0);
-            clientStream.Flush();
+           
+            if(server.Connected) 
+            {
+                 
+                 NetworkStream clientStream = server.GetStream();
+                 ASCIIEncoding encoder = new ASCIIEncoding();
+                 byte[] b = encoder.GetBytes("");
+                 clientStream.Write(b, 0, 0);
+                 server.Close();
+                 clientStream.Flush();
+                 clientStream.Close();
+                 connected = false;
+            }
+            
         }
 
         public static void Send(string data)

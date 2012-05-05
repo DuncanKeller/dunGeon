@@ -26,9 +26,10 @@ namespace MultiDungeon
         public int ID
         {
             get { return id; }
+            set { id = value; }
         }
 
-        public Player(int id, float x, float y)
+        public Player(float x, float y, int id = 0)
         {
             this.id = id;
             pos = new Vector2(x, y);

@@ -18,7 +18,9 @@ namespace MultiDungeon
 
         public static void Initialize(ContentManager c)
         {
+            textures.Add("blank", c.Load<Texture2D>("white"));
             textures.Add("circle", c.Load<Texture2D>("circle"));
+            textures.Add("tile", c.Load<Texture2D>("tile"));
         }
     }
 }
