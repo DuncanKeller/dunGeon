@@ -26,7 +26,7 @@ namespace MultiDungeon
 
         protected bool reloading
         {
-            get { return reloadTimer == 0; }
+            get { return reloadTimer != 0; }
         }
 
         protected bool primed
@@ -50,6 +50,7 @@ namespace MultiDungeon
             else if (reloadTimer < 0)
             {
                 reloadTimer = 0;
+                clip = maxClip;
             }
             if (fireTimer > 0)
             {
@@ -61,12 +62,12 @@ namespace MultiDungeon
             }
         }
 
-        public abstract void Shoot(GamePadState input, GamePadState oldInput);
+        public abstract void Shoot();
 
         protected void FireBullet()
         {
             Bullet bullet = (Bullet)Activator.CreateInstance(bulletType);
-            bullet.Init(player.Position, player.Angle);
+            bullet.Init(player.Position, player.Angle - (float)(Math.PI / 2));
             manager.Add(bullet);
             clip--;
 

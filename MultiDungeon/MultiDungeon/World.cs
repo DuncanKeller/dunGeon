@@ -15,6 +15,12 @@ namespace MultiDungeon
         static Dictionary<int, Player> players = new Dictionary<int, Player>();
         static TileSet map;
         static int timer = 0;
+        static BulletManager bulletManager = new BulletManager();
+
+        public static BulletManager BulletManager
+        {
+            get { return bulletManager; }
+        }
 
         public static void Init()
         {
@@ -85,6 +91,7 @@ namespace MultiDungeon
         public static void Update(float deltaTime)
         {
             UpdateNetwork(deltaTime);
+            bulletManager.Update(map);
 
             foreach (var v in players)
             {
@@ -103,6 +110,8 @@ namespace MultiDungeon
             {
                 p.Value.Draw(sb);
             }
+
+            bulletManager.Draw(sb);
         }
     }
 }

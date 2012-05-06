@@ -19,8 +19,11 @@ namespace MultiDungeon
         float angle;
 
         float timer = 0;
+        GamePadState oldGamePad;
 
         public Color c = new Color(0,255,0);
+
+        Gun testGun;
 
         public float Angle
         {
@@ -50,6 +53,7 @@ namespace MultiDungeon
             speed = 1;
             maxSpeed = 5;
             velocity = new Vector2();
+            testGun = new Revolver(World.BulletManager, this);
 
             Init();
         }
@@ -84,6 +88,9 @@ namespace MultiDungeon
 
                 pos += velocity;
             }
+
+            testGun.Update(deltaTime);
+            
         }
 
         public void UpdateCollisions(List<Tile> tiles)
@@ -137,8 +144,15 @@ namespace MultiDungeon
             }
 
             Vector2 dir = gamePad.ThumbSticks.Right;
-
             angle = (float)Math.Atan2(dir.X, dir.Y);
+
+            if (gamePad.Triggers.Right > 0.25 &&
+                oldGamePad.Triggers.Right < 0.25)
+            {
+                testGun.Shoot();
+            }
+
+            oldGamePad = gamePad;
         }
 
         public void Draw(SpriteBatch sb)

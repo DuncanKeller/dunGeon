@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MultiDungeon.Map;
 
 namespace MultiDungeon
 {
@@ -12,13 +13,24 @@ namespace MultiDungeon
         List<Bullet> bullets = new List<Bullet>();
         List<Bullet> toRemove = new List<Bullet>();
 
-        public void Update()
+        public void Update(TileSet tiles)
         {
             Cleanup();
 
             foreach (Bullet b in bullets)
             {
                 b.Update();
+
+                foreach (Tile t in tiles.GetTilesNear((int)b.Position.X, (int)b.Position.Y))
+                {
+                    if (t.Type == TileType.wall)
+                    {
+                        if (t.Rect.Intersects(b.Rect))
+                        {
+                            Remove(b);
+                        }
+                    }
+                }
             }
         }
 

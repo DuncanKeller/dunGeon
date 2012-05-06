@@ -12,9 +12,21 @@ namespace MultiDungeon
         Vector2 pos;
         float angle;
 
+        float speed;
+
+        public Vector2 Position
+        {
+            get { return pos; }
+        }
+
+        public Rectangle Rect
+        {
+            get { return new Rectangle((int)pos.X - 3, (int)pos.Y - 3, 6, 6); }
+        }
+
         public Bullet()
         {
-           
+            speed = 15;
         }
 
         public void Init(Vector2 pos, float angle)
@@ -25,12 +37,13 @@ namespace MultiDungeon
 
         public void Update()
         {
-
+            pos.X += (float)Math.Cos(angle) * speed;
+            pos.Y += (float)Math.Sin(angle) * speed;
         }
 
         public void Draw(SpriteBatch sb)
         {
-            
+            sb.Draw(TextureManager.Map["blank"], Rect, Color.Black);
         }
     }
 }
