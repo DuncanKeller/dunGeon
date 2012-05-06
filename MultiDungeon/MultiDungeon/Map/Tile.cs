@@ -24,6 +24,11 @@ namespace MultiDungeon.Map
             get { return new Rectangle((int)pos.X, (int)pos.Y, TILE_SIZE, TILE_SIZE); }
         }
 
+        public TileType Type
+        {
+            get { return type; }
+        }
+
         public Vector2 Position
         {
             get { return pos; }

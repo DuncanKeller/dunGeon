@@ -5,13 +5,17 @@ using System.Text;
 using System.Net.Sockets;
 using System.Threading;
 using System.Net;
+using Microsoft.Xna.Framework.Net;
 
 namespace MultiDungeon
 {
     class ServerClient
     {
         static TcpClient server;
+        
         public static bool connected = false;
+        static ASCIIEncoding encoder = new ASCIIEncoding();
+        static int size = 32;
 
         public static void Connect()
         {
@@ -28,7 +32,7 @@ namespace MultiDungeon
         {
             NetworkStream stream = server.GetStream();
 
-            byte[] message = new byte[4096];
+            byte[] message = new byte[size];
             int bytesRead;
 
             while (true)
@@ -37,12 +41,13 @@ namespace MultiDungeon
 
                 try
                 {
-                    bytesRead = stream.Read(message, 0, 4096);
+                    bytesRead = stream.Read(message, 0, size);
                 }
                 catch (Exception e)
                 {
                     Console.WriteLine(e.Message);
                     //Console.WriteLine(e.stackTrace);
+                    break;
                 }
 
                 if (bytesRead == 0)
@@ -53,7 +58,6 @@ namespace MultiDungeon
 
                 ASCIIEncoding encoder = new ASCIIEncoding();
                 string data = encoder.GetString(message, 0, bytesRead);
-
                 Console.WriteLine(data);
                 World.RecieveData(data);
             }
@@ -66,15 +70,26 @@ namespace MultiDungeon
            
             if(server.Connected) 
             {
+                NetworkStream clientStream = null;
+                try
+                {
+                    clientStream = server.GetStream();
+                    ASCIIEncoding encoder = new ASCIIEncoding();
+                    byte[] b = encoder.GetBytes("");
+                    clientStream.Write(b, 0, 0);
+                }
+                catch (Exception e)
+                {
+
+                }
+                finally
+                {
+                    server.Close();
+                    clientStream.Flush();
+                    clientStream.Close();
+                    connected = false;
+                }
                  
-                 NetworkStream clientStream = server.GetStream();
-                 ASCIIEncoding encoder = new ASCIIEncoding();
-                 byte[] b = encoder.GetBytes("");
-                 clientStream.Write(b, 0, 0);
-                 server.Close();
-                 clientStream.Flush();
-                 clientStream.Close();
-                 connected = false;
             }
             
         }
@@ -82,12 +97,33 @@ namespace MultiDungeon
         public static void Send(string data)
         {
             NetworkStream clientStream = server.GetStream();
-            ASCIIEncoding encoder = new ASCIIEncoding();
+            
             byte[] buffer = encoder.GetBytes(data);
 
             clientStream.Write(buffer, 0, buffer.Length);
             clientStream.Flush();
         }
 
+        public static void SendPosition(int id, int x, int y)
+        {
+            NetworkStream clientStream = server.GetStream();
+
+            byte[] buffer = encoder.GetBytes("p");
+
+            clientStream.Write(buffer, 0, buffer.Length);
+
+            buffer = BitConverter.GetBytes(id);
+
+            clientStream.Write(buffer, 0, buffer.Length);
+
+            buffer = BitConverter.GetBytes(x);
+
+            clientStream.Write(buffer, 0, buffer.Length);
+
+            buffer = BitConverter.GetBytes(y);
+
+            clientStream.Write(buffer, 0, buffer.Length);
+            clientStream.Flush();
+        }
     }
 }

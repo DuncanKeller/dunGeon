@@ -5,6 +5,7 @@ using System.Text;
 using System.Net.Sockets;
 using System.Threading;
 using System.Net;
+using Microsoft.Xna.Framework.Net;
 
 namespace DungeonServer
 {
@@ -45,11 +46,19 @@ namespace DungeonServer
             TcpClient tcpClient = (TcpClient)client;
             NetworkStream stream = tcpClient.GetStream();
             int key = rand.Next(1023);
+
+            while (clients.ContainsKey(key))
+            {
+                key = rand.Next(1023);
+            }
+
             clients.Add(key, tcpClient);
 
             Send("id\n" + key.ToString(), key);
 
-            byte[] message = new byte[4096];
+            Console.WriteLine("Client " + key + " connected");
+
+            byte[] message = new byte[32];
             int bytesRead;
 
             while (true)
@@ -58,7 +67,8 @@ namespace DungeonServer
 
                 try
                 {
-                    bytesRead = stream.Read(message, 0, 4096);
+                    bytesRead = stream.Read(message, 0, 32);
+                    stream.Flush();
                 }
                 catch (Exception e)
                 {
@@ -76,6 +86,27 @@ namespace DungeonServer
 
                 ASCIIEncoding encoder = new ASCIIEncoding();
                 string data = encoder.GetString(message, 0, bytesRead);
+                /*
+                int index = 0;
+
+                string code = encoder.GetString(message, index, encoder.GetByteCount("p"));
+                index += encoder.GetByteCount(code);
+
+                if (code == "p")
+                {
+                    int id = BitConverter.ToInt32(message, index);
+                    index += sizeof(Int32);
+                    double x = BitConverter.ToDouble(message, index);
+                    index += sizeof(Double);
+                    double y = BitConverter.ToDouble(message, index);
+                    int poop = 4;
+                }
+                else
+                {
+                    
+                }
+
+                */
                 Console.WriteLine(data);
 
                 foreach (var k in clients)
