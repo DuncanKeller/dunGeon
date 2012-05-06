@@ -13,7 +13,7 @@ namespace MultiDungeon
         public Revolver(BulletManager bm, Player p) : base(bm, typeof(Bullet), p)
         {
             maxClip = 6;
-            reloadSpeed = 3;
+            reloadTime = 3;
             rateOfFire = 0.3;
             damage = 5;
         }
@@ -25,7 +25,14 @@ namespace MultiDungeon
 
         public override void Shoot(GamePadState input, GamePadState oldInput)
         {
-          
+            if (input.Triggers.Right > 0.25 &&
+                oldInput.Triggers.Right < 0.25)
+            {
+                if (primed)
+                {
+                    FireBullet();
+                }
+            }
         }
 
         public override void  Draw(SpriteBatch sb)

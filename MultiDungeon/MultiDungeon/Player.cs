@@ -22,6 +22,11 @@ namespace MultiDungeon
 
         public Color c = new Color(0,255,0);
 
+        public float Angle
+        {
+            get { return angle; }
+        }
+
         public Vector2 Position
         {
             get { return pos; }

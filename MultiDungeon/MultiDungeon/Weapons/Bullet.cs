@@ -12,7 +12,12 @@ namespace MultiDungeon
         Vector2 pos;
         float angle;
 
-        public Bullet(Vector2 pos, float angle)
+        public Bullet()
+        {
+           
+        }
+
+        public void Init(Vector2 pos, float angle)
         {
             this.pos = pos;
             this.angle = angle;
@@ -25,7 +30,7 @@ namespace MultiDungeon
 
         public void Draw(SpriteBatch sb)
         {
-
+            
         }
     }
 }

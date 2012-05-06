@@ -16,7 +16,7 @@ namespace MultiDungeon
         Player player;
 
         protected int maxClip;
-        protected double reloadSpeed;
+        protected double reloadTime;
         protected double rateOfFire;
         protected int damage;
 
@@ -24,6 +24,15 @@ namespace MultiDungeon
         protected double reloadTimer;
         protected double fireTimer;
 
+        protected bool reloading
+        {
+            get { return reloadTimer == 0; }
+        }
+
+        protected bool primed
+        {
+            get { return (!reloading && fireTimer == 0 && clip > 0); }
+        }
 
         public Gun(BulletManager bm, Type bt, Player p)
         {
@@ -54,11 +63,21 @@ namespace MultiDungeon
 
         public abstract void Shoot(GamePadState input, GamePadState oldInput);
 
-        private void FireBullet()
+        protected void FireBullet()
         {
-            //var cons = bulletType.GetConstructors(BindingFlags.Public);
             Bullet bullet = (Bullet)Activator.CreateInstance(bulletType);
+            bullet.Init(player.Position, player.Angle);
             manager.Add(bullet);
+            clip--;
+
+            if (clip == 0)
+            {
+                reloadTimer = reloadTime;
+            }
+            else
+            {
+                fireTimer = rateOfFire;
+            }
         }
 
         public virtual void Draw(SpriteBatch sb)
