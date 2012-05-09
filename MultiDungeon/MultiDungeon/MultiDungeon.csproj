@@ -76,9 +76,12 @@
     <Compile Include="Console\Console.cs" />
     <Compile Include="Console\Message.cs" />
     <Compile Include="GameConst.cs" />
-    <Compile Include="Weapons\Bullet.cs" />
+    <Compile Include="Weapons\Bullets\Arrow.cs" />
+    <Compile Include="Weapons\Bullets\Bullet.cs" />
     <Compile Include="Weapons\BulletManager.cs" />
-    <Compile Include="Weapons\Gun.cs" />
+    <Compile Include="Weapons\Guns\AssaultRifle.cs" />
+    <Compile Include="Weapons\Guns\Crossbow.cs" />
+    <Compile Include="Weapons\Guns\Gun.cs" />
     <Compile Include="Map\Tile.cs" />
     <Compile Include="Map\TileSet.cs" />
     <Compile Include="Player.cs" />
@@ -87,7 +90,10 @@
     <Compile Include="Game1.cs" />
     <Compile Include="ServerClient.cs" />
     <Compile Include="TextureManager.cs" />
+    <Compile Include="Weapons\Guns\Pistols.cs" />
     <Compile Include="Weapons\Guns\Revolver.cs" />
+    <Compile Include="Weapons\Guns\Shotgun.cs" />
+    <Compile Include="Weapons\Bullets\Shell.cs" />
     <Compile Include="Weapons\Weapon.cs" />
     <Compile Include="World.cs" />
   </ItemGroup>

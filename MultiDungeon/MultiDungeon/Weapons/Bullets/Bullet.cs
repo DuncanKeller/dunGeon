@@ -12,7 +12,7 @@ namespace MultiDungeon
         Vector2 pos;
         float angle;
 
-        float speed;
+        protected float speed = 15;
 
         public Vector2 Position
         {
@@ -26,16 +26,16 @@ namespace MultiDungeon
 
         public Bullet()
         {
-            speed = 15;
+            
         }
 
-        public void Init(Vector2 pos, float angle)
+        public virtual void Init(Vector2 pos, float angle)
         {
             this.pos = pos;
             this.angle = angle;
         }
 
-        public void Update()
+        public virtual void Update()
         {
             pos.X += (float)Math.Cos(angle) * speed;
             pos.Y += (float)Math.Sin(angle) * speed;

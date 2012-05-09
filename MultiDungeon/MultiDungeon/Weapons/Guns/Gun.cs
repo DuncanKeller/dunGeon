@@ -18,7 +18,7 @@ namespace MultiDungeon
         protected int maxClip;
         protected double reloadTime;
         protected double rateOfFire;
-        protected int damage;
+        protected double damage;
 
         protected double clip;
         protected double reloadTimer;
@@ -63,6 +63,21 @@ namespace MultiDungeon
         }
 
         public abstract void Shoot();
+
+        public virtual void SecondaryFire()
+        {
+
+        }
+
+        public virtual void RightHeld()
+        {
+
+        }
+
+        public virtual void LeftHeld()
+        {
+
+        }
 
         protected void FireBullet()
         {

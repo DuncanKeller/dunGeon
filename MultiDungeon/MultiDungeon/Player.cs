@@ -54,7 +54,7 @@ namespace MultiDungeon
             speed = 1;
             maxSpeed = 5;
             velocity = new Vector2();
-            testGun = new Revolver(World.BulletManager, this);
+            testGun = new Crossbow(World.BulletManager, this);
 
             Init();
         }
@@ -149,6 +149,22 @@ namespace MultiDungeon
             {
                 testGun.Shoot();
             }
+            else if (gamePad.Triggers.Right > 0.25)
+            {
+                testGun.RightHeld();
+            }
+
+            if (gamePad.Triggers.Left > 0.25 &&
+              oldGamePad.Triggers.Left < 0.25)
+            {
+                testGun.SecondaryFire();
+            }
+            else if (gamePad.Triggers.Left > 0.25)
+            {
+                testGun.LeftHeld();
+            }
+
+          
 
             oldGamePad = gamePad;
         }
