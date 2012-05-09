@@ -12,10 +12,12 @@ namespace MultiDungeon
     {
         List<Bullet> bullets = new List<Bullet>();
         List<Bullet> toRemove = new List<Bullet>();
+        List<Bullet> toAdd = new List<Bullet>();
 
         public void Update(TileSet tiles)
         {
             Cleanup();
+            AddNewBullets();
 
             foreach (Bullet b in bullets)
             {
@@ -44,9 +46,19 @@ namespace MultiDungeon
             toRemove.Clear();
         }
 
+        private void AddNewBullets()
+        {
+            foreach (Bullet b in toAdd)
+            {
+                bullets.Add(b);
+            }
+
+            toAdd.Clear();
+        }
+
         public void Add(Bullet b)
         {
-            bullets.Add(b);
+            toAdd.Add(b);
         }
 
         public void Remove(Bullet b)

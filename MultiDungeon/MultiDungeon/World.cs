@@ -28,63 +28,95 @@ namespace MultiDungeon
             InitNetwork();
         }
 
-        public static void RecieveData(string data)
+        public static void RecieveData(string[] datum)
         {
-            string[] info = data.Split("\n".ToCharArray());
-            try
+            foreach (string data in datum)
             {
-                if (info[0] == "id")
+                string[] info = data.Split("\n".ToCharArray());
+                try
                 {
-                    int id = Int32.Parse(info[1]);
-
-                    gameId = id;
-                    players.Add(gameId, new Player((float)rand.NextDouble() * 700f,
-                    (float)rand.NextDouble() * 400f, gameId));
-                    players[gameId].c = new Color(rand.Next(255), rand.Next(255), rand.Next(255));
-                }
-                else if (info[0] == "disconnect")
-                {
-                    int id = Int32.Parse(info[1]);
-                    players.Remove(id);
-                }
-                else
-                {
-                    int id = Int32.Parse(info[1]);
-                    if (players.ContainsKey(id))
+                    if (info[0] == "id")
                     {
-                        if (id != gameId)
+                        int id = Int32.Parse(info[1]);
+
+                        gameId = id;
+                        players.Add(gameId, new Player((float)rand.NextDouble() * 700f,
+                        (float)rand.NextDouble() * 400f, gameId));
+                        players[gameId].c = new Color(rand.Next(255), rand.Next(255), rand.Next(255));
+                    }
+                    else if (info[0] == "disconnect")
+                    {
+                        int id = Int32.Parse(info[1]);
+                        players.Remove(id);
+                    }
+                    else if (info[0] == "p")
+                    {
+                        int id = Int32.Parse(info[1]);
+                        if (players.ContainsKey(id))
                         {
-                            players[id].SetPos(float.Parse(info[2]), float.Parse(info[3]));
+                            if (id != gameId)
+                            {
+                                players[id].SetPos(int.Parse(info[2]), int.Parse(info[3]));
+                                players[id].Angle = float.Parse(info[4]);
+                            }
+                        }
+                        else
+                        {
+                            players.Add(id, new Player(float.Parse(info[2]), float.Parse(info[3]), id));
                         }
                     }
-                    else
+                    else if (info[0] == "b")
                     {
-                        players.Add(id, new Player(float.Parse(info[2]), float.Parse(info[3]), id));
+                        int id = Int32.Parse(info[1]);
+                        if (gameId != id)
+                        {
+                            Bullet b = new Bullet();
+                            b.Init(players[id].Position, players[id].Angle - (float)(Math.PI / 2));
+                            bulletManager.Add(b);
+                        }
                     }
                 }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
+                catch (Exception e)
+                {
+                    Console.Write(e.Message, MessageType.urgent);
+                }
+
+                if (info[0] != "p")
+                {
+                    string message = "";
+
+                    for (int i = 0; i < info.Length; i++)
+                    {
+                        message += info[i];
+                        if (i < info.Length - 1)
+                        {
+                            message += ", ";
+                        }
+                    }
+                    Console.Write(message);
+                }
             }
         }
 
         public static void InitNetwork()
         {
-            ServerClient.Connect();
+            Client.Connect();
         }
 
         public static void UpdateNetwork(float deltaTime)
         {
             timer++;
-            if (timer > 5)
+            //if (timer > 2)
             {
-                ServerClient.Send("position" + "\n" + gameId.ToString() + "\n" + ((int)players[gameId].Position.X).ToString()
-                + "\n" + ((int)players[gameId].Position.Y).ToString());
+                
+                Client.Send("p" + "\n" + gameId.ToString() + "\n" + ((int)players[gameId].Position.X).ToString()
+                + "\n" + ((int)players[gameId].Position.Y).ToString() + "\n" + 
+                (players[gameId].Angle).ToString());
                 timer = 0;
+                 
             }
-            
-            //ServerClient.SendPosition(gameId, players[gameId].Position.X, players[gameId].Position.Y);
+
+            //ServerClient.SendPosition(gameId, (int)players[gameId].Position.X, (int)players[gameId].Position.Y, (double)players[gameId].Angle);
             
         }
 

@@ -49,12 +49,12 @@ namespace DungeonServer
 
             while (clients.ContainsKey(key))
             {
-                key = rand.Next(1023);
+                key = rand.Next(100);
             }
 
             clients.Add(key, tcpClient);
 
-            Send("id\n" + key.ToString(), key);
+            Send("id\n" + key.ToString() +"!", key);
 
             Console.WriteLine("Client " + key + " connected");
 
@@ -107,7 +107,8 @@ namespace DungeonServer
                 }
 
                 */
-                Console.WriteLine(data);
+
+                //Console.WriteLine(data);
 
                 foreach (var k in clients)
                 {
@@ -125,7 +126,7 @@ namespace DungeonServer
             {
                 if (k.Key != id)
                 {
-                    Send("disconnect\n" + id.ToString(), k.Key);
+                    Send("disconnect\n" + id.ToString() + "!", k.Key);
                 }
             }
         }

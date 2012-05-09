@@ -73,6 +73,9 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Console\Console.cs" />
+    <Compile Include="Console\Message.cs" />
+    <Compile Include="GameConst.cs" />
     <Compile Include="Weapons\Bullet.cs" />
     <Compile Include="Weapons\BulletManager.cs" />
     <Compile Include="Weapons\Gun.cs" />

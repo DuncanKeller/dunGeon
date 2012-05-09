@@ -5,11 +5,11 @@ using System.Text;
 using System.Net.Sockets;
 using System.Threading;
 using System.Net;
-using Microsoft.Xna.Framework.Net;
+using System.IO;
 
 namespace MultiDungeon
 {
-    class ServerClient
+    class Client
     {
         static TcpClient server;
         
@@ -20,8 +20,18 @@ namespace MultiDungeon
         public static void Connect()
         {
             server = new TcpClient();
-            //IPEndPoint serverEndPoint = new IPEndPoint(IPAddress.Parse("Viridian.csh.rit.edu"), 3000);
-            server.Connect("Viridian.csh.rit.edu", 3000);
+
+            if(!File.Exists("config.txt"))
+            {
+                Console.Write("No config file found :(", MessageType.urgent);
+                return;
+            }
+
+            StreamReader sr = new StreamReader("config.txt");
+            string ip = sr.ReadLine();
+            sr.Close();
+
+            server.Connect(ip, 3000);
 
             Thread clientThread = new Thread(new ParameterizedThreadStart(Run));
             clientThread.Start();
@@ -34,18 +44,28 @@ namespace MultiDungeon
 
             byte[] message = new byte[size];
             int bytesRead;
-
+            ASCIIEncoding encoder = new ASCIIEncoding();
             while (true)
             {
                 bytesRead = 0;
-
+                string data = "";
                 try
                 {
                     bytesRead = stream.Read(message, 0, size);
+
+                    data = encoder.GetString(message, 0, bytesRead);
+
+                    while (!data.Contains("!"))
+                    {
+                        bytesRead = stream.Read(message, 0, size);
+                        data += encoder.GetString(message, 0, bytesRead);
+                    }
+
+                    //stream.Flush();
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e.Message);
+                    Console.Write(e.Message, MessageType.urgent);
                     //Console.WriteLine(e.stackTrace);
                     break;
                 }
@@ -56,10 +76,11 @@ namespace MultiDungeon
                     break;
                 }
 
-                ASCIIEncoding encoder = new ASCIIEncoding();
-                string data = encoder.GetString(message, 0, bytesRead);
-                Console.WriteLine(data);
-                World.RecieveData(data);
+
+                data = data.Substring(0, data.Length - 1);
+                string[] datum = data.Split('!');
+                World.RecieveData(datum);
+                
             }
 
             Close();
@@ -96,6 +117,7 @@ namespace MultiDungeon
 
         public static void Send(string data)
         {
+            data += "!";
             NetworkStream clientStream = server.GetStream();
             
             byte[] buffer = encoder.GetBytes(data);
@@ -104,8 +126,9 @@ namespace MultiDungeon
             clientStream.Flush();
         }
 
-        public static void SendPosition(int id, int x, int y)
+        public static void SendPosition(int id, int x, int y, double a)
         {
+            /*
             NetworkStream clientStream = server.GetStream();
 
             byte[] buffer = encoder.GetBytes("p");
@@ -123,7 +146,27 @@ namespace MultiDungeon
             buffer = BitConverter.GetBytes(y);
 
             clientStream.Write(buffer, 0, buffer.Length);
+
+            buffer = BitConverter.GetBytes(a);
+
+            clientStream.Write(buffer, 0, buffer.Length);
             clientStream.Flush();
+            */
+        }
+
+        public static void SendBullet(int id)
+        {
+            /*
+            NetworkStream clientStream = server.GetStream();
+
+            byte[] buffer = encoder.GetBytes("b");
+            clientStream.Write(buffer, 0, buffer.Length);
+
+            buffer = BitConverter.GetBytes(id);
+            clientStream.Write(buffer, 0, buffer.Length);
+
+            clientStream.Flush();
+            */
         }
     }
 }

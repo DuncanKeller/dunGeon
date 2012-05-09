@@ -28,6 +28,7 @@ namespace MultiDungeon
         public float Angle
         {
             get { return angle; }
+            set { angle = value; }
         }
 
         public Vector2 Position
@@ -82,15 +83,12 @@ namespace MultiDungeon
             {
                 GamePadState gamePad = GamePad.GetState(PlayerIndex.One);
 
-
                 UpdateInput(gamePad, deltaTime);
-
 
                 pos += velocity;
             }
 
             testGun.Update(deltaTime);
-            
         }
 
         public void UpdateCollisions(List<Tile> tiles)

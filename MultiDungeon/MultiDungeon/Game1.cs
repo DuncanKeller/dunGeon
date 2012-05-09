@@ -37,6 +37,7 @@ namespace MultiDungeon
         {
             // TODO: Add your initialization logic here
             World.Init();
+            
             base.Initialize();
         }
 
@@ -59,7 +60,7 @@ namespace MultiDungeon
         protected override void UnloadContent()
         {
             // TODO: Unload any non ContentManager content here
-            ServerClient.Close();
+            Client.Close();
         }
 
         /// <summary>
@@ -74,7 +75,7 @@ namespace MultiDungeon
                 this.Exit();
 
             World.Update(gameTime.ElapsedGameTime.Milliseconds);
-
+            Console.Update(gameTime.ElapsedGameTime.Milliseconds);
             // TODO: Add your update logic here
 
             base.Update(gameTime);
@@ -90,6 +91,7 @@ namespace MultiDungeon
 
             spriteBatch.Begin();
             World.Draw(spriteBatch);
+            Console.Draw(spriteBatch);
             spriteBatch.End();
 
             // TODO: Add your drawing code here
