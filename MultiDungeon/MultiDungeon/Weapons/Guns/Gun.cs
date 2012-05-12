@@ -82,7 +82,8 @@ namespace MultiDungeon
         protected void FireBullet()
         {
             Bullet bullet = (Bullet)Activator.CreateInstance(bulletType);
-            bullet.Init(player.Position, player.Angle - (float)(Math.PI / 2));
+            Vector2 pos = new Vector2(player.DrawRect.X, player.DrawRect.Y);
+            bullet.Init(pos, player.Angle - (float)(Math.PI / 2));
             manager.Add(bullet);
             clip--;
 

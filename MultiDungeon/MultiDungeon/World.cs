@@ -16,16 +16,18 @@ namespace MultiDungeon
         static TileSet map;
         static int timer = 0;
         static BulletManager bulletManager = new BulletManager();
+        static Camera cam;
 
         public static BulletManager BulletManager
         {
             get { return bulletManager; }
         }
 
-        public static void Init()
+        public static void Init(GraphicsDeviceManager g)
         {
             map = new TileSet();
             InitNetwork();
+            cam = new Camera(g);
         }
 
         public static void RecieveData(string[] datum)
@@ -130,12 +132,17 @@ namespace MultiDungeon
                 Player p = v.Value;
                 p.Update(deltaTime);
                 p.UpdateCollisions(map.GetTilesNear((int)p.Position.X, (int)p.Position.Y));
-            } 
+            }
+
+            cam.pos = players[gameId].Position;
           
         }
 
         public static void Draw(SpriteBatch sb)
         {
+            sb.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp,
+                DepthStencilState.Default, RasterizerState.CullNone, null, cam.getTransformation());
+
             map.Draw(sb);
 
             foreach (var p in players)
@@ -144,6 +151,8 @@ namespace MultiDungeon
             }
 
             bulletManager.Draw(sb);
+
+            sb.End();
         }
     }
 }

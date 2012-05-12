@@ -61,7 +61,7 @@ namespace MultiDungeon
                         data += encoder.GetString(message, 0, bytesRead);
                     }
 
-                    //stream.Flush();
+                    stream.Flush();
                 }
                 catch (Exception e)
                 {

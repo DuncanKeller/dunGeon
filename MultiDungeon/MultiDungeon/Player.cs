@@ -47,6 +47,12 @@ namespace MultiDungeon
             get { return new Rectangle((int)pos.X, (int)pos.Y, 30, 30); }
         }
 
+        public Rectangle DrawRect
+        {
+            get { return new Rectangle((int)pos.X + 15, (int)pos.Y + 15, 30, 30); }
+        }
+
+
         public Player(float x, float y, int id = 0)
         {
             this.id = id;
@@ -54,7 +60,7 @@ namespace MultiDungeon
             speed = 1;
             maxSpeed = 5;
             velocity = new Vector2();
-            testGun = new Crossbow(World.BulletManager, this);
+            testGun = new AssaultRifle(World.BulletManager, this);
 
             Init();
         }
@@ -142,8 +148,13 @@ namespace MultiDungeon
             }
 
             Vector2 dir = gamePad.ThumbSticks.Right;
-            angle = (float)Math.Atan2(dir.X, dir.Y);
 
+            if (Math.Abs(dir.X) > .25 ||
+                Math.Abs(dir.Y) > .25)
+            {
+                angle = (float)Math.Atan2(dir.X, dir.Y);
+            }
+            
             if (gamePad.Triggers.Right > 0.25 &&
                 oldGamePad.Triggers.Right < 0.25)
             {
@@ -172,7 +183,9 @@ namespace MultiDungeon
         public void Draw(SpriteBatch sb)
         {
             Vector2 origin = new Vector2(TextureManager.Map["circle"].Width / 2, TextureManager.Map["circle"].Height / 2);
-            sb.Draw(TextureManager.Map["circle"], Rect, null, c, angle, origin, SpriteEffects.None, 0);
+            //sb.Draw(TextureManager.Map["blank"], Rect, Color.Red);
+            sb.Draw(TextureManager.Map["circle"], DrawRect, null, c, angle, origin, SpriteEffects.None, 0);
+           
         }
     }
 }

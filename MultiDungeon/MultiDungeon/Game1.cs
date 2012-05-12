@@ -36,7 +36,7 @@ namespace MultiDungeon
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            World.Init();
+            World.Init(graphics);
             
             base.Initialize();
         }
@@ -89,8 +89,10 @@ namespace MultiDungeon
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            spriteBatch.Begin();
+            
             World.Draw(spriteBatch);
+
+            spriteBatch.Begin();
             Console.Draw(spriteBatch);
             spriteBatch.End();
 

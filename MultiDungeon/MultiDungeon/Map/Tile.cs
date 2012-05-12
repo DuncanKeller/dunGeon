@@ -15,7 +15,7 @@ namespace MultiDungeon.Map
 
     class Tile
     {
-        public static int TILE_SIZE = 50;
+        public static int TILE_SIZE = 64;
         TileType type;
         Vector2 pos;
 
