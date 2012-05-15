@@ -2,15 +2,6 @@
 <XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
   <Asset Type="Pipeline:BuildItemCollection">
     <Item>
-      <Source>circle.png</Source>
-      <Name>circle</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\circle.xnb</Output>
-      <Time>2012-05-06T00:00:52.1044244-04:00</Time>
-    </Item>
-    <Item>
       <Source>tile.png</Source>
       <Name>tile</Name>
       <Importer>TextureImporter</Importer>
@@ -29,6 +20,15 @@
       <Time>2012-05-04T19:30:16.0649788-04:00</Time>
     </Item>
     <Item>
+      <Source>circle.png</Source>
+      <Name>circle</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\circle.xnb</Output>
+      <Time>2012-05-06T00:00:52.1044244-04:00</Time>
+    </Item>
+    <Item>
       <Source>Fonts\ConsoleFont.spritefont</Source>
       <Name>Fonts\ConsoleFont</Name>
       <Importer>FontDescriptionImporter</Importer>
@@ -37,11 +37,29 @@
       <Output>c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Fonts\ConsoleFont.xnb</Output>
       <Time>2012-05-08T18:37:04.3206108-04:00</Time>
     </Item>
+    <Item>
+      <Source>Shaders\reductionEffect.fx</Source>
+      <Name>Shaders\reductionEffect</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Shaders\reductionEffect.xnb</Output>
+      <Time>2012-05-12T18:46:02.7038901-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Shaders\resolveShadowsEffect.fx</Source>
+      <Name>Shaders\resolveShadowsEffect</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Shaders\resolveShadowsEffect.xnb</Output>
+      <Time>2012-05-12T18:46:02.7058902-04:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{721AC1D8-B294-4318-B80A-91E0C689E130}</ContentProjectGUID>
       <TargetPlatform>Windows</TargetPlatform>
-      <TargetProfile>Reach</TargetProfile>
+      <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
       <RootDirectory>c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeonContent\</RootDirectory>

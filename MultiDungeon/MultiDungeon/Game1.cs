@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using MultiDungeon.Graphics;
 
 namespace MultiDungeon
 {
@@ -36,7 +37,12 @@ namespace MultiDungeon
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            graphics.PreferredBackBufferWidth = GameConst.SCREEN_WIDTH;
+            graphics.PreferredBackBufferHeight = GameConst.SCREEN_HEIGHT;
+            graphics.ApplyChanges();
+
             World.Init(graphics);
+            Shadowmap.Init(this, graphics.GraphicsDevice, Content);
             
             base.Initialize();
         }
@@ -76,6 +82,7 @@ namespace MultiDungeon
 
             World.Update(gameTime.ElapsedGameTime.Milliseconds);
             Console.Update(gameTime.ElapsedGameTime.Milliseconds);
+            Shadowmap.Update(World.Player.Position);
             // TODO: Add your update logic here
 
             base.Update(gameTime);
@@ -88,9 +95,8 @@ namespace MultiDungeon
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
             
-            World.Draw(spriteBatch);
+            Shadowmap.Draw(spriteBatch, World.Camera);
 
             spriteBatch.Begin();
             Console.Draw(spriteBatch);

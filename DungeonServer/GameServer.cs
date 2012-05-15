@@ -16,12 +16,24 @@ namespace DungeonServer
         private Thread listenThread;
         private Dictionary<int, TcpClient> clients = new Dictionary<int, TcpClient>();
         private int newKey = 0;
+        private int seed;
 
         public GameServer()
         {
            this.tcpListener = new TcpListener(IPAddress.Any, 3000);
            this.listenThread = new Thread(new ThreadStart(BeginListen));
            this.listenThread.Start();
+           GenerateSeed();
+        }
+
+        public int Seed
+        {
+            get { return seed; }
+        }
+
+        public void GenerateSeed()
+        {
+            seed = rand.Next(1024 * 4);
         }
 
         private void BeginListen()
@@ -54,7 +66,9 @@ namespace DungeonServer
 
             clients.Add(key, tcpClient);
 
-            Send("id\n" + key.ToString() +"!", key);
+            Send("id\n" + key.ToString() + "!", key);
+
+            Send("rand\n" + seed.ToString() + "!", key);
 
             Console.WriteLine("Client " + key + " connected");
 

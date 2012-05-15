@@ -10,20 +10,42 @@ namespace MultiDungeon.Map
     class TileSet
     {
         List<Tile> tiles = new List<Tile>();
+        Tile[,] tileMap;
 
         List<Rectangle> rooms = new List<Rectangle>();
         List<Rectangle> cooridors = new List<Rectangle>();
 
         int numRooms = 12;
 
+        int width;
+        int height;
+
         public TileSet()
         {
-            GenerateMap(50, 50);
+            GenerateLobby();
+        }
+
+        public Tile this[int x, int y]
+        {
+            get
+            {
+                return tileMap[x, y];
+            }
         }
 
         public List<Tile> Tiles
         {
             get { return tiles; }
+        }
+
+        public int Width
+        {
+            get { return width * Tile.TILE_SIZE; }
+        }
+
+        public int Height
+        {
+            get { return height * Tile.TILE_SIZE; }
         }
 
         public List<Tile> GetTilesNear(int x, int y)
@@ -42,12 +64,8 @@ namespace MultiDungeon.Map
             }
             return toReturn;
         }
-        /*
-        private Rectangle MakeRoomFromPath(ref bool[,] map, Rectangle path, int mwidth, int mheight, int rwidth, int rheight)
-        {
-
-        }
-        */
+  
+        #region DungeonGeneration
         private Rectangle MakeRoom(ref bool[,] map, int mwidth, int mheight, int rwidth, int rheight)
         {
             Rectangle room = Rectangle.Empty;
@@ -330,10 +348,51 @@ namespace MultiDungeon.Map
 
             return hall;
         }
+        #endregion
+
+        public void GenerateLobby()
+        {
+            tiles.Clear();
+
+            int width = 15;
+            int height = 10;
+
+            bool[,] map = new bool[width, height];
+
+            this.width = width;
+            this.height = height;
+
+            for (int x = 0; x < width; x++)
+            {
+                for (int y = 0; y < height; y++)
+                {
+                    map[x, y] = true;
+                }
+            }
+
+            for (int x = 0; x < width; x++)
+            {
+                map[x, 0] = false;
+                map[x, height - 1] = false;
+            }
+            for (int y = 0; y < height; y++)
+            {
+                map[0, y] = false;
+                map[width - 1, y] = false;
+            }
+
+
+            CreateTiles(map, width, height);
+        }
 
         public void GenerateMap(int width, int height)
         {
+            tiles.Clear();
+
             bool[,] map = new bool[width, height];
+
+            this.width = width;
+            this.height = height;
 
             for (int x = 0; x < width; x++)
             {
@@ -356,6 +415,12 @@ namespace MultiDungeon.Map
                 
             }
 
+            CreateTiles(map, width, height);
+        }
+
+        private void CreateTiles(bool[,] map, int width, int height)
+        {
+            tileMap = new Tile[width, height];
             for (int x = 0; x < width; x++)
             {
                 for (int y = 0; y < height; y++)
@@ -370,6 +435,7 @@ namespace MultiDungeon.Map
                         t = new Tile(TileType.wall, x, y);
                     }
                     tiles.Add(t);
+                    tileMap[x, y] = t;
                 }
             }
         }
@@ -381,5 +447,28 @@ namespace MultiDungeon.Map
                 t.Draw(sb);
             }
         }
+
+        public void DrawGround(SpriteBatch sb)
+        {
+            foreach (Tile t in tiles)
+            {
+                if (t.Type == TileType.floor)
+                {
+                    t.Draw(sb);
+                }
+            }
+        }
+
+        public void DrawWalls(SpriteBatch sb)
+        {
+            foreach (Tile t in tiles)
+            {
+                if (t.Type == TileType.wall)
+                {
+                    t.Draw(sb);
+                }
+            }
+        }
+
     }
 }

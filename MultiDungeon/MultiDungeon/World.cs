@@ -23,13 +23,31 @@ namespace MultiDungeon
             get { return bulletManager; }
         }
 
+        public static Camera Camera
+        {
+            get { return cam; }
+        }
+
+        public static Player Player
+        {
+            get { return players[gameId]; }
+        }
+
         public static void Init(GraphicsDeviceManager g)
         {
-            map = new TileSet();
             InitNetwork();
+            map = new TileSet();
             cam = new Camera(g);
         }
 
+
+        public static void StartGame()
+        {
+            map.GenerateMap(30, 30);
+        }
+
+
+        #region NetworkClient
         public static void RecieveData(string[] datum)
         {
             foreach (string data in datum)
@@ -73,9 +91,15 @@ namespace MultiDungeon
                         if (gameId != id)
                         {
                             Bullet b = new Bullet();
-                            b.Init(players[id].Position, players[id].Angle - (float)(Math.PI / 2));
+                            Vector2 p = new Vector2(players[id].DrawRect.X, players[id].DrawRect.Y);
+                            b.Init(p, players[id].Angle - (float)(Math.PI / 2));
                             bulletManager.Add(b);
                         }
+                    }
+                    else if (info[0] == "rand")
+                    {
+                        int seed = Int32.Parse(info[1]);
+                        GameConst.rand = new Random(seed);
                     }
                 }
                 catch (Exception e)
@@ -99,6 +123,7 @@ namespace MultiDungeon
                 }
             }
         }
+        #endregion
 
         public static void InitNetwork()
         {
@@ -134,16 +159,58 @@ namespace MultiDungeon
                 p.UpdateCollisions(map.GetTilesNear((int)p.Position.X, (int)p.Position.Y));
             }
 
-            cam.pos = players[gameId].Position;
-          
+            // camera
+            UpdateCamera();
+
         }
 
-        public static void Draw(SpriteBatch sb)
+        public static void UpdateCamera()
         {
-            sb.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp,
-                DepthStencilState.Default, RasterizerState.CullNone, null, cam.getTransformation());
+            cam.pos = players[gameId].Position;
+            /*
+            if (players[gameId].Position.X > GameConst.SCREEN_WIDTH / 2 &&
+                players[gameId].Position.X < map.Width - (GameConst.SCREEN_WIDTH / 2))
+            {
+                cam.pos.X = players[gameId].Position.X;
+            }
+            else if (players[gameId].Position.X <= GameConst.SCREEN_WIDTH / 2)
+            {
+                cam.pos.X = GameConst.SCREEN_WIDTH / 2;
+            }
+            else if (players[gameId].Position.X >= map.Width - (GameConst.SCREEN_WIDTH / 2))
+            {
+                cam.pos.X = map.Width - (GameConst.SCREEN_WIDTH / 2);
+            }
 
-            map.Draw(sb);
+            if (players[gameId].Position.Y > GameConst.SCREEN_HEIGHT / 2 &&
+                players[gameId].Position.Y < map.Height - (GameConst.SCREEN_HEIGHT / 2))
+            {
+                cam.pos.Y = players[gameId].Position.Y;
+            }
+            else if (players[gameId].Position.Y <= GameConst.SCREEN_HEIGHT / 2)
+            {
+                cam.pos.Y = GameConst.SCREEN_HEIGHT / 2;
+            }
+            else if (players[gameId].Position.Y >= map.Height - (GameConst.SCREEN_HEIGHT / 2))
+            {
+                cam.pos.Y = map.Height - (GameConst.SCREEN_HEIGHT / 2);
+            }
+             */
+        }
+
+        public static void DrawGroundTiles(SpriteBatch sb)
+        {
+            map.DrawGround(sb);
+        }
+
+        public static void DrawWallTiles(SpriteBatch sb)
+        {
+            map.DrawWalls(sb);
+        }
+
+        public static void DrawScene(SpriteBatch sb)
+        {
+            DrawWallTiles(sb);
 
             foreach (var p in players)
             {
@@ -151,8 +218,8 @@ namespace MultiDungeon
             }
 
             bulletManager.Draw(sb);
-
-            sb.End();
         }
+
+       
     }
 }

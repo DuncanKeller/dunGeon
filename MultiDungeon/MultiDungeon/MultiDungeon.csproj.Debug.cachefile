@@ -1,4 +1,6 @@
-Content\circle.xnb
 Content\tile.xnb
 Content\white.xnb
+Content\circle.xnb
 Content\Fonts\ConsoleFont.xnb
+Content\Shaders\reductionEffect.xnb
+Content\Shaders\resolveShadowsEffect.xnb

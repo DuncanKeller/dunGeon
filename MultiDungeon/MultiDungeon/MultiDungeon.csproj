@@ -13,7 +13,7 @@
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <XnaFrameworkVersion>v4.0</XnaFrameworkVersion>
     <XnaPlatform>Windows</XnaPlatform>
-    <XnaProfile>Reach</XnaProfile>
+    <XnaProfile>HiDef</XnaProfile>
     <XnaCrossPlatformGroupID>94dc9035-8563-47e8-b668-2080716cbb31</XnaCrossPlatformGroupID>
     <XnaOutputType>Game</XnaOutputType>
     <ApplicationIcon>Game.ico</ApplicationIcon>
@@ -82,6 +82,12 @@
     <Compile Include="Console\Console.cs" />
     <Compile Include="Console\Message.cs" />
     <Compile Include="GameConst.cs" />
+    <Compile Include="Graphics\LightArea.cs" />
+    <Compile Include="Graphics\QuadRenderComponent.cs" />
+    <Compile Include="Graphics\Shadowmap.cs" />
+    <Compile Include="Graphics\ShadowmapResolver.cs" />
+    <Compile Include="HUD\Hud.cs" />
+    <Compile Include="HUD\Map.cs" />
     <Compile Include="Weapons\Bullets\Arrow.cs" />
     <Compile Include="Weapons\Bullets\Bullet.cs" />
     <Compile Include="Weapons\BulletManager.cs" />

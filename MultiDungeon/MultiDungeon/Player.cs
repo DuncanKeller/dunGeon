@@ -76,7 +76,7 @@ namespace MultiDungeon
             pos.Y = y;
         }
 
-        public void Update(float deltaTime)
+        public virtual void Update(float deltaTime)
         {
             timer += deltaTime;
 
@@ -95,6 +95,7 @@ namespace MultiDungeon
             }
 
             testGun.Update(deltaTime);
+
         }
 
         public void UpdateCollisions(List<Tile> tiles)
@@ -125,6 +126,13 @@ namespace MultiDungeon
 
         public void UpdateInput(GamePadState gamePad, float deltaTime)
         {
+            // test making a dungeon
+            if (gamePad.Buttons.RightShoulder == ButtonState.Pressed &&
+                oldGamePad.Buttons.RightShoulder == ButtonState.Released)
+            {
+                World.StartGame();
+            }
+
             Vector2 input = gamePad.ThumbSticks.Left;
 
             velocity.X += input.X * speed * (deltaTime / 100);
