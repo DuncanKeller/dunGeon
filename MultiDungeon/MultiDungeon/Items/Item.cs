@@ -7,8 +7,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MultiDungeon.Items
 {
-    class Item
+    abstract class Item
     {
-        
+
+        public abstract void Use(Player p);
     }
 }

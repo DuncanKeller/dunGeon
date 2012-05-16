@@ -38,6 +38,16 @@ namespace MultiDungeon
             set { angle = value; }
         }
 
+        public int Gold
+        {
+            get { return gold; }
+            set
+            {
+                if (value > 0 && value <= 999)
+                { gold = value; }
+            }
+        }
+
         public Item Item
         {
             get { return item; }

@@ -19,7 +19,7 @@ namespace MultiDungeon.Items
         public ItemManager()
         {
             //test
-            chests.Add(new Chest(new Vector2(300, 300), new Item()));
+            chests.Add(new Chest(new Vector2(300, 300), new CoinPurse(20)));
         }
 
         public void Draw(SpriteBatch sb)
