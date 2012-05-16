@@ -4,3 +4,5 @@ Content\circle.xnb
 Content\Fonts\ConsoleFont.xnb
 Content\Shaders\reductionEffect.xnb
 Content\Shaders\resolveShadowsEffect.xnb
+Content\Items\chestClosed.xnb
+Content\Items\chestOpen.xnb

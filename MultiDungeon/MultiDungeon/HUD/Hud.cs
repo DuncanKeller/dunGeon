@@ -8,7 +8,7 @@ namespace MultiDungeon.HUD
     static class Hud
     {
 
-        public void Draw()
+        static public void Draw()
         {
 
         }

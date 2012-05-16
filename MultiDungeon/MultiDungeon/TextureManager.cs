@@ -27,6 +27,8 @@ namespace MultiDungeon
             textures.Add("blank", c.Load<Texture2D>("white"));
             textures.Add("circle", c.Load<Texture2D>("circle"));
             textures.Add("tile", c.Load<Texture2D>("tile"));
+            textures.Add("chest-closed", c.Load<Texture2D>("Items\\chestClosed"));
+            textures.Add("chest-open", c.Load<Texture2D>("Items\\chestOpen"));
 
             // fonts
             fonts.Add("console", c.Load<SpriteFont>("Fonts\\ConsoleFont"));

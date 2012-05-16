@@ -55,6 +55,24 @@
       <Output>c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Shaders\resolveShadowsEffect.xnb</Output>
       <Time>2012-05-12T18:46:02.7058902-04:00</Time>
     </Item>
+    <Item>
+      <Source>Items\chestClosed.png</Source>
+      <Name>Items\chestClosed</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Items\chestClosed.xnb</Output>
+      <Time>2012-05-15T23:58:29.3543294-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Items\chestOpen.png</Source>
+      <Name>Items\chestOpen</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Items\chestOpen.xnb</Output>
+      <Time>2012-05-15T23:58:29.3553294-04:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{721AC1D8-B294-4318-B80A-91E0C689E130}</ContentProjectGUID>

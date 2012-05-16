@@ -6,6 +6,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MultiDungeon.Map;
 using System.Timers;
+using MultiDungeon.Items;
+
 namespace MultiDungeon
 {
     class World
@@ -16,11 +18,17 @@ namespace MultiDungeon
         static TileSet map;
         static int timer = 0;
         static BulletManager bulletManager = new BulletManager();
+        static ItemManager itemManager = new ItemManager();
         static Camera cam;
 
         public static BulletManager BulletManager
         {
             get { return bulletManager; }
+        }
+
+        public static ItemManager ItemManager
+        {
+            get { return itemManager; }
         }
 
         public static Camera Camera
@@ -212,12 +220,15 @@ namespace MultiDungeon
         {
             DrawWallTiles(sb);
 
+            itemManager.Draw(sb);
+
             foreach (var p in players)
             {
                 p.Value.Draw(sb);
             }
 
             bulletManager.Draw(sb);
+            
         }
 
        

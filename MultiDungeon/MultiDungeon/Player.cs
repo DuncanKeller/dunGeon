@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
 using MultiDungeon.Map;
+using MultiDungeon.Items;
 
 namespace MultiDungeon
 {
@@ -21,14 +22,25 @@ namespace MultiDungeon
         float timer = 0;
         GamePadState oldGamePad;
 
+        Item item;
+        double health;
+        double maxHealth;
+        int gold;
+
         public Color c = new Color(0,255,0);
 
         Gun testGun;
+        Chest overlappingChest = null;
 
         public float Angle
         {
             get { return angle; }
             set { angle = value; }
+        }
+
+        public Item Item
+        {
+            get { return item; }
         }
 
         public Vector2 Position
@@ -95,7 +107,25 @@ namespace MultiDungeon
             }
 
             testGun.Update(deltaTime);
+            UpdateChest(World.ItemManager.Chests);
+        }
 
+        public void UpdateChest(List<Chest> chests)
+        {
+            bool overlapping = false;
+            foreach (Chest chest in chests)
+            {
+                if (chest.Rect.Intersects(DrawRect))
+                {
+                    overlappingChest = chest;
+                    overlapping = true;
+                }
+            }
+
+            if (!overlapping)
+            {
+                overlappingChest = null;
+            }
         }
 
         public void UpdateCollisions(List<Tile> tiles)
@@ -181,6 +211,15 @@ namespace MultiDungeon
             else if (gamePad.Triggers.Left > 0.25)
             {
                 testGun.LeftHeld();
+            }
+
+            // chests
+            if (overlappingChest != null &&
+                item == null
+                && gamePad.Buttons.A == ButtonState.Pressed &&
+                oldGamePad.Buttons.A == ButtonState.Released)
+            {
+                item = overlappingChest.Open(this);
             }
 
           
