@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MultiDungeon.Items;
 
 namespace MultiDungeon.Map
 {
@@ -360,6 +361,32 @@ namespace MultiDungeon.Map
         }
         #endregion
 
+        public void Populate()
+        {
+            int numItems = rooms.Count / 2;
+            List<int> usedRooms = new List<int>();
+
+            for (int i = 0; i < numItems; i++)
+            {
+                int roomId = GameConst.rand.Next(numItems);
+                while (usedRooms.Contains(roomId))
+                {
+                    roomId = GameConst.rand.Next(numItems);
+                }
+
+                int x = GameConst.rand.Next((rooms[roomId].Width - 1) / Tile.TILE_SIZE)
+                    * Tile.TILE_SIZE + rooms[roomId].X;
+                int y = GameConst.rand.Next((rooms[roomId].Height - 1) / Tile.TILE_SIZE)
+                     * Tile.TILE_SIZE + rooms[roomId].Y;
+
+                Vector2 chestPos = new Vector2(x,y);
+                
+                HealthPotion item = new HealthPotion(HealingLevel.strong);
+
+                World.ItemManager.Chests.Add(new Chest(chestPos, item));
+            }
+        }
+
         public void GenerateLobby()
         {
             tiles.Clear();
@@ -425,6 +452,7 @@ namespace MultiDungeon.Map
                 
             }
 
+            Populate();
             CreateTiles(map, width, height);
         }
 
