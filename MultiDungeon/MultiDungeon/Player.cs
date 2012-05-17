@@ -10,6 +10,19 @@ using MultiDungeon.Items;
 
 namespace MultiDungeon
 {
+    struct Upgrade
+    {
+        int maxHealth;
+        int speed;
+
+        int damage;
+        int reload;
+
+        int class1;
+        int class2;
+        int class3;
+    }
+
     class Player
     {
         int id;
@@ -26,6 +39,8 @@ namespace MultiDungeon
         double health;
         double maxHealth;
         int gold;
+
+        Upgrade upgrade;
 
         bool alive = true;
 

@@ -17,8 +17,11 @@ namespace MultiDungeon.HUD
 
         public static void Update()
         {
-            Map.Update(World.Player.Position);
-
+            foreach (Player p in World.Players)
+            {
+                // test for mapmaker here
+                Map.Update(p.Position);
+            }
             int healthWidth = (int)(((World.Player.MaxHealth - World.Player.Health) / World.Player.MaxHealth) * 200);
             healthRect = new Rectangle(20, 20, healthWidth, 40);
         }
