@@ -34,6 +34,23 @@ namespace MultiDungeon
                     }
                 }
             }
+
+            CollisionTest();
+        }
+
+        public void CollisionTest()
+        {
+            foreach (Player p in World.Players)
+            {
+                foreach (Bullet b in bullets)
+                {
+                    if (b.Rect.Intersects(p.DrawRect))
+                    {
+                        p.Hit(b);
+                        Remove(b);
+                    }
+                }
+            }
         }
 
         private void Cleanup()

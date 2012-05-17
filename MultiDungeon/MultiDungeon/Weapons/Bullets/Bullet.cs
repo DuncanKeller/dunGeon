@@ -11,7 +11,7 @@ namespace MultiDungeon
     {
         Vector2 pos;
         float angle;
-
+        double damage;
         protected float speed = 15;
 
         public Vector2 Position
@@ -19,9 +19,19 @@ namespace MultiDungeon
             get { return pos; }
         }
 
+        public double Damage
+        {
+            get { return damage; }
+        }
+
         public Rectangle Rect
         {
             get { return new Rectangle((int)pos.X - 3, (int)pos.Y - 3, 6, 6); }
+        }
+
+        public float Angle
+        {
+            get { return angle; }
         }
 
         public Bullet()
@@ -29,7 +39,7 @@ namespace MultiDungeon
             
         }
 
-        public virtual void Init(Vector2 pos, float angle)
+        public virtual void Init(Vector2 pos, float angle, double damage)
         {
             this.pos = pos;
             this.angle = angle;

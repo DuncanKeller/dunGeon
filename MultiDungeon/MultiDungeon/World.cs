@@ -41,6 +41,11 @@ namespace MultiDungeon
             get { return players[gameId]; }
         }
 
+        public static List<Player> Players
+        {
+            get { return new List<Player>(players.Values); }
+        }
+
         public static TileSet Map
         {
             get { return map; }
@@ -105,7 +110,8 @@ namespace MultiDungeon
                         {
                             Bullet b = new Bullet();
                             Vector2 p = new Vector2(players[id].DrawRect.X, players[id].DrawRect.Y);
-                            b.Init(p, players[id].Angle - (float)(Math.PI / 2));
+                            double damage = Double.Parse(info[2]);
+                            b.Init(p, players[id].Angle - (float)(Math.PI / 2), damage);
                             bulletManager.Add(b);
                         }
                     }

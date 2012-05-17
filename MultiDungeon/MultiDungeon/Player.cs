@@ -27,6 +27,8 @@ namespace MultiDungeon
         double maxHealth;
         int gold;
 
+        bool alive = true;
+
         public Color c = new Color(0,255,0);
 
         Gun testGun;
@@ -115,6 +117,27 @@ namespace MultiDungeon
             pos.Y = y;
         }
 
+        public void Hit(Bullet b)
+        {
+            Vector2 veloc = new Vector2((float)Math.Cos(b.Angle),
+                (float)Math.Sin(b.Angle));
+            veloc.Normalize();
+            veloc *= 3;
+            velocity += veloc;
+
+            health -= b.Damage;
+
+            if (health < 0)
+            {
+                Die();
+            }
+        }
+
+        public void Die()
+        {
+            alive = false;
+        }
+
         public virtual void Update(float deltaTime)
         {
             timer += deltaTime;
@@ -123,18 +146,20 @@ namespace MultiDungeon
             {
                 timer = 0;
             }
-
-            if (id == World.gameId)
+            if (alive)
             {
-                GamePadState gamePad = GamePad.GetState(PlayerIndex.One);
+                if (id == World.gameId)
+                {
+                    GamePadState gamePad = GamePad.GetState(PlayerIndex.One);
 
-                UpdateInput(gamePad, deltaTime);
+                    UpdateInput(gamePad, deltaTime);
 
-                pos += velocity;
+                    pos += velocity;
+                }
+
+                testGun.Update(deltaTime);
+                UpdateChest(World.ItemManager.Chests);
             }
-
-            testGun.Update(deltaTime);
-            UpdateChest(World.ItemManager.Chests);
         }
 
         public void UpdateChest(List<Chest> chests)
