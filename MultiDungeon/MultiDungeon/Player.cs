@@ -48,6 +48,21 @@ namespace MultiDungeon
             }
         }
 
+        public double MaxHealth
+        {
+            get { return maxHealth; }
+        }
+
+        public double Health
+        {
+            get { return health; }
+            set
+            {
+                if (value > 0 && value <= 999)
+                { health = value; }
+            }
+        }
+
         public Item Item
         {
             get { return item; }
@@ -83,6 +98,8 @@ namespace MultiDungeon
             maxSpeed = 5;
             velocity = new Vector2();
             testGun = new AssaultRifle(World.BulletManager, this);
+
+            maxHealth = 5;
 
             Init();
         }
@@ -170,6 +187,7 @@ namespace MultiDungeon
             if (gamePad.Buttons.RightShoulder == ButtonState.Pressed &&
                 oldGamePad.Buttons.RightShoulder == ButtonState.Released)
             {
+                MultiDungeon.HUD.Map.Init(World.Map);
                 World.StartGame();
             }
 
@@ -230,6 +248,14 @@ namespace MultiDungeon
                 oldGamePad.Buttons.A == ButtonState.Released)
             {
                 item = overlappingChest.Open(this);
+            }
+
+            if (item != null && 
+                gamePad.Buttons.X == ButtonState.Pressed &&
+                oldGamePad.Buttons.X == ButtonState.Released)
+            {
+                item.Use(this);
+                item = null;
             }
 
           

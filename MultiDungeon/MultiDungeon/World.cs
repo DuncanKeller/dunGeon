@@ -41,6 +41,11 @@ namespace MultiDungeon
             get { return players[gameId]; }
         }
 
+        public static TileSet Map
+        {
+            get { return map; }
+        }
+
         public static void Init(GraphicsDeviceManager g)
         {
             InitNetwork();

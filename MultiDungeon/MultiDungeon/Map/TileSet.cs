@@ -48,6 +48,16 @@ namespace MultiDungeon.Map
             get { return height * Tile.TILE_SIZE; }
         }
 
+        public int WidthIndex
+        {
+            get { return width; }
+        }
+
+        public int HeightIndex
+        {
+            get { return height; }
+        }
+
         public List<Tile> GetTilesNear(int x, int y)
         {
             List<Tile> toReturn = new List<Tile>();

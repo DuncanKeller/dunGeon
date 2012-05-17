@@ -20,8 +20,8 @@ namespace MultiDungeon.HUD
         static Location[,] map;
         static TileSet tiles;
         static int radius = 100;
-        static int WIDTH = 10;
-        static int HEIGHT = 10;
+        static int WIDTH = 5;
+        static int HEIGHT = 5;
         static int SPACING = 1;
 
         public static void Init(TileSet ts)
@@ -29,9 +29,9 @@ namespace MultiDungeon.HUD
             tiles = ts;
             map = new Location[ts.Width, ts.Height];
 
-            for (int x = 0; x < tiles.Width; x++)
+            for (int x = 0; x < tiles.WidthIndex; x++)
             {
-                for (int y = 0; y < tiles.Height; y++)
+                for (int y = 0; y < tiles.HeightIndex; y++)
                 {
                     map[x, y] = Location.unknown;
                 }
@@ -40,10 +40,12 @@ namespace MultiDungeon.HUD
 
         public static void Update(Vector2 playerLoc)
         {
-            for (int x = 0; x < tiles.Width; x++)
+            
+            for (int x = 0; x < tiles.WidthIndex; x++)
             {
-                for (int y = 0; y < tiles.Height; y++)
+                for (int y = 0; y < tiles.HeightIndex; y++)
                 {
+                    
                     if (map[x, y] == Location.unknown)
                     {
                         float distance = Vector2.Distance(playerLoc, new Vector2(
@@ -61,15 +63,17 @@ namespace MultiDungeon.HUD
                             }
                         }
                     }
+                     
                 }
             }
+            
         }
 
         public static void Draw(SpriteBatch sb, Vector2 pos)
         {
-            for (int x = 0; x < tiles.Width; x++)
+            for (int x = 0; x < tiles.WidthIndex; x++)
             {
-                for (int y = 0; y < tiles.Height; y++)
+                for (int y = 0; y < tiles.HeightIndex; y++)
                 {
                     if (map[x, y] != Location.unknown)
                     {

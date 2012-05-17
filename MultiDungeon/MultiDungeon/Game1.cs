@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using MultiDungeon.Graphics;
+using MultiDungeon.HUD;
 
 namespace MultiDungeon
 {
@@ -19,8 +20,6 @@ namespace MultiDungeon
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-
-        
 
         public Game1()
         {
@@ -43,6 +42,7 @@ namespace MultiDungeon
 
             World.Init(graphics);
             Shadowmap.Init(this, graphics.GraphicsDevice, Content);
+            Hud.Init();
             
             base.Initialize();
         }
@@ -83,6 +83,7 @@ namespace MultiDungeon
             World.Update(gameTime.ElapsedGameTime.Milliseconds);
             Console.Update(gameTime.ElapsedGameTime.Milliseconds);
             Shadowmap.Update(World.Player.Position);
+            Hud.Update();
             // TODO: Add your update logic here
 
             base.Update(gameTime);
@@ -100,7 +101,9 @@ namespace MultiDungeon
 
             spriteBatch.Begin();
             Console.Draw(spriteBatch);
+            Hud.Draw(spriteBatch);
             spriteBatch.End();
+
 
             // TODO: Add your drawing code here
 
