@@ -96,7 +96,7 @@ namespace MultiDungeon
                 fireTimer = rateOfFire;
             }
             //ServerClient.SendBullet(player.ID);
-            Client.Send("b" + "\n" + player.ID.ToString());
+            Client.Send("b" + "\n" + player.ID.ToString() + "\n" + damage.ToString());
         }
 
         public virtual void Draw(SpriteBatch sb)
