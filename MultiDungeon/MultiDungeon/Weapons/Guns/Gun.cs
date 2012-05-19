@@ -83,7 +83,7 @@ namespace MultiDungeon
         {
             Bullet bullet = (Bullet)Activator.CreateInstance(bulletType);
             Vector2 pos = new Vector2(player.DrawRect.X, player.DrawRect.Y);
-            bullet.Init(pos, player.Angle - (float)(Math.PI / 2), damage);
+            bullet.Init(pos, player.Angle - (float)(Math.PI / 2), damage, player.ID);
             manager.Add(bullet);
             clip--;
 

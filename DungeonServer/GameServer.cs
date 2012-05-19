@@ -52,6 +52,30 @@ namespace DungeonServer
             }
         }
 
+        public  void StartGame()
+        {
+            int counter = 0;
+            int players = clients.Count;
+            int numTeams = 2;
+
+            Dictionary<int, int> idToTeamNum = new Dictionary<int, int>();
+
+            foreach (int id in clients.Keys)
+            {
+                int teamNum = counter / numTeams;
+                idToTeamNum.Add(id, teamNum);
+                counter++;
+            }
+
+            foreach (int id in clients.Keys)
+            {
+                foreach (int player in idToTeamNum.Keys)
+                {
+                    Send("start\n" + player.ToString() + "\n" + (idToTeamNum[player]) + "!", id);
+                }
+            }
+        }
+
         private void HandleClient(object client)
         {
             // cast client

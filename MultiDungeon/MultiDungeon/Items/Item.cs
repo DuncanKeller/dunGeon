@@ -9,7 +9,14 @@ namespace MultiDungeon.Items
 {
     abstract class Item
     {
+        protected Texture2D texture;
 
         public abstract void Use(Player p);
+
+        public void Draw(SpriteBatch sb, Vector2 v)
+        {
+            Rectangle r = new Rectangle((int)v.X, (int)v.Y, 40, 40);
+            sb.Draw(texture, r, Color.White);
+        }
     }
 }

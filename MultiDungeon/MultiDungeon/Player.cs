@@ -26,6 +26,7 @@ namespace MultiDungeon
     class Player
     {
         int id;
+        int teamNum;
         Vector2 pos;
         Vector2 velocity;
         float speed;
@@ -44,7 +45,7 @@ namespace MultiDungeon
 
         bool alive = true;
 
-        public Color c = new Color(0,255,0);
+        public Color c = Color.White;
 
         Gun testGun;
         Chest overlappingChest = null;
@@ -62,7 +63,14 @@ namespace MultiDungeon
             {
                 if (value > 0 && value <= 999)
                 { gold = value; }
+                if (gold < 0)
+                { gold = 0; }
             }
+        }
+
+        public int Team
+        {
+            get { return teamNum; }
         }
 
         public double MaxHealth
@@ -107,7 +115,7 @@ namespace MultiDungeon
         }
 
 
-        public Player(float x, float y, int id = 0)
+        public Player(float x, float y, int id)
         {
             this.id = id;
             pos = new Vector2(x, y);
@@ -117,13 +125,21 @@ namespace MultiDungeon
             testGun = new AssaultRifle(World.BulletManager, this);
 
             maxHealth = 5;
-
-            Init();
+            health = maxHealth;
         }
 
-        public void Init()
+        public void Init(int t)
         {
             //ServerClient.Send("position" + "\n" + id.ToString() + "\n" + pos.X.ToString() + "\n" + pos.Y.ToString());
+            teamNum = t;
+            if (teamNum == 0)
+            {
+                c = Color.Blue;
+            }
+            else
+            {
+                c = Color.Red;
+            }
         }
 
         public void SetPos(float x, float y)
@@ -145,22 +161,45 @@ namespace MultiDungeon
             if (health < 0)
             {
                 Die();
+                if (teamNum != World.Players[b.PlayerID].Team)
+                {
+                    World.Players[b.PlayerID].Gold += 50;
+                }
+                else
+                {
+                    World.Players[b.PlayerID].Gold -= 50;
+                }
             }
         }
 
-        public void Die()
+        private void Die()
         {
             alive = false;
+            timer = 0;
+        }
+
+        public void Spawn()
+        {
+            alive = true;
+            Rectangle room = World.Map.GetTeamRoom(teamNum);
+            pos.X = GameConst.rand.Next((room.Width * Tile.TILE_SIZE) - Rect.Width) + (room.X * Tile.TILE_SIZE);
+            pos.Y = GameConst.rand.Next((room.Height * Tile.TILE_SIZE) - Rect.Height) + (room.Y * Tile.TILE_SIZE);
+            health = maxHealth;
         }
 
         public virtual void Update(float deltaTime)
         {
-            timer += deltaTime;
-
-            if (timer > 100)
+            if (!alive)
             {
-                timer = 0;
+                timer += deltaTime;
+
+                if (timer > 1000)
+                {
+                    Spawn();
+                    timer = 0;
+                }
             }
+            
             if (alive)
             {
                 if (id == World.gameId)
@@ -223,13 +262,7 @@ namespace MultiDungeon
 
         public void UpdateInput(GamePadState gamePad, float deltaTime)
         {
-            // test making a dungeon
-            if (gamePad.Buttons.RightShoulder == ButtonState.Pressed &&
-                oldGamePad.Buttons.RightShoulder == ButtonState.Released)
-            {
-                MultiDungeon.HUD.Map.Init(World.Map);
-                World.StartGame();
-            }
+           
 
             Vector2 input = gamePad.ThumbSticks.Left;
 
@@ -288,6 +321,12 @@ namespace MultiDungeon
                 oldGamePad.Buttons.A == ButtonState.Released)
             {
                 item = overlappingChest.Open(this);
+                if (item is CoinPurse)
+                {
+                    item.Use(this);
+                    item = null;
+                }
+
             }
 
             if (item != null && 

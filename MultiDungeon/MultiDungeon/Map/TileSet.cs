@@ -21,6 +21,8 @@ namespace MultiDungeon.Map
         int width;
         int height;
 
+        List<Rectangle> teamRooms = new List<Rectangle>();
+
         public TileSet()
         {
             GenerateLobby();
@@ -32,6 +34,11 @@ namespace MultiDungeon.Map
             {
                 return tileMap[x, y];
             }
+        }
+
+        public Rectangle GetTeamRoom(int teamNum)
+        {
+            return teamRooms[teamNum];
         }
 
         public List<Tile> Tiles
@@ -373,11 +380,12 @@ namespace MultiDungeon.Map
                 {
                     roomId = GameConst.rand.Next(numItems);
                 }
+                usedRooms.Add(roomId);
 
-                int x = GameConst.rand.Next((rooms[roomId].Width - 1) / Tile.TILE_SIZE)
-                    * Tile.TILE_SIZE + rooms[roomId].X;
-                int y = GameConst.rand.Next((rooms[roomId].Height - 1) / Tile.TILE_SIZE)
-                     * Tile.TILE_SIZE + rooms[roomId].Y;
+                int x = GameConst.rand.Next(rooms[roomId].Width - 1)
+                    * Tile.TILE_SIZE + (rooms[roomId].X * Tile.TILE_SIZE);
+                int y = GameConst.rand.Next(rooms[roomId].Height - 1)
+                     * Tile.TILE_SIZE + (rooms[roomId].Y * Tile.TILE_SIZE);
 
                 Vector2 chestPos = new Vector2(x,y);
                 
@@ -453,7 +461,39 @@ namespace MultiDungeon.Map
             }
 
             Populate();
+            GenerateTeamRooms();
             CreateTiles(map, width, height);
+        }
+
+        private void GenerateTeamRooms()
+        {
+            Rectangle room1 = Rectangle.Empty;
+            Rectangle room2 = Rectangle.Empty; ;
+            float maxDist = 0;
+
+            foreach (Rectangle r1 in rooms)
+            {
+                foreach (Rectangle r2 in rooms)
+                {
+                    Vector2 v1 = new Vector2(r1.Center.X, r1.Center.Y);
+                    Vector2 v2 = new Vector2(r2.Center.X, r2.Center.Y);
+                    float dist = Vector2.Distance(v1, v2);
+                    if (dist > maxDist)
+                    {
+                        maxDist = dist;
+                        room1 = r1;
+                        room2 = r2;
+                    }
+                }
+            }
+
+            if (room1 == Rectangle.Empty ||
+                room2 == Rectangle.Empty)
+            {
+                throw new Exception("Team rooms not found");
+            }
+            teamRooms.Add(room1);
+            teamRooms.Add(room2);
         }
 
         private void CreateTiles(bool[,] map, int width, int height)

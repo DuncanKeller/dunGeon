@@ -46,6 +46,11 @@ namespace MultiDungeon
             get { return new List<Player>(players.Values); }
         }
 
+        public static Dictionary<int, Player> PlayerHash
+        {
+            get { return players; }
+        }
+
         public static TileSet Map
         {
             get { return map; }
@@ -58,10 +63,11 @@ namespace MultiDungeon
             cam = new Camera(g);
         }
 
-
         public static void StartGame()
         {
             map.GenerateMap(30, 30);
+            Player.Spawn();
+            MultiDungeon.HUD.Map.Init(World.Map);
         }
 
 
@@ -70,6 +76,10 @@ namespace MultiDungeon
         {
             foreach (string data in datum)
             {
+                if (data == String.Empty)
+                {
+                    continue;
+                }
                 string[] info = data.Split("\n".ToCharArray());
                 try
                 {
@@ -78,9 +88,14 @@ namespace MultiDungeon
                         int id = Int32.Parse(info[1]);
 
                         gameId = id;
-                        players.Add(gameId, new Player((float)rand.NextDouble() * 700f,
-                        (float)rand.NextDouble() * 400f, gameId));
-                        players[gameId].c = new Color(rand.Next(255), rand.Next(255), rand.Next(255));
+                        players.Add(gameId, new Player(100, 100, gameId));
+                    }
+                    else if (info[0] == "start")
+                    {
+                        int id = Int32.Parse(info[1]);
+                        int team = Int32.Parse(info[2]);
+                        PlayerHash[id].Init(team);
+                        StartGame();
                     }
                     else if (info[0] == "disconnect")
                     {
@@ -111,7 +126,7 @@ namespace MultiDungeon
                             Bullet b = new Bullet();
                             Vector2 p = new Vector2(players[id].DrawRect.X, players[id].DrawRect.Y);
                             double damage = Double.Parse(info[2]);
-                            b.Init(p, players[id].Angle - (float)(Math.PI / 2), damage);
+                            b.Init(p, players[id].Angle - (float)(Math.PI / 2), damage, id);
                             bulletManager.Add(b);
                         }
                     }
@@ -126,6 +141,7 @@ namespace MultiDungeon
                     Console.Write(e.Message, MessageType.urgent);
                 }
 
+                // print all non-position commands to the console
                 if (info[0] != "p")
                 {
                     string message = "";
@@ -152,18 +168,14 @@ namespace MultiDungeon
         public static void UpdateNetwork(float deltaTime)
         {
             timer++;
-            //if (timer > 2)
+            if (players.ContainsKey(gameId))
             {
                 
                 Client.Send("p" + "\n" + gameId.ToString() + "\n" + ((int)players[gameId].Position.X).ToString()
                 + "\n" + ((int)players[gameId].Position.Y).ToString() + "\n" + 
                 (players[gameId].Angle).ToString());
-                timer = 0;
-                 
+                timer = 0; 
             }
-
-            //ServerClient.SendPosition(gameId, (int)players[gameId].Position.X, (int)players[gameId].Position.Y, (double)players[gameId].Angle);
-            
         }
 
         public static void Update(float deltaTime)
@@ -186,6 +198,7 @@ namespace MultiDungeon
         public static void UpdateCamera()
         {
             cam.pos = players[gameId].Position;
+            
             /*
             if (players[gameId].Position.X > GameConst.SCREEN_WIDTH / 2 &&
                 players[gameId].Position.X < map.Width - (GameConst.SCREEN_WIDTH / 2))

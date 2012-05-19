@@ -32,6 +32,9 @@ namespace MultiDungeon
 
             // fonts
             fonts.Add("console", c.Load<SpriteFont>("Fonts\\ConsoleFont"));
+
+            //items
+            textures.Add("potion", c.Load<Texture2D>("Items\\potion"));
         }
     }
 }

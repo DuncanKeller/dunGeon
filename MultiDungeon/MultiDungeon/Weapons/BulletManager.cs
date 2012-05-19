@@ -44,10 +44,13 @@ namespace MultiDungeon
             {
                 foreach (Bullet b in bullets)
                 {
-                    if (b.Rect.Intersects(p.DrawRect))
+                    if (b.PlayerID != p.ID)
                     {
-                        p.Hit(b);
-                        Remove(b);
+                        if (b.Rect.Intersects(p.Rect))
+                        {
+                            p.Hit(b);
+                            Remove(b);
+                        }
                     }
                 }
             }

@@ -13,6 +13,7 @@ namespace MultiDungeon
         float angle;
         double damage;
         protected float speed = 15;
+        int pid;
 
         public Vector2 Position
         {
@@ -22,6 +23,11 @@ namespace MultiDungeon
         public double Damage
         {
             get { return damage; }
+        }
+
+        public int PlayerID
+        {
+            get { return pid; }
         }
 
         public Rectangle Rect
@@ -39,10 +45,12 @@ namespace MultiDungeon
             
         }
 
-        public virtual void Init(Vector2 pos, float angle, double damage)
+        public virtual void Init(Vector2 pos, float angle, double damage, int pid)
         {
             this.pos = pos;
             this.angle = angle;
+            this.pid = pid;
+            this.damage = damage;
         }
 
         public virtual void Update()

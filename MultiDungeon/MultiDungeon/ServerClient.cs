@@ -49,17 +49,27 @@ namespace MultiDungeon
             {
                 bytesRead = 0;
                 string data = "";
+                List<string> commands = new List<string>();
                 try
                 {
                     bytesRead = stream.Read(message, 0, size);
 
                     data = encoder.GetString(message, 0, bytesRead);
 
-                    while (!data.Contains("!"))
+                    while (data[data.Length - 1] != '!')
                     {
                         bytesRead = stream.Read(message, 0, size);
                         data += encoder.GetString(message, 0, bytesRead);
+                        /*
+                        if (data.Contains("!"))
+                        {
+                            string[] multiData = data.Split('!');
+                            commands.Add(multiData[0]);
+                            data = multiData[1];
+                        }*/
                     }
+
+                   
 
                     stream.Flush();
                 }
@@ -77,8 +87,9 @@ namespace MultiDungeon
                 }
 
 
-                data = data.Substring(0, data.Length - 1);
+                //data = data.Substring(0, data.Length - 1);
                 string[] datum = data.Split('!');
+
                 World.RecieveData(datum);
                 
             }

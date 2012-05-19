@@ -40,6 +40,7 @@ namespace MultiDungeon
             graphics.PreferredBackBufferHeight = GameConst.SCREEN_HEIGHT;
             graphics.ApplyChanges();
 
+            TextureManager.Initialize(Content);
             World.Init(graphics);
             Shadowmap.Init(this, graphics.GraphicsDevice, Content);
             Hud.Init();
@@ -55,7 +56,7 @@ namespace MultiDungeon
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            TextureManager.Initialize(Content);
+            
             // TODO: use this.Content to load your game content here
         }
 
@@ -82,6 +83,7 @@ namespace MultiDungeon
 
             World.Update(gameTime.ElapsedGameTime.Milliseconds);
             Console.Update(gameTime.ElapsedGameTime.Milliseconds);
+            
             Shadowmap.Update(World.Player.Position);
             Hud.Update();
             // TODO: Add your update logic here

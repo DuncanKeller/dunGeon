@@ -20,10 +20,14 @@ namespace MultiDungeon.HUD
             foreach (Player p in World.Players)
             {
                 // test for mapmaker here
-                Map.Update(p.Position);
+                // change "Player" to "Mapmaker" after classes are implemented
+                if (p is Player) // <- CHANGE ME
+                {
+                    Map.Update(p.Position);
+                }
             }
-            int healthWidth = (int)(((World.Player.MaxHealth - World.Player.Health) / World.Player.MaxHealth) * 200);
-            healthRect = new Rectangle(20, 20, healthWidth, 40);
+            int healthWidth = (int)(((World.Player.MaxHealth - (World.Player.MaxHealth - World.Player.Health)) / World.Player.MaxHealth) * 200);
+            healthRect = new Rectangle(20, 20, healthWidth, 20);
         }
 
         public static void Draw(SpriteBatch sb)
@@ -32,6 +36,11 @@ namespace MultiDungeon.HUD
             Map.Draw(sb, new Vector2(20, 80));
             // health
             sb.Draw(TextureManager.Map["blank"], healthRect, Color.Red);
+            // item
+            if (World.Player.Item != null)
+            {
+                World.Player.Item.Draw(sb, new Vector2(GameConst.SCREEN_WIDTH - 60, 20));
+            }
         }
     }
 }

@@ -6,3 +6,4 @@ Content\Shaders\reductionEffect.xnb
 Content\Shaders\resolveShadowsEffect.xnb
 Content\Items\chestClosed.xnb
 Content\Items\chestOpen.xnb
+Content\Items\potion.xnb

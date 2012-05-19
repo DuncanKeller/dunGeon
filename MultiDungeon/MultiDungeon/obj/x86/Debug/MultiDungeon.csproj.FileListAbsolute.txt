@@ -12,3 +12,4 @@ c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\MultiDungeon\
 c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Shaders\resolveShadowsEffect.xnb
 c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Items\chestClosed.xnb
 c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Items\chestOpen.xnb
+c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Items\potion.xnb

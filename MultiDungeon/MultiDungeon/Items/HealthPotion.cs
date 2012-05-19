@@ -25,6 +25,7 @@ namespace MultiDungeon.Items
             : base()
         {
             amount = (int)a;
+            texture = TextureManager.Map["potion"];
         }
 
         public override void Use(Player p)

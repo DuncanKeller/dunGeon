@@ -73,6 +73,15 @@
       <Output>c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Items\chestOpen.xnb</Output>
       <Time>2012-05-15T23:58:29.3553294-04:00</Time>
     </Item>
+    <Item>
+      <Source>Items\potion.png</Source>
+      <Name>Items\potion</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Items\potion.xnb</Output>
+      <Time>2012-05-18T22:19:28.6169306-04:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{721AC1D8-B294-4318-B80A-91E0C689E130}</ContentProjectGUID>

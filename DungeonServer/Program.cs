@@ -21,6 +21,10 @@ namespace DungeonServer
                     server.GenerateSeed();
                     Console.WriteLine(server.Seed);
                 }
+                else if (command.Equals("start game", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    server.StartGame();
+                }
             }
         }
     }
