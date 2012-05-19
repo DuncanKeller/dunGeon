@@ -351,10 +351,12 @@ namespace MultiDungeon
 
         public void Draw(SpriteBatch sb)
         {
-            Vector2 origin = new Vector2(TextureManager.Map["circle"].Width / 2, TextureManager.Map["circle"].Height / 2);
-            //sb.Draw(TextureManager.Map["blank"], Rect, Color.Red);
-            sb.Draw(TextureManager.Map["circle"], DrawRect, null, c, angle, origin, SpriteEffects.None, 0);
-           
+            if (alive)
+            {
+                Vector2 origin = new Vector2(TextureManager.Map["circle"].Width / 2, TextureManager.Map["circle"].Height / 2);
+                //sb.Draw(TextureManager.Map["blank"], Rect, Color.Red);
+                sb.Draw(TextureManager.Map["circle"], DrawRect, null, c, angle, origin, SpriteEffects.None, 0);
+            }
         }
     }
 }
