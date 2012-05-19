@@ -88,14 +88,36 @@ namespace MultiDungeon
                         int id = Int32.Parse(info[1]);
 
                         gameId = id;
-                        players.Add(gameId, new Player(100, 100, gameId));
+                        players.Add(gameId, new Ninja(100, 100, gameId));
                     }
                     else if (info[0] == "start")
+                    {
+                        StartGame();
+                    }
+                    else if (info[0] == "xbox")
+                    {
+                        int controllerNum = Int32.Parse(info[1]);
+                        switch (controllerNum)
+                        {
+                            case 0:
+                                Player.playerIndex = PlayerIndex.One;
+                                break;
+                            case 1:
+                                Player.playerIndex = PlayerIndex.Two;
+                                break;
+                            case 2:
+                                Player.playerIndex = PlayerIndex.Three;
+                                break;
+                            case 3:
+                                Player.playerIndex = PlayerIndex.Four;
+                                break;
+                        }
+                    }
+                    else if (info[0] == "team")
                     {
                         int id = Int32.Parse(info[1]);
                         int team = Int32.Parse(info[2]);
                         PlayerHash[id].Init(team);
-                        StartGame();
                     }
                     else if (info[0] == "disconnect")
                     {
@@ -115,7 +137,7 @@ namespace MultiDungeon
                         }
                         else
                         {
-                            players.Add(id, new Player(float.Parse(info[2]), float.Parse(info[3]), id));
+                            players.Add(id, new Ninja(float.Parse(info[2]), float.Parse(info[3]), id));
                         }
                     }
                     else if (info[0] == "b")
@@ -134,6 +156,10 @@ namespace MultiDungeon
                     {
                         int seed = Int32.Parse(info[1]);
                         GameConst.rand = new Random(seed);
+                    }
+                    else
+                    {
+                        throw new Exception("command not found");
                     }
                 }
                 catch (Exception e)
@@ -243,7 +269,6 @@ namespace MultiDungeon
         public static void DrawScene(SpriteBatch sb)
         {
             DrawWallTiles(sb);
-
             itemManager.Draw(sb);
 
             foreach (var p in players)
@@ -255,6 +280,5 @@ namespace MultiDungeon
             
         }
 
-       
     }
 }

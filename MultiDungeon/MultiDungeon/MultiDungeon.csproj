@@ -79,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Camera.cs" />
+    <Compile Include="Classes\Ninja.cs" />
     <Compile Include="Console\Console.cs" />
     <Compile Include="Console\Message.cs" />
     <Compile Include="GameConst.cs" />
@@ -101,7 +102,7 @@
     <Compile Include="Weapons\Guns\Gun.cs" />
     <Compile Include="Map\Tile.cs" />
     <Compile Include="Map\TileSet.cs" />
-    <Compile Include="Player.cs" />
+    <Compile Include="Classes\Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />

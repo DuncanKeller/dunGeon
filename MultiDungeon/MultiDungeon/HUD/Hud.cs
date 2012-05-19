@@ -36,6 +36,13 @@ namespace MultiDungeon.HUD
             Map.Draw(sb, new Vector2(20, 80));
             // health
             sb.Draw(TextureManager.Map["blank"], healthRect, Color.Red);
+            sb.DrawString(TextureManager.Fonts["console"], World.Player.Health.ToString() + "/" + World.Player.MaxHealth,
+                new Vector2(healthRect.Right + 5, healthRect.Top - (TextureManager.Fonts["console"].MeasureString("0").Y / 5)), Color.Red);
+            // money
+            Rectangle goldRect = new Rectangle(20, 40, World.Player.Gold / 2, 20);
+            sb.Draw(TextureManager.Map["blank"], goldRect, Color.Gold);
+            sb.DrawString(TextureManager.Fonts["console"], World.Player.Gold.ToString(),
+               new Vector2(goldRect.Right + 5, goldRect.Top - (TextureManager.Fonts["console"].MeasureString("0").Y / 5)), Color.Gold);
             // item
             if (World.Player.Item != null)
             {

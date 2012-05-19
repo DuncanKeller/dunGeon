@@ -52,7 +52,7 @@ namespace DungeonServer
             }
         }
 
-        public  void StartGame()
+        public  void SetTeams()
         {
             int counter = 0;
             int players = clients.Count;
@@ -71,8 +71,26 @@ namespace DungeonServer
             {
                 foreach (int player in idToTeamNum.Keys)
                 {
-                    Send("start\n" + player.ToString() + "\n" + (idToTeamNum[player]) + "!", id);
+                    Send("team\n" + player.ToString() + "\n" + (idToTeamNum[player]) + "!", id);
                 }
+            }
+        }
+
+        public void StartGame()
+        {
+            foreach (int id in clients.Keys)
+            {
+                Send("start!", id);
+            }
+        }
+
+        public void SetControllers()
+        {
+            int count = 0;
+            foreach (int id in clients.Keys)
+            {
+                Send("xbox" + "\n" + count.ToString() + "!", id);
+                count++;
             }
         }
 

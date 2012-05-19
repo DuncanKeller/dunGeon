@@ -44,7 +44,8 @@ namespace MultiDungeon
             {
                 foreach (Bullet b in bullets)
                 {
-                    if (b.PlayerID != p.ID)
+                    if (b.PlayerID != p.ID &&
+                        p.Alive)
                     {
                         if (b.Rect.Intersects(p.Rect))
                         {

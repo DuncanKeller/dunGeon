@@ -23,7 +23,7 @@ namespace MultiDungeon
         int class3;
     }
 
-    class Player
+    abstract class Player
     {
         int id;
         int teamNum;
@@ -34,6 +34,7 @@ namespace MultiDungeon
         float angle;
 
         float timer = 0;
+        public PlayerIndex playerIndex = PlayerIndex.One;
         GamePadState oldGamePad;
 
         Item item;
@@ -71,6 +72,11 @@ namespace MultiDungeon
         public int Team
         {
             get { return teamNum; }
+        }
+
+        public bool Alive
+        {
+            get { return alive; }
         }
 
         public double MaxHealth
@@ -140,6 +146,7 @@ namespace MultiDungeon
             {
                 c = Color.Red;
             }
+
         }
 
         public void SetPos(float x, float y)
@@ -157,17 +164,17 @@ namespace MultiDungeon
             velocity += veloc;
 
             health -= b.Damage;
-
-            if (health < 0)
+            
+            if (health < 0 && alive)
             {
                 Die();
-                if (teamNum != World.Players[b.PlayerID].Team)
+                if (teamNum != World.PlayerHash[b.PlayerID].Team)
                 {
-                    World.Players[b.PlayerID].Gold += 50;
+                    World.PlayerHash[b.PlayerID].Gold += 50;
                 }
                 else
                 {
-                    World.Players[b.PlayerID].Gold -= 50;
+                    World.PlayerHash[b.PlayerID].Gold -= 50;
                 }
             }
         }
@@ -204,7 +211,7 @@ namespace MultiDungeon
             {
                 if (id == World.gameId)
                 {
-                    GamePadState gamePad = GamePad.GetState(PlayerIndex.One);
+                    GamePadState gamePad = GamePad.GetState(playerIndex);
 
                     UpdateInput(gamePad, deltaTime);
 

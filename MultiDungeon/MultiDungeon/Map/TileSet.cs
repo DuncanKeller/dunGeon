@@ -370,15 +370,17 @@ namespace MultiDungeon.Map
 
         public void Populate()
         {
-            int numItems = rooms.Count / 2;
+            int numItems = rooms.Count / 3;
             List<int> usedRooms = new List<int>();
 
             for (int i = 0; i < numItems; i++)
             {
                 int roomId = GameConst.rand.Next(numItems);
-                while (usedRooms.Contains(roomId))
+                while (usedRooms.Contains(roomId)
+                    || rooms[roomId] == teamRooms[0]
+                     || rooms[roomId] == teamRooms[1])
                 {
-                    roomId = GameConst.rand.Next(numItems);
+                    roomId = GameConst.rand.Next(rooms.Count);
                 }
                 usedRooms.Add(roomId);
 
@@ -388,8 +390,17 @@ namespace MultiDungeon.Map
                      * Tile.TILE_SIZE + (rooms[roomId].Y * Tile.TILE_SIZE);
 
                 Vector2 chestPos = new Vector2(x,y);
-                
-                HealthPotion item = new HealthPotion(HealingLevel.strong);
+
+                Item item = null;
+                switch (GameConst.rand.Next(2))
+                {
+                    case 0:
+                        item = new HealthPotion(HealingLevel.strong);
+                        break;
+                    case 1:
+                        item = new CoinPurse(100);
+                        break;
+                }
 
                 World.ItemManager.Chests.Add(new Chest(chestPos, item));
             }
@@ -460,8 +471,8 @@ namespace MultiDungeon.Map
                 
             }
 
-            Populate();
             GenerateTeamRooms();
+            Populate();
             CreateTiles(map, width, height);
         }
 
