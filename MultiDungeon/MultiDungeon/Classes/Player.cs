@@ -333,7 +333,7 @@ namespace MultiDungeon
                     item.Use(this);
                     item = null;
                 }
-
+                Client.Send("chest" + "\n" + overlappingChest.ID + "!");
             }
 
             if (item != null && 

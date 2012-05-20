@@ -96,6 +96,7 @@ namespace MultiDungeon
                     }
                     else if (info[0] == "xbox")
                     {
+                        /*
                         int controllerNum = Int32.Parse(info[1]);
                         switch (controllerNum)
                         {
@@ -111,7 +112,9 @@ namespace MultiDungeon
                             case 3:
                                 Player.playerIndex = PlayerIndex.Four;
                                 break;
+                        
                         }
+                         */
                     }
                     else if (info[0] == "team")
                     {
@@ -151,6 +154,11 @@ namespace MultiDungeon
                             b.Init(p, players[id].Angle - (float)(Math.PI / 2), damage, id);
                             bulletManager.Add(b);
                         }
+                    }
+                    else if (info[0] == "chest")
+                    {
+                        int id = Int32.Parse(info[1]);
+                        itemManager.OpenChest(id);
                     }
                     else if (info[0] == "rand")
                     {
@@ -208,6 +216,7 @@ namespace MultiDungeon
         {
             UpdateNetwork(deltaTime);
             bulletManager.Update(map);
+            itemManager.Update();
 
             foreach (var v in players)
             {
@@ -268,7 +277,7 @@ namespace MultiDungeon
 
         public static void DrawScene(SpriteBatch sb)
         {
-            DrawWallTiles(sb);
+            //DrawWallTiles(sb);
             itemManager.Draw(sb);
 
             foreach (var p in players)

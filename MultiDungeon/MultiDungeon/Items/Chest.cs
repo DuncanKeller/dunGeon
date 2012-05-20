@@ -15,14 +15,21 @@ namespace MultiDungeon.Items
 
         int width = Tile.TILE_SIZE;
         int height = Tile.TILE_SIZE;
+        int id;
 
         public Rectangle Rect
         {
             get { return rect; }
         }
 
-        public Chest(Vector2 pos, Item i)
+        public int ID
         {
+            get { return id; }
+        }
+
+        public Chest(int id, Vector2 pos, Item i)
+        {
+            this.id = id;
             rect = new Rectangle((int)pos.X, (int)pos.Y, width, height);
             contents = i;
         }
@@ -36,6 +43,14 @@ namespace MultiDungeon.Items
                 return returnItem;
             }
             return p.Item;
+        }
+
+        public void Open()
+        {
+            if (contents != null)
+            {
+                contents = null;
+            }
         }
 
         public void Draw(SpriteBatch sb)

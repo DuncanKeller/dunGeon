@@ -10,6 +10,8 @@ namespace MultiDungeon.Items
     class ItemManager
     {
         List<Chest> chests = new List<Chest>();
+        List<Chest> toRemove = new List<Chest>();
+        List<Chest> toAdd = new List<Chest>();
 
         public List<Chest> Chests
         {
@@ -19,7 +21,64 @@ namespace MultiDungeon.Items
         public ItemManager()
         {
             //test
-            chests.Add(new Chest(new Vector2(300, 300), new HealthPotion(HealingLevel.regular)));
+        }
+
+        public void Update()
+        {
+            Cleanup();
+            AddNewChests();
+        }
+
+        private void Cleanup()
+        {
+            foreach (Chest b in toRemove)
+            {
+                chests.Remove(b);
+            }
+
+            toRemove.Clear();
+        }
+
+        private void AddNewChests()
+        {
+            foreach (Chest b in toAdd)
+            {
+                chests.Add(b);
+            }
+
+            toAdd.Clear();
+        }
+
+        public void OpenChest(int id)
+        {
+            foreach (Chest chest in chests)
+            {
+                if (chest.ID == id)
+                {
+                    chest.Open();
+                }
+            }
+        }
+
+        public void Add(Chest c)
+        {
+            toAdd.Add(c);
+        }
+
+        public void Remove(Chest c)
+        {
+            toRemove.Add(c);
+        }
+
+        public void Remove(int id)
+        {
+            foreach (Chest chest in chests)
+            {
+                if (chest.ID == id)
+                {
+                    toRemove.Add(chest);
+                }
+            }
         }
 
         public void Draw(SpriteBatch sb)

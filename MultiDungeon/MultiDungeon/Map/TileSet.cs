@@ -402,7 +402,7 @@ namespace MultiDungeon.Map
                         break;
                 }
 
-                World.ItemManager.Chests.Add(new Chest(chestPos, item));
+                World.ItemManager.Chests.Add(new Chest(i, chestPos, item));
             }
         }
 

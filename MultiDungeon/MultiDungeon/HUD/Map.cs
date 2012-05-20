@@ -38,35 +38,37 @@ namespace MultiDungeon.HUD
             }
         }
 
-        public static void Update(Vector2 playerLoc)
+        public static void Update(Player p)
         {
-            
-            for (int x = 0; x < tiles.WidthIndex; x++)
+            if (p.Team == World.Player.Team)
             {
-                for (int y = 0; y < tiles.HeightIndex; y++)
+                Vector2 playerLoc = p.Position;
+                for (int x = 0; x < tiles.WidthIndex; x++)
                 {
-                    
-                    if (map[x, y] == Location.unknown)
+                    for (int y = 0; y < tiles.HeightIndex; y++)
                     {
-                        float distance = Vector2.Distance(playerLoc, new Vector2(
-                            x * Tile.TILE_SIZE, y * Tile.TILE_SIZE));
-                        if (Math.Abs(distance) < radius)
+
+                        if (map[x, y] == Location.unknown)
                         {
-                            switch (tiles[x, y].Type)
+                            float distance = Vector2.Distance(playerLoc, new Vector2(
+                                x * Tile.TILE_SIZE, y * Tile.TILE_SIZE));
+                            if (Math.Abs(distance) < radius)
                             {
-                                case TileType.wall:
-                                    map[x, y] = Location.wall;
-                                    break;
-                                case TileType.floor:
-                                    map[x, y] = Location.floor;
-                                    break;
+                                switch (tiles[x, y].Type)
+                                {
+                                    case TileType.wall:
+                                        map[x, y] = Location.wall;
+                                        break;
+                                    case TileType.floor:
+                                        map[x, y] = Location.floor;
+                                        break;
+                                }
                             }
                         }
+
                     }
-                     
                 }
             }
-            
         }
 
         public static void Draw(SpriteBatch sb, Vector2 pos)

@@ -23,7 +23,7 @@ namespace MultiDungeon.HUD
                 // change "Player" to "Mapmaker" after classes are implemented
                 if (p is Player) // <- CHANGE ME
                 {
-                    Map.Update(p.Position);
+                    Map.Update(p);
                 }
             }
             int healthWidth = (int)(((World.Player.MaxHealth - (World.Player.MaxHealth - World.Player.Health)) / World.Player.MaxHealth) * 200);
