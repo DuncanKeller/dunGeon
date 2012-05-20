@@ -39,6 +39,7 @@ namespace MultiDungeon
         public static Player Player
         {
             get { return players[gameId]; }
+            set { players[gameId] = value; }
         }
 
         public static List<Player> Players
@@ -65,7 +66,7 @@ namespace MultiDungeon
 
         public static void StartGame()
         {
-            map.GenerateMap(30, 30);
+            map.GenerateMap(35, 35);
             Player.Spawn();
             MultiDungeon.HUD.Map.Init(World.Map);
         }
@@ -88,7 +89,7 @@ namespace MultiDungeon
                         int id = Int32.Parse(info[1]);
 
                         gameId = id;
-                        players.Add(gameId, new Ninja(100, 100, gameId));
+                        players.Add(gameId, new Mapmaker(100, 100, gameId));
                     }
                     else if (info[0] == "start")
                     {
@@ -96,7 +97,7 @@ namespace MultiDungeon
                     }
                     else if (info[0] == "xbox")
                     {
-                        /*
+                        
                         int controllerNum = Int32.Parse(info[1]);
                         switch (controllerNum)
                         {
@@ -114,7 +115,28 @@ namespace MultiDungeon
                                 break;
                         
                         }
-                         */
+                        
+
+                         int playerNum = Int32.Parse(info[1]);
+                         switch (playerNum)
+                         {
+                             case 0:
+                                 //Player.playerIndex = PlayerIndex.One;
+                                 Player = new Mapmaker(Player.Position.X, Player.Position.Y, Player.ID);
+                                 break;
+                             case 1:
+                                 //Player.playerIndex = PlayerIndex.Two;
+                                 Player = new Ninja(Player.Position.X, Player.Position.Y, Player.ID);
+                                 break;
+                             case 2:
+                                 //Player.playerIndex = PlayerIndex.Three;
+                                 Player = new Mapmaker(Player.Position.X, Player.Position.Y, Player.ID);
+                                 break;
+                             case 3:
+                                 //Player.playerIndex = PlayerIndex.Four;
+                                 Player = new Ninja(Player.Position.X, Player.Position.Y, Player.ID);
+                                 break;
+                         }
                     }
                     else if (info[0] == "team")
                     {
@@ -122,10 +144,24 @@ namespace MultiDungeon
                         int team = Int32.Parse(info[2]);
                         PlayerHash[id].Init(team);
                     }
+                    else if (info[0] == "reset")
+                    {
+                        foreach (int key in players.Keys)
+                        {
+                            players[key].Spawn();
+                            players[key].Gold = 0;
+                            players[key].Item = null;
+                        }
+                        itemManager.RemoveChests();
+                        map.Populate();
+                    }
                     else if (info[0] == "disconnect")
                     {
-                        int id = Int32.Parse(info[1]);
-                        players.Remove(id);
+                        lock (players)
+                        {
+                            int id = Int32.Parse(info[1]);
+                            players.Remove(id);
+                        }
                     }
                     else if (info[0] == "p")
                     {
@@ -140,7 +176,10 @@ namespace MultiDungeon
                         }
                         else
                         {
-                            players.Add(id, new Ninja(float.Parse(info[2]), float.Parse(info[3]), id));
+                            lock (players)
+                            {
+                                players.Add(id, new Mapmaker(float.Parse(info[2]), float.Parse(info[3]), id));
+                            }
                         }
                     }
                     else if (info[0] == "b")
@@ -218,13 +257,15 @@ namespace MultiDungeon
             bulletManager.Update(map);
             itemManager.Update();
 
-            foreach (var v in players)
+            lock (players)
             {
-                Player p = v.Value;
-                p.Update(deltaTime);
-                p.UpdateCollisions(map.GetTilesNear((int)p.Position.X, (int)p.Position.Y));
+                foreach (var v in players)
+                {
+                    Player p = v.Value;
+                    p.Update(deltaTime);
+                    p.UpdateCollisions(map.GetTilesNear((int)p.Position.X, (int)p.Position.Y));
+                }
             }
-
             // camera
             UpdateCamera();
 

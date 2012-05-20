@@ -26,7 +26,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\circle.xnb</Output>
-      <Time>2012-05-06T00:00:52.1044244-04:00</Time>
+      <Time>2012-05-20T03:02:31.4790921-04:00</Time>
     </Item>
     <Item>
       <Source>Fonts\ConsoleFont.spritefont</Source>
@@ -81,6 +81,87 @@
       <Options>None</Options>
       <Output>c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Items\potion.xnb</Output>
       <Time>2012-05-18T22:19:28.6169306-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Guns\crossbow.png</Source>
+      <Name>Guns\crossbow</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Guns\crossbow.xnb</Output>
+      <Time>2012-05-19T23:04:19.6506463-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Guns\pistols.png</Source>
+      <Name>Guns\pistols</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Guns\pistols.xnb</Output>
+      <Time>2012-05-19T23:04:19.6506463-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Guns\revolver.png</Source>
+      <Name>Guns\revolver</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Guns\revolver.xnb</Output>
+      <Time>2012-05-19T23:04:19.6516463-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Guns\shotgun.png</Source>
+      <Name>Guns\shotgun</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Guns\shotgun.xnb</Output>
+      <Time>2012-05-19T23:04:19.6526464-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Guns\ar.png</Source>
+      <Name>Guns\ar</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Guns\ar.xnb</Output>
+      <Time>2012-05-20T01:39:54.183551-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Characters\mapmaker-blue.png</Source>
+      <Name>Characters\mapmaker-blue</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Characters\mapmaker-blue.xnb</Output>
+      <Time>2012-05-20T02:52:11.0486055-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Characters\mapmaker-red.png</Source>
+      <Name>Characters\mapmaker-red</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Characters\mapmaker-red.xnb</Output>
+      <Time>2012-05-20T02:52:11.0496056-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Characters\ninja-blue.png</Source>
+      <Name>Characters\ninja-blue</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Characters\ninja-blue.xnb</Output>
+      <Time>2012-05-20T02:52:11.0506056-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Characters\ninja-red.png</Source>
+      <Name>Characters\ninja-red</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Characters\ninja-red.xnb</Output>
+      <Time>2012-05-20T02:52:11.0516057-04:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

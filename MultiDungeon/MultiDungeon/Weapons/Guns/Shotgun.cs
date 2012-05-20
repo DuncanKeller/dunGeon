@@ -16,8 +16,9 @@ namespace MultiDungeon
             maxClip = 6;
             reloadTime = 3;
             rateOfFire = 0.4;
-            damage = 10;
+            damage = 2.2;
             clip = maxClip;
+            icon = TextureManager.Map["shotgun"];
         }
 
         public override void Update(double deltaTime)

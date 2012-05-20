@@ -19,7 +19,7 @@ namespace MultiDungeon.HUD
     {
         static Location[,] map;
         static TileSet tiles;
-        static int radius = 100;
+        static int radius = 150;
         static int WIDTH = 5;
         static int HEIGHT = 5;
         static int SPACING = 1;

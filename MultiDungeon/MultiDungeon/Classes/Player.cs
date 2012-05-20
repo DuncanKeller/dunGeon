@@ -30,7 +30,7 @@ namespace MultiDungeon
         Vector2 pos;
         Vector2 velocity;
         float speed;
-        float maxSpeed;
+        protected float maxSpeed;
         float angle;
 
         float timer = 0;
@@ -48,8 +48,11 @@ namespace MultiDungeon
 
         public Color c = Color.White;
 
-        Gun testGun;
+        protected List<Gun> guns = new List<Gun>();
+        int gunIndex = 0;
         Chest overlappingChest = null;
+
+        protected Texture2D characterTest;
 
         public float Angle
         {
@@ -97,11 +100,31 @@ namespace MultiDungeon
         public Item Item
         {
             get { return item; }
+            set { item = value; }
         }
 
         public Vector2 Position
         {
             get { return pos; }
+        }
+
+        public Gun CurrentGun
+        {
+            get { return guns[gunIndex]; }
+        }
+
+        public List<Gun> Guns
+        {
+            get { return guns; }
+        }
+
+        public Vector2 CenterPosition
+        {
+            get
+            {
+                return new Vector2( pos.X + Rect.Width / 2,
+                    pos.Y + Rect.Height / 2);
+            }
         }
 
         public int ID
@@ -126,25 +149,24 @@ namespace MultiDungeon
             this.id = id;
             pos = new Vector2(x, y);
             speed = 1;
-            maxSpeed = 5;
+            maxSpeed = 1;
             velocity = new Vector2();
-            testGun = new AssaultRifle(World.BulletManager, this);
 
-            maxHealth = 5;
+            maxHealth = 6;
             health = maxHealth;
         }
 
-        public void Init(int t)
+        public virtual void Init(int t)
         {
             //ServerClient.Send("position" + "\n" + id.ToString() + "\n" + pos.X.ToString() + "\n" + pos.Y.ToString());
             teamNum = t;
             if (teamNum == 0)
             {
-                c = Color.Blue;
+                c = Color.White;
             }
             else
             {
-                c = Color.Red;
+                c = Color.White;
             }
 
         }
@@ -192,6 +214,11 @@ namespace MultiDungeon
             pos.X = GameConst.rand.Next((room.Width * Tile.TILE_SIZE) - Rect.Width) + (room.X * Tile.TILE_SIZE);
             pos.Y = GameConst.rand.Next((room.Height * Tile.TILE_SIZE) - Rect.Height) + (room.Y * Tile.TILE_SIZE);
             health = maxHealth;
+            foreach (Gun gun in Guns)
+            {
+                gun.Reset();
+            }
+            item = null;
         }
 
         public virtual void Update(float deltaTime)
@@ -218,7 +245,7 @@ namespace MultiDungeon
                     pos += velocity;
                 }
 
-                testGun.Update(deltaTime);
+                CurrentGun.Update(deltaTime);
                 UpdateChest(World.ItemManager.Chests);
             }
         }
@@ -304,21 +331,21 @@ namespace MultiDungeon
             if (gamePad.Triggers.Right > 0.25 &&
                 oldGamePad.Triggers.Right < 0.25)
             {
-                testGun.Shoot();
+                CurrentGun.Shoot();
             }
             else if (gamePad.Triggers.Right > 0.25)
             {
-                testGun.RightHeld();
+                CurrentGun.RightHeld();
             }
 
             if (gamePad.Triggers.Left > 0.25 &&
               oldGamePad.Triggers.Left < 0.25)
             {
-                testGun.SecondaryFire();
+                CurrentGun.SecondaryFire();
             }
             else if (gamePad.Triggers.Left > 0.25)
             {
-                testGun.LeftHeld();
+                CurrentGun.LeftHeld();
             }
 
             // chests
@@ -344,7 +371,28 @@ namespace MultiDungeon
                 item = null;
             }
 
-          
+            if (gamePad.Buttons.B == ButtonState.Pressed &&
+                oldGamePad.Buttons.B == ButtonState.Released)
+            {
+                CurrentGun.Reload();
+            }
+
+            if (!CurrentGun.reloading &&
+                gamePad.Buttons.RightShoulder == ButtonState.Pressed &&
+                oldGamePad.Buttons.RightShoulder == ButtonState.Released)
+            {
+                gunIndex++;
+                if (gunIndex > guns.Count - 1)
+                { gunIndex = 0; }
+            }
+            else if (!CurrentGun.reloading &&
+                gamePad.Buttons.LeftShoulder == ButtonState.Pressed &&
+                oldGamePad.Buttons.LeftShoulder == ButtonState.Released)
+            {
+                gunIndex--;
+                if (gunIndex < 0)
+                { gunIndex = guns.Count - 1; }
+            }
 
             oldGamePad = gamePad;
         }
@@ -355,7 +403,10 @@ namespace MultiDungeon
             {
                 Vector2 origin = new Vector2(TextureManager.Map["circle"].Width / 2, TextureManager.Map["circle"].Height / 2);
                 //sb.Draw(TextureManager.Map["blank"], Rect, Color.Red);
+                Rectangle charRect = new Rectangle(Rect.X - 5, Rect.Y - 30, Rect.Width + 10, Rect.Height + 20);
+
                 sb.Draw(TextureManager.Map["circle"], DrawRect, null, c, angle, origin, SpriteEffects.None, 0);
+                sb.Draw(characterTest, charRect, c);
             }
         }
     }

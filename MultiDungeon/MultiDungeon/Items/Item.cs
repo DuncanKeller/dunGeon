@@ -15,7 +15,7 @@ namespace MultiDungeon.Items
 
         public void Draw(SpriteBatch sb, Vector2 v)
         {
-            Rectangle r = new Rectangle((int)v.X, (int)v.Y, 40, 40);
+            Rectangle r = new Rectangle((int)v.X, (int)v.Y, 60, 60);
             sb.Draw(texture, r, Color.White);
         }
     }

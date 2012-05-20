@@ -70,6 +70,14 @@ namespace MultiDungeon.Items
             toRemove.Add(c);
         }
 
+        public void RemoveChests()
+        {
+            foreach (Chest chest in chests)
+            {
+                toRemove.Add(chest);
+            }
+        }
+
         public void Remove(int id)
         {
             foreach (Chest chest in chests)

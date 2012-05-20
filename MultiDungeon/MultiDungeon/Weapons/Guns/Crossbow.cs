@@ -18,6 +18,7 @@ namespace MultiDungeon
             rateOfFire = 0.0;
             damage = 15;
             clip = maxClip;
+            icon = TextureManager.Map["crossbow"];
         }
 
         public override void Update(double deltaTime)

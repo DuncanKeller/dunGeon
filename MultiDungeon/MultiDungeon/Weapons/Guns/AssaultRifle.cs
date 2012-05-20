@@ -16,8 +16,9 @@ namespace MultiDungeon
             maxClip = 60;
             reloadTime = 3.0;
             rateOfFire = 0.05;
-            damage = 0.5;
+            damage = 0.2;
             clip = maxClip;
+            icon = TextureManager.Map["assault-rifle"];
         }
 
         public override void Update(double deltaTime)

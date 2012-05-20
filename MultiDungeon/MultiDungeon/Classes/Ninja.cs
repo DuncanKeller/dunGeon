@@ -17,7 +17,10 @@ namespace MultiDungeon
         public Ninja(float x, float y, int id)
             : base(x, y, id)
         {
-
+            maxSpeed = 4;
+            guns.Add(new Revolver(World.BulletManager, this));
+            guns.Add(new Crossbow(World.BulletManager, this));
+            characterTest = TextureManager.Map["ninja-blue"];
         }
 
         public override void Update(float deltaTime)
@@ -49,6 +52,20 @@ namespace MultiDungeon
             }
             c.A = (byte)visibility;
             base.Update(deltaTime);
+        }
+
+        public override void Init(int t)
+        {
+            base.Init(t);
+
+            if (t == 0)
+            {
+                characterTest = TextureManager.Map["ninja-blue"];
+            }
+            else
+            {
+                characterTest = TextureManager.Map["ninja-red"];
+            }
         }
     }
 }

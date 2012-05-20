@@ -100,10 +100,12 @@ namespace MultiDungeon.Map
                     3 + GameConst.rand.Next(rheight - 3));
 
                 // test for room lying outside bounds
-                if (room.Right > mwidth ||
-                    room.Bottom > mheight)
+                if (room.Right > mwidth - 1 ||
+                    room.Bottom > mheight - 1 ||
+                    room.X < 1 ||
+                    room.Y < 1)
                 {
-                    continue;
+                    //continue;
                 }
 
                 // test for intersection with rooms
@@ -198,10 +200,10 @@ namespace MultiDungeon.Map
                 }
 
                 // check out of bounds
-                if (sx + width >= mwidth ||
-                    sy + height >= mheight ||
-                    sx < 0 ||
-                    sy < 0)
+                if (sx + width >= mwidth - 1 ||
+                    sy + height >= mheight - 1 ||
+                    sx < 1 ||
+                    sy < 1)
                 {
                     continue;
                 }
@@ -279,7 +281,7 @@ namespace MultiDungeon.Map
                 {
                     ry = GameConst.rand.Next(hall.Y, hall.Bottom);
 
-                    if (ry < 0 ||
+                    if (ry < 1 ||
                         hall.X - 1< 0)
                     {
                         continue;
@@ -298,7 +300,7 @@ namespace MultiDungeon.Map
                 {
                     rx = GameConst.rand.Next(hall.X, hall.Right);
 
-                    if (rx < 0 ||
+                    if (rx < 1 ||
                         hall.Y - 1 < 0)
                     {
                         continue;
@@ -317,10 +319,10 @@ namespace MultiDungeon.Map
                 Rectangle newRoom = new Rectangle(rx, ry, w, h);
 
                 // check for room outtabounds
-                if (newRoom.Right > mwidth ||
-                    newRoom.X < 0 ||
-                    newRoom.Bottom > mheight ||
-                    newRoom.Y < 0)
+                if (newRoom.Right > mwidth - 1 ||
+                    newRoom.X < 1 ||
+                    newRoom.Bottom > mheight - 1 ||
+                    newRoom.Y < 1)
                 {
                     continue;
                 }
@@ -443,37 +445,40 @@ namespace MultiDungeon.Map
 
         public void GenerateMap(int width, int height)
         {
-            tiles.Clear();
-
-            bool[,] map = new bool[width, height];
-
-            this.width = width;
-            this.height = height;
-
-            for (int x = 0; x < width; x++)
+            lock (tiles)
             {
-                for (int y = 0; y < height; y++)
+                tiles.Clear();
+
+                bool[,] map = new bool[width, height];
+
+                this.width = width - 1;
+                this.height = height - 1;
+
+                for (int x = 1; x < width; x++)
                 {
-                    map[x, y] = false;
+                    for (int y = 1; y < height; y++)
+                    {
+                        map[x, y] = false;
+                    }
                 }
+
+                int maxWidth = width / 5;
+                int maxHeight = height / 5;
+                int maxArea = (width * height) / 5;
+
+
+                MakeRoom(ref map, width, height, maxWidth, maxHeight);
+
+                while (rooms.Count < numRooms)
+                {
+                    MakeCooridor(ref map, width, height, maxWidth, maxHeight);
+
+                }
+
+                GenerateTeamRooms();
+                Populate();
+                CreateTiles(map, width, height);
             }
-
-            int maxWidth = width / 5;
-            int maxHeight = height / 5;
-            int maxArea = (width * height) / 5;
-
-
-            MakeRoom(ref map, width, height, maxWidth, maxHeight);
-
-            while (rooms.Count < numRooms)
-            {
-                MakeCooridor(ref map, width, height, maxWidth, maxHeight);
-                
-            }
-
-            GenerateTeamRooms();
-            Populate();
-            CreateTiles(map, width, height);
         }
 
         private void GenerateTeamRooms()

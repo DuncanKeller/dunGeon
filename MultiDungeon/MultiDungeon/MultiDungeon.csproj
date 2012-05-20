@@ -79,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Camera.cs" />
+    <Compile Include="Classes\Mapmaker.cs" />
     <Compile Include="Classes\Ninja.cs" />
     <Compile Include="Console\Console.cs" />
     <Compile Include="Console\Message.cs" />

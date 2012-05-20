@@ -33,8 +33,21 @@ namespace MultiDungeon
             // fonts
             fonts.Add("console", c.Load<SpriteFont>("Fonts\\ConsoleFont"));
 
-            //items
+            // items
             textures.Add("potion", c.Load<Texture2D>("Items\\potion"));
+
+            // gun icons
+            textures.Add("crossbow", c.Load<Texture2D>("Guns\\crossbow"));
+            textures.Add("pistols", c.Load<Texture2D>("Guns\\pistols"));
+            textures.Add("revolver", c.Load<Texture2D>("Guns\\revolver"));
+            textures.Add("shotgun", c.Load<Texture2D>("Guns\\shotgun"));
+            textures.Add("assault-rifle", c.Load<Texture2D>("Guns\\ar"));
+
+            // dudes
+            textures.Add("ninja-blue", c.Load<Texture2D>("Characters\\ninja-blue"));
+            textures.Add("ninja-red", c.Load<Texture2D>("Characters\\ninja-red"));
+            textures.Add("mapmaker-blue", c.Load<Texture2D>("Characters\\mapmaker-blue"));
+            textures.Add("mapmaker-red", c.Load<Texture2D>("Characters\\mapmaker-red"));
         }
     }
 }

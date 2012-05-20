@@ -23,8 +23,8 @@ namespace DungeonServer
                 }
                 else if (command.Equals("start game", StringComparison.CurrentCultureIgnoreCase))
                 {
-                    server.SetTeams();
                     server.StartGame();
+                    server.SetTeams();
                     server.SetControllers();
                 }
             }

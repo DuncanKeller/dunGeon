@@ -18,9 +18,10 @@ namespace MultiDungeon
             maxClip = 12;
             reloadTime = 1.35;
             rateOfFire = 0.05;
-            damage = 1.5;
+            damage = 0.5;
             clip = maxClip;
             secondGun = g;
+            icon = TextureManager.Map["pistols"];
         }
 
         public override void  Update(double deltaTime)
