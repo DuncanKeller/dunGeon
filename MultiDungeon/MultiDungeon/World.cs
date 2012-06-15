@@ -113,30 +113,22 @@ namespace MultiDungeon
                             case 3:
                                 Player.playerIndex = PlayerIndex.Four;
                                 break;
-                        
                         }
                         
-
-                         int playerNum = Int32.Parse(info[1]);
-                         switch (playerNum)
-                         {
-                             case 0:
-                                 //Player.playerIndex = PlayerIndex.One;
-                                 Player = new Mapmaker(Player.Position.X, Player.Position.Y, Player.ID);
-                                 break;
-                             case 1:
-                                 //Player.playerIndex = PlayerIndex.Two;
-                                 Player = new Ninja(Player.Position.X, Player.Position.Y, Player.ID);
-                                 break;
-                             case 2:
-                                 //Player.playerIndex = PlayerIndex.Three;
-                                 Player = new Mapmaker(Player.Position.X, Player.Position.Y, Player.ID);
-                                 break;
-                             case 3:
-                                 //Player.playerIndex = PlayerIndex.Four;
-                                 Player = new Ninja(Player.Position.X, Player.Position.Y, Player.ID);
-                                 break;
-                         }
+                    }
+                    else if (info[0] == "class")
+                    {
+                        int id = Int32.Parse(info[1]);
+                        string classType = info[2];
+                        switch (classType)
+                        {
+                            case "ninja":
+                                PlayerHash[id] = new Ninja(PlayerHash[id].Position.X, PlayerHash[id].Position.Y, id);
+                                break;
+                            case "mapmaker":
+                                PlayerHash[id] = new Mapmaker(PlayerHash[id].Position.X, PlayerHash[id].Position.Y, id);
+                                break;
+                        }
                     }
                     else if (info[0] == "team")
                     {

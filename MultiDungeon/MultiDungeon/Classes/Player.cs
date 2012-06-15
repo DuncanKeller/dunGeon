@@ -12,15 +12,18 @@ namespace MultiDungeon
 {
     struct Upgrade
     {
-        int maxHealth;
-        int speed;
+        public double maxHealth;
+        public float speed;
 
-        int damage;
-        int reload;
+        public int damage;
+        public float reload;
 
-        int class1;
-        int class2;
-        int class3;
+        public int class1;
+        public int class2;
+        public int class3;
+
+        public bool power1;
+        public bool power2;
     }
 
     abstract class Player
@@ -29,7 +32,6 @@ namespace MultiDungeon
         int teamNum;
         Vector2 pos;
         Vector2 velocity;
-        float speed;
         protected float maxSpeed;
         float angle;
 
@@ -39,10 +41,9 @@ namespace MultiDungeon
 
         Item item;
         double health;
-        double maxHealth;
         int gold;
 
-        Upgrade upgrade;
+        public Upgrade upgrade;
 
         bool alive = true;
 
@@ -84,7 +85,13 @@ namespace MultiDungeon
 
         public double MaxHealth
         {
-            get { return maxHealth; }
+            get { return upgrade.maxHealth; }
+        }
+
+        public Upgrade Upgrade
+        {
+            get { return upgrade; }
+            set { upgrade = value; }
         }
 
         public double Health
@@ -148,12 +155,12 @@ namespace MultiDungeon
         {
             this.id = id;
             pos = new Vector2(x, y);
-            speed = 1;
+            upgrade.speed = 1;
             maxSpeed = 1;
             velocity = new Vector2();
 
-            maxHealth = 6;
-            health = maxHealth;
+            upgrade.maxHealth = 6;
+            health = upgrade.maxHealth;
         }
 
         public virtual void Init(int t)
@@ -213,7 +220,7 @@ namespace MultiDungeon
             Rectangle room = World.Map.GetTeamRoom(teamNum);
             pos.X = GameConst.rand.Next((room.Width * Tile.TILE_SIZE) - Rect.Width) + (room.X * Tile.TILE_SIZE);
             pos.Y = GameConst.rand.Next((room.Height * Tile.TILE_SIZE) - Rect.Height) + (room.Y * Tile.TILE_SIZE);
-            health = maxHealth;
+            health = upgrade.maxHealth;
             foreach (Gun gun in Guns)
             {
                 gun.Reset();
@@ -300,8 +307,8 @@ namespace MultiDungeon
 
             Vector2 input = gamePad.ThumbSticks.Left;
 
-            velocity.X += input.X * speed * (deltaTime / 100);
-            velocity.Y += -input.Y * speed * (deltaTime / 100);
+            velocity.X += input.X * upgrade.speed * (deltaTime / 100);
+            velocity.Y += -input.Y * upgrade.speed * (deltaTime / 100);
 
             if (velocity.X > input.X * maxSpeed)
             {

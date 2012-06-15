@@ -76,6 +76,36 @@ namespace DungeonServer
             }
         }
 
+        public void SetClasses()
+        {
+            int counter = 0;
+            int numClasses = 2;
+
+            Dictionary<int, string> idToClass = new Dictionary<int, string>();
+
+            foreach (int id in clients.Keys)
+            {
+                switch (counter % numClasses)
+                {
+                    case 0:
+                        idToClass.Add(id, "mapmaker");
+                        break;
+                    case 1:
+                        idToClass.Add(id, "ninja");
+                        break;
+                }
+                counter++;
+            }
+
+            foreach (int id in clients.Keys)
+            {
+                foreach (int player in idToClass.Keys)
+                {
+                    Send("class\n" + player.ToString() + "\n" + (idToClass[player]) + "!", id);
+                }
+            }
+        }
+
         public void StartGame()
         {
             foreach (int id in clients.Keys)

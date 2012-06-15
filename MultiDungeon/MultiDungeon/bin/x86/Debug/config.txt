@@ -1,1 +1,1 @@
-Viridian.csh.rit.edu
+192.168.1.15
