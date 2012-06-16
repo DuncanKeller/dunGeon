@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using MultiDungeon.Graphics;
 using MultiDungeon.HUD;
+using MultiDungeon.Menus;
 
 namespace MultiDungeon
 {
@@ -20,6 +21,15 @@ namespace MultiDungeon
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        MenuManager menu;
+
+        enum GameState
+        {
+            menu,
+            game
+        }
+
+        GameState state = GameState.menu;
 
         public Game1()
         {
@@ -44,6 +54,7 @@ namespace MultiDungeon
             World.Init(graphics);
             Shadowmap.Init(this, graphics.GraphicsDevice, Content);
             Hud.Init();
+            menu = new MenuManager(this);
             
             base.Initialize();
         }
@@ -77,17 +88,19 @@ namespace MultiDungeon
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            // Allows the game to exit
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-                this.Exit();
+            switch (state)
+            {
+                case GameState.menu:
+                    menu.Update();
+                    break;
+                case GameState.game:
+                    World.Update(gameTime.ElapsedGameTime.Milliseconds);
+                    Shadowmap.Update(World.Player.Position);
+                    Hud.Update();
+                    break;
+            }
 
-            World.Update(gameTime.ElapsedGameTime.Milliseconds);
             Console.Update(gameTime.ElapsedGameTime.Milliseconds);
-            
-            Shadowmap.Update(World.Player.Position);
-            Hud.Update();
-            // TODO: Add your update logic here
-
             base.Update(gameTime);
         }
 
@@ -99,15 +112,24 @@ namespace MultiDungeon
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             
-            Shadowmap.Draw(spriteBatch, World.Camera);
+            switch (state)
+            {
+                case GameState.menu: 
+                    spriteBatch.Begin();
+                    menu.Draw(spriteBatch);  
+                    spriteBatch.End();
+                    break;
+                case GameState.game:
+                    Shadowmap.Draw(spriteBatch, World.Camera);
+                    spriteBatch.Begin();
+                    Hud.Draw(spriteBatch);
+                    spriteBatch.End();
+                    break;
+            }
 
             spriteBatch.Begin();
             Console.Draw(spriteBatch);
-            Hud.Draw(spriteBatch);
             spriteBatch.End();
-
-
-            // TODO: Add your drawing code here
 
             base.Draw(gameTime);
         }

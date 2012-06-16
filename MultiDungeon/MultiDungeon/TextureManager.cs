@@ -30,9 +30,6 @@ namespace MultiDungeon
             textures.Add("chest-closed", c.Load<Texture2D>("Items\\chestClosed"));
             textures.Add("chest-open", c.Load<Texture2D>("Items\\chestOpen"));
 
-            // fonts
-            fonts.Add("console", c.Load<SpriteFont>("Fonts\\ConsoleFont"));
-
             // items
             textures.Add("potion", c.Load<Texture2D>("Items\\potion"));
 
@@ -48,6 +45,9 @@ namespace MultiDungeon
             textures.Add("ninja-red", c.Load<Texture2D>("Characters\\ninja-red"));
             textures.Add("mapmaker-blue", c.Load<Texture2D>("Characters\\mapmaker-blue"));
             textures.Add("mapmaker-red", c.Load<Texture2D>("Characters\\mapmaker-red"));
+
+            // fonts
+            fonts.Add("console", c.Load<SpriteFont>("Fonts\\ConsoleFont"));
         }
     }
 }
