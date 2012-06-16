@@ -17,10 +17,12 @@ namespace MultiDungeon.Menus
         protected Point prevIndex = new Point(0, 0);
         protected int timer = 0;
         protected Game1 game;
+        protected MenuManager menuManager;
         protected const double THRESHHOLD = 0.2;
 
-        public Menu(Game1 g)
+        public Menu(Game1 g, MenuManager mm)
         {
+            menuManager = mm;
             game = g;
         }
 

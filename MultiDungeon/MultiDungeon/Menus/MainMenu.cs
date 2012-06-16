@@ -10,7 +10,7 @@ namespace MultiDungeon.Menus
 {
     class MainMenu : Menu
     {    
-        public MainMenu(Game1 g) : base(g)
+        public MainMenu(Game1 g, MenuManager mm) : base(g, mm)
         {
             // pos is proportional to screen size (IE, SCREENWIDTH / 20 * pos)
             AddMenuItem("Start Server", new Vector2(1, 15), 0,

@@ -12,11 +12,11 @@ namespace MultiDungeon.Menus
         List<Menu> menus = new List<Menu>();
         Menu currentMenu;
 
-        MainMenu main;
+        public MainMenu main;
 
         public MenuManager(Game1 game)
         {
-            main = new MainMenu(game);
+            main = new MainMenu(game, this);
 
             menus.Add(main);
             currentMenu = main;
@@ -25,6 +25,11 @@ namespace MultiDungeon.Menus
         public void Update()
         {
             currentMenu.Update();
+        }
+
+        public void SwitchMenu(Menu m)
+        {
+            currentMenu = m;
         }
 
         public void Draw(SpriteBatch sb)
