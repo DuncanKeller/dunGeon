@@ -9,21 +9,27 @@ namespace MultiDungeon.Menus
 {
     class MenuManager
     {
+        List<Menu> menus = new List<Menu>();
+        Menu currentMenu;
+
         MainMenu main;
 
         public MenuManager(Game1 game)
         {
             main = new MainMenu(game);
+
+            menus.Add(main);
+            currentMenu = main;
         }
 
         public void Update()
         {
-            main.Update();
+            currentMenu.Update();
         }
 
         public void Draw(SpriteBatch sb)
         {
-            main.Draw(sb);
+            currentMenu.Draw(sb);
         }
     }
 }
