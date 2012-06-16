@@ -97,6 +97,7 @@
     <Compile Include="Items\Item.cs" />
     <Compile Include="Items\ItemManager.cs" />
     <Compile Include="Menus\MainMenu.cs" />
+    <Compile Include="Menus\Menu.cs" />
     <Compile Include="Menus\MenuItem.cs" />
     <Compile Include="Menus\MenuManager.cs" />
     <Compile Include="Weapons\Bullets\Arrow.cs" />
