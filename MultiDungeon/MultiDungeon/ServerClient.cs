@@ -17,19 +17,9 @@ namespace MultiDungeon
         static ASCIIEncoding encoder = new ASCIIEncoding();
         static int size = 32;
 
-        public static void Connect()
+        public static void Connect(string ip)
         {
             server = new TcpClient();
-
-            if(!File.Exists("config.txt"))
-            {
-                Console.Write("No config file found :(", MessageType.urgent);
-                return;
-            }
-
-            StreamReader sr = new StreamReader("config.txt");
-            string ip = sr.ReadLine();
-            sr.Close();
 
             server.Connect(ip, 3000);
 

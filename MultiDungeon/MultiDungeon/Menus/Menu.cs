@@ -19,6 +19,7 @@ namespace MultiDungeon.Menus
         protected Game1 game;
         protected MenuManager menuManager;
         protected const double THRESHHOLD = 0.2;
+        protected GamePadState oldGamepad;
 
         public Menu(Game1 g, MenuManager mm)
         {
@@ -52,7 +53,7 @@ namespace MultiDungeon.Menus
             nonSelectableItems.Add(new MenuItem(text, pos, delegate() { } ));
         }
 
-        public void Update()
+        public virtual void Update()
         {
             // get input
             GamePadState gs = GamePad.GetState(PlayerIndex.One);
@@ -90,6 +91,10 @@ namespace MultiDungeon.Menus
                 }
                 if (action)
                 {
+                    if (yIndex >= menuItems[xIndex].Count)
+                    {
+                        yIndex = menuItems[xIndex].Count - 1;
+                    }
                     // select new item, deselect old, reset timer
                     menuItems[xIndex][yIndex].Select();
                     menuItems[prevIndex.X][prevIndex.Y].Deselect();
@@ -100,16 +105,33 @@ namespace MultiDungeon.Menus
             {
                 timer--;
             }
-            if (gs.Buttons.A == ButtonState.Pressed)
+
+            if (gs.Buttons.A == ButtonState.Pressed &&
+                oldGamepad.Buttons.A == ButtonState.Released)
             {
-                menuItems[xIndex][yIndex].Invoke();
+                if (menuItems.Count > 0)
+                {
+                    if (menuItems[xIndex] != null)
+                    {
+                        if (menuItems[xIndex][yIndex] != null)
+                        {
+                            menuItems[xIndex][yIndex].Invoke();
+                        }
+                    }
+                }
             }
 
             prevIndex.Y = yIndex;
             prevIndex.X = xIndex;
+            oldGamepad = gs;
         }
 
-        public void Draw(SpriteBatch sb)
+        public virtual void Init()
+        {
+
+        }
+
+        public virtual void Draw(SpriteBatch sb)
         {
             foreach (List<MenuItem> list in menuItems)
             {

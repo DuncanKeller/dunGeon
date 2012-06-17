@@ -23,6 +23,11 @@ namespace MultiDungeon.Menus
             this.action = action;
         }
 
+        public bool Selected
+        {
+            get { return selected; }
+        }
+
         public void Invoke()
         {
             action();

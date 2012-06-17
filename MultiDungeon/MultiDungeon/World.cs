@@ -59,7 +59,6 @@ namespace MultiDungeon
 
         public static void Init(GraphicsDeviceManager g)
         {
-            InitNetwork();
             map = new TileSet();
             cam = new Camera(g);
         }
@@ -70,7 +69,6 @@ namespace MultiDungeon
             Player.Spawn();
             MultiDungeon.HUD.Map.Init(World.Map);
         }
-
 
         #region NetworkClient
         public static void RecieveData(string[] datum)
@@ -225,9 +223,18 @@ namespace MultiDungeon
         }
         #endregion
 
-        public static void InitNetwork()
+        public static bool InitNetwork(string ip)
         {
-            Client.Connect();
+            try
+            {
+                Client.Connect(ip);
+            }
+            catch (Exception e)
+            {
+                Console.Write(e.Message);
+                return false;
+            }
+            return true;
         }
 
         public static void UpdateNetwork(float deltaTime)
