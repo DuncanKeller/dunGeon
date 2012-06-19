@@ -89,31 +89,32 @@ namespace MultiDungeon
 
         public static void Close()
         {
-           
-            if(server.Connected) 
+            if (server != null)
             {
-                NetworkStream clientStream = null;
-                try
+                if (server.Connected)
                 {
-                    clientStream = server.GetStream();
-                    ASCIIEncoding encoder = new ASCIIEncoding();
-                    byte[] b = encoder.GetBytes("");
-                    clientStream.Write(b, 0, 0);
-                }
-                catch (Exception e)
-                {
+                    NetworkStream clientStream = null;
+                    try
+                    {
+                        clientStream = server.GetStream();
+                        ASCIIEncoding encoder = new ASCIIEncoding();
+                        byte[] b = encoder.GetBytes("");
+                        clientStream.Write(b, 0, 0);
+                    }
+                    catch (Exception e)
+                    {
+
+                    }
+                    finally
+                    {
+                        server.Close();
+                        clientStream.Flush();
+                        clientStream.Close();
+                        connected = false;
+                    }
 
                 }
-                finally
-                {
-                    server.Close();
-                    clientStream.Flush();
-                    clientStream.Close();
-                    connected = false;
-                }
-                 
             }
-            
         }
 
         public static void Send(string data)

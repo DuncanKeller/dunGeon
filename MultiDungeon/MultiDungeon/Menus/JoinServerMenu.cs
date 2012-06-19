@@ -38,7 +38,8 @@ namespace MultiDungeon.Menus
         {
             if (World.InitNetwork(ip))
             {
-                Console.Write("Connected to Server! Sweet!", MessageType.special);
+                Console.Write("Connected to Server", MessageType.special);
+                menuManager.SwitchMenu(menuManager.lobby);
             }
             else
             {

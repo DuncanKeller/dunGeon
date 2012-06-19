@@ -39,7 +39,13 @@ namespace MultiDungeon.Menus
 
         public override void Draw(SpriteBatch sb)
         {
+            sb.Draw(TextureManager.Map["menu-main"], new Rectangle(0, 0,
+                GameConst.SCREEN_WIDTH, GameConst.SCREEN_HEIGHT), Color.White);
             base.Draw(sb);
+
+            sb.DrawString(TextureManager.Fonts["console"], "dunGeon",
+                new Vector2(GameConst.SCREEN_WIDTH - (TextureManager.Fonts["console"].MeasureString("dunGeon").X)
+                    - (GameConst.SCREEN_WIDTH / 20), GameConst.SCREEN_HEIGHT / 30), new Color(70, 70, 70));
         }
     }
 }

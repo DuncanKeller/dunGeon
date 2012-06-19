@@ -167,15 +167,6 @@ namespace MultiDungeon
         {
             //ServerClient.Send("position" + "\n" + id.ToString() + "\n" + pos.X.ToString() + "\n" + pos.Y.ToString());
             teamNum = t;
-            if (teamNum == 0)
-            {
-                c = Color.White;
-            }
-            else
-            {
-                c = Color.White;
-            }
-
         }
 
         public void SetPos(float x, float y)

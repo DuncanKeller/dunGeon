@@ -102,6 +102,7 @@
     <Compile Include="Items\ItemManager.cs" />
     <Compile Include="Menus\EnterServerMenu.cs" />
     <Compile Include="Menus\FailedToConnectMenu.cs" />
+    <Compile Include="Menus\GameLobby.cs" />
     <Compile Include="Menus\JoinServerMenu.cs" />
     <Compile Include="Menus\MainMenu.cs" />
     <Compile Include="Menus\Menu.cs" />

@@ -25,3 +25,5 @@ c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\MultiDungeon\
 C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Newtonsoft.Json.dll
 C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Newtonsoft.Json.pdb
 C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Newtonsoft.Json.xml
+C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Menus\titleScreen.xnb
+C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\test.xnb

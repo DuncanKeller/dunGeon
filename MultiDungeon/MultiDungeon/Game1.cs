@@ -23,13 +23,13 @@ namespace MultiDungeon
         SpriteBatch spriteBatch;
         MenuManager menu;
 
-        enum GameState
+        public enum GameState
         {
             menu,
             game
         }
 
-        GameState state = GameState.menu;
+        public GameState state = GameState.menu;
 
         public Game1()
         {
@@ -51,7 +51,7 @@ namespace MultiDungeon
             graphics.ApplyChanges();
 
             TextureManager.Initialize(Content);
-            World.Init(graphics);
+            World.Init(graphics, this);
             Shadowmap.Init(this, graphics.GraphicsDevice, Content);
             Hud.Init();
             menu = new MenuManager(this);
@@ -67,7 +67,7 @@ namespace MultiDungeon
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            
+
             // TODO: use this.Content to load your game content here
         }
 

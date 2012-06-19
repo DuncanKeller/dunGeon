@@ -45,10 +45,12 @@ namespace MultiDungeon.Menus
 
         public void Draw(SpriteBatch sb)
         {
-            Color c = selected ? Color.White : Color.Gray;
+            Color c = selected ? Color.LightYellow : Color.LightGray;
+            string append = selected ? " " : "";
             Vector2 position = new Vector2((GameConst.SCREEN_WIDTH / 20) * pos.X,
                 (GameConst.SCREEN_HEIGHT / 20) * pos.Y);
-            sb.DrawString(TextureManager.Fonts["console"], text, position, c);
+            sb.DrawString(TextureManager.Fonts["console"], append + text, position, c);
+            
         }
         
     }

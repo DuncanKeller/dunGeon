@@ -17,6 +17,7 @@ namespace MultiDungeon.Menus
         public JoinServerMenu join;
         public EnterServerMenu enterServer;
         public FailedToConnectMenu failure;
+        public GameLobby lobby;
 
         public MenuManager(Game1 game)
         {
@@ -24,6 +25,7 @@ namespace MultiDungeon.Menus
             join = new JoinServerMenu(game, this);
             enterServer = new EnterServerMenu(game, this);
             failure = new FailedToConnectMenu(game, this);
+            lobby = new GameLobby(game, this);
 
             currentMenu = main;
         }

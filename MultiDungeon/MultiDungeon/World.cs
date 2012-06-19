@@ -10,6 +10,13 @@ using MultiDungeon.Items;
 
 namespace MultiDungeon
 {
+    struct PlayerInfo
+    {
+        public string classType;
+        public int team;
+        public bool ready;
+    }
+
     class World
     {
         public static Random rand = new Random();
@@ -20,6 +27,15 @@ namespace MultiDungeon
         static BulletManager bulletManager = new BulletManager();
         static ItemManager itemManager = new ItemManager();
         static Camera cam;
+        static Game1 game;
+
+        static Dictionary<int, PlayerInfo> playerInfo = new Dictionary<int, PlayerInfo>();
+
+        public static Dictionary<int, PlayerInfo> PlayerInfo
+        {
+            get { return playerInfo; }
+            set { playerInfo = value; }
+        }
 
         public static BulletManager BulletManager
         {
@@ -57,14 +73,16 @@ namespace MultiDungeon
             get { return map; }
         }
 
-        public static void Init(GraphicsDeviceManager g)
+        public static void Init(GraphicsDeviceManager g, Game1 g1)
         {
+            game = g1;
             map = new TileSet();
             cam = new Camera(g);
         }
 
         public static void StartGame()
         {
+            game.state = Game1.GameState.game;
             map.GenerateMap(35, 35);
             Player.Spawn();
             MultiDungeon.HUD.Map.Init(World.Map);
@@ -87,15 +105,62 @@ namespace MultiDungeon
                         int id = Int32.Parse(info[1]);
 
                         gameId = id;
-                        players.Add(gameId, new Mapmaker(100, 100, gameId));
+                        //players.Add(gameId, new Mapmaker(100, 100, gameId));
+                        playerInfo.Add(gameId, new PlayerInfo());
+                    }
+                    else if (info[0] == "connect")
+                    {
+                        lock (PlayerInfo)
+                        {
+                            int id = Int32.Parse(info[1]);
+                            if (!playerInfo.ContainsKey(id))
+                            {
+                                PlayerInfo.Add(id, new PlayerInfo());
+                                Client.Send("response" + "\n" + gameId);
+                                Client.Send("team" + "\n" + gameId + "\n" + playerInfo[gameId].team);
+                                Client.Send("class" + "\n" + gameId + "\n" + playerInfo[gameId].classType);
+                            }
+                        }
+                    }
+                    else if (info[0] == "response")
+                    {
+                        lock (PlayerInfo)
+                        {
+                            int id = Int32.Parse(info[1]);
+                            if (!playerInfo.ContainsKey(id))
+                            {
+                                PlayerInfo.Add(id, new PlayerInfo());
+                            }
+                        }
+                    }
+                    else if (info[0] == "ready")
+                    {
+                        int id = Int32.Parse(info[1]);
+                        PlayerInfo pi = playerInfo[id];
+                        pi.ready = true;
+                        playerInfo[id] = pi;
                     }
                     else if (info[0] == "start")
                     {
+                        foreach (var pi in playerInfo)
+                        {
+                            Player p = null;
+                            switch (pi.Value.classType)
+                            {
+                                case "mapmaker":
+                                    p = new Mapmaker(0, 0, pi.Key);
+                                    break;
+                                case "ninja":
+                                    p = new Ninja(0, 0, pi.Key);
+                                    break;
+                            }
+                            p.Init(pi.Value.team);
+                            PlayerHash.Add(pi.Key, p);
+                        }
                         StartGame();
                     }
                     else if (info[0] == "xbox")
                     {
-                        
                         int controllerNum = Int32.Parse(info[1]);
                         switch (controllerNum)
                         {
@@ -112,27 +177,23 @@ namespace MultiDungeon
                                 Player.playerIndex = PlayerIndex.Four;
                                 break;
                         }
-                        
+
                     }
                     else if (info[0] == "class")
                     {
                         int id = Int32.Parse(info[1]);
                         string classType = info[2];
-                        switch (classType)
-                        {
-                            case "ninja":
-                                PlayerHash[id] = new Ninja(PlayerHash[id].Position.X, PlayerHash[id].Position.Y, id);
-                                break;
-                            case "mapmaker":
-                                PlayerHash[id] = new Mapmaker(PlayerHash[id].Position.X, PlayerHash[id].Position.Y, id);
-                                break;
-                        }
+                        PlayerInfo pi = playerInfo[id];
+                        pi.classType = classType;
+                        playerInfo[id] = pi;
                     }
                     else if (info[0] == "team")
                     {
                         int id = Int32.Parse(info[1]);
                         int team = Int32.Parse(info[2]);
-                        PlayerHash[id].Init(team);
+                        PlayerInfo pi = playerInfo[id];
+                        pi.team = team;
+                        playerInfo[id] = pi;
                     }
                     else if (info[0] == "reset")
                     {
@@ -147,10 +208,14 @@ namespace MultiDungeon
                     }
                     else if (info[0] == "disconnect")
                     {
+                        int id = Int32.Parse(info[1]);
                         lock (players)
                         {
-                            int id = Int32.Parse(info[1]);
                             players.Remove(id);
+                        }
+                        lock (playerInfo)
+                        {
+                            playerInfo.Remove(id);
                         }
                     }
                     else if (info[0] == "p")

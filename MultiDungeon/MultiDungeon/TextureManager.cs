@@ -46,6 +46,8 @@ namespace MultiDungeon
             textures.Add("mapmaker-blue", c.Load<Texture2D>("Characters\\mapmaker-blue"));
             textures.Add("mapmaker-red", c.Load<Texture2D>("Characters\\mapmaker-red"));
 
+            // menu shit
+            textures.Add("menu-main", c.Load<Texture2D>("Menus\\titleScreen"));
             // fonts
             fonts.Add("console", c.Load<SpriteFont>("Fonts\\ConsoleFont"));
         }

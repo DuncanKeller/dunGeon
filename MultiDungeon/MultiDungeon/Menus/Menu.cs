@@ -95,9 +95,9 @@ namespace MultiDungeon.Menus
                     {
                         yIndex = menuItems[xIndex].Count - 1;
                     }
-                    // select new item, deselect old, reset timer
-                    menuItems[xIndex][yIndex].Select();
+                    // select new item, deselect old, reset timer         
                     menuItems[prevIndex.X][prevIndex.Y].Deselect();
+                    menuItems[xIndex][yIndex].Select();
                     timer = 10;
                 }
             }
