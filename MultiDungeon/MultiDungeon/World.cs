@@ -133,13 +133,6 @@ namespace MultiDungeon
                             }
                         }
                     }
-                    else if (info[0] == "ready")
-                    {
-                        int id = Int32.Parse(info[1]);
-                        PlayerInfo pi = playerInfo[id];
-                        pi.ready = true;
-                        playerInfo[id] = pi;
-                    }
                     else if (info[0] == "start")
                     {
                         foreach (var pi in playerInfo)

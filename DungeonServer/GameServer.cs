@@ -17,7 +17,8 @@ namespace DungeonServer
         private Dictionary<int, TcpClient> clients = new Dictionary<int, TcpClient>();
         private int newKey = 0;
         private int seed;
-        private int maxPlayers = 6;
+        private int maxPlayers = 4;
+        private int readyPlayers = 0;
 
         public GameServer()
         {
@@ -156,33 +157,24 @@ namespace DungeonServer
 
                 ASCIIEncoding encoder = new ASCIIEncoding();
                 string data = encoder.GetString(message, 0, bytesRead);
-                /*
-                int index = 0;
-
-                string code = encoder.GetString(message, index, encoder.GetByteCount("p"));
-                index += encoder.GetByteCount(code);
-
-                if (code == "p")
+              
+                string[] commands = data.Split('\n');
+                if (commands[0].Contains("ready"))
                 {
-                    int id = BitConverter.ToInt32(message, index);
-                    index += sizeof(Int32);
-                    double x = BitConverter.ToDouble(message, index);
-                    index += sizeof(Double);
-                    double y = BitConverter.ToDouble(message, index);
-                    int poop = 4;
+                    readyPlayers++;
+                    Console.WriteLine(readyPlayers + "ready"); 
+                    if (readyPlayers == maxPlayers)
+                    {
+                        StartGame();
+                        readyPlayers = 0;
+                    }
                 }
                 else
                 {
-                    
-                }
-
-                */
-
-                //Console.WriteLine(data);
-
-                foreach (var k in clients)
-                {
-                    Send(data, k.Key);
+                    foreach (var k in clients)
+                    {
+                        Send(data, k.Key);
+                    }
                 }
             }
 

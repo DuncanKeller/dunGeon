@@ -12,6 +12,7 @@ namespace MultiDungeon.Menus
     {
         string classType = "";
         int team = 0;
+        bool ready = false;
 
         public GameLobby(Game1 g, MenuManager mm)
             : base(g, mm)
@@ -32,18 +33,24 @@ namespace MultiDungeon.Menus
                 delegate() { team = 1; SendTeam(); });
 
             AddMenuItem("OK", new Vector2(15, 8), 2,
-               delegate() { });
+               delegate() { SendReady();  });
             
         }
 
         public void SendClass()
         {
-            Client.Send("class" + "\n" + World.gameId + "\n" + classType);
+            Client.Send("class" + "\n" + World.gameId + "\n" + classType + "!");
         }
 
         public void SendTeam()
         {
-            Client.Send("team" + "\n" + World.gameId + "\n" + team);
+            Client.Send("team" + "\n" + World.gameId + "\n" + team + "!");
+        }
+
+        public void SendReady()
+        {
+            ready = true;
+            Client.Send("ready!");
         }
 
 
@@ -53,12 +60,15 @@ namespace MultiDungeon.Menus
             menuItems[0][0].Select();
             base.Init();
             Thread.Sleep(150);
-            Client.Send("connect" + "\n" + World.gameId);
+            Client.Send("connect" + "\n" + World.gameId + "!");
         }
 
         public override void Update()
         {
-            base.Update();
+            if (!ready)
+            {
+                base.Update();
+            }
         }
 
         static Vector2 GetPos(float x, float y)
