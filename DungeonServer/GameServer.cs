@@ -17,6 +17,7 @@ namespace DungeonServer
         private Dictionary<int, TcpClient> clients = new Dictionary<int, TcpClient>();
         private int newKey = 0;
         private int seed;
+        private int maxPlayers = 6;
 
         public GameServer()
         {
@@ -76,36 +77,6 @@ namespace DungeonServer
             }
         }
 
-        public void SetClasses()
-        {
-            int counter = 0;
-            int numClasses = 2;
-
-            Dictionary<int, string> idToClass = new Dictionary<int, string>();
-
-            foreach (int id in clients.Keys)
-            {
-                switch (counter % numClasses)
-                {
-                    case 0:
-                        idToClass.Add(id, "mapmaker");
-                        break;
-                    case 1:
-                        idToClass.Add(id, "ninja");
-                        break;
-                }
-                counter++;
-            }
-
-            foreach (int id in clients.Keys)
-            {
-                foreach (int player in idToClass.Keys)
-                {
-                    Send("class\n" + player.ToString() + "\n" + (idToClass[player]) + "!", id);
-                }
-            }
-        }
-
         public void StartGame()
         {
             foreach (int id in clients.Keys)
@@ -129,6 +100,19 @@ namespace DungeonServer
             // cast client
             TcpClient tcpClient = (TcpClient)client;
             NetworkStream stream = tcpClient.GetStream();
+
+            if (clients.Count >= 6)
+            {
+                string data = "maxed";
+                ASCIIEncoding encoder = new ASCIIEncoding();
+                byte[] buffer = encoder.GetBytes(data);
+
+                stream.Write(buffer, 0, buffer.Length);
+                stream.Flush();
+                tcpClient.Close();
+                return;
+            }
+
             int key = rand.Next(1023);
 
             while (clients.ContainsKey(key))

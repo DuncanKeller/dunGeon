@@ -26,7 +26,7 @@ namespace MultiDungeon.Menus
             AddMenuItem("Join Server", new Vector2(1, 2), 0,
                 delegate() { });
             AddMenuItem("Quick Join", new Vector2(1, 3), 0,
-                delegate() { });
+                delegate() { menuManager.SwitchMenu(menuManager.quickJoin); });
             AddMenuItem("Add Server", new Vector2(1, 4), 0,
                 delegate() { menuManager.SwitchMenu(menuManager.enterServer); });
 

@@ -8,44 +8,31 @@ using Microsoft.Xna.Framework.Input;
 
 namespace MultiDungeon.Menus
 {
-    class EnterServerMenu : Menu
+    class QuickJoin : Menu
     {
         string ip = "";
-        string name = "";
 
         KeyboardState ks;
         KeyboardState oks;
 
-        public EnterServerMenu(Game1 g, MenuManager mm)
+        public QuickJoin(Game1 g, MenuManager mm)
             : base(g, mm)
         {
             AddFlavorItem("please enter a server ip", new Vector2(1, 1));
             AddMenuItem(">", new Vector2(2, 2),
                 0, delegate() { menuItems[0][0].Deselect(); menuItems[0][1].Select(); yIndex = 1; });
 
-            AddFlavorItem("please enter a name for the server", new Vector2(1, 4));
-            AddMenuItem(">", new Vector2(2, 5),
-                0, delegate() { menuItems[0][1].Deselect(); menuItems[0][2].Select(); yIndex = 2; });
-
-            AddMenuItem("DONE", new Vector2(1, 7),
-                0, delegate() { menuItems[0][2].Deselect(); menuManager.SwitchMenu(menuManager.join); });
-
-            
+            AddMenuItem("CONNECT", new Vector2(1, 4),
+                0, delegate() { menuItems[0][1].Deselect(); menuManager.join.ConnectToServer(ip); });
         }
 
         public override void Init()
         {
             ip = "";
-            name = "";
             menuItems[0][0].Select();
             yIndex = 0;
             xIndex = 0;
             base.Init();
-        }
-
-        public string Name
-        {
-            get { return name; }
         }
 
         public string IP
@@ -57,26 +44,11 @@ namespace MultiDungeon.Menus
         {
             set
             {
-                if (menuItems[0][0].Selected)
-                {
-                    ip = value;
-                }
-                else if(menuItems[0][1].Selected)
-                {
-                    name = value;
-                }
+                 ip = value;
             }
             get
             {
-                if (menuItems[0][0].Selected)
-                {
-                    return ip;
-                }
-                else if (menuItems[0][1].Selected)
-                {
-                    return name;
-                }
-                else { return "something went wrong. Check the field property!"; }
+                return ip;
             }
         }
 
@@ -105,19 +77,13 @@ namespace MultiDungeon.Menus
                             {
                                 field += '.';
                             }
-                            else if (k == Keys.Space)
-                            {
-                                field += ' ';
-                            }
                         }
                         if (k == Keys.Enter)
                         {
                             if (menuItems[0][0].Selected)
                             { menuItems[0][0].Deselect(); menuItems[0][1].Select(); yIndex++; }
                             else if (menuItems[0][1].Selected)
-                            { menuItems[0][1].Deselect(); menuItems[0][2].Select(); yIndex++; }
-                            else if (menuItems[0][2].Selected)
-                            { menuItems[0][2].Invoke(); }
+                            { menuItems[0][1].Invoke(); }
                         }
                     }
                 }
@@ -136,10 +102,6 @@ namespace MultiDungeon.Menus
             sb.DrawString(TextureManager.Fonts["console"], ip,
                 new Vector2((GameConst.SCREEN_WIDTH / 20) * 3,
                (GameConst.SCREEN_HEIGHT / 20) * 2), Color.White);
-
-            sb.DrawString(TextureManager.Fonts["console"], name,
-                new Vector2((GameConst.SCREEN_WIDTH / 20) * 3,
-               (GameConst.SCREEN_HEIGHT / 20) * 5), Color.White);
             base.Draw(sb);
         }
     }

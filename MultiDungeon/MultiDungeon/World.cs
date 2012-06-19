@@ -218,6 +218,11 @@ namespace MultiDungeon
                             playerInfo.Remove(id);
                         }
                     }
+                    else if (info[0] == "maxed")
+                    {
+                        Client.Close();
+                        // goto maxed out menu
+                    }
                     else if (info[0] == "p")
                     {
                         int id = Int32.Parse(info[1]);

@@ -108,6 +108,7 @@
     <Compile Include="Menus\Menu.cs" />
     <Compile Include="Menus\MenuItem.cs" />
     <Compile Include="Menus\MenuManager.cs" />
+    <Compile Include="Menus\QuickJoinMenu.cs" />
     <Compile Include="Weapons\Bullets\Arrow.cs" />
     <Compile Include="Weapons\Bullets\Bullet.cs" />
     <Compile Include="Weapons\BulletManager.cs" />
