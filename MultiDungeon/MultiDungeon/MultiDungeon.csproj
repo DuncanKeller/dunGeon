@@ -109,6 +109,7 @@
     <Compile Include="Menus\MenuItem.cs" />
     <Compile Include="Menus\MenuManager.cs" />
     <Compile Include="Menus\QuickJoinMenu.cs" />
+    <Compile Include="Menus\ServerSetupMenu.cs" />
     <Compile Include="Weapons\Bullets\Arrow.cs" />
     <Compile Include="Weapons\Bullets\Bullet.cs" />
     <Compile Include="Weapons\BulletManager.cs" />
@@ -137,6 +138,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\NetworkLibrary\NetworkLibrary.csproj">
+      <Project>{2A7DB160-3FF1-486F-9DC8-E36877ED3C7F}</Project>
+      <Name>NetworkLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MultiDungeonContent\MultiDungeonContent.contentproj">
       <Name>MultiDungeonContent</Name>
       <XnaReferenceType>Content</XnaReferenceType>

@@ -83,13 +83,17 @@ namespace MultiDungeon.Menus
             int count = 0;
             lock (World.PlayerInfo)
             {
-                foreach (var player in World.PlayerInfo)
+                try
                 {
-                    Color c = player.Value.team == 0 ? Color.Blue : Color.Red;
-                    sb.DrawString(TextureManager.Fonts["console"], player.Key.ToString(),
-                        GetPos(1, count + 1), c);
-                    count++;
+                    foreach (var player in World.PlayerInfo)
+                    {
+                        Color c = player.Value.team == 0 ? Color.Blue : Color.Red;
+                        sb.DrawString(TextureManager.Fonts["console"], player.Key.ToString(),
+                            GetPos(1, count + 1), c);
+                        count++;
+                    }
                 }
+                catch (Exception e) { }
             }
         }
     }

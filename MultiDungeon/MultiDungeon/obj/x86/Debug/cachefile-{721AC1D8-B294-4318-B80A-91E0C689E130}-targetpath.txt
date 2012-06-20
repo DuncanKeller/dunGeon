@@ -18,3 +18,4 @@ Content\Characters\ninja-blue.xnb
 Content\Characters\ninja-red.xnb
 Content\Menus\titleScreen.xnb
 Content\test.xnb
+Content\Menus\menu.xnb

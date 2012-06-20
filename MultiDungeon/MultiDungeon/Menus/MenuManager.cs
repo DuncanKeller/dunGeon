@@ -19,6 +19,7 @@ namespace MultiDungeon.Menus
         public FailedToConnectMenu failure;
         public GameLobby lobby;
         public QuickJoin quickJoin;
+        public ServerSetupMenu serverSetup;
 
         public MenuManager(Game1 game)
         {
@@ -28,6 +29,7 @@ namespace MultiDungeon.Menus
             failure = new FailedToConnectMenu(game, this);
             lobby = new GameLobby(game, this);
             quickJoin = new QuickJoin(game, this);
+            serverSetup = new ServerSetupMenu(game, this);
 
             currentMenu = main;
         }
@@ -46,6 +48,11 @@ namespace MultiDungeon.Menus
 
         public void Draw(SpriteBatch sb)
         {
+            if (currentMenu != main)
+            {
+                sb.Draw(TextureManager.Map["menu-default"], new Rectangle(0, 0,
+                    GameConst.SCREEN_WIDTH, GameConst.SCREEN_HEIGHT), Color.White);
+            }
             currentMenu.Draw(sb);
         }
     }

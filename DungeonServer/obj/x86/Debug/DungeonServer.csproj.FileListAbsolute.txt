@@ -3,3 +3,5 @@ c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\DungeonServer
 c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\DungeonServer\obj\x86\Debug\DungeonServer.exe
 c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\DungeonServer\obj\x86\Debug\DungeonServer.pdb
 C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\DungeonServer\obj\x86\Debug\DungeonServer.csprojResolveAssemblyReference.cache
+C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\DungeonServer\bin\Debug\NetworkLibrary.dll
+C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\DungeonServer\bin\Debug\NetworkLibrary.pdb

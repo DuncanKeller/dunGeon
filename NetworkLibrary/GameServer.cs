@@ -5,11 +5,10 @@ using System.Text;
 using System.Net.Sockets;
 using System.Threading;
 using System.Net;
-using Microsoft.Xna.Framework.Net;
 
-namespace DungeonServer
+namespace NetworkLibrary
 {
-    class GameServer
+    public class GameServer
     {
         Random rand = new Random();
         private TcpListener tcpListener;
@@ -17,15 +16,38 @@ namespace DungeonServer
         private Dictionary<int, TcpClient> clients = new Dictionary<int, TcpClient>();
         private int newKey = 0;
         private int seed;
+
         private int maxPlayers = 4;
         private int readyPlayers = 0;
 
+        private int mapType = 0;
+
+        private int gameType = 0;
+
         public GameServer()
         {
-           this.tcpListener = new TcpListener(IPAddress.Any, 3000);
-           this.listenThread = new Thread(new ThreadStart(BeginListen));
-           this.listenThread.Start();
-           GenerateSeed();
+           
+        }
+
+        public void Start()
+        {
+            this.tcpListener = new TcpListener(IPAddress.Any, 3000);
+            this.listenThread = new Thread(new ThreadStart(BeginListen));
+            this.listenThread.Start();
+            GenerateSeed();
+        }
+
+        /// <summary>
+        /// Initialize game elements
+        /// </summary>
+        /// <param name="p">Max number of players</param>
+        /// <param name="m">Map Type</param>
+        /// <param name="gt">Game Type</param>
+        public void InitGame(int p, int m, int gt)
+        {
+            maxPlayers = p;
+            mapType = m;
+            gameType = gt;
         }
 
         public int Seed
@@ -202,6 +224,5 @@ namespace DungeonServer
             clientStream.Write(buffer, 0, buffer.Length);
             clientStream.Flush();
         }
-
     }
 }

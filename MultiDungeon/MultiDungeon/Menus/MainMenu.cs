@@ -14,7 +14,7 @@ namespace MultiDungeon.Menus
         {
             // pos is proportional to screen size (IE, SCREENWIDTH / 20 * pos)
             AddMenuItem("Start Server", new Vector2(1, 15), 0,
-                delegate() { });
+                delegate() { menuManager.SwitchMenu(menuManager.serverSetup); });
             AddMenuItem("Join Server", new Vector2(1, 16), 0,
                 delegate() { menuManager.SwitchMenu(menuManager.join); });
             AddMenuItem("Game Settings", new Vector2(1, 17), 0,

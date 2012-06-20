@@ -48,6 +48,8 @@ namespace MultiDungeon
 
             // menu shit
             textures.Add("menu-main", c.Load<Texture2D>("Menus\\titleScreen"));
+            textures.Add("menu-default", c.Load<Texture2D>("Menus\\menu"));
+
             // fonts
             fonts.Add("console", c.Load<SpriteFont>("Fonts\\ConsoleFont"));
         }

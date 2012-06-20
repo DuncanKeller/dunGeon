@@ -45,7 +45,7 @@ namespace MultiDungeon.Menus
 
         public void Draw(SpriteBatch sb)
         {
-            Color c = selected ? Color.LightYellow : Color.LightGray;
+            Color c = selected ? Color.White : new Color(100, 100, 100);
             string append = selected ? " " : "";
             Vector2 position = new Vector2((GameConst.SCREEN_WIDTH / 20) * pos.X,
                 (GameConst.SCREEN_HEIGHT / 20) * pos.Y);
