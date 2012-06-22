@@ -80,7 +80,7 @@ namespace MultiDungeon
         public void Reset()
         {
             clip = maxClip;
-            reloadTime = 0;
+            reloadTimer = 0;
         }
 
         public abstract void Shoot();

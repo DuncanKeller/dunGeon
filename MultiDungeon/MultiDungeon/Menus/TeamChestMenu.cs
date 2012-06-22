@@ -40,7 +40,7 @@ namespace MultiDungeon.Menus
                 player.Gold -= send;
                 Client.Send("teamgold\n" + player.Team + "\n" + send + "!");
             }
-            nonSelectableItems[1].ChangeText(player.Gold.ToString());
+            UpdateGoldAmnt();
         }
 
         public override void BackOut()
@@ -59,10 +59,15 @@ namespace MultiDungeon.Menus
             player = null;
         }
 
-        public override void Init()
+        private void UpdateGoldAmnt()
         {
             nonSelectableItems[1].ChangeText(player.Gold.ToString());
             nonSelectableItems[3].ChangeText(World.endgame.teamGold[player.Team].ToString());
+        }
+
+        public override void Init()
+        {
+            UpdateGoldAmnt();
             yIndex = 0; xIndex = 0;
             menuItems[0][0].Select();
             base.Init();
