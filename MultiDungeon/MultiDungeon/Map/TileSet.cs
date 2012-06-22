@@ -510,6 +510,18 @@ namespace MultiDungeon.Map
             }
             teamRooms.Add(room1);
             teamRooms.Add(room2);
+
+            int x1 = GameConst.rand.Next(room1.Width - 2)
+                    * Tile.TILE_SIZE + (room1.X * Tile.TILE_SIZE);
+            int y1 = GameConst.rand.Next(room1.Height - 2)
+                    * Tile.TILE_SIZE + (room1.Y * Tile.TILE_SIZE);
+            int x2 = GameConst.rand.Next(room2.Width - 2)
+                    * Tile.TILE_SIZE + (room2.X * Tile.TILE_SIZE);
+            int y2 = GameConst.rand.Next(room2.Height - 2)
+                    * Tile.TILE_SIZE + (room2.Y * Tile.TILE_SIZE);
+
+            World.ItemManager.Add(new TeamChest(0, new Vector2(x1, y1)));
+            World.ItemManager.Add(new TeamChest(1, new Vector2(x2, y2)));
         }
 
         private void CreateTiles(bool[,] map, int width, int height)

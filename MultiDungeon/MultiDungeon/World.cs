@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using MultiDungeon.Map;
 using System.Timers;
 using MultiDungeon.Items;
+using MultiDungeon.Menus;
 
 namespace MultiDungeon
 {
@@ -17,10 +18,18 @@ namespace MultiDungeon
         public bool ready;
     }
 
+    struct Endgame
+    {
+        public int[] teamGold;
+    }
+
     class World
     {
         public static Random rand = new Random();
         public static int gameId;
+        public static MenuManager menuManager;
+        public static bool inMenu = false;
+        public static Endgame endgame;
         static Dictionary<int, Player> players = new Dictionary<int, Player>();
         static TileSet map;
         static int timer = 0;
@@ -28,6 +37,7 @@ namespace MultiDungeon
         static ItemManager itemManager = new ItemManager();
         static Camera cam;
         static Game1 game;
+        
 
         static Dictionary<int, PlayerInfo> playerInfo = new Dictionary<int, PlayerInfo>();
 
@@ -78,6 +88,9 @@ namespace MultiDungeon
             game = g1;
             map = new TileSet();
             cam = new Camera(g);
+            menuManager = new MenuManager(game);
+
+            endgame.teamGold = new int[2];
         }
 
         public static void StartGame()
@@ -257,9 +270,15 @@ namespace MultiDungeon
                         int seed = Int32.Parse(info[1]);
                         GameConst.rand = new Random(seed);
                     }
+                    else if (info[0] == "teamgold")
+                    {
+                        int team = Int32.Parse(info[1]);
+                        int gold = Int32.Parse(info[2]);
+                        endgame.teamGold[team] += gold;
+                    }
                     else
                     {
-                        throw new Exception("command not found");
+                        throw new Exception("command \"" + info[0] +"\" not found");
                     }
                 }
                 catch (Exception e)
@@ -331,6 +350,10 @@ namespace MultiDungeon
             // camera
             UpdateCamera();
 
+            if (inMenu)
+            {
+                menuManager.Update();
+            }
         }
 
         public static void UpdateCamera()
@@ -389,7 +412,6 @@ namespace MultiDungeon
             }
 
             bulletManager.Draw(sb);
-            
         }
 
     }

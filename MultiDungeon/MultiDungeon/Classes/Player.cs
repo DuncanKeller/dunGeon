@@ -66,7 +66,7 @@ namespace MultiDungeon
             get { return gold; }
             set
             {
-                if (value > 0 && value <= 999)
+                if (value >= 0 && value <= 999)
                 { gold = value; }
                 if (gold < 0)
                 { gold = 0; }
@@ -292,9 +292,15 @@ namespace MultiDungeon
 
         }
 
+
         public void UpdateInput(GamePadState gamePad, float deltaTime)
         {
-           
+            if (World.inMenu)
+            {
+                velocity.X = 0;
+                velocity.Y = 0;
+                return;
+            }
 
             Vector2 input = gamePad.ThumbSticks.Left;
 
@@ -348,8 +354,9 @@ namespace MultiDungeon
 
             // chests
             if (overlappingChest != null &&
-                item == null
-                && gamePad.Buttons.A == ButtonState.Pressed &&
+                item == null &&
+                !(overlappingChest is TeamChest) &&
+                gamePad.Buttons.A == ButtonState.Pressed &&
                 oldGamePad.Buttons.A == ButtonState.Released)
             {
                 item = overlappingChest.Open(this);
@@ -358,7 +365,16 @@ namespace MultiDungeon
                     item.Use(this);
                     item = null;
                 }
+               
                 Client.Send("chest" + "\n" + overlappingChest.ID + "!");
+            }
+            else if (overlappingChest != null &&
+              overlappingChest is TeamChest &&
+              overlappingChest.ID == teamNum && 
+              gamePad.Buttons.A == ButtonState.Pressed &&
+              oldGamePad.Buttons.A == ButtonState.Released)
+            {
+                overlappingChest.Open(this);
             }
 
             if (item != null && 

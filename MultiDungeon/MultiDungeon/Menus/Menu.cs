@@ -27,6 +27,11 @@ namespace MultiDungeon.Menus
             game = g;
         }
 
+        public virtual void BackOut()
+        {
+
+        }
+
         /// <summary>
         /// Add a new MenuItem to the current menu
         /// </summary>
@@ -119,6 +124,12 @@ namespace MultiDungeon.Menus
                         }
                     }
                 }
+            }
+
+            if (gs.Buttons.B == ButtonState.Pressed &&
+                oldGamepad.Buttons.B == ButtonState.Released)
+            {
+                BackOut();
             }
 
             prevIndex.Y = yIndex;

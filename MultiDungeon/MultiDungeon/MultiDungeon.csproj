@@ -100,6 +100,7 @@
     <Compile Include="Items\HealthPotion.cs" />
     <Compile Include="Items\Item.cs" />
     <Compile Include="Items\ItemManager.cs" />
+    <Compile Include="Items\TeamChest.cs" />
     <Compile Include="Menus\EnterServerMenu.cs" />
     <Compile Include="Menus\FailedToConnectMenu.cs" />
     <Compile Include="Menus\GameLobby.cs" />
@@ -110,6 +111,7 @@
     <Compile Include="Menus\MenuManager.cs" />
     <Compile Include="Menus\QuickJoinMenu.cs" />
     <Compile Include="Menus\ServerSetupMenu.cs" />
+    <Compile Include="Menus\TeamChestMenu.cs" />
     <Compile Include="Weapons\Bullets\Arrow.cs" />
     <Compile Include="Weapons\Bullets\Bullet.cs" />
     <Compile Include="Weapons\BulletManager.cs" />

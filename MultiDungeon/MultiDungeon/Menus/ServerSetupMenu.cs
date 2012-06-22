@@ -12,7 +12,7 @@ namespace MultiDungeon.Menus
     class ServerSetupMenu : Menu
     {
         int gametype = 0;
-        int players = 6;
+        int players = 1;
         int map = 0;
         GameServer server = new GameServer();
 

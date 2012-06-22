@@ -10,7 +10,7 @@ namespace MultiDungeon.Items
 {
     class Chest
     {
-        Rectangle rect;
+        protected Rectangle rect;
         Item contents;
 
         int width = Tile.TILE_SIZE;
@@ -34,7 +34,7 @@ namespace MultiDungeon.Items
             contents = i;
         }
 
-        public Item Open(Player p)
+        public virtual Item Open(Player p)
         {
             if (contents != null)
             {
@@ -45,7 +45,7 @@ namespace MultiDungeon.Items
             return p.Item;
         }
 
-        public void Open()
+        public virtual void Open()
         {
             if (contents != null)
             {
@@ -53,7 +53,7 @@ namespace MultiDungeon.Items
             }
         }
 
-        public void Draw(SpriteBatch sb)
+        public virtual void Draw(SpriteBatch sb)
         {
             if (contents == null)
             {

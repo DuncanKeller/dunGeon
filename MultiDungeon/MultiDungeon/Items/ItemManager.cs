@@ -65,6 +65,11 @@ namespace MultiDungeon.Items
             toAdd.Add(c);
         }
 
+        public void Add(TeamChest c)
+        {
+            toAdd.Add(c);
+        }
+
         public void Remove(Chest c)
         {
             toRemove.Add(c);

@@ -21,6 +21,8 @@ namespace MultiDungeon.Menus
         public QuickJoin quickJoin;
         public ServerSetupMenu serverSetup;
 
+        public TeamChestMenu teamChest;
+
         public MenuManager(Game1 game)
         {
             main = new MainMenu(game, this);
@@ -30,6 +32,8 @@ namespace MultiDungeon.Menus
             lobby = new GameLobby(game, this);
             quickJoin = new QuickJoin(game, this);
             serverSetup = new ServerSetupMenu(game, this);
+
+            teamChest = new TeamChestMenu(game, this);
 
             currentMenu = main;
         }
@@ -50,8 +54,16 @@ namespace MultiDungeon.Menus
         {
             if (currentMenu != main)
             {
-                sb.Draw(TextureManager.Map["menu-default"], new Rectangle(0, 0,
-                    GameConst.SCREEN_WIDTH, GameConst.SCREEN_HEIGHT), Color.White);
+                if (currentMenu == teamChest)
+                {
+                    sb.Draw(TextureManager.Map["blank"], new Rectangle(0, 0,
+                   GameConst.SCREEN_WIDTH, GameConst.SCREEN_HEIGHT), new Color(210,180,140,100));
+                }
+                else
+                {
+                    sb.Draw(TextureManager.Map["menu-default"], new Rectangle(0, 0,
+                   GameConst.SCREEN_WIDTH, GameConst.SCREEN_HEIGHT), Color.White);
+                }
             }
             currentMenu.Draw(sb);
         }

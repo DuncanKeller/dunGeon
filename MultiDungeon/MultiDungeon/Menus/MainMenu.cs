@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Input;
 namespace MultiDungeon.Menus
 {
     class MainMenu : Menu
-    {    
+    {
         public MainMenu(Game1 g, MenuManager mm) : base(g, mm)
         {
             // pos is proportional to screen size (IE, SCREENWIDTH / 20 * pos)
@@ -24,6 +24,7 @@ namespace MultiDungeon.Menus
 
             menuItems[0][0].Select();
         }
+
 
         public override void Init()
         {

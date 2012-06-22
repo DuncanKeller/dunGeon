@@ -10,7 +10,7 @@ namespace MultiDungeon.Menus
 {
     class GameLobby : Menu
     {
-        string classType = "";
+        string classType = "mapmaker";
         int team = 0;
         bool ready = false;
 

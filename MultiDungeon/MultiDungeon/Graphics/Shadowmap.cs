@@ -82,6 +82,13 @@ namespace MultiDungeon.Graphics
                DepthStencilState.Default, RasterizerState.CullNone, null, cam.getTransformation());
             World.DrawWallTiles(sb);
             sb.End();
+
+            sb.Begin();
+            if (World.inMenu)
+            {
+                World.menuManager.Draw(sb);
+            }
+            sb.End();
         }
 
 
