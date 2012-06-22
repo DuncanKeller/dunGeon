@@ -26,7 +26,7 @@ namespace NetworkLibrary
 
         public GameServer()
         {
-           
+            
         }
 
         public void Start()
@@ -58,6 +58,11 @@ namespace NetworkLibrary
         public void GenerateSeed()
         {
             seed = rand.Next(1024 * 4);
+        }
+
+        public void Reset()
+        {
+            readyPlayers = 0;
         }
 
         private void BeginListen()
@@ -190,6 +195,10 @@ namespace NetworkLibrary
                         StartGame();
                         readyPlayers = 0;
                     }
+                } else if (commands[0].Contains("reset"))
+                {
+                    Console.Write("reset");
+                    Reset();
                 }
                 else
                 {

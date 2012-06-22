@@ -8,7 +8,7 @@ using System.Threading;
 
 namespace MultiDungeon.Menus
 {
-    class MenuManager
+    public class MenuManager
     {
         //List<Menu> menus = new List<Menu>();
         Menu currentMenu;
@@ -20,6 +20,7 @@ namespace MultiDungeon.Menus
         public GameLobby lobby;
         public QuickJoin quickJoin;
         public ServerSetupMenu serverSetup;
+        public EndgameMenu endgame;
 
         public TeamChestMenu teamChest;
 
@@ -32,6 +33,7 @@ namespace MultiDungeon.Menus
             lobby = new GameLobby(game, this);
             quickJoin = new QuickJoin(game, this);
             serverSetup = new ServerSetupMenu(game, this);
+            endgame = new EndgameMenu(game, this);
 
             teamChest = new TeamChestMenu(game, this);
 

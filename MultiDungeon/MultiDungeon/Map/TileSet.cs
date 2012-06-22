@@ -8,7 +8,7 @@ using MultiDungeon.Items;
 
 namespace MultiDungeon.Map
 {
-    class TileSet
+    public class TileSet
     {
         List<Tile> tiles = new List<Tile>();
         Tile[,] tileMap;

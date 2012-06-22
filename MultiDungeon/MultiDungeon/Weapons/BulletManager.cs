@@ -8,7 +8,7 @@ using MultiDungeon.Map;
 
 namespace MultiDungeon
 {
-    class BulletManager
+    public class BulletManager
     {
         List<Bullet> bullets = new List<Bullet>();
         List<Bullet> toRemove = new List<Bullet>();

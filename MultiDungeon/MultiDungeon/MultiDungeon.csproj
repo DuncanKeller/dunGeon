@@ -101,6 +101,7 @@
     <Compile Include="Items\Item.cs" />
     <Compile Include="Items\ItemManager.cs" />
     <Compile Include="Items\TeamChest.cs" />
+    <Compile Include="Menus\EndgameMenu.cs" />
     <Compile Include="Menus\EnterServerMenu.cs" />
     <Compile Include="Menus\FailedToConnectMenu.cs" />
     <Compile Include="Menus\GameLobby.cs" />

@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace MultiDungeon.Menus
 {
-    class QuickJoin : Menu
+    public class QuickJoin : Menu
     {
         string ip = "";
 

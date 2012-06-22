@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace MultiDungeon.Menus
 {
-    class MainMenu : Menu
+    public class MainMenu : Menu
     {
         public MainMenu(Game1 g, MenuManager mm) : base(g, mm)
         {

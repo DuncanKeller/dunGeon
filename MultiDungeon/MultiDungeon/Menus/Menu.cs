@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace MultiDungeon.Menus
 {
-    class Menu
+    public class Menu
     {
         protected List<List<MenuItem>> menuItems = new List<List<MenuItem>>();
         protected List<MenuItem> nonSelectableItems = new List<MenuItem>();

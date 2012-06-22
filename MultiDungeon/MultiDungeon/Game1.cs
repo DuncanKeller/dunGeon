@@ -21,7 +21,7 @@ namespace MultiDungeon
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        MenuManager menu;
+        public MenuManager menu;
 
         public enum GameState
         {
@@ -35,6 +35,12 @@ namespace MultiDungeon
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+        }
+
+        public MenuManager Menu
+        {
+            get { return menu; }
+            set { menu = value; }
         }
 
         /// <summary>
@@ -94,9 +100,9 @@ namespace MultiDungeon
                     menu.Update();
                     break;
                 case GameState.game:
-                    World.Update(gameTime.ElapsedGameTime.Milliseconds);
                     Shadowmap.Update(World.Player.Position);
                     Hud.Update();
+                    World.Update(gameTime.ElapsedGameTime.Milliseconds);
                     break;
             }
 

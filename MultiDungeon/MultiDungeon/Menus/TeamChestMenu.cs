@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace MultiDungeon.Menus
 {
-    class TeamChestMenu : Menu
+    public class TeamChestMenu : Menu
     {
         Player player = null;
 
@@ -59,7 +59,7 @@ namespace MultiDungeon.Menus
             player = null;
         }
 
-        private void UpdateGoldAmnt()
+        public void UpdateGoldAmnt()
         {
             nonSelectableItems[1].ChangeText(player.Gold.ToString());
             nonSelectableItems[3].ChangeText(World.endgame.teamGold[player.Team].ToString());

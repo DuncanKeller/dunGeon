@@ -9,7 +9,7 @@ using NetworkLibrary;
 
 namespace MultiDungeon.Menus
 {
-    class ServerSetupMenu : Menu
+    public class ServerSetupMenu : Menu
     {
         int gametype = 0;
         int players = 1;

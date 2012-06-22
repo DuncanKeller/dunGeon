@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MultiDungeon.Items
 {
-    abstract class Item
+    public abstract class Item
     {
         protected Texture2D texture;
 

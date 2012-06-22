@@ -10,7 +10,7 @@ using MultiDungeon.Items;
 
 namespace MultiDungeon
 {
-    struct Upgrade
+    public struct Upgrade
     {
         public double maxHealth;
         public float speed;
@@ -26,7 +26,7 @@ namespace MultiDungeon
         public bool power2;
     }
 
-    abstract class Player
+    public abstract class Player
     {
         int id;
         int teamNum;

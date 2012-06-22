@@ -7,13 +7,13 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MultiDungeon.Map
 {
-    enum TileType
+    public enum TileType
     {
         floor,
         wall
     }
 
-    class Tile
+    public class Tile
     {
         public static int TILE_SIZE = 64;
         TileType type;

@@ -13,7 +13,7 @@ using Newtonsoft.Json.Linq;
 
 namespace MultiDungeon.Menus
 {
-    class JoinServerMenu : Menu
+    public class JoinServerMenu : Menu
     {
         List<string> names = new List<string>();
         List<string> ips = new List<string>();

@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MultiDungeon
 {
-    abstract class Gun : Weapon
+    public abstract class Gun : Weapon
     {
         BulletManager manager;
         Type bulletType;

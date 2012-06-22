@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace MultiDungeon.Menus
 {
-    class EnterServerMenu : Menu
+    public class EnterServerMenu : Menu
     {
         string ip = "";
         string name = "";

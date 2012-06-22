@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MultiDungeon.Menus
 {
-    class FailedToConnectMenu : Menu
+    public class FailedToConnectMenu : Menu
     {
         public FailedToConnectMenu(Game1 g, MenuManager mm)
             : base(g, mm)

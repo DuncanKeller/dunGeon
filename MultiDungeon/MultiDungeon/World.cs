@@ -21,6 +21,7 @@ namespace MultiDungeon
     struct Endgame
     {
         public int[] teamGold;
+        public int maxTeamGold;
     }
 
     class World
@@ -90,7 +91,13 @@ namespace MultiDungeon
             cam = new Camera(g);
             menuManager = new MenuManager(game);
 
+            InitEndgameStruct();
+        }
+
+        private static void InitEndgameStruct()
+        {
             endgame.teamGold = new int[2];
+            endgame.maxTeamGold = 100;
         }
 
         public static void StartGame()
@@ -275,6 +282,7 @@ namespace MultiDungeon
                         int team = Int32.Parse(info[1]);
                         int gold = Int32.Parse(info[2]);
                         endgame.teamGold[team] += gold;
+                        menuManager.teamChest.UpdateGoldAmnt();
                     }
                     else
                     {
@@ -304,6 +312,46 @@ namespace MultiDungeon
             }
         }
         #endregion
+
+        private static void CheckEndgame()
+        {
+            int gameType = 0;
+            bool end = false;
+
+            switch (gameType)
+            {
+                case 0:
+                    if (endgame.teamGold[0] >= endgame.maxTeamGold ||
+                        endgame.teamGold[1] >= endgame.maxTeamGold)
+                    {
+                        game.Menu.endgame.SetTeam(endgame.teamGold[0] > endgame.teamGold[1] ? 0 : 1);
+                        game.state = Game1.GameState.menu;
+                        game.Menu.SwitchMenu(game.Menu.endgame);
+                        end = true;
+                    }
+                    break;
+            }
+
+            if (end)
+            {
+                Reset();
+            }
+        }
+
+        public static void Reset()
+        {
+            for (int i = 0; i < endgame.teamGold.Length; i++ )
+            {
+                endgame.teamGold[i] = 0;
+            }
+            players.Clear();
+            Client.Send("reset!");
+        }
+
+        public static void Disconnect()
+        {
+            Client.Close();
+        }
 
         public static bool InitNetwork(string ip)
         {
@@ -354,6 +402,8 @@ namespace MultiDungeon
             {
                 menuManager.Update();
             }
+
+            CheckEndgame();
         }
 
         public static void UpdateCamera()

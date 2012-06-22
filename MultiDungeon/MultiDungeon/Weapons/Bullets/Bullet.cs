@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MultiDungeon
 {
-    class Bullet
+    public class Bullet
     {
         Vector2 pos;
         float angle;

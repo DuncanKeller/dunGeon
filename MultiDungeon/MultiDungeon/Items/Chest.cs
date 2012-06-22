@@ -8,7 +8,7 @@ using MultiDungeon.Map;
 
 namespace MultiDungeon.Items
 {
-    class Chest
+    public class Chest
     {
         protected Rectangle rect;
         Item contents;

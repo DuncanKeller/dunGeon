@@ -8,7 +8,7 @@ using System.Threading;
 
 namespace MultiDungeon.Menus
 {
-    class GameLobby : Menu
+    public class GameLobby : Menu
     {
         string classType = "mapmaker";
         int team = 0;
@@ -58,6 +58,7 @@ namespace MultiDungeon.Menus
         {
             yIndex = 0; xIndex = 0;
             menuItems[0][0].Select();
+            ready = false;
             base.Init();
             Thread.Sleep(150);
             Client.Send("connect" + "\n" + World.gameId + "!");

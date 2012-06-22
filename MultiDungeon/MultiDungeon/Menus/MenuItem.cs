@@ -7,9 +7,9 @@ using Microsoft.Xna.Framework;
 
 namespace MultiDungeon.Menus
 {
-    delegate void MenuAction();
+    public delegate void MenuAction();
 
-    class MenuItem
+    public class MenuItem
     {
         string text;
         Vector2 pos;

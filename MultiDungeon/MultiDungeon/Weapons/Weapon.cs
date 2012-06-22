@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MultiDungeon
 {
-    class Weapon
+    public class Weapon
     {
     }
 }
