@@ -16,6 +16,7 @@ namespace NetworkLibrary
         private Dictionary<int, TcpClient> clients = new Dictionary<int, TcpClient>();
         private int newKey = 0;
         private int seed;
+        private bool runnning = true;
 
         private int maxPlayers = 4;
         private int readyPlayers = 0;
@@ -31,12 +32,20 @@ namespace NetworkLibrary
 
         public void Start()
         {
-            this.tcpListener = new TcpListener(IPAddress.Any, 3000);
-            this.listenThread = new Thread(new ThreadStart(BeginListen));
-            this.listenThread.Start();
+            tcpListener = new TcpListener(IPAddress.Any, 3000);
+            listenThread = new Thread(new ThreadStart(BeginListen));
+            listenThread.Start();
             GenerateSeed();
-        }
 
+            while (runnning)
+            {
+
+            }
+
+            tcpListener.Stop();
+            //listenThread.Join();
+        }
+        
         /// <summary>
         /// Initialize game elements
         /// </summary>
@@ -63,6 +72,15 @@ namespace NetworkLibrary
         public void Reset()
         {
             readyPlayers = 0;
+            GenerateSeed(); foreach (int id in clients.Keys)
+            {
+                Send("rand\n" + seed.ToString() + "!", id);
+            }
+        }
+
+        public void Close()
+        {
+            runnning = false;
         }
 
         private void BeginListen()
@@ -70,38 +88,21 @@ namespace NetworkLibrary
             // start listening
             tcpListener.Start();
 
-            while (true)
+            try
             {
-                // grab dat client
-                TcpClient client = tcpListener.AcceptTcpClient();
-
-                // send 'em off on his own little thread
-                Thread clientThread = new Thread(new ParameterizedThreadStart(HandleClient));
-                clientThread.Start(client);
-            }
-        }
-
-        public  void SetTeams()
-        {
-            int counter = 0;
-            int players = clients.Count;
-            int numTeams = 2;
-
-            Dictionary<int, int> idToTeamNum = new Dictionary<int, int>();
-
-            foreach (int id in clients.Keys)
-            {
-                int teamNum = counter / numTeams;
-                idToTeamNum.Add(id, teamNum);
-                counter++;
-            }
-
-            foreach (int id in clients.Keys)
-            {
-                foreach (int player in idToTeamNum.Keys)
+                while (runnning)
                 {
-                    Send("team\n" + player.ToString() + "\n" + (idToTeamNum[player]) + "!", id);
+                    // grab dat client
+                    TcpClient client = tcpListener.AcceptTcpClient();
+
+                    // send 'em off on his own little thread
+                    Thread clientThread = new Thread(new ParameterizedThreadStart(HandleClient));
+                    clientThread.Start(client);
                 }
+            }
+            catch (SocketException e)
+            {
+                // server closed
             }
         }
 

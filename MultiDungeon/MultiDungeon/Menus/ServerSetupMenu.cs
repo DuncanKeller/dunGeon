@@ -14,7 +14,13 @@ namespace MultiDungeon.Menus
         int gametype = 0;
         int players = 1;
         int map = 0;
-        GameServer server = new GameServer();
+        GameServer server = null;
+
+        public GameServer Server
+        {
+            get { return server; }
+            set { server = value; }
+        }
 
         public ServerSetupMenu(Game1 g, MenuManager mm)
             : base(g, mm)
@@ -50,6 +56,7 @@ namespace MultiDungeon.Menus
 
         public void StartServer()
         {
+            server = new GameServer();
             //start server
             Thread serverThread = new Thread(server.Start);
             server.InitGame(players, map, gametype);

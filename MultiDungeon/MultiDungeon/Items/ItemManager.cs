@@ -23,6 +23,14 @@ namespace MultiDungeon.Items
             //test
         }
 
+        public void Reset()
+        {
+            foreach (Chest c in chests)
+            {
+                toRemove.Add(c);
+            }
+        }
+
         public void Update()
         {
             Cleanup();

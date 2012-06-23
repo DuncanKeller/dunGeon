@@ -66,6 +66,14 @@ namespace MultiDungeon.Map
             get { return height; }
         }
 
+        public void Reset()
+        {
+            teamRooms.Clear();
+            rooms.Clear();
+            cooridors.Clear();
+            tiles.Clear();
+        }
+
         public List<Tile> GetTilesNear(int x, int y)
         {
             List<Tile> toReturn = new List<Tile>();
@@ -355,7 +363,6 @@ namespace MultiDungeon.Map
                 completed = true;
             }
 
-
             for (int x = hall.X; x < hall.Right; x++)
             {
                 for (int y = hall.Y; y < hall.Bottom; y++)
@@ -472,7 +479,6 @@ namespace MultiDungeon.Map
                 while (rooms.Count < numRooms)
                 {
                     MakeCooridor(ref map, width, height, maxWidth, maxHeight);
-
                 }
 
                 GenerateTeamRooms();

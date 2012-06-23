@@ -340,17 +340,25 @@ namespace MultiDungeon
 
         public static void Reset()
         {
+            inMenu = false;
             for (int i = 0; i < endgame.teamGold.Length; i++ )
             {
                 endgame.teamGold[i] = 0;
             }
             players.Clear();
+            map.Reset();
+            itemManager.Reset();
             Client.Send("reset!");
         }
 
         public static void Disconnect()
         {
+            players.Clear();
             Client.Close();
+            if (game.Menu.serverSetup.Server != null)
+            {
+                game.Menu.serverSetup.Server.Close();
+            }
         }
 
         public static bool InitNetwork(string ip)
