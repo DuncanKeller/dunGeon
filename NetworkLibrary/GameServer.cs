@@ -227,6 +227,7 @@ namespace NetworkLibrary
 
         public void Send(string data, int id)
         {
+            Console.Write(data);
             NetworkStream clientStream = clients[id].GetStream();
             ASCIIEncoding encoder = new ASCIIEncoding();
             byte[] buffer = encoder.GetBytes(data);

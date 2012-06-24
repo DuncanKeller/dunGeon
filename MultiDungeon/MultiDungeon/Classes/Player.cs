@@ -115,6 +115,11 @@ namespace MultiDungeon
             get { return pos; }
         }
 
+        public Vector2 LightPosition
+        {
+            get { return new Vector2(pos.X + Rect.Width / 2, pos.Y + Rect.Height / 2); }
+        }
+            
         public Gun CurrentGun
         {
             get { return guns[gunIndex]; }

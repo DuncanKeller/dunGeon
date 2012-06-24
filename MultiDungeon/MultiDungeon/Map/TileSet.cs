@@ -22,10 +22,11 @@ namespace MultiDungeon.Map
         int height;
 
         List<Rectangle> teamRooms = new List<Rectangle>();
+        ColorScheme colorScheme;
 
         public TileSet()
         {
-            GenerateLobby();
+            
         }
 
         public Tile this[int x, int y]
@@ -113,7 +114,7 @@ namespace MultiDungeon.Map
                     room.X < 1 ||
                     room.Y < 1)
                 {
-                    //continue;
+                    continue;
                 }
 
                 // test for intersection with rooms
@@ -204,6 +205,7 @@ namespace MultiDungeon.Map
                     if (r.Intersects(checkRect))
                     {
                         overlapping = true;
+                        break;
                     }
                 }
 
@@ -224,6 +226,7 @@ namespace MultiDungeon.Map
                         if (map[x, y])
                         {
                             overlapping = true;
+                            break;
                         }
                     }
                 }
@@ -251,6 +254,7 @@ namespace MultiDungeon.Map
 
             while (!completed)
             {
+                
                 hall = GetEntrance(map, mwidth, mheight);
                 bool overlapping = false;
 
@@ -258,14 +262,14 @@ namespace MultiDungeon.Map
                 foreach (Rectangle room in rooms)
                 {
                     if (room.Intersects(hall))
-                    { overlapping = true; }
+                    { overlapping = true; break; }
                 }
 
                 // check for intersection with cooridors
                 foreach (Rectangle coor in cooridors)
                 {
                     if (coor.Intersects(hall))
-                    { overlapping = true; }
+                    { overlapping = true; break; }
                 }
 
                 // check for out of bounds
@@ -343,6 +347,7 @@ namespace MultiDungeon.Map
                         if (map[x, y])
                         {
                             overlapping = true;
+                            break;
                         }
                     }
                 }
@@ -415,41 +420,6 @@ namespace MultiDungeon.Map
             }
         }
 
-        public void GenerateLobby()
-        {
-            tiles.Clear();
-
-            int width = 15;
-            int height = 10;
-
-            bool[,] map = new bool[width, height];
-
-            this.width = width;
-            this.height = height;
-
-            for (int x = 0; x < width; x++)
-            {
-                for (int y = 0; y < height; y++)
-                {
-                    map[x, y] = true;
-                }
-            }
-
-            for (int x = 0; x < width; x++)
-            {
-                map[x, 0] = false;
-                map[x, height - 1] = false;
-            }
-            for (int y = 0; y < height; y++)
-            {
-                map[0, y] = false;
-                map[width - 1, y] = false;
-            }
-
-
-            CreateTiles(map, width, height);
-        }
-
         public void GenerateMap(int width, int height)
         {
             lock (tiles)
@@ -469,8 +439,8 @@ namespace MultiDungeon.Map
                     }
                 }
 
-                int maxWidth = width / 5;
-                int maxHeight = height / 5;
+                int maxWidth = width / 6;
+                int maxHeight = height / 6;
                 int maxArea = (width * height) / 5;
 
 
@@ -484,6 +454,7 @@ namespace MultiDungeon.Map
                 GenerateTeamRooms();
                 Populate();
                 CreateTiles(map, width, height);
+                InitColorPalets();
             }
         }
 
@@ -552,11 +523,32 @@ namespace MultiDungeon.Map
             }
         }
 
+        public void InitColorPalets()
+        {
+            colorScheme.floors = new List<Color>();
+            colorScheme.walls = new List<Color>();
+
+            colorScheme.floors.Add(Color.DarkSlateBlue);
+            colorScheme.walls.Add(Color.DarkSlateBlue);
+
+            colorScheme.floors.Add(Color.DarkSlateGray);
+            colorScheme.walls.Add(Color.ForestGreen);
+
+            GetColorScheme();
+        }
+
+        public void GetColorScheme()
+        {
+            int rand = GameConst.rand.Next(colorScheme.walls.Count);
+            colorScheme.wall = colorScheme.walls[rand];
+            colorScheme.floor = colorScheme.floors[rand];
+        }
+
         public void Draw(SpriteBatch sb)
         {
             foreach (Tile t in tiles)
             {
-                t.Draw(sb);
+                t.Draw(sb, colorScheme);
             }
         }
 
@@ -566,7 +558,7 @@ namespace MultiDungeon.Map
             {
                 if (t.Type == TileType.floor)
                 {
-                    t.Draw(sb);
+                    t.Draw(sb, colorScheme);
                 }
             }
         }
@@ -577,7 +569,7 @@ namespace MultiDungeon.Map
             {
                 if (t.Type == TileType.wall)
                 {
-                    t.Draw(sb);
+                    t.Draw(sb, colorScheme);
                 }
             }
         }

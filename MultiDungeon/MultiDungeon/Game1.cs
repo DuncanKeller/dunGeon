@@ -100,7 +100,7 @@ namespace MultiDungeon
                     menu.Update();
                     break;
                 case GameState.game:
-                    Shadowmap.Update(World.Player.Position);
+                    Shadowmap.Update(World.Player.LightPosition);
                     Hud.Update();
                     World.Update(gameTime.ElapsedGameTime.Milliseconds);
                     break;

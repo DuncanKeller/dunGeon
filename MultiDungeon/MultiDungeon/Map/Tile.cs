@@ -13,6 +13,15 @@ namespace MultiDungeon.Map
         wall
     }
 
+    public struct ColorScheme
+    {
+        public Color wall;
+        public Color floor;
+
+        public List<Color> walls;
+        public List<Color> floors;
+    }
+
     public class Tile
     {
         public static int TILE_SIZE = 64;
@@ -40,17 +49,20 @@ namespace MultiDungeon.Map
             type = t;
         }
 
-        public void Draw(SpriteBatch sb)
+        public void Draw(SpriteBatch sb, ColorScheme colorScheme)
         {
-            Color color = Color.DarkSlateBlue;
+            Color color = Color.White;
+
             Texture2D texture = null;
             switch (type)
             {
                 case TileType.floor:
                     texture = TextureManager.Map["blank"];
+                    color = colorScheme.floor;
                     break;
                 case TileType.wall:
                     texture = TextureManager.Map["tile"];
+                    color = colorScheme.wall;
                     break;
             }
             sb.Draw(texture, Rect, color);

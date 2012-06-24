@@ -24,6 +24,8 @@ namespace MultiDungeon.HUD
         static int HEIGHT = 5;
         static int SPACING = 1;
 
+        public static bool initialized = false;
+
         public static void Init(TileSet ts)
         {
             tiles = ts;
@@ -36,10 +38,13 @@ namespace MultiDungeon.HUD
                     map[x, y] = Location.unknown;
                 }
             }
+            initialized = true;
         }
 
         public static void Update(Player p)
         {
+            if (!initialized)
+            { return; }
             if (p.Team == World.Player.Team)
             {
                 Vector2 playerLoc = p.Position;
@@ -65,7 +70,6 @@ namespace MultiDungeon.HUD
                                 }
                             }
                         }
-
                     }
                 }
             }
@@ -73,6 +77,8 @@ namespace MultiDungeon.HUD
 
         public static void Draw(SpriteBatch sb, Vector2 pos)
         {
+            if (!initialized)
+            { return; }
             for (int x = 0; x < tiles.WidthIndex; x++)
             {
                 for (int y = 0; y < tiles.HeightIndex; y++)

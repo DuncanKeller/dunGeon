@@ -102,10 +102,10 @@ namespace MultiDungeon
 
         public static void StartGame()
         {
-            game.state = Game1.GameState.game;
-            map.GenerateMap(35, 35);
+            map.GenerateMap(45, 45);
             Player.Spawn();
             MultiDungeon.HUD.Map.Init(World.Map);
+            game.state = Game1.GameState.game;
         }
 
         #region NetworkClient
@@ -118,8 +118,8 @@ namespace MultiDungeon
                     continue;
                 }
                 string[] info = data.Split("\n".ToCharArray());
-                try
-                {
+                //try
+                //{
                     if (info[0] == "id")
                     {
                         int id = Int32.Parse(info[1]);
@@ -288,11 +288,11 @@ namespace MultiDungeon
                     {
                         throw new Exception("command \"" + info[0] +"\" not found");
                     }
-                }
-                catch (Exception e)
-                {
-                    Console.Write(e.Message, MessageType.urgent);
-                }
+                //}
+                //catch (Exception e)
+                //{
+                //    Console.Write(e.Message, MessageType.urgent);
+                //}
 
                 // print all non-position commands to the console
                 if (info[0] != "p")
@@ -347,6 +347,7 @@ namespace MultiDungeon
             }
             players.Clear();
             map.Reset();
+            HUD.Map.initialized = false;
             itemManager.Reset();
             Client.Send("reset!");
         }
@@ -416,7 +417,7 @@ namespace MultiDungeon
 
         public static void UpdateCamera()
         {
-            cam.pos = players[gameId].Position;
+            cam.pos = players[gameId].LightPosition;
             
             /*
             if (players[gameId].Position.X > GameConst.SCREEN_WIDTH / 2 &&

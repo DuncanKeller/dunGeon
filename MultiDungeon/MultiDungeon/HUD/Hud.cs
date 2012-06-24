@@ -12,7 +12,7 @@ namespace MultiDungeon.HUD
         static Rectangle healthRect;
         public static void Init()
         {
-            Map.Init(World.Map);
+            //Map.Init(World.Map);
         }
 
         public static void Update()
@@ -20,8 +20,7 @@ namespace MultiDungeon.HUD
             foreach (Player p in World.Players)
             {
                 // test for mapmaker here
-                // change "Player" to "Mapmaker" after classes are implemented
-                if (p is Mapmaker) // <- CHANGE ME
+                if (p is Mapmaker)
                 {
                     Map.Update(p);
                 }

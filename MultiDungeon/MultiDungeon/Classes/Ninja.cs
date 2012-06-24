@@ -11,7 +11,7 @@ namespace MultiDungeon
     class Ninja : Player
     {
         int visibility;
-        int maxInvis = 30;
+        int maxInvis = 60;
         float invisTimer;
         int maxTimer = 1000;
         public Ninja(float x, float y, int id)
@@ -51,6 +51,9 @@ namespace MultiDungeon
                 visibility = 255;
             }
             c.A = (byte)visibility;
+            c.R = (byte)visibility;
+            c.G = (byte)visibility;
+            c.B = (byte)visibility;
             base.Update(deltaTime);
         }
 
