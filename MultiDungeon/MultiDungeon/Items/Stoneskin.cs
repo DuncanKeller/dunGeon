@@ -8,10 +8,6 @@ namespace MultiDungeon.Items
 {
     class Stoneskin : Item
     {
-        // 1 - full health
-        // 2 - half health
-        // 3 - third health
-        // 4 - fourth health
         float toRestore = 0;
 
         public Stoneskin()
@@ -22,8 +18,8 @@ namespace MultiDungeon.Items
 
         public override RestoreAction Use(Player p)
         {
-            toRestore = p.Speed / 3;
-            p.Speed /= 3;
+            toRestore = p.Speed - (p.Speed / 3);
+            p.Speed -= toRestore;
             p.Weakness = 0.5;
             p.statusColor = Color.DarkGray;
             return Restore;
@@ -33,7 +29,7 @@ namespace MultiDungeon.Items
         {
             p.Speed += toRestore;
             p.Weakness = 0;
-            p.statusColor = Color.Black;
+            p.statusColor = Color.White;
             toRestore = 0;
         }
     }

@@ -39,13 +39,18 @@ namespace MultiDungeon
         static Camera cam;
         static Game1 game;
         
-
         static Dictionary<int, PlayerInfo> playerInfo = new Dictionary<int, PlayerInfo>();
 
         public static Dictionary<int, PlayerInfo> PlayerInfo
         {
             get { return playerInfo; }
             set { playerInfo = value; }
+        }
+
+        public static Game1 Game
+        {
+            get { return game; }
+            set { game = value; }
         }
 
         public static BulletManager BulletManager
@@ -418,36 +423,6 @@ namespace MultiDungeon
         public static void UpdateCamera()
         {
             cam.pos = players[gameId].LightPosition;
-            
-            /*
-            if (players[gameId].Position.X > GameConst.SCREEN_WIDTH / 2 &&
-                players[gameId].Position.X < map.Width - (GameConst.SCREEN_WIDTH / 2))
-            {
-                cam.pos.X = players[gameId].Position.X;
-            }
-            else if (players[gameId].Position.X <= GameConst.SCREEN_WIDTH / 2)
-            {
-                cam.pos.X = GameConst.SCREEN_WIDTH / 2;
-            }
-            else if (players[gameId].Position.X >= map.Width - (GameConst.SCREEN_WIDTH / 2))
-            {
-                cam.pos.X = map.Width - (GameConst.SCREEN_WIDTH / 2);
-            }
-
-            if (players[gameId].Position.Y > GameConst.SCREEN_HEIGHT / 2 &&
-                players[gameId].Position.Y < map.Height - (GameConst.SCREEN_HEIGHT / 2))
-            {
-                cam.pos.Y = players[gameId].Position.Y;
-            }
-            else if (players[gameId].Position.Y <= GameConst.SCREEN_HEIGHT / 2)
-            {
-                cam.pos.Y = GameConst.SCREEN_HEIGHT / 2;
-            }
-            else if (players[gameId].Position.Y >= map.Height - (GameConst.SCREEN_HEIGHT / 2))
-            {
-                cam.pos.Y = map.Height - (GameConst.SCREEN_HEIGHT / 2);
-            }
-             */
         }
 
         public static void DrawGroundTiles(SpriteBatch sb)
@@ -464,13 +439,15 @@ namespace MultiDungeon
         {
             //DrawWallTiles(sb);
             itemManager.Draw(sb);
+            bulletManager.Draw(sb);
+        }
 
+        public static void DrawPlayers(SpriteBatch sb)
+        {
             foreach (var p in players)
             {
                 p.Value.Draw(sb);
             }
-
-            bulletManager.Draw(sb);
         }
 
     }

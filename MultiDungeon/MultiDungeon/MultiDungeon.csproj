@@ -101,6 +101,7 @@
     <Compile Include="Items\Item.cs" />
     <Compile Include="Items\ItemManager.cs" />
     <Compile Include="Items\Juice.cs" />
+    <Compile Include="Items\SeeingEye.cs" />
     <Compile Include="Items\Stoneskin.cs" />
     <Compile Include="Items\TeamChest.cs" />
     <Compile Include="Menus\EndgameMenu.cs" />

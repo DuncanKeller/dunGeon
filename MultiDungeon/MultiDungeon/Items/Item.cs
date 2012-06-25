@@ -13,6 +13,13 @@ namespace MultiDungeon.Items
     {
         protected Texture2D texture;
 
+        protected double effectTime = 0;
+
+        public double EffectTime
+        {
+            get { return effectTime; }
+        }
+
         public abstract RestoreAction Use(Player p);
 
         public void Draw(SpriteBatch sb, Vector2 v)

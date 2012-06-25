@@ -6,31 +6,26 @@ using Microsoft.Xna.Framework;
 
 namespace MultiDungeon.Items
 {
-    class Juice : Item
+    class SeeingEye : Item
     {
-        float toRestore = 0;
-
-        public Juice()
+        public SeeingEye()
             : base()
         {
-            texture = TextureManager.Map["juice"];
+            texture = TextureManager.Map["eye"];
+            effectTime = 15;
         }
 
         public override RestoreAction Use(Player p)
         {
-            toRestore = p.Speed;
-            p.Speed += p.Speed;
-            p.Weakness = 1.5;
-            p.statusColor = Color.GreenYellow;
+            World.Game.shadowColor = new Color(20, 20, 20, 100);
+            p.statusColor = Color.LightYellow;
             return Restore;
         }
 
         public void Restore(Player p)
         {
-            p.Speed -= toRestore;
-            p.Weakness = 0;
+            World.Game.shadowColor = Color.Black;
             p.statusColor = Color.White;
-            toRestore = 0;
         }
     }
 }

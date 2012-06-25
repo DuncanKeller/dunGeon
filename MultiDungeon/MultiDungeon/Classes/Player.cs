@@ -419,10 +419,24 @@ namespace MultiDungeon
             {
                 if (restore == null)
                 {
+                    if (item.EffectTime == 0)
+                    {
+                        itemTimer = itemTime;
+                    }
+                    else
+                    {
+                        itemTimer = item.EffectTime;
+                    }
                     restore = item.Use(this);
-                    itemTimer = itemTime;
                     item = null;
                 }
+            }
+
+            if (item != null &&
+                gamePad.Buttons.Y == ButtonState.Pressed &&
+                oldGamePad.Buttons.Y == ButtonState.Released)
+            {
+                item = null;
             }
 
             if (gamePad.Buttons.B == ButtonState.Pressed &&

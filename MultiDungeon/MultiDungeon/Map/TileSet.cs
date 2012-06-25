@@ -406,7 +406,7 @@ namespace MultiDungeon.Map
                 Vector2 chestPos = new Vector2(x,y);
 
                 Item item = null;
-                switch (GameConst.rand.Next(4))
+                switch (GameConst.rand.Next(5))
                 {
                     case 0:
                         item = new HealthPotion(HealingLevel.strong);
@@ -419,6 +419,9 @@ namespace MultiDungeon.Map
                         break;
                     case 3:
                         item = new Stoneskin();
+                        break;
+                    case 4:
+                        item = new SeeingEye();
                         break;
                 }
 

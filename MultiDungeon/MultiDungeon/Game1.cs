@@ -22,6 +22,7 @@ namespace MultiDungeon
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         public MenuManager menu;
+        public Color shadowColor = Color.Black;
 
         public enum GameState
         {
@@ -126,7 +127,7 @@ namespace MultiDungeon
                     spriteBatch.End();
                     break;
                 case GameState.game:
-                    Shadowmap.Draw(spriteBatch, World.Camera);
+                    Shadowmap.Draw(spriteBatch, World.Camera, shadowColor);
                     spriteBatch.Begin();
                     Hud.Draw(spriteBatch);
                     spriteBatch.End();

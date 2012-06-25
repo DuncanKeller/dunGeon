@@ -35,7 +35,7 @@ namespace MultiDungeon.Graphics
             light.LightPosition = p;
         }
 
-        public static void Draw(SpriteBatch sb, Camera cam)
+        public static void Draw(SpriteBatch sb, Camera cam, Color c)
         {
             // light
             light.BeginDrawingShadowCasters();
@@ -50,7 +50,7 @@ namespace MultiDungeon.Graphics
                 light.LightPosition);
 
             graphics.SetRenderTarget(screenShadows);
-            graphics.Clear(Color.Black);
+            graphics.Clear(c);
             sb.Begin(SpriteSortMode.Deferred, BlendState.Additive, SamplerState.PointClamp,
                 DepthStencilState.Default, RasterizerState.CullNone, null, cam.getTransformation());
             sb.Draw(light.RenderTarget, light.LightPosition - light.LightAreaSize * 0.5f, Color.White);
@@ -64,8 +64,12 @@ namespace MultiDungeon.Graphics
                 DepthStencilState.Default, RasterizerState.CullNone, null, cam.getTransformation());
             World.DrawGroundTiles(sb);
             sb.End();
-            
 
+            sb.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp,
+               DepthStencilState.Default, RasterizerState.CullNone, null, cam.getTransformation());
+            World.DrawScene(sb);
+            sb.End();
+            
             BlendState blendState = new BlendState();
             blendState.ColorSourceBlend = Blend.DestinationColor;
             blendState.ColorDestinationBlend = Blend.SourceColor;
@@ -82,7 +86,7 @@ namespace MultiDungeon.Graphics
 
             sb.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp,
                DepthStencilState.Default, RasterizerState.CullNone, null, cam.getTransformation());
-            World.DrawScene(sb);
+            World.DrawPlayers(sb);
             sb.End();
 
             sb.Begin();
