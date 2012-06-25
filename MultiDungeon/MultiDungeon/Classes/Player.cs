@@ -13,6 +13,7 @@ namespace MultiDungeon
     public struct Upgrade
     {
         public double maxHealth;
+        public float maxSpeed;
         public float speed;
 
         public int damage;
@@ -32,26 +33,32 @@ namespace MultiDungeon
         int teamNum;
         Vector2 pos;
         Vector2 velocity;
-        protected float maxSpeed;
         float angle;
 
         float timer = 0;
         public PlayerIndex playerIndex = PlayerIndex.One;
         GamePadState oldGamePad;
 
-        Item item;
         double health;
-        int gold;
+        double weakness;
 
+        Item item;
+
+        double itemTimer;
+        double itemTime = 5; // seconds
+        RestoreAction restore = null;
+        Chest overlappingChest = null;
+
+        int gold;
         public Upgrade upgrade;
 
         bool alive = true;
 
-        public Color c = Color.White;
+        public Color color = Color.White;
+        public Color statusColor = Color.White;
 
         protected List<Gun> guns = new List<Gun>();
-        int gunIndex = 0;
-        Chest overlappingChest = null;
+        int gunIndex = 0; 
 
         protected Texture2D characterTest;
 
@@ -88,10 +95,22 @@ namespace MultiDungeon
             get { return upgrade.maxHealth; }
         }
 
+        public double Weakness
+        {
+            get { return weakness; }
+            set { weakness = value; }
+        }
+
         public Upgrade Upgrade
         {
             get { return upgrade; }
             set { upgrade = value; }
+        }
+
+        public float Speed
+        {
+            get { return upgrade.maxSpeed; }
+            set { upgrade.maxSpeed = value; }
         }
 
         public double Health
@@ -160,8 +179,7 @@ namespace MultiDungeon
         {
             this.id = id;
             pos = new Vector2(x, y);
-            upgrade.speed = 1;
-            maxSpeed = 1;
+            upgrade.maxSpeed = 1;
             velocity = new Vector2();
 
             upgrade.maxHealth = 6;
@@ -188,7 +206,7 @@ namespace MultiDungeon
             veloc *= 3;
             velocity += veloc;
 
-            health -= b.Damage;
+            health -= b.Damage + (Weakness * b.Damage);
             
             if (health < 0 && alive)
             {
@@ -250,6 +268,19 @@ namespace MultiDungeon
 
                 CurrentGun.Update(deltaTime);
                 UpdateChest(World.ItemManager.Chests);
+                if (itemTimer > 0)
+                {
+                    itemTimer -= deltaTime / 1000;
+                }
+                else
+                {
+                    itemTimer = 0;
+                    if (restore != null)
+                    {
+                        restore(this);
+                        restore = null;
+                    }
+                }
             }
         }
 
@@ -309,24 +340,24 @@ namespace MultiDungeon
 
             Vector2 input = gamePad.ThumbSticks.Left;
 
-            velocity.X += input.X * upgrade.speed * (deltaTime / 100);
-            velocity.Y += -input.Y * upgrade.speed * (deltaTime / 100);
+            velocity.X += input.X * upgrade.maxSpeed * (deltaTime / 100);
+            velocity.Y += -input.Y * upgrade.maxSpeed * (deltaTime / 100);
 
-            if (velocity.X > input.X * maxSpeed)
+            if (velocity.X > input.X * upgrade.maxSpeed)
             {
-                velocity.X = input.X * maxSpeed;
+                velocity.X = input.X * upgrade.maxSpeed;
             }
-            else if (velocity.X < input.X * maxSpeed)
+            else if (velocity.X < input.X * upgrade.maxSpeed)
             {
-                velocity.X = input.X * maxSpeed;
+                velocity.X = input.X * upgrade.maxSpeed;
             }
-            if (velocity.Y > -input.Y * maxSpeed)
+            if (velocity.Y > -input.Y * upgrade.maxSpeed)
             {
-                velocity.Y = -input.Y * maxSpeed;
+                velocity.Y = -input.Y * upgrade.maxSpeed;
             }
-            if (velocity.Y < -input.Y * maxSpeed)
+            if (velocity.Y < -input.Y * upgrade.maxSpeed)
             {
-                velocity.Y = -input.Y * maxSpeed;
+                velocity.Y = -input.Y * upgrade.maxSpeed;
             }
 
             Vector2 dir = gamePad.ThumbSticks.Right;
@@ -386,8 +417,12 @@ namespace MultiDungeon
                 gamePad.Buttons.X == ButtonState.Pressed &&
                 oldGamePad.Buttons.X == ButtonState.Released)
             {
-                item.Use(this);
-                item = null;
+                if (restore == null)
+                {
+                    restore = item.Use(this);
+                    itemTimer = itemTime;
+                    item = null;
+                }
             }
 
             if (gamePad.Buttons.B == ButtonState.Pressed &&
@@ -420,11 +455,12 @@ namespace MultiDungeon
         {
             if (alive)
             {
+                Color c = statusColor == Color.White ? color : statusColor; 
                 Vector2 origin = new Vector2(TextureManager.Map["circle"].Width / 2, TextureManager.Map["circle"].Height / 2);
                 //sb.Draw(TextureManager.Map["blank"], Rect, Color.Red);
                 Rectangle charRect = new Rectangle(Rect.X - 5, Rect.Y - 30, Rect.Width + 10, Rect.Height + 20);
 
-                sb.Draw(TextureManager.Map["circle"], DrawRect, null, c, angle, origin, SpriteEffects.None, 0);
+                sb.Draw(TextureManager.Map["circle"], DrawRect, null, color, angle, origin, SpriteEffects.None, 0);
                 sb.Draw(characterTest, charRect, c);
             }
         }

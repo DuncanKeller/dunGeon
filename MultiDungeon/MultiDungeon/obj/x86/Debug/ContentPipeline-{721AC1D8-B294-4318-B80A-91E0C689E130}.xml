@@ -190,6 +190,51 @@
       <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Menus\menu.xnb</Output>
       <Time>2012-06-19T21:20:08.7711958-07:00</Time>
     </Item>
+    <Item>
+      <Source>Items\cig.png</Source>
+      <Name>Items\cig</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Items\cig.xnb</Output>
+      <Time>2012-06-24T21:45:51.0294729-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Items\eye.png</Source>
+      <Name>Items\eye</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Items\eye.xnb</Output>
+      <Time>2012-06-24T21:45:51.031473-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Items\juice.png</Source>
+      <Name>Items\juice</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Items\juice.xnb</Output>
+      <Time>2012-06-24T21:45:51.0324731-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Items\mag.png</Source>
+      <Name>Items\mag</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Items\mag.xnb</Output>
+      <Time>2012-06-24T21:45:51.0334731-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Items\stoneskin.png</Source>
+      <Name>Items\stoneskin</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Items\stoneskin.xnb</Output>
+      <Time>2012-06-24T21:45:51.0334731-07:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{721AC1D8-B294-4318-B80A-91E0C689E130}</ContentProjectGUID>

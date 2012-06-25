@@ -15,9 +15,10 @@ namespace MultiDungeon.Items
             amount = a;
         }
 
-        public override void Use(Player p)
+        public override RestoreAction Use(Player p)
         {
             p.Gold += amount;
+            return null;
         }
     }
 }

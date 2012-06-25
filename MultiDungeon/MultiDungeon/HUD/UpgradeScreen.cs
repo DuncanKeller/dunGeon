@@ -27,11 +27,11 @@ namespace MultiDungeon.HUD
             var classType = player.GetType();
             if (classType == typeof(Mapmaker))
             {
-                player.upgrade.speed += 1;
+                player.upgrade.maxSpeed += 1;
             }
             else if (classType == typeof(Ninja))
             {
-                player.upgrade.speed += 1.5f;
+                player.upgrade.maxSpeed += 1.5f;
             }
         }
 

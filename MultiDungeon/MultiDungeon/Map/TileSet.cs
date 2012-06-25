@@ -384,7 +384,7 @@ namespace MultiDungeon.Map
 
         public void Populate()
         {
-            int numItems = rooms.Count / 3;
+            int numItems = rooms.Count / 2;
             List<int> usedRooms = new List<int>();
 
             for (int i = 0; i < numItems; i++)
@@ -406,13 +406,19 @@ namespace MultiDungeon.Map
                 Vector2 chestPos = new Vector2(x,y);
 
                 Item item = null;
-                switch (GameConst.rand.Next(2))
+                switch (GameConst.rand.Next(4))
                 {
                     case 0:
                         item = new HealthPotion(HealingLevel.strong);
                         break;
                     case 1:
                         item = new CoinPurse(100);
+                        break;
+                    case 2:
+                        item = new Juice();
+                        break;
+                    case 3:
+                        item = new Stoneskin();
                         break;
                 }
 
@@ -533,6 +539,9 @@ namespace MultiDungeon.Map
 
             colorScheme.floors.Add(Color.DarkSlateGray);
             colorScheme.walls.Add(Color.ForestGreen);
+
+            colorScheme.floors.Add(Color.SandyBrown);
+            colorScheme.walls.Add(Color.Orange);
 
             GetColorScheme();
         }

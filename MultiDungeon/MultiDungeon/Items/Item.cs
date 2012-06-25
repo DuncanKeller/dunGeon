@@ -7,11 +7,13 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MultiDungeon.Items
 {
+    public delegate void RestoreAction(Player p);
+
     public abstract class Item
     {
         protected Texture2D texture;
 
-        public abstract void Use(Player p);
+        public abstract RestoreAction Use(Player p);
 
         public void Draw(SpriteBatch sb, Vector2 v)
         {

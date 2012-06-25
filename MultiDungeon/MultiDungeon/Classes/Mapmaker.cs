@@ -14,7 +14,7 @@ namespace MultiDungeon
         public Mapmaker(float x, float y, int id)
             : base(x, y, id)
         {
-            maxSpeed = 3.6f;
+            upgrade.maxSpeed = 3.6f;
             guns.Add(new AssaultRifle(World.BulletManager, this));
             guns.Add(new Shotgun(World.BulletManager, this));
             characterTest = TextureManager.Map["mapmaker-blue"];

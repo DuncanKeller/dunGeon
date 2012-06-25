@@ -17,7 +17,7 @@ namespace MultiDungeon
         public Ninja(float x, float y, int id)
             : base(x, y, id)
         {
-            maxSpeed = 4;
+            upgrade.maxSpeed = 4;
             guns.Add(new Revolver(World.BulletManager, this));
             guns.Add(new Crossbow(World.BulletManager, this));
             characterTest = TextureManager.Map["ninja-blue"];
@@ -50,10 +50,10 @@ namespace MultiDungeon
                 invisTimer = 0;
                 visibility = 255;
             }
-            c.A = (byte)visibility;
-            c.R = (byte)visibility;
-            c.G = (byte)visibility;
-            c.B = (byte)visibility;
+            color.A = (byte)visibility;
+            color.R = (byte)visibility;
+            color.G = (byte)visibility;
+            color.B = (byte)visibility;
             base.Update(deltaTime);
         }
 

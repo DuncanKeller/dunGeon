@@ -28,13 +28,14 @@ namespace MultiDungeon.Items
             texture = TextureManager.Map["potion"];
         }
 
-        public override void Use(Player p)
+        public override RestoreAction Use(Player p)
         {
             p.Health += p.MaxHealth / amount;
             if (p.Health > p.MaxHealth)
             {
                 p.Health = p.MaxHealth;
             }
+            return null;
         }
     }
 }
