@@ -36,6 +36,7 @@ namespace MultiDungeon
             textures.Add("juice", c.Load<Texture2D>("Items\\juice"));
             textures.Add("eye", c.Load<Texture2D>("Items\\eye"));
             textures.Add("cig", c.Load<Texture2D>("Items\\cig"));
+            textures.Add("mag", c.Load<Texture2D>("Items\\mag"));
 
             // gun icons
             textures.Add("crossbow", c.Load<Texture2D>("Guns\\crossbow"));

@@ -406,7 +406,7 @@ namespace MultiDungeon.Map
                 Vector2 chestPos = new Vector2(x,y);
 
                 Item item = null;
-                switch (GameConst.rand.Next(5))
+                switch (GameConst.rand.Next(6))
                 {
                     case 0:
                         item = new HealthPotion(HealingLevel.strong);
@@ -422,6 +422,9 @@ namespace MultiDungeon.Map
                         break;
                     case 4:
                         item = new SeeingEye();
+                        break;
+                    case 5:
+                        item = new SpareMag();
                         break;
                 }
 
@@ -528,6 +531,14 @@ namespace MultiDungeon.Map
                     }
                     tiles.Add(t);
                     tileMap[x, y] = t;
+                }
+            }
+
+            for (int x = -10; x < 10; x++)
+            {
+                for (int y = -10; y < 10; y++)
+                {
+
                 }
             }
         }

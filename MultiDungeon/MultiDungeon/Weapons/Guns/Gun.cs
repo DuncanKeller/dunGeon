@@ -77,6 +77,15 @@ namespace MultiDungeon
             }
         }
 
+        public void QuickReload()
+        {
+            if (clip < maxClip)
+            {
+                clip = 0;
+                reloadTimer = reloadTime / 4;
+            }
+        }
+
         public void Reset()
         {
             clip = maxClip;
