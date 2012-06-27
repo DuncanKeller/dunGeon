@@ -68,7 +68,7 @@ namespace MultiDungeon
                     if (g.Exploded)
                     {
                         toRemove.Add(b);
-                        HandleExplosion(g.Position);
+                        HandleExplosion(g.Position, g);
                     }
                 }
             }
@@ -76,11 +76,11 @@ namespace MultiDungeon
             CollisionTest();
         }
 
-        public void HandleExplosion(Vector2 pos)
+        public void HandleExplosion(Vector2 pos, Bullet b)
         {
             foreach (Player p in World.Players)
             {
-
+                p.Hit(b);
             }
         }
 
