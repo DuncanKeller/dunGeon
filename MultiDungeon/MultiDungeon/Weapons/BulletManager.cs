@@ -56,6 +56,10 @@ namespace MultiDungeon
                         {
                             if (t.Rect.Intersects(b.Rect))
                             {
+                                if (b is Rocket)
+                                {
+                                    HandleExplosion(b.Position, b);
+                                }
                                 Remove(b);
                             }
                         }
@@ -67,8 +71,9 @@ namespace MultiDungeon
                     Grenade g = (Grenade)b;
                     if (g.Exploded)
                     {
-                        toRemove.Add(b);
                         HandleExplosion(g.Position, g);
+                        toRemove.Add(b);
+                       
                     }
                 }
             }

@@ -7,48 +7,28 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MultiDungeon
 {
-    public class Grenade : Bullet
+    public class Rocket : Bullet
     {
-        protected float explosionTimer = 2;
-        float dampening = 770;
-
-        public bool Exploded
-        {
-            get { return explosionTimer == 0; }
-        }
-
+        float acc = 1300;
+        float maxSpeed = 10000;
 
         public new Rectangle Rect
         {
             get { return new Rectangle((int)pos.X - 6, (int)pos.Y - 6, 12, 12); }
         }
 
-        public Grenade()
+        public Rocket()
         {
             damage = 5;
-            speed = 700;
+            speed = 0;
         }
 
         public override void Update(float deltaTime)
         {
-            if (speed > 0)
+            if (speed < maxSpeed)
             {
-                speed -= (deltaTime / 1000) * dampening;
+                speed += (deltaTime / 1000) * acc;
             }
-            else
-            {
-                speed = 0;
-            }
-
-            if (explosionTimer > 0)
-            {
-                explosionTimer -= deltaTime / 1000;
-            }
-            else
-            {
-                explosionTimer = 0;
-            }
-
             base.Update(deltaTime);
         }
 

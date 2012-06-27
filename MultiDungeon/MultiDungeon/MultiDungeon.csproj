@@ -121,6 +121,7 @@
     <Compile Include="Weapons\Bullets\Bullet.cs" />
     <Compile Include="Weapons\BulletManager.cs" />
     <Compile Include="Weapons\Bullets\Grenade.cs" />
+    <Compile Include="Weapons\Bullets\Rocket.cs" />
     <Compile Include="Weapons\Guns\AssaultRifle.cs" />
     <Compile Include="Weapons\Guns\Crossbow.cs" />
     <Compile Include="Weapons\Guns\GrenadeLauncher.cs" />
@@ -135,6 +136,7 @@
     <Compile Include="TextureManager.cs" />
     <Compile Include="Weapons\Guns\Pistols.cs" />
     <Compile Include="Weapons\Guns\Revolver.cs" />
+    <Compile Include="Weapons\Guns\RocketLauncher.cs" />
     <Compile Include="Weapons\Guns\Shotgun.cs" />
     <Compile Include="Weapons\Bullets\Shell.cs" />
     <Compile Include="Weapons\Weapon.cs" />
