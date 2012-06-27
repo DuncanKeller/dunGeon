@@ -18,11 +18,6 @@ namespace MultiDungeon.Items
             get { return chests; }
         }
 
-        public ItemManager()
-        {
-            //test
-        }
-
         public void Reset()
         {
             foreach (Chest c in chests)
@@ -31,10 +26,15 @@ namespace MultiDungeon.Items
             }
         }
 
-        public void Update()
+        public void Update(float deltaTime)
         {
             Cleanup();
             AddNewChests();
+
+            foreach (Chest chest in chests)
+            {
+                chest.Update(deltaTime);
+            }
         }
 
         private void Cleanup()

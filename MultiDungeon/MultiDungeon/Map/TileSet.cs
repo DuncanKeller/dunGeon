@@ -405,28 +405,7 @@ namespace MultiDungeon.Map
 
                 Vector2 chestPos = new Vector2(x,y);
 
-                Item item = null;
-                switch (GameConst.rand.Next(6))
-                {
-                    case 0:
-                        item = new HealthPotion(HealingLevel.strong);
-                        break;
-                    case 1:
-                        item = new CoinPurse(100);
-                        break;
-                    case 2:
-                        item = new Juice();
-                        break;
-                    case 3:
-                        item = new Stoneskin();
-                        break;
-                    case 4:
-                        item = new SeeingEye();
-                        break;
-                    case 5:
-                        item = new SpareMag();
-                        break;
-                }
+                Item item = Chest.RandomItem();
 
                 World.ItemManager.Chests.Add(new Chest(i, chestPos, item));
             }

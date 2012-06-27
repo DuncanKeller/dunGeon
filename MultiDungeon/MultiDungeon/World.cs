@@ -398,7 +398,7 @@ namespace MultiDungeon
         {
             UpdateNetwork(deltaTime);
             bulletManager.Update(map);
-            itemManager.Update();
+            itemManager.Update(deltaTime);
 
             lock (players)
             {

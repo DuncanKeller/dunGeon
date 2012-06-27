@@ -16,6 +16,9 @@ namespace MultiDungeon.Items
         int width = Tile.TILE_SIZE;
         int height = Tile.TILE_SIZE;
         int id;
+        
+        int maxTimer = 20;
+        float timer;
 
         public Rectangle Rect
         {
@@ -32,6 +35,54 @@ namespace MultiDungeon.Items
             this.id = id;
             rect = new Rectangle((int)pos.X, (int)pos.Y, width, height);
             contents = i;
+            timer = maxTimer;
+        }
+
+        public void Update(float deltaTime)
+        {
+            // stick an item in there after a while (respawn)
+            if (!(this is TeamChest))
+            {
+                if (contents == null)
+                {
+                    if (timer > 0)
+                    {
+                        timer -= deltaTime / 1000;
+                    }
+                    else
+                    {
+                        timer = maxTimer;
+                        contents = RandomItem();
+                    }
+                }
+            }
+        }
+
+        public static Item RandomItem()
+        {
+            Item item = null;
+            switch (GameConst.rand.Next(6))
+            {
+                case 0:
+                    item = new HealthPotion(HealingLevel.strong);
+                    break;
+                case 1:
+                    item = new CoinPurse(100);
+                    break;
+                case 2:
+                    item = new Juice();
+                    break;
+                case 3:
+                    item = new Stoneskin();
+                    break;
+                case 4:
+                    item = new SeeingEye();
+                    break;
+                case 5:
+                    item = new SpareMag();
+                    break;
+            }
+            return item;
         }
 
         public virtual Item Open(Player p)
