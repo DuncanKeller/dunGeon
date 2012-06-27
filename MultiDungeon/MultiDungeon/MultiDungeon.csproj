@@ -120,8 +120,10 @@
     <Compile Include="Weapons\Bullets\Arrow.cs" />
     <Compile Include="Weapons\Bullets\Bullet.cs" />
     <Compile Include="Weapons\BulletManager.cs" />
+    <Compile Include="Weapons\Bullets\Grenade.cs" />
     <Compile Include="Weapons\Guns\AssaultRifle.cs" />
     <Compile Include="Weapons\Guns\Crossbow.cs" />
+    <Compile Include="Weapons\Guns\GrenadeLauncher.cs" />
     <Compile Include="Weapons\Guns\Gun.cs" />
     <Compile Include="Map\Tile.cs" />
     <Compile Include="Map\TileSet.cs" />

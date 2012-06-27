@@ -16,7 +16,7 @@ namespace MultiDungeon
         {
             upgrade.maxSpeed = 3.6f;
             guns.Add(new AssaultRifle(World.BulletManager, this));
-            guns.Add(new Shotgun(World.BulletManager, this));
+            guns.Add(new GrenadeLauncher(World.BulletManager, this));
             characterTest = TextureManager.Map["mapmaker-blue"];
         }
 

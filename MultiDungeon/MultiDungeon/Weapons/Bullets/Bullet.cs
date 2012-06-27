@@ -9,11 +9,12 @@ namespace MultiDungeon
 {
     public class Bullet
     {
-        Vector2 pos;
-        float angle;
-        double damage;
-        protected float speed = 15;
-        int pid;
+        protected Vector2 pos;
+        protected float angle;
+        protected double damage;
+        protected float speed = 500;
+        protected int pid;
+        public Vector2 flip = new Vector2(1, 1);
 
         public Vector2 Position
         {
@@ -45,6 +46,16 @@ namespace MultiDungeon
             
         }
 
+        public void FlipX()
+        {
+            flip.X *= -1;
+        }
+
+        public void FlipY()
+        {
+            flip.Y *= -1;
+        }
+
         public virtual void Init(Vector2 pos, float angle, double damage, int pid)
         {
             this.pos = pos;
@@ -53,13 +64,13 @@ namespace MultiDungeon
             this.damage = damage;
         }
 
-        public virtual void Update()
+        public virtual void Update(float deltaTime)
         {
-            pos.X += (float)Math.Cos(angle) * speed;
-            pos.Y += (float)Math.Sin(angle) * speed;
+            pos.X += (float)Math.Cos(angle) * speed * (deltaTime / 1000) * flip.X;
+            pos.Y += (float)Math.Sin(angle) * speed * (deltaTime / 1000) * flip.Y;
         }
 
-        public void Draw(SpriteBatch sb)
+        public virtual void Draw(SpriteBatch sb)
         {
             sb.Draw(TextureManager.Map["blank"], Rect, Color.Black);
         }
