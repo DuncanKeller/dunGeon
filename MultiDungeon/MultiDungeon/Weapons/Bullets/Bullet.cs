@@ -12,7 +12,7 @@ namespace MultiDungeon
         protected Vector2 pos;
         protected float angle;
         protected double damage;
-        protected float speed = 500;
+        protected float speed = 750;
         protected int pid;
         public Vector2 flip = new Vector2(1, 1);
 

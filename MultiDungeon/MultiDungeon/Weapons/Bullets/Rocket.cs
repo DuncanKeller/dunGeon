@@ -9,7 +9,8 @@ namespace MultiDungeon
 {
     public class Rocket : Bullet
     {
-        float acc = 1300;
+        float dx = 800;
+        float acc = 1000;
         float maxSpeed = 10000;
 
         public new Rectangle Rect
@@ -28,6 +29,11 @@ namespace MultiDungeon
             if (speed < maxSpeed)
             {
                 speed += (deltaTime / 1000) * acc;
+                acc += (deltaTime / 1000) * dx;
+            }
+            else 
+            {
+                speed = maxSpeed;
             }
             base.Update(deltaTime);
         }
