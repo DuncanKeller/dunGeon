@@ -8,16 +8,17 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MultiDungeon
 {
-    class Mapmaker : Player
+    class Powdermonkey : Player
     {
 
-        public Mapmaker(float x, float y, int id)
+        public Powdermonkey(float x, float y, int id)
             : base(x, y, id)
         {
-            upgrade.maxSpeed = 3.6f;
-            guns.Add(new Revolver(World.BulletManager, this));
-            guns.Add(new Shotgun(World.BulletManager, this));
-            characterTest = TextureManager.Map["mapmaker-blue"];
+            upgrade.maxSpeed = 3.5f;
+            guns.Add(new GrenadeLauncher(World.BulletManager, this));
+            guns.Add(new RocketLauncher(World.BulletManager, this));
+
+            //characterTest = TextureManager.Map["powdermonkey-blue"];
         }
 
         public override void Init(int t)
@@ -26,11 +27,11 @@ namespace MultiDungeon
 
             if (t == 0)
             {
-                characterTest = TextureManager.Map["mapmaker-blue"];
+                characterTest = TextureManager.Map["powdermonkey-blue"];
             }
             else
             {
-                characterTest = TextureManager.Map["mapmaker-red"];
+                characterTest = TextureManager.Map["powdermonkey-red"];
             }
         }
 

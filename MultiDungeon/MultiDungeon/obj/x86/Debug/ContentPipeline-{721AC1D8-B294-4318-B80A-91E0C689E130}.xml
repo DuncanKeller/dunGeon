@@ -235,6 +235,42 @@
       <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Items\stoneskin.xnb</Output>
       <Time>2012-06-24T21:45:51.0334731-07:00</Time>
     </Item>
+    <Item>
+      <Source>Characters\capitalist-blue.png</Source>
+      <Name>Characters\capitalist-blue</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Characters\capitalist-blue.xnb</Output>
+      <Time>2012-06-27T18:53:26.2876459-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Characters\capitalist-red.png</Source>
+      <Name>Characters\capitalist-red</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Characters\capitalist-red.xnb</Output>
+      <Time>2012-06-27T18:53:26.288646-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Characters\powdermonkey-blue.png</Source>
+      <Name>Characters\powdermonkey-blue</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Characters\powdermonkey-blue.xnb</Output>
+      <Time>2012-06-27T18:53:26.2896461-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Characters\powdermonkey-red.png</Source>
+      <Name>Characters\powdermonkey-red</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Characters\powdermonkey-red.xnb</Output>
+      <Time>2012-06-27T18:53:26.2896461-07:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{721AC1D8-B294-4318-B80A-91E0C689E130}</ContentProjectGUID>

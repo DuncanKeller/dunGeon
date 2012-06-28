@@ -22,8 +22,12 @@ namespace MultiDungeon.Menus
             AddFlavorItem("_________", new Vector2(1, 7));
             AddMenuItem("Mapmaker", new Vector2(1, 8), 0,
                 delegate() { classType = "mapmaker"; SendClass(); });
-            AddMenuItem("Assassin", new Vector2(1, 9), 0,
+            AddMenuItem("Ninja", new Vector2(1, 9), 0,
                 delegate() { classType = "ninja"; SendClass(); });
+            AddMenuItem("Powdermonkey", new Vector2(1, 10), 0,
+                delegate() { classType = "powdermonkey"; SendClass(); });
+            AddMenuItem("Capitalist", new Vector2(1, 11), 0,
+                delegate() { classType = "capitalist"; SendClass(); });
 
             AddFlavorItem("Team", new Vector2(7, 6));
             AddFlavorItem("_________", new Vector2(7, 7));

@@ -433,8 +433,8 @@ namespace MultiDungeon
             }
 
             if (item != null &&
-                gamePad.Buttons.Y == ButtonState.Pressed &&
-                oldGamePad.Buttons.Y == ButtonState.Released)
+                gamePad.Buttons.Back == ButtonState.Pressed &&
+                oldGamePad.Buttons.Back == ButtonState.Released)
             {
                 item = null;
             }

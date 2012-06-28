@@ -83,8 +83,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Camera.cs" />
+    <Compile Include="Classes\Capitalist.cs" />
     <Compile Include="Classes\Mapmaker.cs" />
     <Compile Include="Classes\Ninja.cs" />
+    <Compile Include="Classes\Powdermonkey.cs" />
     <Compile Include="Console\Console.cs" />
     <Compile Include="Console\Message.cs" />
     <Compile Include="GameConst.cs" />
@@ -105,6 +107,7 @@
     <Compile Include="Items\SpareMag.cs" />
     <Compile Include="Items\Stoneskin.cs" />
     <Compile Include="Items\TeamChest.cs" />
+    <Compile Include="Menus\CapitalistMenu.cs" />
     <Compile Include="Menus\EndgameMenu.cs" />
     <Compile Include="Menus\EnterServerMenu.cs" />
     <Compile Include="Menus\FailedToConnectMenu.cs" />

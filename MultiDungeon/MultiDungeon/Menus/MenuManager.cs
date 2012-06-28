@@ -23,6 +23,7 @@ namespace MultiDungeon.Menus
         public EndgameMenu endgame;
 
         public TeamChestMenu teamChest;
+        public CapitalistMenu shop;
 
         public MenuManager(Game1 game)
         {
@@ -36,6 +37,7 @@ namespace MultiDungeon.Menus
             endgame = new EndgameMenu(game, this);
 
             teamChest = new TeamChestMenu(game, this);
+            shop = new CapitalistMenu(game, this);
 
             currentMenu = main;
         }

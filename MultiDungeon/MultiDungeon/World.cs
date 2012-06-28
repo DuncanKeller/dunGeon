@@ -171,6 +171,12 @@ namespace MultiDungeon
                                 case "ninja":
                                     p = new Ninja(0, 0, pi.Key);
                                     break;
+                                case "powdermonkey":
+                                    p = new Powdermonkey(0, 0, pi.Key);
+                                    break;
+                                case "capitalist":
+                                    p = new Capitalist(0, 0, pi.Key);
+                                    break;
                             }
                             p.Init(pi.Value.team);
                             PlayerHash.Add(pi.Key, p);

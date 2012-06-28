@@ -11,7 +11,7 @@ namespace MultiDungeon
         public Arrow()
             : base()
         {
-            speed = 19;
+            speed = 850;
         }
     }
 }

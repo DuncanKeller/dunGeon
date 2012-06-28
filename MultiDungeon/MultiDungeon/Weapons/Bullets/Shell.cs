@@ -10,7 +10,7 @@ namespace MultiDungeon
         
         public Shell() : base()
         {
-            speed = 12;
+            speed = 700;
         }
     }
 }
