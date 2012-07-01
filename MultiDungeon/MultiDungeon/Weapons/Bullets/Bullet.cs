@@ -39,6 +39,7 @@ namespace MultiDungeon
         public float Angle
         {
             get { return angle; }
+            set { angle = value; }
         }
 
         public Bullet()

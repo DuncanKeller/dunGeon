@@ -101,7 +101,10 @@ namespace MultiDungeon
                         if (b.Rect.Intersects(p.Rect))
                         {
                             p.Hit(b);
-                            Remove(b);
+                            if (!(p.StatusEffect == StatusEffect.invinsible))
+                            {
+                                Remove(b);
+                            }
                         }
                     }
                 }

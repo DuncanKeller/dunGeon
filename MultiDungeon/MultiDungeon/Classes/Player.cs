@@ -32,7 +32,8 @@ namespace MultiDungeon
         none,
         vampire,
         curse,
-        cursed
+        cursed,
+        invinsible
     }
 
     public abstract class Player
@@ -51,7 +52,6 @@ namespace MultiDungeon
         double weakness;
 
         Item item;
-
         double itemTimer;
         double itemTime = 5; // seconds
         RestoreAction restore = null;
@@ -59,7 +59,7 @@ namespace MultiDungeon
 
         int gold;
         public Upgrade upgrade;
-        StatusEffect statusEffect = StatusEffect.none;
+        StatusEffect statusEffect = StatusEffect.invinsible;
 
         bool alive = true;
 
@@ -224,7 +224,7 @@ namespace MultiDungeon
             veloc *= 3;
             velocity += veloc;
 
-            health -= b.Damage + (Weakness * b.Damage);
+            
             // special potions
             if (World.PlayerHash[b.PlayerID].statusEffect == StatusEffect.vampire)
             {
@@ -236,6 +236,16 @@ namespace MultiDungeon
                 statusEffect = MultiDungeon.StatusEffect.cursed;
                 restore = RestoreCurse;
                 itemTime = 10; // seconds
+            }
+
+
+            if (World.PlayerHash[b.PlayerID].statusEffect == StatusEffect.invinsible)
+            {
+                b.Angle += (float)(Math.PI + ((GameConst.rand.NextDouble() * (Math.PI / 7)) - Math.PI / 14));
+            }
+            else
+            {
+                health -= b.Damage + (Weakness * b.Damage);
             }
             
             if (health < 0 && alive)

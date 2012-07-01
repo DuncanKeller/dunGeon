@@ -98,6 +98,7 @@
     <Compile Include="HUD\Map.cs" />
     <Compile Include="HUD\UpgradeScreen.cs" />
     <Compile Include="Items\Apothecary\CursePotion.cs" />
+    <Compile Include="Items\Apothecary\InvinsibilityPotion.cs" />
     <Compile Include="Items\Apothecary\VampirePotion.cs" />
     <Compile Include="Items\Chest.cs" />
     <Compile Include="Items\CoinPurse.cs" />

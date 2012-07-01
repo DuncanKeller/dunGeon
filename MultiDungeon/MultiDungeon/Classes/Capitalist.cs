@@ -21,7 +21,6 @@ namespace MultiDungeon
             guns.Add(new AssaultRifle(World.BulletManager, this));
 
             //characterTest = TextureManager.Map["powdermonkey-blue"];
-            Gold = 999;
         }
 
         public override void Init(int t)
