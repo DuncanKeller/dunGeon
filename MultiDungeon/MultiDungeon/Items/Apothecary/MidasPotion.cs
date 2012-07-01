@@ -6,9 +6,9 @@ using Microsoft.Xna.Framework;
 
 namespace MultiDungeon.Items
 {
-    class InvinsibilityPotion : Item
+    class MidasPotion : Item
     {
-        public InvinsibilityPotion()
+        public MidasPotion()
             : base()
         {
             texture = TextureManager.Map["stoneskin"];
@@ -16,7 +16,8 @@ namespace MultiDungeon.Items
 
         public override RestoreAction Use(Player p)
         {
-            p.StatusEffect = StatusEffect.invinsible;
+            effectTime = 40; // seconds
+            p.StatusEffect = StatusEffect.midas;
             p.statusColor = Color.Gold;
             return Restore;
         }

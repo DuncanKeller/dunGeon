@@ -16,6 +16,7 @@ namespace MultiDungeon.Items
 
         public override RestoreAction Use(Player p)
         {
+            effectTime = 30; // seconds
             p.StatusEffect = StatusEffect.curse;
             p.statusColor = Color.LightGreen;
             return Restore;

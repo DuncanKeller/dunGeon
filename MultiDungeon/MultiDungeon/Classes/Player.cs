@@ -33,7 +33,8 @@ namespace MultiDungeon
         vampire,
         curse,
         cursed,
-        invinsible
+        invinsible,
+        midas
     }
 
     public abstract class Player
@@ -59,7 +60,7 @@ namespace MultiDungeon
 
         int gold;
         public Upgrade upgrade;
-        StatusEffect statusEffect = StatusEffect.invinsible;
+        StatusEffect statusEffect = StatusEffect.none;
 
         bool alive = true;
 
@@ -253,7 +254,8 @@ namespace MultiDungeon
                 Die();
                 if (teamNum != World.PlayerHash[b.PlayerID].Team)
                 {
-                    World.PlayerHash[b.PlayerID].Gold += 50;
+                    int bonus = World.PlayerHash[b.PlayerID].StatusEffect == MultiDungeon.StatusEffect.midas ? 50 : 0;
+                    World.PlayerHash[b.PlayerID].Gold += 50 + bonus; 
                 }
                 else
                 {

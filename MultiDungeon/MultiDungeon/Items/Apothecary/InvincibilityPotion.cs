@@ -6,11 +6,9 @@ using Microsoft.Xna.Framework;
 
 namespace MultiDungeon.Items
 {
-    class VampirePotion : Item
+    class InvincibilityPotion : Item
     {
-        //float toRestore = 0;
-
-        public VampirePotion()
+        public InvincibilityPotion()
             : base()
         {
             texture = TextureManager.Map["stoneskin"];
@@ -18,20 +16,16 @@ namespace MultiDungeon.Items
 
         public override RestoreAction Use(Player p)
         {
-            //toRestore = p.Speed - (p.Speed / 3);
-            //p.Speed -= toRestore;
-            effectTime = 30; // seconds
-            p.StatusEffect = StatusEffect.vampire;
-            p.statusColor = Color.DarkRed;
+            effectTime = 8; // seconds
+            p.StatusEffect = StatusEffect.invinsible;
+            p.statusColor = Color.Gold;
             return Restore;
         }
 
         public void Restore(Player p)
         {
-            //p.Speed += toRestore;
             p.StatusEffect = StatusEffect.none;
             p.statusColor = Color.White;
-            //toRestore = 0;
         }
     }
 }
