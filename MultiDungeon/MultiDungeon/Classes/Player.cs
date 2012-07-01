@@ -27,6 +27,14 @@ namespace MultiDungeon
         public bool power2;
     }
 
+    public enum StatusEffect
+    {
+        none,
+        vampire,
+        curse,
+        cursed
+    }
+
     public abstract class Player
     {
         int id;
@@ -51,6 +59,7 @@ namespace MultiDungeon
 
         int gold;
         public Upgrade upgrade;
+        StatusEffect statusEffect = StatusEffect.none;
 
         bool alive = true;
 
@@ -61,6 +70,8 @@ namespace MultiDungeon
         int gunIndex = 0; 
 
         protected Texture2D characterTest;
+
+        #region Properties
 
         public float Angle
         {
@@ -123,6 +134,12 @@ namespace MultiDungeon
             }
         }
 
+        public StatusEffect StatusEffect
+        {
+            get { return statusEffect; }
+            set { statusEffect = value; }
+        }
+
         public Item Item
         {
             get { return item; }
@@ -174,6 +191,7 @@ namespace MultiDungeon
             get { return new Rectangle((int)pos.X + 15, (int)pos.Y + 15, 30, 30); }
         }
 
+        #endregion
 
         public Player(float x, float y, int id)
         {
@@ -207,6 +225,18 @@ namespace MultiDungeon
             velocity += veloc;
 
             health -= b.Damage + (Weakness * b.Damage);
+            // special potions
+            if (World.PlayerHash[b.PlayerID].statusEffect == StatusEffect.vampire)
+            {
+                World.PlayerHash[b.PlayerID].Health += b.Damage / 3;
+            }
+            else if (World.PlayerHash[b.PlayerID].statusEffect == StatusEffect.curse)
+            {
+                statusColor = Color.DarkGreen;
+                statusEffect = MultiDungeon.StatusEffect.cursed;
+                restore = RestoreCurse;
+                itemTime = 10; // seconds
+            }
             
             if (health < 0 && alive)
             {
@@ -222,10 +252,17 @@ namespace MultiDungeon
             }
         }
 
+        private void RestoreCurse(Player p)
+        {
+            p.statusColor = Color.White;
+            p.statusEffect = StatusEffect.none;
+        }
+
         private void Die()
         {
             alive = false;
             timer = 0;
+            statusEffect = MultiDungeon.StatusEffect.none;
         }
 
         public void Spawn()
@@ -254,9 +291,19 @@ namespace MultiDungeon
                     timer = 0;
                 }
             }
-            
-            if (alive)
+            else
             {
+                // status effect, cursed
+                if (statusEffect == StatusEffect.cursed)
+                {
+                    health -= deltaTime / 3200;
+
+                    if (health < 0 && alive)
+                    {
+                        Die();
+                    }
+                }
+
                 if (id == World.gameId)
                 {
                     GamePadState gamePad = GamePad.GetState(playerIndex);
