@@ -50,16 +50,21 @@ namespace MultiDungeon
                     {
                         bytesRead = stream.Read(message, 0, size);
                         data += encoder.GetString(message, 0, bytesRead);
-                        /*
-                        if (data.Contains("!"))
-                        {
-                            string[] multiData = data.Split('!');
-                            commands.Add(multiData[0]);
-                            data = multiData[1];
-                        }*/
                     }
 
-                   
+                    //while (!data.Contains('!'))
+                    //{
+
+                    //    bytesRead = stream.Read(message, 0, size);
+                    //    data += encoder.GetString(message, 0, bytesRead);
+
+                    //    string parseMe = data.Substring(0, data.LastIndexOf("!"));
+                    //    ParseAndRecieve(parseMe);
+
+                    //    data = data.Substring(data.LastIndexOf("!"), data.Length);
+                    //}
+
+                    ParseAndRecieve(data);
 
                     stream.Flush();
                 }
@@ -76,15 +81,15 @@ namespace MultiDungeon
                     break;
                 }
 
-
-                //data = data.Substring(0, data.Length - 1);
-                string[] datum = data.Split('!');
-
-                World.RecieveData(datum);
-                
             }
 
             Close();
+        }
+
+        public static void ParseAndRecieve(string data)
+        {
+            string[] datum = data.Split('!');
+            World.RecieveData(datum);
         }
 
         public static void Close()

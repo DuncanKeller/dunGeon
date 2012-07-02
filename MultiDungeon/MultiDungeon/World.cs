@@ -124,7 +124,7 @@ namespace MultiDungeon
                 }
                 string[] info = data.Split("\n".ToCharArray());
                 //try
-                //{
+                {
                     if (info[0] == "id")
                     {
                         int id = Int32.Parse(info[1]);
@@ -299,7 +299,7 @@ namespace MultiDungeon
                     {
                         throw new Exception("command \"" + info[0] +"\" not found");
                     }
-                //}
+                }
                 //catch (Exception e)
                 //{
                 //    Console.Write(e.Message, MessageType.urgent);

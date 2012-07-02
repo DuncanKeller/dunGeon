@@ -6,9 +6,9 @@ using Microsoft.Xna.Framework;
 
 namespace MultiDungeon.Items
 {
-    class MidasPotion : Item
+    class ConfusionPotion : Item
     {
-        public MidasPotion()
+        public ConfusionPotion()
             : base()
         {
             texture = TextureManager.Map["stoneskin"];
@@ -17,15 +17,13 @@ namespace MultiDungeon.Items
         public override RestoreAction Use(Player p)
         {
             effectTime = 45; // seconds
-            p.StatusEffect = StatusEffect.midas;
-            p.statusColor = Color.Gold;
+            p.StatusEffect = StatusEffect.confuse;
             return Restore;
         }
 
         public void Restore(Player p)
         {
             p.StatusEffect = StatusEffect.none;
-            p.statusColor = Color.White;
         }
     }
 }

@@ -97,6 +97,7 @@
     <Compile Include="HUD\Hud.cs" />
     <Compile Include="HUD\Map.cs" />
     <Compile Include="HUD\UpgradeScreen.cs" />
+    <Compile Include="Items\Apothecary\ConfusionPotion.cs" />
     <Compile Include="Items\Apothecary\CursePotion.cs" />
     <Compile Include="Items\Apothecary\InvincibilityPotion.cs" />
     <Compile Include="Items\Apothecary\MidasPotion.cs" />

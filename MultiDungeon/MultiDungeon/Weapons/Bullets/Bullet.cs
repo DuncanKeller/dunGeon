@@ -69,6 +69,29 @@ namespace MultiDungeon
         {
             pos.X += (float)Math.Cos(angle) * speed * (deltaTime / 1000) * flip.X;
             pos.Y += (float)Math.Sin(angle) * speed * (deltaTime / 1000) * flip.Y;
+
+            ////homing
+            //if (World.PlayerHash[pid].StatusEffect == StatusEffect.homing)
+            //{
+            //    foreach (Player p in World.Players)
+            //    {
+            //        if (p.ID != pid)
+            //        {
+            //            float distance = float.MaxValue;
+            //            Vector2 playerPos = p.Position;
+            //            Vector2.Distance(ref playerPos, ref pos, out distance);
+
+            //            if (distance < 300)
+            //            {
+            //                float newAngle = (float)(Math.Atan2(playerPos.Y - pos.Y, playerPos.X = pos.X) );
+            //                //newAngle /= 3;
+
+            //                angle = newAngle;
+            //            }
+            //        }
+            //    }
+            //}
+
         }
 
         public virtual void Draw(SpriteBatch sb)

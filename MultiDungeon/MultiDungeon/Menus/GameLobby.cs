@@ -43,18 +43,18 @@ namespace MultiDungeon.Menus
 
         public void SendClass()
         {
-            Client.Send("class" + "\n" + World.gameId + "\n" + classType + "!");
+            Client.Send("class" + "\n" + World.gameId + "\n" + classType );
         }
 
         public void SendTeam()
         {
-            Client.Send("team" + "\n" + World.gameId + "\n" + team + "!");
+            Client.Send("team" + "\n" + World.gameId + "\n" + team );
         }
 
         public void SendReady()
         {
             ready = true;
-            Client.Send("ready!");
+            Client.Send("ready");
         }
 
 
@@ -65,7 +65,7 @@ namespace MultiDungeon.Menus
             ready = false;
             base.Init();
             Thread.Sleep(150);
-            Client.Send("connect" + "\n" + World.gameId + "!");
+            Client.Send("connect" + "\n" + World.gameId );
         }
 
         public override void Update()

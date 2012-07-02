@@ -34,7 +34,9 @@ namespace MultiDungeon
         curse,
         cursed,
         invinsible,
-        midas
+        midas,
+        homing,
+        confuse
     }
 
     public abstract class Player
@@ -60,7 +62,7 @@ namespace MultiDungeon
 
         int gold;
         public Upgrade upgrade;
-        StatusEffect statusEffect = StatusEffect.none;
+        StatusEffect statusEffect = StatusEffect.confuse;
 
         bool alive = true;
 
@@ -461,7 +463,7 @@ namespace MultiDungeon
                     item = null;
                 }
                
-                Client.Send("chest" + "\n" + overlappingChest.ID + "!");
+                Client.Send("chest" + "\n" + overlappingChest.ID);
             }
             else if (overlappingChest != null &&
               overlappingChest is TeamChest &&
@@ -528,13 +530,29 @@ namespace MultiDungeon
         {
             if (alive)
             {
-                Color c = statusColor == Color.White ? color : statusColor; 
+                Color c = statusColor == Color.White ? color : statusColor;
                 Vector2 origin = new Vector2(TextureManager.Map["circle"].Width / 2, TextureManager.Map["circle"].Height / 2);
                 //sb.Draw(TextureManager.Map["blank"], Rect, Color.Red);
                 Rectangle charRect = new Rectangle(Rect.X - 5, Rect.Y - 30, Rect.Width + 10, Rect.Height + 20);
 
                 sb.Draw(TextureManager.Map["circle"], DrawRect, null, color, angle, origin, SpriteEffects.None, 0);
-                sb.Draw(characterTest, charRect, c);
+                if (statusEffect == MultiDungeon.StatusEffect.confuse)
+                {
+                    for (int i = 0; i < 3; i++)
+                    {
+                        byte rand = (byte)GameConst.rand.Next(255);
+                        c.A = rand; c.B = rand; c.R = rand; c.G = rand;
+                        Rectangle r = charRect;
+                        int range = 160;
+                        r.X += GameConst.rand.Next(range) - (range / 2);
+                        r.Y += GameConst.rand.Next(range) - (range / 2);
+                        sb.Draw(characterTest, r, c);
+                    }
+                }
+                else
+                {
+                    sb.Draw(characterTest, charRect, c);
+                }
             }
         }
     }
