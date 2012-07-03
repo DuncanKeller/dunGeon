@@ -58,6 +58,11 @@ namespace MultiDungeon.Menus
             nonSelectableItems.Add(new MenuItem(text, pos, delegate() { } ));
         }
 
+        public void AddFlavorItem(Texture2D texture, Vector2 pos, int w, int h)
+        {
+            nonSelectableItems.Add(new MenuItem(texture, pos, w, h, delegate() { }));
+        }
+
         public virtual void Update()
         {
             // get input

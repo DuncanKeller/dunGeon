@@ -177,6 +177,9 @@ namespace MultiDungeon
                                 case "capitalist":
                                     p = new Capitalist(0, 0, pi.Key);
                                     break;
+                                case "apothecary":
+                                     p = new Apothecary(0, 0, pi.Key);
+                                    break;
                             }
                             p.Init(pi.Value.team);
                             PlayerHash.Add(pi.Key, p);

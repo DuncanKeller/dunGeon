@@ -24,6 +24,7 @@ namespace MultiDungeon.Menus
 
         public TeamChestMenu teamChest;
         public CapitalistMenu shop;
+        public ApothecaryMenu potion;
 
         public MenuManager(Game1 game)
         {
@@ -38,6 +39,7 @@ namespace MultiDungeon.Menus
 
             teamChest = new TeamChestMenu(game, this);
             shop = new CapitalistMenu(game, this);
+            potion = new ApothecaryMenu(game, this);
 
             currentMenu = main;
         }
