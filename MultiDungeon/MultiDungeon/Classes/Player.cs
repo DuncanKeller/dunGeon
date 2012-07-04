@@ -62,7 +62,7 @@ namespace MultiDungeon
 
         int gold;
         public Upgrade upgrade;
-        StatusEffect statusEffect = StatusEffect.confuse;
+        StatusEffect statusEffect = StatusEffect.none;
 
         bool alive = true;
 

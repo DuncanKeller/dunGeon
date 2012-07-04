@@ -20,6 +20,8 @@ namespace MultiDungeon.Menus
         int h;
         Color color = Color.White;
 
+        public bool hidden = false;
+
         public MenuItem(string text, Vector2 pos, MenuAction action)
         {
             this.text = text;
@@ -51,6 +53,7 @@ namespace MultiDungeon.Menus
         public bool Selected
         {
             get { return selected; }
+            set { selected = value; }
         }
 
         public void Invoke()
@@ -70,20 +73,23 @@ namespace MultiDungeon.Menus
 
         public void Draw(SpriteBatch sb)
         {
-            Color c = selected ? Color.White : new Color(100, 100, 100);
-            string append = selected ? " " : "";
-            Vector2 position = new Vector2((GameConst.SCREEN_WIDTH / 20) * pos.X,
-                (GameConst.SCREEN_HEIGHT / 20) * pos.Y);
-            int width = (GameConst.SCREEN_WIDTH / 20) * w;
-            int height = (GameConst.SCREEN_WIDTH / 20) * h;
+            if (!hidden)
+            {
+                Color c = selected ? Color.White : new Color(100, 100, 100);
+                string append = selected ? " " : "";
+                Vector2 position = new Vector2((GameConst.SCREEN_WIDTH / 20) * pos.X,
+                    (GameConst.SCREEN_HEIGHT / 20) * pos.Y);
+                int width = (GameConst.SCREEN_WIDTH / 20) * w;
+                int height = (GameConst.SCREEN_WIDTH / 20) * h;
 
-            if (texture == null)
-            {
-                sb.DrawString(TextureManager.Fonts["console"], append + text, position, c);
-            }
-            else
-            {
-                sb.Draw(texture, new Rectangle((int)position.X, (int)position.Y, width, height), color);
+                if (texture == null)
+                {
+                    sb.DrawString(TextureManager.Fonts["console"], append + text, position, c);
+                }
+                else
+                {
+                    sb.Draw(texture, new Rectangle((int)position.X, (int)position.Y, width, height), color);
+                }
             }
         }
         

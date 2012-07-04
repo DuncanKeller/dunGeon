@@ -29,3 +29,5 @@ Content\Characters\capitalist-red.xnb
 Content\Characters\powdermonkey-blue.xnb
 Content\Characters\powdermonkey-red.xnb
 Content\Items\ingredients.xnb
+Content\Characters\apothecary-blue.xnb
+Content\Characters\apothecary-red.xnb

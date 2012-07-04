@@ -28,7 +28,7 @@ namespace MultiDungeon.Menus
                 delegate() { classType = "powdermonkey"; SendClass(); });
             AddMenuItem("Capitalist", new Vector2(1, 11), 0,
                 delegate() { classType = "capitalist"; SendClass(); });
-            AddMenuItem("Apothecary", new Vector2(1, 11), 0,
+            AddMenuItem("Apothecary", new Vector2(1, 12), 0,
                 delegate() { classType = "apothecary"; SendClass(); });
 
             AddFlavorItem("Team", new Vector2(7, 6));

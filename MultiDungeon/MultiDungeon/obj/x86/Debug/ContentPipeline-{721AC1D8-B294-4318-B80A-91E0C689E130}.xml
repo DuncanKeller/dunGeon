@@ -280,6 +280,24 @@
       <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Items\ingredients.xnb</Output>
       <Time>2012-07-02T19:49:26.3157417-07:00</Time>
     </Item>
+    <Item>
+      <Source>Characters\apothecary-blue.png</Source>
+      <Name>Characters\apothecary-blue</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Characters\apothecary-blue.xnb</Output>
+      <Time>2012-07-03T18:46:08.0881316-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Characters\apothecary-red.png</Source>
+      <Name>Characters\apothecary-red</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Characters\apothecary-red.xnb</Output>
+      <Time>2012-07-03T18:46:08.1771367-07:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{721AC1D8-B294-4318-B80A-91E0C689E130}</ContentProjectGUID>
