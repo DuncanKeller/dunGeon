@@ -17,8 +17,8 @@ namespace MultiDungeon
             : base(x, y, id)
         {
             upgrade.maxSpeed = 3.7f;
-            guns.Add(new Pistols(World.BulletManager, this, new Pistols(World.BulletManager, this)));
-            guns.Add(new AssaultRifle(World.BulletManager, this));
+            guns.Add(new Revolver(World.BulletManager, this));
+            guns.Add(new DartGun(World.BulletManager, this));
 
             //characterTest = TextureManager.Map["powdermonkey-blue"];
         }

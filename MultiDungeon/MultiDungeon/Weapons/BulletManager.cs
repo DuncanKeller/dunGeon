@@ -105,6 +105,10 @@ namespace MultiDungeon
                             {
                                 Remove(b);
                             }
+                            if (b is Dart)
+                            {
+                                p.StatusEffect = StatusEffect.cursed;
+                            }
                         }
                     }
                 }
