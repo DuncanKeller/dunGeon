@@ -68,7 +68,7 @@ namespace MultiDungeon
             }
         }
 
-        public void Reload()
+        public virtual void Reload()
         {
             if (clip < maxClip)
             {

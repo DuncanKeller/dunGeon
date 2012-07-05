@@ -76,6 +76,15 @@ namespace MultiDungeon
                        
                     }
                 }
+
+                if (b is Flame)
+                {
+                    Flame f = (Flame)b;
+                    if(!f.Alive)
+                    {
+                        toRemove.Add(b);
+                    }
+                }
             }
 
             CollisionTest();
@@ -101,7 +110,8 @@ namespace MultiDungeon
                         if (b.Rect.Intersects(p.Rect))
                         {
                             p.Hit(b);
-                            if (!(p.StatusEffect == StatusEffect.invinsible))
+                            if (!(p.StatusEffect == StatusEffect.invinsible) &&
+                                !(b is Flame))
                             {
                                 Remove(b);
                             }

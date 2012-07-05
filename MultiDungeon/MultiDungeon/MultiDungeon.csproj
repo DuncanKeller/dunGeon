@@ -132,11 +132,13 @@
     <Compile Include="Weapons\Bullets\Bullet.cs" />
     <Compile Include="Weapons\BulletManager.cs" />
     <Compile Include="Weapons\Bullets\Dart.cs" />
+    <Compile Include="Weapons\Bullets\Flame.cs" />
     <Compile Include="Weapons\Bullets\Grenade.cs" />
     <Compile Include="Weapons\Bullets\Rocket.cs" />
     <Compile Include="Weapons\Guns\AssaultRifle.cs" />
     <Compile Include="Weapons\Guns\Crossbow.cs" />
     <Compile Include="Weapons\Guns\DartGun.cs" />
+    <Compile Include="Weapons\Guns\Flamethrower.cs" />
     <Compile Include="Weapons\Guns\GrenadeLauncher.cs" />
     <Compile Include="Weapons\Guns\Gun.cs" />
     <Compile Include="Map\Tile.cs" />
