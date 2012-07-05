@@ -9,11 +9,16 @@ namespace MultiDungeon.Weapons
 {
     class Sword : Weapon
     {
-        int reach = 100;
-        Rectangle hitRect = new Rectangle(0, 0, 60, 60);
+        int reach = 50;
+        Rectangle hitRect = new Rectangle(0, 0, 40, 40);
         float timer;
-        float swordTime = 0.4f; // seconds
+        float swordTime = 0.15f; // seconds
         List<Player> hasHit = new List<Player>();
+
+        public Sword()
+        {
+            icon = TextureManager.Map["sword"];
+        }
 
         public bool HasHit(Player p)
         {
@@ -30,22 +35,26 @@ namespace MultiDungeon.Weapons
             get { return timer > 0; }
         }
 
-        public void Slice(float angle)
+        public void Slice(float angle, Vector2 pos)
         {
-            int centerX = (int)(Math.Cos(angle) * reach);
-            int centerY = (int)(Math.Sin(angle) * reach);
+            angle -= 90 * (float)(Math.PI / 180);
+            if (timer == 0)
+            {
+                int centerX = (int)pos.X + (int)(Math.Cos(angle) * reach);
+                int centerY = (int)pos.Y + (int)(Math.Sin(angle) * reach);
 
-            hitRect.X = centerX - hitRect.Width / 2;
-            hitRect.Y = centerY - hitRect.Height / 2;
+                hitRect.X = centerX;
+                hitRect.Y = centerY;
 
-            timer = swordTime;
+                timer = swordTime;
+            }
         }
 
-        public void Update(float dt)
+        public override void Update(double dt)
         {
             if (timer > 0)
             {
-                timer -= dt / 1000;
+                timer -= (float)(dt / 1000);
             }
             else
             {
@@ -54,12 +63,18 @@ namespace MultiDungeon.Weapons
             }
         }
 
-        public void Draw(SpriteBatch sb)
+        public override void Draw(SpriteBatch sb)
         {
             if (Attacking)
             {
                 sb.Draw(TextureManager.Map["blank"], hitRect, Color.Orange);
             }
+        }
+
+        public override void DrawIcon(SpriteBatch sb)
+        {
+            base.DrawIcon(sb);
+            
         }
     }
 }

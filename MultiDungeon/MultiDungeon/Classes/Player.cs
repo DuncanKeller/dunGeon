@@ -69,7 +69,7 @@ namespace MultiDungeon
         public Color color = Color.White;
         public Color statusColor = Color.White;
 
-        protected List<Gun> guns = new List<Gun>();
+        protected List<Weapon> guns = new List<Weapon>();
         int gunIndex = 0; 
 
         protected Texture2D characterTest;
@@ -159,13 +159,13 @@ namespace MultiDungeon
         {
             get { return new Vector2(pos.X + Rect.Width / 2, pos.Y + Rect.Height / 2); }
         }
-            
-        public Gun CurrentGun
+
+        public Weapon CurrentGun
         {
             get { return guns[gunIndex]; }
         }
 
-        public List<Gun> Guns
+        public List<Weapon> Guns
         {
             get { return guns; }
         }
@@ -287,9 +287,12 @@ namespace MultiDungeon
             pos.X = GameConst.rand.Next((room.Width * Tile.TILE_SIZE) - Rect.Width) + (room.X * Tile.TILE_SIZE);
             pos.Y = GameConst.rand.Next((room.Height * Tile.TILE_SIZE) - Rect.Height) + (room.Y * Tile.TILE_SIZE);
             health = upgrade.maxHealth;
-            foreach (Gun gun in Guns)
+            foreach (Weapon wep in Guns)
             {
-                gun.Reset();
+                if (wep is Gun)
+                {
+                    (wep as Gun).Reset();
+                }
             }
             item = null;
         }
@@ -429,27 +432,32 @@ namespace MultiDungeon
             {
                 angle = (float)Math.Atan2(dir.X, dir.Y);
             }
-            
-            if (gamePad.Triggers.Right > 0.25 &&
-                oldGamePad.Triggers.Right < 0.25)
+            if (CurrentGun is Gun)
             {
-                CurrentGun.Shoot();
-            }
-            else if (gamePad.Triggers.Right > 0.25)
-            {
-                CurrentGun.RightHeld();
-            }
+                if (gamePad.Triggers.Right > 0.25 &&
+                    oldGamePad.Triggers.Right < 0.25)
+                {
+                    Gun g = (Gun)CurrentGun;
+                    g.Shoot();
+                }
+                else if (gamePad.Triggers.Right > 0.25)
+                {
+                    Gun g = (Gun)CurrentGun;
+                    g.RightHeld();
+                }
 
-            if (gamePad.Triggers.Left > 0.25 &&
-              oldGamePad.Triggers.Left < 0.25)
-            {
-                CurrentGun.SecondaryFire();
+                if (gamePad.Triggers.Left > 0.25 &&
+                  oldGamePad.Triggers.Left < 0.25)
+                {
+                    Gun g = (Gun)CurrentGun;
+                    g.SecondaryFire();
+                }
+                else if (gamePad.Triggers.Left > 0.25)
+                {
+                    Gun g = (Gun)CurrentGun;
+                    g.LeftHeld();
+                }
             }
-            else if (gamePad.Triggers.Left > 0.25)
-            {
-                CurrentGun.LeftHeld();
-            }
-
             // chests
             if (overlappingChest != null &&
                 item == null &&
@@ -500,14 +508,24 @@ namespace MultiDungeon
             {
                 item = null;
             }
-
-            if (gamePad.Buttons.B == ButtonState.Pressed &&
-                oldGamePad.Buttons.B == ButtonState.Released)
+            if (CurrentGun is Gun)
             {
-                CurrentGun.Reload();
+                Gun g = (Gun)CurrentGun;
+                if (gamePad.Buttons.B == ButtonState.Pressed &&
+                    oldGamePad.Buttons.B == ButtonState.Released)
+                {
+                    g.Reload();
+                }
             }
-
-            if (!CurrentGun.reloading &&
+            bool ableToSwitch = true;
+            if (CurrentGun is Gun)
+            {
+                if ((CurrentGun as Gun).reloading)
+                {
+                    ableToSwitch = false;
+                }
+            }
+            if (ableToSwitch &&
                 gamePad.Buttons.RightShoulder == ButtonState.Pressed &&
                 oldGamePad.Buttons.RightShoulder == ButtonState.Released)
             {
@@ -515,7 +533,7 @@ namespace MultiDungeon
                 if (gunIndex > guns.Count - 1)
                 { gunIndex = 0; }
             }
-            else if (!CurrentGun.reloading &&
+            else if (ableToSwitch &&
                 gamePad.Buttons.LeftShoulder == ButtonState.Pressed &&
                 oldGamePad.Buttons.LeftShoulder == ButtonState.Released)
             {
@@ -523,7 +541,16 @@ namespace MultiDungeon
                 if (gunIndex < 0)
                 { gunIndex = guns.Count - 1; }
             }
-
+            
+            else if (CurrentGun is Weapons.Sword)
+            {
+                Weapons.Sword sword = CurrentGun as Weapons.Sword;
+                if (gamePad.Triggers.Right > 0.25 &&
+                   oldGamePad.Triggers.Right < 0.25)
+                {
+                    sword.Slice(angle, pos);
+                }
+            }
             oldGamePad = gamePad;
         }
 
@@ -560,6 +587,7 @@ namespace MultiDungeon
                     sb.Draw(Item.Texture, new Rectangle(DrawRect.X, DrawRect.Y - DrawRect.Width - 10, DrawRect.Width, DrawRect.Width), 
                         new Color(100, 100, 100, 100));
                 }
+                CurrentGun.Draw(sb);
             }
         }
     }

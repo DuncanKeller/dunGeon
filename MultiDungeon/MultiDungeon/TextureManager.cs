@@ -45,6 +45,7 @@ namespace MultiDungeon
             textures.Add("revolver", c.Load<Texture2D>("Guns\\revolver"));
             textures.Add("shotgun", c.Load<Texture2D>("Guns\\shotgun"));
             textures.Add("assault-rifle", c.Load<Texture2D>("Guns\\ar"));
+            textures.Add("sword", c.Load<Texture2D>("Guns\\sword"));
 
             // dudes
             textures.Add("ninja-blue", c.Load<Texture2D>("Characters\\ninja-blue"));

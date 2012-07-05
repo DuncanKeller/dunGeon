@@ -17,7 +17,11 @@ namespace MultiDungeon.Items
 
         public override RestoreAction Use(Player p)
         {
-            p.CurrentGun.QuickReload();
+            if (p.CurrentGun is Gun)
+            {
+                Gun g = (Gun)p.CurrentGun;
+                g.QuickReload();
+            }
             return null;
         }
     }

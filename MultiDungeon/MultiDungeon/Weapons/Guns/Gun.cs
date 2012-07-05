@@ -14,7 +14,7 @@ namespace MultiDungeon
         BulletManager manager;
         Type bulletType;
         Player player;
-        
+
 
         protected int maxClip;
         protected double reloadTime;
@@ -35,11 +35,6 @@ namespace MultiDungeon
             get { return (!reloading && fireTimer == 0 && clip > 0); }
         }
 
-        public Texture2D Icon
-        {
-            get { return icon; }
-        }
-
         public Gun(BulletManager bm, Type bt, Player p)
         {
             manager = bm;
@@ -47,7 +42,7 @@ namespace MultiDungeon
             player = p;
         }
 
-        public virtual void Update(double deltaTime)
+        public override void Update(double deltaTime)
         {
             if (reloadTimer > 0)
             {
@@ -129,19 +124,19 @@ namespace MultiDungeon
             Client.Send("b" + "\n" + player.ID.ToString() + "\n" + damage.ToString());
         }
 
-        public virtual void Draw(SpriteBatch sb)
+        public override void Draw(SpriteBatch sb)
         {
 
         }
 
         public void DrawIcon(SpriteBatch sb)
         {
-            sb.Draw(Icon, new Rectangle(GameConst.SCREEN_WIDTH - 200, 20, 120, 120), Color.White);
+            base.DrawIcon(sb);
 
             int maxWidth = 150;
             int width = maxWidth / maxClip;
-            sb.Draw(TextureManager.Map["blank"], new Rectangle((GameConst.SCREEN_WIDTH - 210) - maxWidth, 20, maxWidth, 20), new Color(0,0,0,100));
-         
+            sb.Draw(TextureManager.Map["blank"], new Rectangle((GameConst.SCREEN_WIDTH - 210) - maxWidth, 20, maxWidth, 20), new Color(0, 0, 0, 100));
+
             int reloadWidth = maxWidth - (int)(maxWidth / (reloadTime / reloadTimer));
             if (reloading)
             {
@@ -150,21 +145,6 @@ namespace MultiDungeon
             for (int i = 0; i < clip; i++)
             {
                 sb.Draw(TextureManager.Map["blank"], new Rectangle((GameConst.SCREEN_WIDTH - 210) - ((width + 1) * i) - width, 20, width, 20), Color.Gray);
-            }
-        }
-
-        public void DrawArsenal(SpriteBatch sb)
-        {
-            int count = 0;
-            foreach (Gun gun in World.Player.Guns)
-            {
-                Color c = Color.White;
-
-                if (gun == World.Player.CurrentGun)
-                { c = Color.Yellow; }
-
-                sb.Draw(gun.Icon, new Rectangle((GameConst.SCREEN_WIDTH - 210 - 60) - (count * 60), 60, 60, 60), c);
-                count++;
             }
         }
     }
