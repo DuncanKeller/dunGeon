@@ -86,6 +86,7 @@
     <Compile Include="Classes\Apothecary.cs" />
     <Compile Include="Classes\Capitalist.cs" />
     <Compile Include="Classes\Mapmaker.cs" />
+    <Compile Include="Classes\Mystic.cs" />
     <Compile Include="Classes\Ninja.cs" />
     <Compile Include="Classes\Powdermonkey.cs" />
     <Compile Include="Console\Console.cs" />

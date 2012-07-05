@@ -57,6 +57,8 @@ namespace MultiDungeon
             textures.Add("capitalist-red", c.Load<Texture2D>("Characters\\capitalist-red"));
             textures.Add("apothecary-blue", c.Load<Texture2D>("Characters\\apothecary-blue"));
             textures.Add("apothecary-red", c.Load<Texture2D>("Characters\\apothecary-red"));
+            textures.Add("mystic-blue", c.Load<Texture2D>("Characters\\mystic-blue"));
+            textures.Add("mystic-red", c.Load<Texture2D>("Characters\\mystic-red"));
 
             // menu shit
             textures.Add("menu-main", c.Load<Texture2D>("Menus\\titleScreen"));

@@ -85,7 +85,6 @@ namespace MultiDungeon.HUD
                 {
                     if (map[x, y] != Location.unknown)
                     {
-
                         Rectangle rect = new Rectangle((int)pos.X + (x * (WIDTH + SPACING)),
                             (int)pos.Y + (y * (HEIGHT + SPACING)), 
                             WIDTH - (SPACING * 2), HEIGHT - (SPACING * 2));
@@ -94,6 +93,41 @@ namespace MultiDungeon.HUD
                         { c = new Color(255, 0, 0, 255); }
 
                         sb.Draw(TextureManager.Map["blank"], rect, c);
+                    }
+                }
+            }
+
+            
+        }
+
+        public static void DrawPlayers(SpriteBatch sb, Vector2 pos)
+        {
+            if (!initialized)
+            { return; }
+
+            int px = (int)(pos.X + (int)(World.Player.Position.X / Tile.TILE_SIZE) * (WIDTH + SPACING));
+            int py = (int)(pos.Y + (int)(World.Player.Position.Y / Tile.TILE_SIZE) * (HEIGHT + SPACING));
+
+            int xIndex = (int)(World.Player.Position.X / Tile.TILE_SIZE);
+            int yIndex = (int)(World.Player.Position.Y / Tile.TILE_SIZE);
+
+            if (map[xIndex, yIndex] != Location.unknown || World.Player is Mystic)
+            {
+                sb.Draw(TextureManager.Map["blank"], new Rectangle(px, py,
+                                WIDTH - (SPACING * 2), HEIGHT - (SPACING * 2)), Color.Yellow);
+                if (World.Player is Mystic)
+                {
+                    foreach (Player p in World.Players)
+                    {
+                        if (p != World.Player)
+                        {
+                            px = (int)(pos.X + (int)(p.Position.X / Tile.TILE_SIZE) * (WIDTH + SPACING));
+                            py = (int)(pos.Y + (int)(p.Position.Y / Tile.TILE_SIZE) * (HEIGHT + SPACING));
+                            Color c = p.Team == 0 ? Color.Blue : Color.Red;
+
+                            sb.Draw(TextureManager.Map["blank"], new Rectangle(px, py,
+                                WIDTH - (SPACING * 2), HEIGHT - (SPACING * 2)), c);
+                        }
                     }
                 }
             }

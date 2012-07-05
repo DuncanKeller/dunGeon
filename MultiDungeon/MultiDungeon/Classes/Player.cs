@@ -554,6 +554,12 @@ namespace MultiDungeon
                 {
                     sb.Draw(characterTest, charRect, c);
                 }
+
+                if (World.Player is Mystic && item != null && World.Player != this)
+                {
+                    sb.Draw(Item.Texture, new Rectangle(DrawRect.X, DrawRect.Y - DrawRect.Width - 10, DrawRect.Width, DrawRect.Width), 
+                        new Color(100, 100, 100, 100));
+                }
             }
         }
     }

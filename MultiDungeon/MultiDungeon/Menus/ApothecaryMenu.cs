@@ -146,17 +146,20 @@ namespace MultiDungeon.Menus
 
         private void BuyPotion(Item i)
         {
-            if (player.Item == null)
+            if (player != null)
             {
-                if (ingredients.blue >= cost[i.GetType()].blue &&
-                    ingredients.red >= cost[i.GetType()].red &&
-                    ingredients.green >= cost[i.GetType()].green)
+                if (player.Item == null)
                 {
-                    ingredients.blue -= cost[i.GetType()].blue;
-                    ingredients.red -= cost[i.GetType()].red;
-                    ingredients.green -= cost[i.GetType()].green;
-                    player.Item = i;
-                    Close();
+                    if (ingredients.blue >= cost[i.GetType()].blue &&
+                        ingredients.red >= cost[i.GetType()].red &&
+                        ingredients.green >= cost[i.GetType()].green)
+                    {
+                        ingredients.blue -= cost[i.GetType()].blue;
+                        ingredients.red -= cost[i.GetType()].red;
+                        ingredients.green -= cost[i.GetType()].green;
+                        player.Item = i;
+                        Close();
+                    }
                 }
             }
             UpdateIngredients();

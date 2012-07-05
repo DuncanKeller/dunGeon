@@ -33,6 +33,7 @@ namespace MultiDungeon.HUD
         {
             // draw map
             Map.Draw(sb, new Vector2(20, 80));
+            Map.DrawPlayers(sb, new Vector2(20, 80));
             // health
             sb.Draw(TextureManager.Map["blank"], healthRect, Color.Red);
             sb.DrawString(TextureManager.Fonts["console"], Math.Round(World.Player.Health, 1).ToString() + "/" + World.Player.MaxHealth,

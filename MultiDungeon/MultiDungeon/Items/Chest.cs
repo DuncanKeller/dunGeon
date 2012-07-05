@@ -114,6 +114,15 @@ namespace MultiDungeon.Items
             {
                 sb.Draw(TextureManager.Map["chest-closed"], rect, Color.White);
             }
+
+            if (World.Player is Mystic && contents != null)
+            {
+                // TEMP FIX THIS ADD TEXTURE TO COIN PURSE
+                if (contents is CoinPurse)
+                { return; }
+                sb.Draw(contents.Texture, new Rectangle(Rect.X + (Rect.Width / 2) - (Rect.Height / 2), Rect.Y - Rect.Height - 10, Rect.Height, Rect.Height),
+                    new Color(100, 100, 100, 100));
+            }
         }
     }
 }

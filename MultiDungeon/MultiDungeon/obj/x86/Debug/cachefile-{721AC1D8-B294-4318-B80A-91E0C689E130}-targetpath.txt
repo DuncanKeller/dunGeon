@@ -31,3 +31,5 @@ Content\Characters\powdermonkey-red.xnb
 Content\Items\ingredients.xnb
 Content\Characters\apothecary-blue.xnb
 Content\Characters\apothecary-red.xnb
+Content\Characters\mystic-blue.xnb
+Content\Characters\mystic-red.xnb
