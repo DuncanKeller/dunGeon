@@ -155,6 +155,7 @@
     <Compile Include="Weapons\Guns\RocketLauncher.cs" />
     <Compile Include="Weapons\Guns\Shotgun.cs" />
     <Compile Include="Weapons\Bullets\Shell.cs" />
+    <Compile Include="Weapons\Sword.cs" />
     <Compile Include="Weapons\Weapon.cs" />
     <Compile Include="World.cs" />
   </ItemGroup>

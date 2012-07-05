@@ -14,7 +14,7 @@ namespace MultiDungeon
         BulletManager manager;
         Type bulletType;
         Player player;
-        protected Texture2D icon;
+        
 
         protected int maxClip;
         protected double reloadTime;
