@@ -35,38 +35,42 @@ namespace MultiDungeon
             byte[] message = new byte[size];
             int bytesRead;
             ASCIIEncoding encoder = new ASCIIEncoding();
+            string data = "";
             while (true)
             {
                 bytesRead = 0;
-                string data = "";
+                
                 List<string> commands = new List<string>();
                 //try
                 {
                     bytesRead = stream.Read(message, 0, size);
 
-                    data = encoder.GetString(message, 0, bytesRead);
+                    data += encoder.GetString(message, 0, bytesRead);
 
-                    while (data[data.Length - 1] != '!')
+                    //while (data[data.Length - 1] != '!')
+                    //{
+                    //    bytesRead = stream.Read(message, 0, size);
+                    //    data += encoder.GetString(message, 0, bytesRead);
+                    //}
+
+                    while (!data.Contains('!'))
                     {
                         bytesRead = stream.Read(message, 0, size);
                         data += encoder.GetString(message, 0, bytesRead);
                     }
 
-                    //while (!data.Contains('!'))
-                    //{
+                    if (data[data.Length - 1] == '!')
+                    {
+                        ParseAndRecieve(data);
+                        data = "";
+                    }
+                    else
+                    {
+                        data = ParseAndRecievePartial(data);
+                    }
 
-                    //    bytesRead = stream.Read(message, 0, size);
-                    //    data += encoder.GetString(message, 0, bytesRead);
 
-                    //    string parseMe = data.Substring(0, data.LastIndexOf("!"));
-                    //    ParseAndRecieve(parseMe);
-
-                    //    data = data.Substring(data.LastIndexOf("!"), data.Length);
-                    //}
-
-                    ParseAndRecieve(data);
-
-                    stream.Flush();
+                    //stream.Flush();
                 }
                 //catch (Exception e)
                 //{
@@ -90,6 +94,19 @@ namespace MultiDungeon
         {
             string[] datum = data.Split('!');
             World.RecieveData(datum);
+        }
+
+        public static string ParseAndRecievePartial(string data)
+        {
+            string[] datum = data.Split('!');
+            string remainder = datum[datum.Length - 1];
+            string[] parseableData = new string[datum.Length - 1];
+            for (int i = 0; i < parseableData.Length; i++)
+            {
+                parseableData[i] = datum[i];
+            }
+            World.RecieveData(parseableData);
+            return remainder;
         }
 
         public static void Close()
