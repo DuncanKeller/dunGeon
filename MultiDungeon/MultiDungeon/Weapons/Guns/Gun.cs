@@ -129,7 +129,7 @@ namespace MultiDungeon
 
         }
 
-        public void DrawIcon(SpriteBatch sb)
+        public override void DrawIcon(SpriteBatch sb)
         {
             base.DrawIcon(sb);
 
