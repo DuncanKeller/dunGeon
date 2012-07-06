@@ -536,6 +536,15 @@ namespace MultiDungeon.Map
             colorScheme.floors.Add(Color.SandyBrown);
             colorScheme.walls.Add(Color.Orange);
 
+            colorScheme.floors.Add(Color.CornflowerBlue);
+            colorScheme.walls.Add(Color.LightBlue);
+
+            colorScheme.floors.Add(new Color(75, 30, 0));
+            colorScheme.walls.Add(Color.SaddleBrown);
+
+            colorScheme.floors.Add(Color.DarkGreen);
+            colorScheme.walls.Add( Color.LightGreen);
+
             GetColorScheme();
         }
 
