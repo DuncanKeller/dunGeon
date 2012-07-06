@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 
 namespace MultiDungeon
 {
@@ -10,9 +11,19 @@ namespace MultiDungeon
         /// </summary>
         static void Main(string[] args)
         {
-            using (Game1 game = new Game1())
+            try
             {
-                game.Run();
+                using (Game1 game = new Game1())
+                {
+                    game.Run();
+                }
+            }
+            catch (Exception e)
+            {
+                StreamWriter sw = new StreamWriter("crashLog.txt");
+                sw.WriteLine(e.Message);
+                sw.WriteLine(e.StackTrace);
+                sw.Close();
             }
         }
     }
