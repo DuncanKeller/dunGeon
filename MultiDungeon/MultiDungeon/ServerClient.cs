@@ -41,9 +41,8 @@ namespace MultiDungeon
                 bytesRead = 0;
                 
                 List<string> commands = new List<string>();
-                //try
+                try
                 {
-                    bytesRead = stream.Read(message, 0, size);
 
                     data += encoder.GetString(message, 0, bytesRead);
 
@@ -72,12 +71,12 @@ namespace MultiDungeon
 
                     //stream.Flush();
                 }
-                //catch (Exception e)
-                //{
-                //    Console.Write(e.Message, MessageType.urgent);
-                //    //Console.WriteLine(e.stackTrace);
-                //    break;
-                //}
+                catch (Exception e)
+                {
+                    Console.Write(e.Message, MessageType.urgent);
+                    //Console.WriteLine(e.stackTrace);
+                    break;
+                }
 
                 if (bytesRead == 0)
                 {
