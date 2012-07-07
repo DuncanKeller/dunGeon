@@ -43,33 +43,36 @@ namespace MultiDungeon
                 List<string> commands = new List<string>();
                 try
                 {
-
                     data += encoder.GetString(message, 0, bytesRead);
 
-                    //while (data[data.Length - 1] != '!')
-                    //{
-                    //    bytesRead = stream.Read(message, 0, size);
-                    //    data += encoder.GetString(message, 0, bytesRead);
-                    //}
-
-                    while (!data.Contains('!'))
+                    while (data[data.Length - 1] != '!')
                     {
                         bytesRead = stream.Read(message, 0, size);
                         data += encoder.GetString(message, 0, bytesRead);
                     }
+                
+                   
+                  
+                        //while (!data.Contains('!'))
+                        //{
+                        //    bytesRead = stream.Read(message, 0, size);
+                        //    data += encoder.GetString(message, 0, bytesRead);
 
-                    if (data[data.Length - 1] == '!')
-                    {
-                        ParseAndRecieve(data);
-                        data = "";
-                    }
-                    else
-                    {
-                        data = ParseAndRecievePartial(data);
-                    }
+                        //    if (data[data.Length - 1] == '!')
+                        //    {
+                        //        ParseAndRecieve(data);
+                        //        data = "";
+                        //    }
+                        //    else
+                        //    {
+                        //        data = ParseAndRecievePartial(data);
+                        //    }
+                        //}
 
+                        
+                    
 
-                    //stream.Flush();
+                    stream.Flush();
                 }
                 catch (Exception e)
                 {
