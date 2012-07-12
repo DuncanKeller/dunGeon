@@ -62,9 +62,9 @@ namespace MultiDungeon
             textures.Add("mystic-red", c.Load<Texture2D>("Characters\\mystic-red"));
 
             // effects
-            textures.Add("explosion-circle", c.Load<Texture2D>("Effects\\explosion1"));
-            textures.Add("explosion-lens", c.Load<Texture2D>("Effects\\explosion2"));
-            textures.Add("explosion-smoke", c.Load<Texture2D>("Effects\\explosion3"));
+            textures.Add("explosion-lens", c.Load<Texture2D>("Effects\\explosion1"));
+            textures.Add("explosion-smoke", c.Load<Texture2D>("Effects\\explosion2"));
+            textures.Add("explosion-circle", c.Load<Texture2D>("Effects\\explosion3"));
 
             // menu shit
             textures.Add("menu-main", c.Load<Texture2D>("Menus\\titleScreen"));

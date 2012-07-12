@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +12,7 @@ namespace MultiDungeon
     class Client
     {
         static TcpClient server;
-        
+
         public static bool connected = false;
         static ASCIIEncoding encoder = new ASCIIEncoding();
         static int size = 32;
@@ -35,51 +35,45 @@ namespace MultiDungeon
             byte[] message = new byte[size];
             int bytesRead;
             ASCIIEncoding encoder = new ASCIIEncoding();
-            string data = "";
             while (true)
             {
                 bytesRead = 0;
-                
+                string data = "";
                 List<string> commands = new List<string>();
-                try
+                //try
                 {
-                    data += encoder.GetString(message, 0, bytesRead);
+                    bytesRead = stream.Read(message, 0, size);
+
+                    data = encoder.GetString(message, 0, bytesRead);
 
                     while (data[data.Length - 1] != '!')
                     {
                         bytesRead = stream.Read(message, 0, size);
                         data += encoder.GetString(message, 0, bytesRead);
                     }
-                
-                   
-                  
-                        //while (!data.Contains('!'))
-                        //{
-                        //    bytesRead = stream.Read(message, 0, size);
-                        //    data += encoder.GetString(message, 0, bytesRead);
 
-                        //    if (data[data.Length - 1] == '!')
-                        //    {
-                        //        ParseAndRecieve(data);
-                        //        data = "";
-                        //    }
-                        //    else
-                        //    {
-                        //        data = ParseAndRecievePartial(data);
-                        //    }
-                        //}
+                    //while (!data.Contains('!'))
+                    //{
 
-                        
-                    
+                    //    bytesRead = stream.Read(message, 0, size);
+                    //    data += encoder.GetString(message, 0, bytesRead);
+
+                    //    string parseMe = data.Substring(0, data.LastIndexOf("!"));
+                    //    ParseAndRecieve(parseMe);
+
+                    //    data = data.Substring(data.LastIndexOf("!"), data.Length);
+                    //}
+
+                    ParseAndRecieve(data);
 
                     stream.Flush();
                 }
-                catch (Exception e)
-                {
-                    Console.Write(e.Message, MessageType.urgent);
-                    //Console.WriteLine(e.stackTrace);
-                    break;
-                }
+                //catch (Exception e)
+                //{
+                //    Console.Write(e.Message, MessageType.urgent);
+                //    //Console.WriteLine(e.stackTrace);
+                //    break;
+                //}
 
                 if (bytesRead == 0)
                 {
@@ -96,19 +90,6 @@ namespace MultiDungeon
         {
             string[] datum = data.Split('!');
             World.RecieveData(datum);
-        }
-
-        public static string ParseAndRecievePartial(string data)
-        {
-            string[] datum = data.Split('!');
-            string remainder = datum[datum.Length - 1];
-            string[] parseableData = new string[datum.Length - 1];
-            for (int i = 0; i < parseableData.Length; i++)
-            {
-                parseableData[i] = datum[i];
-            }
-            World.RecieveData(parseableData);
-            return remainder;
         }
 
         public static void Close()
@@ -145,7 +126,7 @@ namespace MultiDungeon
         {
             data += "!";
             NetworkStream clientStream = server.GetStream();
-            
+
             byte[] buffer = encoder.GetBytes(data);
 
             clientStream.Write(buffer, 0, buffer.Length);

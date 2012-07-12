@@ -11,20 +11,20 @@ namespace MultiDungeon
         /// </summary>
         static void Main(string[] args)
         {
-            try
+            //try
             {
                 using (Game1 game = new Game1())
                 {
                     game.Run();
                 }
             }
-            catch (Exception e)
-            {
-                StreamWriter sw = new StreamWriter("crashLog.txt");
-                sw.WriteLine(e.Message);
-                sw.WriteLine(e.StackTrace);
-                sw.Close();
-            }
+            //catch (Exception e)
+            //{
+            //    StreamWriter sw = new StreamWriter("crashLog.txt");
+            //    sw.WriteLine(e.Message);
+            //    sw.WriteLine(e.StackTrace);
+            //    sw.Close();
+            //}
         }
     }
 #endif

@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MultiDungeon.Map;
+using MultiDungeon.Effects;
 
 namespace MultiDungeon
 {
@@ -13,11 +14,23 @@ namespace MultiDungeon
         List<Bullet> bullets = new List<Bullet>();
         List<Bullet> toRemove = new List<Bullet>();
         List<Bullet> toAdd = new List<Bullet>();
+        
+        List<Particle> particles = new List<Particle>();
+        List<Particle> toRemoveP = new List<Particle>();
 
         public void Update(TileSet tiles, float deltaTime)
         {
             Cleanup();
             AddNewBullets();
+
+            foreach (Particle p in particles)
+            {
+                p.Update(deltaTime);
+                if (!p.Alive)
+                {
+                    toRemoveP.Add(p);
+                }
+            }
 
             foreach (Bullet b in bullets)
             {
@@ -59,6 +72,7 @@ namespace MultiDungeon
                                 if (b is Rocket)
                                 {
                                     HandleExplosion(b.Position, b);
+                                    AddParticles(b.Position);
                                 }
                                 Remove(b);
                             }
@@ -71,6 +85,7 @@ namespace MultiDungeon
                     Grenade g = (Grenade)b;
                     if (g.Exploded)
                     {
+                        AddParticles(g.Position);
                         HandleExplosion(g.Position, g);
                         toRemove.Add(b);
                        
@@ -88,6 +103,25 @@ namespace MultiDungeon
             }
 
             CollisionTest();
+        }
+
+        public void AddParticles(Vector2 pos)
+        {
+            for (int i = 0; i < 30; i++)
+            {
+                //Particle p = new Particle(pos, ParticleType.Circle);
+                //particles.Add(p);
+            }
+            for (int i = 0; i < 30; i++)
+            {
+                Particle p = new Particle(pos, ParticleType.RedSmoke);
+                particles.Add(p);
+            }
+            for (int i = 0; i < 80; i++)
+            {
+                Particle p = new Particle(pos, ParticleType.Smoke);
+                particles.Add(p);
+            }
         }
 
         public void HandleExplosion(Vector2 pos, Bullet b)
@@ -131,6 +165,10 @@ namespace MultiDungeon
             {
                 bullets.Remove(b);
             }
+            foreach (Particle p in toRemoveP)
+            {
+                particles.Remove(p);
+            }
 
             toRemove.Clear();
         }
@@ -160,6 +198,11 @@ namespace MultiDungeon
             foreach (Bullet b in bullets)
             {
                 b.Draw(sb);
+            }
+
+            foreach (Particle p in particles)
+            {
+                p.Draw(sb);
             }
         }
     }
