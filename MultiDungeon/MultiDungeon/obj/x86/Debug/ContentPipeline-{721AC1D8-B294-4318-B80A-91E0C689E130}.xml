@@ -325,6 +325,69 @@
       <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Guns\sword.xnb</Output>
       <Time>2012-07-04T23:15:42.1369995-07:00</Time>
     </Item>
+    <Item>
+      <Source>Guns\dartGun.png</Source>
+      <Name>Guns\dartGun</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Guns\dartGun.xnb</Output>
+      <Time>2012-07-09T23:19:26.0907111-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Guns\fire.png</Source>
+      <Name>Guns\fire</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Guns\fire.xnb</Output>
+      <Time>2012-07-09T23:19:26.0907111-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Guns\grenadeLauncher.png</Source>
+      <Name>Guns\grenadeLauncher</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Guns\grenadeLauncher.xnb</Output>
+      <Time>2012-07-09T23:19:26.1297134-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Guns\rocketLauncher.png</Source>
+      <Name>Guns\rocketLauncher</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Guns\rocketLauncher.xnb</Output>
+      <Time>2012-07-09T23:19:26.1867166-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Effects\explosion1.png</Source>
+      <Name>Effects\explosion1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Effects\explosion1.xnb</Output>
+      <Time>2012-07-11T20:15:54.3562764-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Effects\explosion2.png</Source>
+      <Name>Effects\explosion2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Effects\explosion2.xnb</Output>
+      <Time>2012-07-11T20:15:54.3562764-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Effects\explosion3.png</Source>
+      <Name>Effects\explosion3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Effects\explosion3.xnb</Output>
+      <Time>2012-07-11T20:15:54.3572765-07:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{721AC1D8-B294-4318-B80A-91E0C689E130}</ContentProjectGUID>

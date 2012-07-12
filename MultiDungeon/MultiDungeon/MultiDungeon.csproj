@@ -60,6 +60,9 @@
     <XnaCompressContent>true</XnaCompressContent>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Duncanimation">
+      <HintPath>..\..\..\Duncanimation\Duncanimation\bin\Debug\Duncanimation.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
     <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.EffectImporter, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.FBXImporter, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
@@ -91,6 +94,7 @@
     <Compile Include="Classes\Powdermonkey.cs" />
     <Compile Include="Console\Console.cs" />
     <Compile Include="Console\Message.cs" />
+    <Compile Include="Effects\Particle.cs" />
     <Compile Include="GameConst.cs" />
     <Compile Include="Graphics\LightArea.cs" />
     <Compile Include="Graphics\QuadRenderComponent.cs" />

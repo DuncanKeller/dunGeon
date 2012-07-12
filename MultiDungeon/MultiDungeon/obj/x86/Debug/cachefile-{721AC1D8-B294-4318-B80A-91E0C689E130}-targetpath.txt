@@ -34,3 +34,10 @@ Content\Characters\apothecary-red.xnb
 Content\Characters\mystic-blue.xnb
 Content\Characters\mystic-red.xnb
 Content\Guns\sword.xnb
+Content\Guns\dartGun.xnb
+Content\Guns\fire.xnb
+Content\Guns\grenadeLauncher.xnb
+Content\Guns\rocketLauncher.xnb
+Content\Effects\explosion1.xnb
+Content\Effects\explosion2.xnb
+Content\Effects\explosion3.xnb
