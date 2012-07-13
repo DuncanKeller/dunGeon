@@ -15,7 +15,7 @@ namespace MultiDungeon.HUD
             //Map.Init(World.Map);
         }
 
-        public static void Update()
+        public static void Update(float deltaTime)
         {
             foreach (Player p in World.Players)
             {
@@ -24,6 +24,13 @@ namespace MultiDungeon.HUD
                 {
                     Map.Update(p);
                 }
+            }
+            if (World.Player.Item != null)
+            {
+                //Vector2 v = Camera.ToLocalLocation(World.Player.Position, World.Camera.Transform);
+                Vector2 v = new Vector2(GameConst.SCREEN_WIDTH / 2, GameConst.SCREEN_HEIGHT / 2);
+                World.Player.Item.Update(deltaTime,
+                    (int)v.X , (int)v.Y, World.Player.DrawRect.Width, World.Player.DrawRect.Height);
             }
             int healthWidth = (int)(((World.Player.MaxHealth - (World.Player.MaxHealth - World.Player.Health)) / World.Player.MaxHealth) * 200);
             healthRect = new Rectangle(20, 20, healthWidth, 20);
@@ -49,7 +56,7 @@ namespace MultiDungeon.HUD
             // item
             if (World.Player.Item != null)
             {
-                World.Player.Item.Draw(sb, new Vector2(GameConst.SCREEN_WIDTH - 80, 20));
+                World.Player.Item.Draw(sb, World.Player.Item.Pos );
             }
         }
     }

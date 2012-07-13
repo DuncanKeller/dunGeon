@@ -48,7 +48,7 @@ namespace MultiDungeon.Effects
             this.pos = pos;
             angle = (float)(GameConst.rand.NextDouble() * Math.PI * 2);
             rotation = (float)(GameConst.rand.NextDouble() * Math.PI * 2);
-            rotSpeed = (float)((GameConst.rand.NextDouble() * Math.PI * 2 ) - Math.PI);
+            rotSpeed = (float)((GameConst.rand.NextDouble() * Math.PI  ) - Math.PI / 2);
             speed = maxSpeed - GameConst.rand.Next((int)maxSpeed) ;
             type = pt;
             int s;

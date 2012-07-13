@@ -12,8 +12,18 @@ namespace MultiDungeon.Items
     public abstract class Item
     {
         protected Texture2D texture;
-
+        protected Vector2 pos = new Vector2();
+        protected Vector2 dest = new Vector2(GameConst.SCREEN_WIDTH - 80, 20);
         protected double effectTime = 0;
+
+        int size = 60;
+
+        float timer = 0.84f;
+
+        public Vector2 Pos
+        {
+            get { return pos; }
+        }
 
         public double EffectTime
         {
@@ -25,11 +35,25 @@ namespace MultiDungeon.Items
             get { return texture; }
         }
 
+        public void Update(float deltaTime, int x, int y, int w, int h)
+        {
+            if (timer > 0)
+            {
+                timer -= deltaTime / 1000;
+                pos.X = x - (size / 2);
+                pos.Y = y - size - 20 - h;
+            }
+            else
+            {
+                pos = Vector2.Lerp(pos, dest, 0.15f);
+            }
+        }
+
         public abstract RestoreAction Use(Player p);
 
         public void Draw(SpriteBatch sb, Vector2 v)
         {
-            Rectangle r = new Rectangle((int)v.X, (int)v.Y, 60, 60);
+            Rectangle r = new Rectangle((int)v.X, (int)v.Y, size, size);
             sb.Draw(texture, r, Color.White);
         }
     }

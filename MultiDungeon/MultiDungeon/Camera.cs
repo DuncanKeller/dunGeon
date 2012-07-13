@@ -39,6 +39,11 @@ namespace MultiDungeon
 			set { rotation = value; }
 		}
 
+        public Matrix Transform
+        {
+            get { return transform; }
+        }
+
 		// Auxiliary function to move the camera
 		public void Move(Vector2 amount)
 		{
@@ -92,5 +97,14 @@ namespace MultiDungeon
 		{
 			return Vector2.Transform(position, Matrix.Invert(transform));
 		}
+
+        public static Vector2 ToLocalLocation(Vector2 position, Matrix transform)
+        {
+            return Vector2.Transform(position, transform);
+        }
+        public static Vector2 ToWorldLocation(Vector2 position, Matrix transform)
+        {
+            return Vector2.Transform(position, Matrix.Invert(transform));
+        }
 	}
 }
