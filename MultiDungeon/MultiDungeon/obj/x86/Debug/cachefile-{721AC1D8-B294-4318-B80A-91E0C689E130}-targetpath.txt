@@ -41,3 +41,7 @@ Content\Guns\rocketLauncher.xnb
 Content\Effects\explosion1.xnb
 Content\Effects\explosion2.xnb
 Content\Effects\explosion3.xnb
+Content\Bullets\dart.xnb
+Content\Bullets\grenade.xnb
+Content\Bullets\rocket.xnb
+Content\Bullets\silver-bullet.xnb

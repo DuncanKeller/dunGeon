@@ -15,7 +15,7 @@ namespace MultiDungeon
 
         public new Rectangle Rect
         {
-            get { return new Rectangle((int)pos.X - 6, (int)pos.Y - 6, 12, 12); }
+            get { return new Rectangle((int)pos.X - 5, (int)pos.Y - 13, 10, 26); }
         }
 
         public Rocket()
@@ -40,7 +40,10 @@ namespace MultiDungeon
 
         public override void Draw(SpriteBatch sb)
         {
-            sb.Draw(TextureManager.Map["blank"], Rect, Color.Black);
+            Texture2D texture = TextureManager.Map["rocket"];
+            Rectangle source = new Rectangle(0, 0, texture.Width, texture.Height);
+            sb.Draw(texture, Rect, source, Color.Gray, angle + (float)(Math.PI / 2),
+                new Vector2(0, 0), SpriteEffects.None, 0);
         }
     }
 }

@@ -54,7 +54,10 @@ namespace MultiDungeon
 
         public override void Draw(SpriteBatch sb)
         {
-            sb.Draw(TextureManager.Map["blank"], Rect, Color.Black);
+            Texture2D texture = TextureManager.Map["grenade"];
+            Rectangle source = new Rectangle(0, 0, texture.Width, texture.Height);
+            sb.Draw(texture, Rect, source, Color.White, angle + (float)(Math.PI / 2),
+                new Vector2(0, 0), SpriteEffects.None, 0);
         }
     }
 }
