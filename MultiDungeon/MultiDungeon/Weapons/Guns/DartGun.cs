@@ -18,7 +18,7 @@ namespace MultiDungeon
             rateOfFire = 0.3;
             damage = 0.2;
             clip = maxClip;
-            icon = TextureManager.Map["revolver"];
+            icon = TextureManager.Map["dartgun"];
         }
 
         public override void Update(double deltaTime)

@@ -54,7 +54,7 @@ namespace MultiDungeon
 
         public override void Draw(SpriteBatch sb)
         {
-            sb.Draw(TextureManager.Map["blank"], Rect, new Color(255,20,20,100));
+            sb.Draw(TextureManager.Map["flame"], Rect, new Color(255,20,20,100));
         }
     }
 }
