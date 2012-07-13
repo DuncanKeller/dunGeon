@@ -78,7 +78,10 @@
       <HintPath>bin\Net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -94,6 +97,12 @@
     <Compile Include="Classes\Powdermonkey.cs" />
     <Compile Include="Console\Console.cs" />
     <Compile Include="Console\Message.cs" />
+    <Compile Include="CrashForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrashForm.Designer.cs">
+      <DependentUpon>CrashForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Effects\Particle.cs" />
     <Compile Include="GameConst.cs" />
     <Compile Include="Graphics\LightArea.cs" />
@@ -209,6 +218,11 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CrashForm.resx">
+      <DependentUpon>CrashForm.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />

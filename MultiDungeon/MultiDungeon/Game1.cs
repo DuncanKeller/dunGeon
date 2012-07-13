@@ -62,7 +62,7 @@ namespace MultiDungeon
             Shadowmap.Init(this, graphics.GraphicsDevice, Content);
             Hud.Init();
             menu = new MenuManager(this);
-            
+
             base.Initialize();
         }
 

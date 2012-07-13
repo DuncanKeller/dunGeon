@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Windows.Forms;
 
 namespace MultiDungeon
 {
@@ -11,20 +12,19 @@ namespace MultiDungeon
         /// </summary>
         static void Main(string[] args)
         {
-            //try
+            try
             {
                 using (Game1 game = new Game1())
                 {
                     game.Run();
                 }
             }
-            //catch (Exception e)
-            //{
-            //    StreamWriter sw = new StreamWriter("crashLog.txt");
-            //    sw.WriteLine(e.Message);
-            //    sw.WriteLine(e.StackTrace);
-            //    sw.Close();
-            //}
+            catch (Exception e)
+            {
+                CrashForm crashForm = new CrashForm();
+                crashForm.SetInfo(e.Message, e.StackTrace);
+                Application.Run(crashForm);
+            }
         }
     }
 #endif
