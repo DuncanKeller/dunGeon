@@ -52,6 +52,10 @@ namespace MultiDungeon
 
             // bullets
             textures.Add("flame", c.Load<Texture2D>("Effects\\explosion2"));
+            textures.Add("grenade", c.Load<Texture2D>("Bullets\\grenade"));
+            textures.Add("rocket", c.Load<Texture2D>("Bullets\\rocket"));
+            textures.Add("bullet", c.Load<Texture2D>("Bullets\\silver-bullet"));
+            textures.Add("dart", c.Load<Texture2D>("Bullets\\dart"));
 
             // dudes
             textures.Add("ninja-blue", c.Load<Texture2D>("Characters\\ninja-blue"));
