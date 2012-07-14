@@ -15,8 +15,8 @@ namespace MultiDungeon
         List<Bullet> toRemove = new List<Bullet>();
         List<Bullet> toAdd = new List<Bullet>();
         
-        List<Particle> particles = new List<Particle>();
-        List<Particle> toRemoveP = new List<Particle>();
+        List<ExplosionParticle> particles = new List<ExplosionParticle>();
+        List<ExplosionParticle> toRemoveP = new List<ExplosionParticle>();
 
         public void Update(TileSet tiles, float deltaTime)
         {
@@ -24,7 +24,7 @@ namespace MultiDungeon
             AddNewBullets();
 
          
-            foreach (Particle p in particles)
+            foreach (ExplosionParticle p in particles)
             {
                 p.Update(deltaTime);
                 if (!p.Alive)
@@ -110,7 +110,7 @@ namespace MultiDungeon
         {
             for (int i = 0; i < 40; i++)
             {
-                Particle p = new Particle(player.Position, ParticleType.BlueSmoke);
+                ExplosionParticle p = new ExplosionParticle(player.Position, ParticleType.BlueSmoke);
                 particles.Add(p);
             }
         }
@@ -124,12 +124,12 @@ namespace MultiDungeon
             }
             for (int i = 0; i < 30; i++)
             {
-                Particle p = new Particle(pos, ParticleType.RedSmoke);
+                ExplosionParticle p = new ExplosionParticle(pos, ParticleType.RedSmoke);
                 particles.Add(p);
             }
             for (int i = 0; i < 80; i++)
             {
-                Particle p = new Particle(pos, ParticleType.Smoke);
+                ExplosionParticle p = new ExplosionParticle(pos, ParticleType.Smoke);
                 particles.Add(p);
             }
         }
@@ -193,7 +193,7 @@ namespace MultiDungeon
             {
                 bullets.Remove(b);
             }
-            foreach (Particle p in toRemoveP)
+            foreach (ExplosionParticle p in toRemoveP)
             {
                 particles.Remove(p);
             }
@@ -228,7 +228,7 @@ namespace MultiDungeon
                 b.Draw(sb);
             }
 
-            foreach (Particle p in particles)
+            foreach (ExplosionParticle p in particles)
             {
                 p.Draw(sb);
             }

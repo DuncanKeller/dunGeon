@@ -45,3 +45,4 @@ Content\Bullets\dart.xnb
 Content\Bullets\grenade.xnb
 Content\Bullets\rocket.xnb
 Content\Bullets\silver-bullet.xnb
+Content\Effects\bubble.xnb
