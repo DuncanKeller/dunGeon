@@ -23,6 +23,7 @@ namespace MultiDungeon
             Cleanup();
             AddNewBullets();
 
+         
             foreach (Particle p in particles)
             {
                 p.Update(deltaTime);
@@ -156,6 +157,24 @@ namespace MultiDungeon
                         }
                     }
                 }
+                if (p is Ninja)
+                {
+                    Ninja n = (Ninja)p;
+                    if (n.Sword.Attacking)
+                    {
+                        foreach (Player enemy in World.Players)
+                        {
+                            if (enemy != p)
+                            {
+                                if (n.Sword.HasHit(enemy))
+                                {
+                                    n.Sword.Hit(enemy);
+                                }
+                            }
+                        }
+                    }
+                }
+
             }
         }
 

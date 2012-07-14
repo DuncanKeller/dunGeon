@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
+using MultiDungeon.Weapons;
 
 namespace MultiDungeon
 {
@@ -21,6 +22,21 @@ namespace MultiDungeon
             guns.Add(new Weapons.Sword());
             guns.Add(new Crossbow(World.BulletManager, this));
             characterTest = TextureManager.Map["ninja-blue"];
+        }
+
+        public Sword Sword
+        {
+            get
+            {
+                foreach (Weapon w in guns)
+                {
+                    if (w is Sword)
+                    {
+                        return w as Sword;
+                    }
+                }
+                return null;
+            }
         }
 
         public override void Update(float deltaTime)
