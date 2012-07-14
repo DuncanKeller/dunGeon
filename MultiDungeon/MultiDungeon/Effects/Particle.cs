@@ -12,7 +12,8 @@ namespace MultiDungeon.Effects
         Circle,
         Lens,
         Smoke,
-        RedSmoke
+        RedSmoke,
+        BlueSmoke
     }
 
     public enum ParticleLevel
@@ -64,7 +65,13 @@ namespace MultiDungeon.Effects
                     size = new Vector2(s, s);
                     texture = TextureManager.Map["explosion-smoke"];
                     break;
-                case ParticleType.RedSmoke: 
+                case ParticleType.RedSmoke:
+                    s = 50 + GameConst.rand.Next(-30, 30);
+                    size = new Vector2(s, s);
+                    texture = TextureManager.Map["explosion-smoke"];
+                    speed = speed - GameConst.rand.Next((int)speed);
+                    break;
+                case ParticleType.BlueSmoke:
                     s = 50 + GameConst.rand.Next(-30, 30);
                     size = new Vector2(s, s);
                     texture = TextureManager.Map["explosion-smoke"];
@@ -99,6 +106,11 @@ namespace MultiDungeon.Effects
             {
                 int b = GameConst.rand.Next(100);
                 color = new Color((byte)b, 0, 0, 50);
+            }
+            else if (type == ParticleType.BlueSmoke)
+            {
+                int b = GameConst.rand.Next(75);
+                color = new Color(0, 0, (byte)b, 50);
             }
             else
             {

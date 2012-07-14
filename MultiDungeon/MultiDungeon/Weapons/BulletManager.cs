@@ -106,6 +106,15 @@ namespace MultiDungeon
             CollisionTest();
         }
 
+        public void WarpEffect(Player player)
+        {
+            for (int i = 0; i < 40; i++)
+            {
+                Particle p = new Particle(player.Position, ParticleType.BlueSmoke);
+                particles.Add(p);
+            }
+        }
+
         public void AddParticles(Vector2 pos)
         {
             for (int i = 0; i < 30; i++)

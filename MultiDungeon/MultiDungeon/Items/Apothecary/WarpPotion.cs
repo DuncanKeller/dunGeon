@@ -20,6 +20,7 @@ namespace MultiDungeon.Items
             Vector2 v = new Vector2((World.Map.GetTeamRoom(p.Team).X * Tile.TILE_SIZE) + (World.Map.GetTeamRoom(p.Team).Width / 2),
                 (World.Map.GetTeamRoom(p.Team).Y * Tile.TILE_SIZE) + (World.Map.GetTeamRoom(p.Team).Height / 2));
             p.Position = v;
+            World.BulletManager.WarpEffect(p);
             return null;
         }
 
