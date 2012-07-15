@@ -11,7 +11,7 @@ namespace MultiDungeon.Items
         public ConfusionPotion()
             : base()
         {
-            texture = TextureManager.Map["stoneskin"];
+            texture = TextureManager.Map["potion-confuse"];
         }
 
         public override RestoreAction Use(Player p)

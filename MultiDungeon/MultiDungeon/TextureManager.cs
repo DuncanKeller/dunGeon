@@ -39,6 +39,14 @@ namespace MultiDungeon
             textures.Add("mag", c.Load<Texture2D>("Items\\mag"));
             textures.Add("ingredient", c.Load<Texture2D>("Items\\ingredients"));
 
+            // potions
+            textures.Add("potion-confuse", c.Load<Texture2D>("Items\\Potions\\confusion"));
+            textures.Add("potion-midas", c.Load<Texture2D>("Items\\Potions\\midas"));
+            textures.Add("potion-curse", c.Load<Texture2D>("Items\\Potions\\curse"));
+            textures.Add("potion-invincibility", c.Load<Texture2D>("Items\\Potions\\invincibility"));
+            textures.Add("potion-vampire", c.Load<Texture2D>("Items\\Potions\\vampire"));
+            textures.Add("potion-warp", c.Load<Texture2D>("Items\\Potions\\warp"));
+
             // gun icons
             textures.Add("crossbow", c.Load<Texture2D>("Guns\\crossbow"));
             textures.Add("pistols", c.Load<Texture2D>("Guns\\pistols"));

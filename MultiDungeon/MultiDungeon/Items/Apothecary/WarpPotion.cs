@@ -12,7 +12,7 @@ namespace MultiDungeon.Items
         public WarpPotion()
             : base()
         {
-            texture = TextureManager.Map["stoneskin"];
+            texture = TextureManager.Map["potion-warp"];
         }
 
         public override RestoreAction Use(Player p)

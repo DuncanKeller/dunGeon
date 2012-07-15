@@ -13,7 +13,7 @@ namespace MultiDungeon.Items
         public VampirePotion()
             : base()
         {
-            texture = TextureManager.Map["stoneskin"];
+            texture = TextureManager.Map["potion-vampire"];
         }
 
         public override RestoreAction Use(Player p)

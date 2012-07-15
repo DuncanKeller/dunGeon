@@ -11,7 +11,7 @@ namespace MultiDungeon.Items
         public InvincibilityPotion()
             : base()
         {
-            texture = TextureManager.Map["stoneskin"];
+            texture = TextureManager.Map["potion-invincibility"];
         }
 
         public override RestoreAction Use(Player p)

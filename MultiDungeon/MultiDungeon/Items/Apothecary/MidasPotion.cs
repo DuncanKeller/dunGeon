@@ -11,7 +11,7 @@ namespace MultiDungeon.Items
         public MidasPotion()
             : base()
         {
-            texture = TextureManager.Map["stoneskin"];
+            texture = TextureManager.Map["potion-midas"];
         }
 
         public override RestoreAction Use(Player p)

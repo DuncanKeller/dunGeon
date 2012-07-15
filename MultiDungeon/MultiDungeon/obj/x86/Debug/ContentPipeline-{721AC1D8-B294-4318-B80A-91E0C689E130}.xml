@@ -460,6 +460,60 @@
       <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Effects\star.xnb</Output>
       <Time>2012-07-14T21:44:42.635562-07:00</Time>
     </Item>
+    <Item>
+      <Source>Items\Potions\confusion.png</Source>
+      <Name>Items\Potions\confusion</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Items\Potions\confusion.xnb</Output>
+      <Time>2012-07-14T23:38:48.3831164-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Items\Potions\curse.png</Source>
+      <Name>Items\Potions\curse</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Items\Potions\curse.xnb</Output>
+      <Time>2012-07-14T23:38:48.4231187-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Items\Potions\invincibility.png</Source>
+      <Name>Items\Potions\invincibility</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Items\Potions\invincibility.xnb</Output>
+      <Time>2012-07-14T23:38:48.428119-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Items\Potions\midas.png</Source>
+      <Name>Items\Potions\midas</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Items\Potions\midas.xnb</Output>
+      <Time>2012-07-14T23:38:48.429119-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Items\Potions\vampire.png</Source>
+      <Name>Items\Potions\vampire</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Items\Potions\vampire.xnb</Output>
+      <Time>2012-07-14T23:38:48.4301191-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Items\Potions\warp.png</Source>
+      <Name>Items\Potions\warp</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Items\Potions\warp.xnb</Output>
+      <Time>2012-07-14T23:38:48.4301191-07:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{721AC1D8-B294-4318-B80A-91E0C689E130}</ContentProjectGUID>

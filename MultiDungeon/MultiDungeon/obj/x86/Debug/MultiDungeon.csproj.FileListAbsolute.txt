@@ -64,3 +64,9 @@ C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\
 C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Effects\cross.xnb
 C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Effects\sparkle.xnb
 C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Effects\star.xnb
+C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Items\Potions\confusion.xnb
+C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Items\Potions\curse.xnb
+C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Items\Potions\invincibility.xnb
+C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Items\Potions\midas.xnb
+C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Items\Potions\vampire.xnb
+C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Items\Potions\warp.xnb

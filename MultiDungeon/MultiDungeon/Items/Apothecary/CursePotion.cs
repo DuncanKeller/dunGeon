@@ -11,7 +11,7 @@ namespace MultiDungeon.Items
         public CursePotion()
             : base()
         {
-            texture = TextureManager.Map["stoneskin"];
+            texture = TextureManager.Map["potion-curse"];
         }
 
         public override RestoreAction Use(Player p)
