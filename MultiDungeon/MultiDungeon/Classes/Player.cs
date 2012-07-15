@@ -315,10 +315,13 @@ namespace MultiDungeon
                 switch (statusEffect)
                 {
                     case MultiDungeon.StatusEffect.curse:
-                         health -= deltaTime / 3200;
+                        health -= deltaTime / 3200;
                         if (health < 0 && alive)
                         { Die(); }
                         EffectManager.Update(deltaTime, typeof(PoisinParticle), this);
+                        break;
+                    case MultiDungeon.StatusEffect.invinsible:
+                        EffectManager.Update(deltaTime, typeof(StarParticle), this);
                         break;
                 }
 

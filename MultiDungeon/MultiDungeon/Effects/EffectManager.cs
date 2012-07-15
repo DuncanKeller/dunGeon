@@ -17,6 +17,14 @@ namespace MultiDungeon.Effects
             {
                 maxTimer = 0.5f;
             }
+            else if (t == typeof(StarParticle))
+            {
+                maxTimer = 0.65f;
+            }
+            else if (t == typeof(HealthParticle))
+            {
+                maxTimer = 0.8f;
+            }
 
             if (timer > 0)
             {
@@ -32,6 +40,17 @@ namespace MultiDungeon.Effects
                 if (t == typeof(PoisinParticle))
                 {
                     World.BulletManager.AddParticle(new PoisinParticle(new Vector2(x, y)));
+                }
+                if (t == typeof(HealthParticle))
+                {
+                    World.BulletManager.AddParticle(new HealthParticle(new Vector2(x, y)));
+                }
+                else if (t == typeof(StarParticle))
+                {
+                    World.BulletManager.AddParticle(new StarParticle(new Vector2(x, y)));
+                    int x2 = p.DrawRect.Left + GameConst.rand.Next(p.DrawRect.Width);
+                    int y2 = p.DrawRect.Top + GameConst.rand.Next(p.DrawRect.Height);
+                    World.BulletManager.AddParticle(new SparkleParticle(new Vector2(x2, y2)));
                 }
             }
         }

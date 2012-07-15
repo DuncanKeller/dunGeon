@@ -433,6 +433,33 @@
       <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Effects\bubble.xnb</Output>
       <Time>2012-07-14T13:51:56.7321251-07:00</Time>
     </Item>
+    <Item>
+      <Source>Effects\cross.png</Source>
+      <Name>Effects\cross</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Effects\cross.xnb</Output>
+      <Time>2012-07-14T21:44:42.5885593-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Effects\sparkle.png</Source>
+      <Name>Effects\sparkle</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Effects\sparkle.xnb</Output>
+      <Time>2012-07-14T21:44:42.634562-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Effects\star.png</Source>
+      <Name>Effects\star</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Effects\star.xnb</Output>
+      <Time>2012-07-14T21:44:42.635562-07:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{721AC1D8-B294-4318-B80A-91E0C689E130}</ContentProjectGUID>

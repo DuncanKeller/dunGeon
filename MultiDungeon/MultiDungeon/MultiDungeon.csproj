@@ -105,8 +105,11 @@
     </Compile>
     <Compile Include="Effects\EffectManager.cs" />
     <Compile Include="Effects\ExplosionParticle.cs" />
+    <Compile Include="Effects\HealthParticle.cs" />
     <Compile Include="Effects\Particle.cs" />
     <Compile Include="Effects\PoisinParticle.cs" />
+    <Compile Include="Effects\SparkleParticle.cs" />
+    <Compile Include="Effects\StarParticle.cs" />
     <Compile Include="GameConst.cs" />
     <Compile Include="Graphics\LightArea.cs" />
     <Compile Include="Graphics\QuadRenderComponent.cs" />

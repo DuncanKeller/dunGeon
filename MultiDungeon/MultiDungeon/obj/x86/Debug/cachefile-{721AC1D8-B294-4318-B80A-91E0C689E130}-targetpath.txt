@@ -46,3 +46,6 @@ Content\Bullets\grenade.xnb
 Content\Bullets\rocket.xnb
 Content\Bullets\silver-bullet.xnb
 Content\Effects\bubble.xnb
+Content\Effects\cross.xnb
+Content\Effects\sparkle.xnb
+Content\Effects\star.xnb

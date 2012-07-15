@@ -69,6 +69,11 @@ namespace MultiDungeon.Graphics
                DepthStencilState.Default, RasterizerState.CullNone, null, cam.getTransformation());
             World.DrawScene(sb);
             sb.End();
+
+            sb.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp,
+               DepthStencilState.Default, RasterizerState.CullNone, null, cam.getTransformation());
+            World.DrawPlayers(sb);
+            sb.End();
             
             BlendState blendState = new BlendState();
             blendState.ColorSourceBlend = Blend.DestinationColor;
@@ -82,11 +87,6 @@ namespace MultiDungeon.Graphics
             sb.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp,
                DepthStencilState.Default, RasterizerState.CullNone, null, cam.getTransformation());
             World.DrawWallTiles(sb);
-            sb.End();
-
-            sb.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp,
-               DepthStencilState.Default, RasterizerState.CullNone, null, cam.getTransformation());
-            World.DrawPlayers(sb);
             sb.End();
 
             sb.Begin();
