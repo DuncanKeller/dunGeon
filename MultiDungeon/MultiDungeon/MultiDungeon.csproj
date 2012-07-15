@@ -103,8 +103,10 @@
     <Compile Include="CrashForm.Designer.cs">
       <DependentUpon>CrashForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Effects\EffectManager.cs" />
     <Compile Include="Effects\ExplosionParticle.cs" />
     <Compile Include="Effects\Particle.cs" />
+    <Compile Include="Effects\PoisinParticle.cs" />
     <Compile Include="GameConst.cs" />
     <Compile Include="Graphics\LightArea.cs" />
     <Compile Include="Graphics\QuadRenderComponent.cs" />

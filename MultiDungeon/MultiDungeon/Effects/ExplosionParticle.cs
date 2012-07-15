@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace MultiDungeon.Effects
 {
-    enum ParticleType
+    public enum ParticleType
     {
         Circle,
         Lens,
@@ -23,14 +23,14 @@ namespace MultiDungeon.Effects
         High = 60
     }
 
-    class ExplosionParticle : Particle
+    public class ExplosionParticle : Particle
     {
         ParticleType type;
         float maxSpeed = 1000; // pixels per second
         float dampening = 70f;
         float dadt = 0;
 
-        public bool Alive
+        public override bool Alive
         {
             get { return speed > 1; }
         }
@@ -43,6 +43,7 @@ namespace MultiDungeon.Effects
             rotSpeed = (float)((GameConst.rand.NextDouble() * Math.PI  ) - Math.PI / 2);
             speed = maxSpeed - GameConst.rand.Next((int)maxSpeed) ;
             type = pt;
+            life = 10;
             int s;
             switch (type)
             {
@@ -113,7 +114,7 @@ namespace MultiDungeon.Effects
             //color.B += cMod;
         }
 
-        public void Update(float deltatime)
+        public override void Update(float deltatime)
         {
             dadt += 1000 * (deltatime / 1000);
             //dampening -= dadt;
@@ -149,7 +150,7 @@ namespace MultiDungeon.Effects
             }
         }
 
-        public void Draw(SpriteBatch sb)
+        public override void Draw(SpriteBatch sb)
         {
             base.Draw(sb);
         }

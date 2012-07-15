@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
 using MultiDungeon.Map;
 using MultiDungeon.Items;
+using MultiDungeon.Effects;
 
 namespace MultiDungeon
 {
@@ -311,16 +312,16 @@ namespace MultiDungeon
             }
             else
             {
-                // status effect, cursed
-                if (statusEffect == StatusEffect.cursed)
+                switch (statusEffect)
                 {
-                    health -= deltaTime / 3200;
-
-                    if (health < 0 && alive)
-                    {
-                        Die();
-                    }
+                    case MultiDungeon.StatusEffect.curse:
+                         health -= deltaTime / 3200;
+                        if (health < 0 && alive)
+                        { Die(); }
+                        EffectManager.Update(deltaTime, typeof(PoisinParticle), this);
+                        break;
                 }
+
 
                 if (id == World.gameId)
                 {

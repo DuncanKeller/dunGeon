@@ -12,19 +12,19 @@ namespace MultiDungeon
         /// </summary>
         static void Main(string[] args)
         {
-            try
+            //try
             {
                 using (Game1 game = new Game1())
                 {
                     game.Run();
                 }
             }
-            catch (Exception e)
-            {
-                CrashForm crashForm = new CrashForm();
-                crashForm.SetInfo(e.Message, e.StackTrace);
-                Application.Run(crashForm);
-            }
+            //catch (Exception e)
+            //{
+            //    CrashForm crashForm = new CrashForm();
+            //    crashForm.SetInfo(e.Message, e.StackTrace);
+            //    Application.Run(crashForm);
+            //}
         }
     }
 #endif
