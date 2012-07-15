@@ -11,7 +11,7 @@ namespace MultiDungeon
     class Shotgun : Gun
     {
         int numShots;
-        float spread = 0.75f;
+        public float spread = 0.75f;
 
         public Shotgun(BulletManager bm, Player p)
             : base(bm, typeof(Shell), p)
@@ -36,9 +36,7 @@ namespace MultiDungeon
             {
                 for (int i = 0; i < numShots; i++)
                 {
-                    float angle = (float)GameConst.rand.NextDouble() * spread;
-                    angle -= spread / 2;
-                    FireBullet(angle);
+                    FireBullet();
                 }
             }
         }

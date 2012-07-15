@@ -104,10 +104,24 @@ namespace MultiDungeon
 
         }
 
-        protected void FireBullet(float angleDiff = 0)
+        protected void FireBullet()
         {
             Bullet bullet = (Bullet)Activator.CreateInstance(bulletType);
             Vector2 pos = new Vector2(player.DrawRect.X, player.DrawRect.Y);
+            float angleDiff = 0;
+            if (this is Flamethrower)
+            {
+                float spread = (this as Flamethrower).spread;
+                angleDiff = (float)GameConst.rand.NextDouble() * spread;
+                angleDiff -= spread / 2;
+            }
+            else if (this is Shotgun)
+            {
+                float spread = (this as Shotgun).spread;
+                angleDiff = (float)GameConst.rand.NextDouble() * spread;
+                angleDiff -= spread / 2;
+            }
+
             bullet.Init(pos, player.Angle - (float)(Math.PI / 2) + angleDiff, damage, player.ID);
             manager.Add(bullet);
             clip--;
@@ -121,7 +135,7 @@ namespace MultiDungeon
                 fireTimer = rateOfFire;
             }
             //ServerClient.SendBullet(player.ID);
-            Client.Send("b" + "\n" + player.ID.ToString() + "\n" + damage.ToString());
+            Client.Send("b" + "\n" + player.ID.ToString() + "\n" + bulletType.ToString());
         }
 
         public override void Draw(SpriteBatch sb)

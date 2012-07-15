@@ -11,7 +11,7 @@ namespace MultiDungeon
     class Flamethrower : Gun
     {
         bool shooting = false;
-        float spread = 0.75f;
+        public float spread = 0.75f;
 
         public Flamethrower(BulletManager bm, Player p)
             : base(bm, typeof(Flame), p)
@@ -47,9 +47,7 @@ namespace MultiDungeon
             {
                 for (int i = 0; i < 5; i++)
                 {
-                    float angle = (float)GameConst.rand.NextDouble() * spread;
-                    angle -= spread / 2;
-                    FireBullet(angle);
+                    FireBullet();
                 }
             }
         }

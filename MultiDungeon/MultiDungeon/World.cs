@@ -275,12 +275,13 @@ namespace MultiDungeon
                     else if (info[0] == "b")
                     {
                         int id = Int32.Parse(info[1]);
+                        Type type = Type.GetType(info[2]);
+                        
                         if (gameId != id)
                         {
-                            Bullet b = new Bullet();
+                            Bullet b = (Bullet)Activator.CreateInstance(type);
                             Vector2 p = new Vector2(players[id].DrawRect.X, players[id].DrawRect.Y);
-                            double damage = Double.Parse(info[2]);
-                            b.Init(p, players[id].Angle - (float)(Math.PI / 2), damage, id);
+                            b.Init(p, players[id].Angle - (float)(Math.PI / 2), b.Damage, id);
                             bulletManager.Add(b);
                         }
                     }
