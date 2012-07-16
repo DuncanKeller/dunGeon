@@ -57,7 +57,7 @@ namespace MultiDungeon.Map
             switch (type)
             {
                 case TileType.floor:
-                    texture = TextureManager.Map["blank"];
+                    texture = TextureManager.Map["floor"];
                     color = colorScheme.floor;
                     break;
                 case TileType.wall:

@@ -60,10 +60,10 @@
     <XnaCompressContent>true</XnaCompressContent>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Duncanimation">
-      <HintPath>..\..\..\Duncanimation\Duncanimation\bin\Debug\Duncanimation.dll</HintPath>
+    <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Duncanimation\Duncanimation\bin\Debug\Microsoft.Xna.Framework.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
     <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.EffectImporter, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.FBXImporter, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
     <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.TextureImporter, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86" />
@@ -186,6 +186,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Duncanimation\Duncanimation\Duncanimation.csproj">
+      <Project>{3CA874B3-7644-4B06-A0D1-0D5388997F48}</Project>
+      <Name>Duncanimation</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\NetworkLibrary\NetworkLibrary.csproj">
       <Project>{2A7DB160-3FF1-486F-9DC8-E36877ED3C7F}</Project>
       <Name>NetworkLibrary</Name>

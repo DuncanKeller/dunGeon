@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DungeonServer", "DungeonSer
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkLibrary", "NetworkLibrary\NetworkLibrary.csproj", "{2A7DB160-3FF1-486F-9DC8-E36877ED3C7F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Duncanimation", "..\Duncanimation\Duncanimation\Duncanimation.csproj", "{3CA874B3-7644-4B06-A0D1-0D5388997F48}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,16 @@ Global
 		{2A7DB160-3FF1-486F-9DC8-E36877ED3C7F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{2A7DB160-3FF1-486F-9DC8-E36877ED3C7F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{2A7DB160-3FF1-486F-9DC8-E36877ED3C7F}.Release|x86.ActiveCfg = Release|Any CPU
+		{3CA874B3-7644-4B06-A0D1-0D5388997F48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CA874B3-7644-4B06-A0D1-0D5388997F48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CA874B3-7644-4B06-A0D1-0D5388997F48}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{3CA874B3-7644-4B06-A0D1-0D5388997F48}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{3CA874B3-7644-4B06-A0D1-0D5388997F48}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3CA874B3-7644-4B06-A0D1-0D5388997F48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CA874B3-7644-4B06-A0D1-0D5388997F48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CA874B3-7644-4B06-A0D1-0D5388997F48}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{3CA874B3-7644-4B06-A0D1-0D5388997F48}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{3CA874B3-7644-4B06-A0D1-0D5388997F48}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

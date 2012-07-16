@@ -514,6 +514,24 @@
       <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Items\Potions\warp.xnb</Output>
       <Time>2012-07-14T23:38:48.4301191-07:00</Time>
     </Item>
+    <Item>
+      <Source>floor.png</Source>
+      <Name>floor</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\floor.xnb</Output>
+      <Time>2012-07-15T17:07:17.3247988-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Effects\sword-slice.png</Source>
+      <Name>Effects\sword-slice</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Effects\sword-slice.xnb</Output>
+      <Time>2012-07-15T18:51:14.5925501-07:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{721AC1D8-B294-4318-B80A-91E0C689E130}</ContentProjectGUID>

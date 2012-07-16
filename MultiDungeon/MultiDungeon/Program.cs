@@ -14,6 +14,7 @@ namespace MultiDungeon
         {
             //try
             {
+                Console.Enabled = false;
                 using (Game1 game = new Game1())
                 {
                     game.Run();

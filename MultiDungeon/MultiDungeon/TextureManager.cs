@@ -27,6 +27,7 @@ namespace MultiDungeon
             textures.Add("blank", c.Load<Texture2D>("white"));
             textures.Add("circle", c.Load<Texture2D>("circle"));
             textures.Add("tile", c.Load<Texture2D>("tile"));
+            textures.Add("floor", c.Load<Texture2D>("floor"));
             textures.Add("chest-closed", c.Load<Texture2D>("Items\\chestClosed"));
             textures.Add("chest-open", c.Load<Texture2D>("Items\\chestOpen"));
 
@@ -87,6 +88,7 @@ namespace MultiDungeon
             textures.Add("star", c.Load<Texture2D>("Effects\\star"));
             textures.Add("sparkle", c.Load<Texture2D>("Effects\\sparkle"));
             textures.Add("cross", c.Load<Texture2D>("Effects\\cross"));
+            textures.Add("slice", c.Load<Texture2D>("Effects\\sword-slice"));
 
             // menu shit
             textures.Add("menu-main", c.Load<Texture2D>("Menus\\titleScreen"));

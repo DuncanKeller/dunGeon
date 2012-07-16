@@ -543,7 +543,7 @@ namespace MultiDungeon.Map
             colorScheme.walls.Add(Color.SaddleBrown);
 
             colorScheme.floors.Add(Color.DarkGreen);
-            colorScheme.walls.Add( Color.LightGreen);
+            colorScheme.walls.Add(Color.DarkGreen);
 
             GetColorScheme();
         }

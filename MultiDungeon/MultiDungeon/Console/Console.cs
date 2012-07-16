@@ -16,6 +16,14 @@ namespace MultiDungeon
         static List<Message> messages = new List<Message>();
         static Queue<Message> toAdd = new Queue<Message>();
 
+        static bool enabled = true;
+
+        public static bool Enabled
+        {
+            get { return enabled; }
+            set { enabled = value; }
+        }
+
         static int GetNumMessages()
         {
             int num = 0;
@@ -30,6 +38,8 @@ namespace MultiDungeon
 
         public static void Update(float deltaTime)
         {
+            if (!enabled)
+            { return; }
             // update toAdd
             while (toAdd.Count > 0)
             {
@@ -75,12 +85,16 @@ namespace MultiDungeon
 
         public static void Write(string m, MessageType t = MessageType.regular)
         {
+            if (!enabled)
+            { return; }
             Message message = new Message(m, t);
             toAdd.Enqueue(message);
         }
 
         public static void Draw(SpriteBatch sb)
         {
+            if (!enabled)
+            { return; }
             float letterHieght = TextureManager.Fonts["console"].MeasureString("I").Y;
             List<Message> messages = Console.messages.ToList<Message>();
 

@@ -144,7 +144,11 @@ namespace MultiDungeon
         {
             foreach (Player p in World.Players)
             {
-                p.Hit(b);
+                float dist = Vector2.Distance(p.Position, pos);
+                if (dist < 130)
+                {
+                    p.Hit(b);
+                }
             }
         }
 
