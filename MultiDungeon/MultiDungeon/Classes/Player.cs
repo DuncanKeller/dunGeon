@@ -37,7 +37,8 @@ namespace MultiDungeon
         invinsible,
         midas,
         homing,
-        confuse
+        confuse,
+        speed
     }
 
     public abstract class Player
@@ -61,7 +62,7 @@ namespace MultiDungeon
         RestoreAction restore = null;
         Chest overlappingChest = null;
 
-        int gold;
+        int gold = 0;
         public Upgrade upgrade;
         StatusEffect statusEffect = StatusEffect.none;
 
@@ -321,6 +322,9 @@ namespace MultiDungeon
                         EffectManager.Update(deltaTime, typeof(PoisinParticle), this);
                         break;
                     case MultiDungeon.StatusEffect.invinsible:
+                        EffectManager.Update(deltaTime, typeof(StarParticle), this);
+                        break;
+                    case MultiDungeon.StatusEffect.speed:
                         EffectManager.Update(deltaTime, typeof(StarParticle), this);
                         break;
                 }

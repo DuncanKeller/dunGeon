@@ -13,7 +13,11 @@ namespace MultiDungeon.Effects
 
         public static void Update(float deltaTime, Type t, Player p)
         {
-            if(t == typeof(PoisinParticle))
+            if (t == typeof(PoisinParticle))
+            {
+                maxTimer = 0.5f;
+            }
+            if (t == typeof(SpeedParticle))
             {
                 maxTimer = 0.5f;
             }
@@ -40,6 +44,10 @@ namespace MultiDungeon.Effects
                 if (t == typeof(PoisinParticle))
                 {
                     World.BulletManager.AddParticle(new PoisinParticle(new Vector2(x, y)));
+                }
+                if (t == typeof(SpeedParticle))
+                {
+                    World.BulletManager.AddParticle(new SpeedParticle(new Vector2(x, y)));
                 }
                 if (t == typeof(HealthParticle))
                 {

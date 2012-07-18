@@ -109,6 +109,7 @@
     <Compile Include="Effects\Particle.cs" />
     <Compile Include="Effects\PoisinParticle.cs" />
     <Compile Include="Effects\SparkleParticle.cs" />
+    <Compile Include="Effects\SpeedParticle.cs" />
     <Compile Include="Effects\StarParticle.cs" />
     <Compile Include="GameConst.cs" />
     <Compile Include="Graphics\LightArea.cs" />

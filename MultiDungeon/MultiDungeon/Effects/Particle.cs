@@ -41,8 +41,8 @@ namespace MultiDungeon.Effects
         {
             Rectangle rect = new Rectangle((int)(pos.X - (size.X / 2)), (int)(pos.Y - (size.Y / 2)),
                 (int)size.X, (int)size.Y);
-            rect.X += (int)size.X;
-            rect.Y += (int)size.Y;
+            rect.X += (int)size.X / 2;
+            rect.Y += (int)size.Y / 2;
             Rectangle source = new Rectangle(0, 0, texture.Width, texture.Height);
             sb.Draw(texture, rect, source, color, rotation,
                 new Vector2(texture.Width / 2, texture.Height / 2), SpriteEffects.None, 0);

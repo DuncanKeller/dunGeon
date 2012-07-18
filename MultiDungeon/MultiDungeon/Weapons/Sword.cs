@@ -12,10 +12,10 @@ namespace MultiDungeon.Weapons
     {
         const string A_SLICE = "slice";
 
-        int reach = 50;
-        Rectangle hitRect = new Rectangle(0, 0, 40, 40);
+        int reach = 42;
+        Rectangle hitRect = new Rectangle(0, 0, 50, 50);
         float timer;
-        float swordTime = 0.15f; // seconds
+        float swordTime = 0.2f; // seconds
         float angle = 0;
         List<Player> hasHit = new List<Player>();
         Animator animator;
@@ -24,7 +24,7 @@ namespace MultiDungeon.Weapons
         {
             icon = TextureManager.Map["sword"];
             animator = new Animator(TextureManager.Map["slice"], 1, 4);
-            animator.AddAnimation(A_SLICE, 0, 3, 20, false);
+            animator.AddAnimation(A_SLICE, 0, 3, 18, false);
         }
         
         public bool HasHit(Player p)
@@ -78,8 +78,10 @@ namespace MultiDungeon.Weapons
         {
             if (Attacking)
             {
+                Rectangle drawRect = new Rectangle(hitRect.X + hitRect.Width / 2, hitRect.Y + hitRect.Height / 2,
+                    hitRect.Width, hitRect.Height);
                 //sb.Draw(TextureManager.Map["blank"], hitRect, Color.Orange);
-                animator.Draw(sb, hitRect, Color.White, angle);
+                animator.Draw(sb, drawRect, Color.White, angle, new Vector2(0.5f, 0.5f));
             }
         }
 

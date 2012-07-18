@@ -7,11 +7,12 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MultiDungeon.Effects
 {
-    public class PoisinParticle : Particle
+    public class SpeedParticle : Particle
     {
-        public PoisinParticle(Vector2 pos) : base(pos)
+        public SpeedParticle(Vector2 pos)
+            : base(pos)
         {
-            texture = TextureManager.Map["bubble"];
+            texture = TextureManager.Map["purpleBubble"];
             rotSpeed = 0;
             angle = -(float)Math.PI / 2;
             speed = 30;
@@ -21,6 +22,7 @@ namespace MultiDungeon.Effects
             size = new Vector2(s, s);
             color = new Color(175, 175, 175, 175);
         }
+
 
         public override void Update(float deltaTime)
         {

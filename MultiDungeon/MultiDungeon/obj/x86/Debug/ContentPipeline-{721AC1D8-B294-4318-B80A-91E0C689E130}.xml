@@ -521,7 +521,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\floor.xnb</Output>
-      <Time>2012-07-15T17:07:17.3247988-07:00</Time>
+      <Time>2012-07-16T19:44:21.9791223-07:00</Time>
     </Item>
     <Item>
       <Source>Effects\sword-slice.png</Source>
@@ -531,6 +531,15 @@
       <Options>None</Options>
       <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Effects\sword-slice.xnb</Output>
       <Time>2012-07-15T18:51:14.5925501-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Effects\purpleBubble.png</Source>
+      <Name>Effects\purpleBubble</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Effects\purpleBubble.xnb</Output>
+      <Time>2012-07-17T21:23:21.0145567-07:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

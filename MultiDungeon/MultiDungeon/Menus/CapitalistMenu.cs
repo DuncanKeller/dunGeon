@@ -55,6 +55,7 @@ namespace MultiDungeon.Menus
                   delegate() { BuyItem(new Juice(), 50); });
                 AddMenuItem("Spare Mag", new Vector2(12, 10), 1,
                   delegate() { BuyItem(new SpareMag(), 50); });
+                initialized = true;
             }
         }
 
@@ -66,7 +67,11 @@ namespace MultiDungeon.Menus
 
         public void BuyGun(Gun g, int price)
         {
-            player.Guns.Add(g);
+            if (player.Gold >= price)
+            {
+                player.Gold -= price;
+                player.Guns.Add(g);
+            }
         }
 
         public void BuyItem(Item i, int price)

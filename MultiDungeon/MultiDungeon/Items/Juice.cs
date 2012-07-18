@@ -21,6 +21,7 @@ namespace MultiDungeon.Items
             toRestore = p.Speed;
             p.Speed += p.Speed;
             p.Weakness = 1.5;
+            p.StatusEffect = StatusEffect.speed;
             p.statusColor = Color.GreenYellow;
             return Restore;
         }
@@ -30,6 +31,7 @@ namespace MultiDungeon.Items
             p.Speed -= toRestore;
             p.Weakness = 0;
             p.statusColor = Color.White;
+            p.StatusEffect = StatusEffect.none;
             toRestore = 0;
         }
     }

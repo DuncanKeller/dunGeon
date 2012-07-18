@@ -85,6 +85,7 @@ namespace MultiDungeon
             textures.Add("explosion-smoke", c.Load<Texture2D>("Effects\\explosion2"));
             textures.Add("explosion-circle", c.Load<Texture2D>("Effects\\explosion3"));
             textures.Add("bubble", c.Load<Texture2D>("Effects\\bubble"));
+            textures.Add("purpleBubble", c.Load<Texture2D>("Effects\\purpleBubble"));
             textures.Add("star", c.Load<Texture2D>("Effects\\star"));
             textures.Add("sparkle", c.Load<Texture2D>("Effects\\sparkle"));
             textures.Add("cross", c.Load<Texture2D>("Effects\\cross"));
