@@ -282,6 +282,7 @@ namespace MultiDungeon
             alive = false;
             timer = 0;
             statusEffect = MultiDungeon.StatusEffect.none;
+            item = null;
         }
 
         public void Spawn()
@@ -298,7 +299,6 @@ namespace MultiDungeon
                     (wep as Gun).Reset();
                 }
             }
-            item = null;
         }
 
         public virtual void Update(float deltaTime)
