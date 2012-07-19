@@ -61,7 +61,13 @@ namespace MultiDungeon
             if (Math.Abs(GamePad.GetState(playerIndex).ThumbSticks.Left.X) > 0.25 ||
                 Math.Abs(GamePad.GetState(playerIndex).ThumbSticks.Left.Y) > 0.25 ||
                 GamePad.GetState(playerIndex).Triggers.Left > 0.1 ||
-                GamePad.GetState(playerIndex).Triggers.Right > 0.1)
+                GamePad.GetState(playerIndex).Triggers.Right > 0.1 ||
+                Mouse.GetState().LeftButton == ButtonState.Pressed ||
+                Mouse.GetState().RightButton == ButtonState.Pressed ||
+                Keyboard.GetState().IsKeyDown(Keys.W) ||
+                Keyboard.GetState().IsKeyDown(Keys.A) ||
+                Keyboard.GetState().IsKeyDown(Keys.S) ||
+                Keyboard.GetState().IsKeyDown(Keys.D))
             {
                 invisTimer = 0;
                 visibility = 255;

@@ -61,6 +61,7 @@ namespace MultiDungeon.Menus
 
         public override void BackOut()
         {
+            base.BackOut();
             Close();
             World.inMenu = false;
         }

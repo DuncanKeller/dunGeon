@@ -12,6 +12,8 @@ namespace MultiDungeon
     {
         GamePadState gamePad;
         GamePadState oldGamePad;
+        KeyboardState keyboard;
+        KeyboardState oldKeyboard;
 
         public Capitalist(float x, float y, int id)
             : base(x, y, id)
@@ -40,16 +42,27 @@ namespace MultiDungeon
         public override void Update(float deltaTime)
         {
             gamePad = GamePad.GetState(PlayerIndex.One);
+            keyboard = Keyboard.GetState();
 
             if (gamePad.Buttons.Y == ButtonState.Pressed &&
                 oldGamePad.Buttons.Y == ButtonState.Released &&
+                World.inMenu == false ||
+                keyboard.IsKeyDown(Keys.Tab) &&
+                oldKeyboard.IsKeyUp(Keys.Tab) &&
                 World.inMenu == false)
             {
                 World.inMenu = true;
                 World.menuManager.SwitchMenu(World.menuManager.shop);
             }
+            else if (keyboard.IsKeyDown(Keys.Tab) &&
+               oldKeyboard.IsKeyUp(Keys.Tab) &&
+               World.inMenu == true)
+            {
+                World.menuManager.CurrentMenu.BackOut();
+            }
 
             oldGamePad = gamePad;
+            oldKeyboard = keyboard;
             base.Update(deltaTime);
         }
     }

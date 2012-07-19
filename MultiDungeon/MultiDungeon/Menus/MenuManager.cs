@@ -44,6 +44,11 @@ namespace MultiDungeon.Menus
             currentMenu = main;
         }
 
+        public Menu CurrentMenu
+        {
+            get { return currentMenu; }
+        }
+
         public void Update()
         {
             currentMenu.Update();

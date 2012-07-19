@@ -61,7 +61,6 @@ namespace MultiDungeon.Menus
             Client.Send("ready");
         }
 
-
         public override void Init()
         {
             yIndex = 0; xIndex = 0;

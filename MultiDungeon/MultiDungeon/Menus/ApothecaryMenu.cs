@@ -219,6 +219,7 @@ namespace MultiDungeon.Menus
 
         public override void BackOut()
         {
+            base.BackOut();
             Close();
             World.inMenu = false;
         }
@@ -313,7 +314,7 @@ namespace MultiDungeon.Menus
             { ChangeText(vampire); SetCostItems(typeof(VampirePotion)); }
             if (menuItems[0][index1 + 5].Selected)
             { ChangeText(curse); SetCostItems(typeof(CursePotion)); }
-            
+
             base.Update();
         }
 

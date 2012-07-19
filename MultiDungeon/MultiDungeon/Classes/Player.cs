@@ -52,6 +52,8 @@ namespace MultiDungeon
         float timer = 0;
         public PlayerIndex playerIndex = PlayerIndex.One;
         GamePadState oldGamePad;
+        KeyboardState oldKeyboard;
+        MouseState oldMouse;
 
         double health;
         double weakness;
@@ -333,8 +335,10 @@ namespace MultiDungeon
                 if (id == World.gameId)
                 {
                     GamePadState gamePad = GamePad.GetState(playerIndex);
+                    KeyboardState keyboard = Keyboard.GetState();
+                    MouseState mouse = Mouse.GetState();
 
-                    UpdateInput(gamePad, deltaTime);
+                    UpdateInput(gamePad, keyboard, mouse, deltaTime);
 
                     pos += velocity;
                 }
@@ -402,7 +406,8 @@ namespace MultiDungeon
         }
 
 
-        public void UpdateInput(GamePadState gamePad, float deltaTime)
+        public void UpdateInput(GamePadState gamePad, KeyboardState keyboard, 
+            MouseState mouse, float deltaTime)
         {
             if (World.inMenu)
             {
@@ -416,6 +421,29 @@ namespace MultiDungeon
             velocity.X += input.X * upgrade.maxSpeed * (deltaTime / 100);
             velocity.Y += -input.Y * upgrade.maxSpeed * (deltaTime / 100);
 
+            // keyboard input
+            if (keyboard.IsKeyDown(Keys.D))
+            {
+                velocity.X += upgrade.maxSpeed * (deltaTime / 100);
+                input.X = 1;
+            }
+            if (keyboard.IsKeyDown(Keys.A))
+            {
+                velocity.X -= upgrade.maxSpeed * (deltaTime / 100);
+                input.X = -1;
+            }
+            if (keyboard.IsKeyDown(Keys.W))
+            {
+                velocity.Y += upgrade.maxSpeed * (deltaTime / 100);
+                input.Y = 1;
+            }
+            if (keyboard.IsKeyDown(Keys.S))
+            {
+                velocity.Y -= upgrade.maxSpeed * (deltaTime / 100);
+                input.Y = -1;
+            }
+
+            // cap max speed
             if (velocity.X > input.X * upgrade.maxSpeed)
             {
                 velocity.X = input.X * upgrade.maxSpeed;
@@ -428,7 +456,7 @@ namespace MultiDungeon
             {
                 velocity.Y = -input.Y * upgrade.maxSpeed;
             }
-            if (velocity.Y < -input.Y * upgrade.maxSpeed)
+            else if (velocity.Y < -input.Y * upgrade.maxSpeed)
             {
                 velocity.Y = -input.Y * upgrade.maxSpeed;
             }
@@ -440,79 +468,101 @@ namespace MultiDungeon
             {
                 angle = (float)Math.Atan2(dir.X, dir.Y);
             }
+            else
+            {
+                angle = (float)Math.Atan2(mouse.X - (GameConst.SCREEN_WIDTH / 2),
+                     (GameConst.SCREEN_HEIGHT / 2) - mouse.Y);
+            }
+
             if (CurrentGun is Gun)
             {
                 if (gamePad.Triggers.Right > 0.25 &&
-                    oldGamePad.Triggers.Right < 0.25)
+                    oldGamePad.Triggers.Right < 0.25 ||
+                    mouse.LeftButton == ButtonState.Pressed &&
+                     oldMouse.LeftButton == ButtonState.Released)
                 {
                     Gun g = (Gun)CurrentGun;
                     g.Shoot();
                 }
-                else if (gamePad.Triggers.Right > 0.25)
+                else if (gamePad.Triggers.Right > 0.25 ||
+                    mouse.LeftButton == ButtonState.Pressed )
                 {
                     Gun g = (Gun)CurrentGun;
                     g.RightHeld();
                 }
 
                 if (gamePad.Triggers.Left > 0.25 &&
-                  oldGamePad.Triggers.Left < 0.25)
+                    oldGamePad.Triggers.Left < 0.25||
+                    mouse.RightButton == ButtonState.Pressed &&
+                    oldMouse.RightButton == ButtonState.Released)
                 {
                     Gun g = (Gun)CurrentGun;
                     g.SecondaryFire();
                 }
-                else if (gamePad.Triggers.Left > 0.25)
+                else if (gamePad.Triggers.Left > 0.25 ||
+                    mouse.RightButton == ButtonState.Pressed)
                 {
                     Gun g = (Gun)CurrentGun;
                     g.LeftHeld();
                 }
             }
             // chests
-            if (overlappingChest != null &&
-                item == null &&
-                !(overlappingChest is TeamChest) &&
-                gamePad.Buttons.A == ButtonState.Pressed &&
-                oldGamePad.Buttons.A == ButtonState.Released)
+            if (gamePad.Buttons.A == ButtonState.Pressed &&
+                oldGamePad.Buttons.A == ButtonState.Released ||
+                keyboard.IsKeyDown(Keys.E) &&
+                oldKeyboard.IsKeyUp(Keys.E))
             {
-                item = overlappingChest.Open(this);
-                if (item is CoinPurse)
+                if (overlappingChest != null &&
+                    item == null &&
+                    !(overlappingChest is TeamChest))
                 {
-                    item.Use(this);
-                    item = null;
-                }
-               
-                Client.Send("chest" + "\n" + overlappingChest.ID);
-            }
-            else if (overlappingChest != null &&
-              overlappingChest is TeamChest &&
-              overlappingChest.ID == teamNum && 
-              gamePad.Buttons.A == ButtonState.Pressed &&
-              oldGamePad.Buttons.A == ButtonState.Released)
-            {
-                overlappingChest.Open(this);
-            }
+                    item = overlappingChest.Open(this);
+                    if (item is CoinPurse)
+                    {
+                        item.Use(this);
+                        item = null;
+                    }
 
-            if (item != null && 
-                gamePad.Buttons.X == ButtonState.Pressed &&
-                oldGamePad.Buttons.X == ButtonState.Released)
-            {
-                if (restore == null)
+                    Client.Send("chest" + "\n" + overlappingChest.ID);
+                }
+                else if (overlappingChest != null &&
+                    overlappingChest is TeamChest &&
+                    overlappingChest.ID == teamNum)
                 {
-                    if (item.EffectTime == 0)
+                    overlappingChest.Open(this);
+                }
+            }
+            
+
+            if (item != null)
+            {
+                if (gamePad.Buttons.X == ButtonState.Pressed &&
+                    oldGamePad.Buttons.X == ButtonState.Released ||
+                    keyboard.IsKeyDown(Keys.Space) &&
+                    oldKeyboard.IsKeyUp(Keys.Space))
+                {
+                    if (restore == null)
                     {
-                        itemTimer = itemTime;
+                        if (item.EffectTime == 0)
+                        {
+                            itemTimer = itemTime;
+                        }
+                        else
+                        {
+                            itemTimer = item.EffectTime;
+                        }
+                        restore = item.Use(this);
+                        item = null;
                     }
-                    else
-                    {
-                        itemTimer = item.EffectTime;
-                    }
-                    restore = item.Use(this);
-                    item = null;
                 }
             }
 
             if (item != null &&
                 gamePad.Buttons.Back == ButtonState.Pressed &&
-                oldGamePad.Buttons.Back == ButtonState.Released)
+                oldGamePad.Buttons.Back == ButtonState.Released ||
+                item != null &&
+                keyboard.IsKeyDown(Keys.Back) &&
+                oldKeyboard.IsKeyUp(Keys.Back))
             {
                 item = null;
             }
@@ -520,7 +570,9 @@ namespace MultiDungeon
             {
                 Gun g = (Gun)CurrentGun;
                 if (gamePad.Buttons.B == ButtonState.Pressed &&
-                    oldGamePad.Buttons.B == ButtonState.Released)
+                    oldGamePad.Buttons.B == ButtonState.Released ||
+                    keyboard.IsKeyDown(Keys.R) &&
+                    oldKeyboard.IsKeyUp(Keys.R))
                 {
                     g.Reload();
                 }
@@ -533,32 +585,42 @@ namespace MultiDungeon
                     ableToSwitch = false;
                 }
             }
-            if (ableToSwitch &&
-                gamePad.Buttons.RightShoulder == ButtonState.Pressed &&
-                oldGamePad.Buttons.RightShoulder == ButtonState.Released)
+            if (ableToSwitch)
             {
-                gunIndex++;
-                if (gunIndex > guns.Count - 1)
-                { gunIndex = 0; }
+                if (gamePad.Buttons.RightShoulder == ButtonState.Pressed &&
+                    oldGamePad.Buttons.RightShoulder == ButtonState.Released ||
+                    mouse.ScrollWheelValue > oldMouse.ScrollWheelValue)
+                {
+                    gunIndex++;
+                    if (gunIndex > guns.Count - 1)
+                    { gunIndex = 0; }
+                }
+                else if (gamePad.Buttons.LeftShoulder == ButtonState.Pressed &&
+                    oldGamePad.Buttons.LeftShoulder == ButtonState.Released ||
+                    mouse.ScrollWheelValue < oldMouse.ScrollWheelValue)
+                {
+                    gunIndex--;
+                    if (gunIndex < 0)
+                    { gunIndex = guns.Count - 1; }
+                }
             }
-            else if (ableToSwitch &&
-                gamePad.Buttons.LeftShoulder == ButtonState.Pressed &&
-                oldGamePad.Buttons.LeftShoulder == ButtonState.Released)
-            {
-                gunIndex--;
-                if (gunIndex < 0)
-                { gunIndex = guns.Count - 1; }
-            }
-            
-            else if (CurrentGun is Weapons.Sword)
+            if (CurrentGun is Weapons.Sword)
             {
                 Weapons.Sword sword = CurrentGun as Weapons.Sword;
                 if (gamePad.Triggers.Right > 0.25 &&
-                   oldGamePad.Triggers.Right < 0.25)
+                    oldGamePad.Triggers.Right < 0.25 ||
+                    mouse.LeftButton == ButtonState.Pressed &&
+                    oldMouse.LeftButton == ButtonState.Released)
                 {
                     sword.Slice(angle, pos);
                 }
             }
+
+            //Vector2 newPos = World.Camera.ToLocalLocation(this.pos);
+            //Mouse.SetPosition((int)newPos.X, (int)newPos.Y);
+
+            oldKeyboard = keyboard;
+            oldMouse = mouse;
             oldGamePad = gamePad;
         }
 
