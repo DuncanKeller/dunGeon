@@ -11,6 +11,7 @@ namespace MultiDungeon.Menus
 
     public class MenuItem
     {
+        Rectangle hit;
         Texture2D texture;
         string text;
         Vector2 pos;
@@ -28,6 +29,10 @@ namespace MultiDungeon.Menus
             this.pos = pos;
             this.action = action;
             texture = null;
+            hit = new Rectangle((int)((GameConst.SCREEN_WIDTH / 20) * pos.X),
+                (int)((GameConst.SCREEN_HEIGHT / 20) * pos.Y),
+                (int)TextureManager.Fonts["console"].MeasureString(text).X,
+                (int)TextureManager.Fonts["console"].MeasureString(text).Y);
         }
 
         public MenuItem(Texture2D texture, Vector2 pos, int w, int h, MenuAction action)
@@ -38,6 +43,19 @@ namespace MultiDungeon.Menus
             this.texture = texture;
             this.w = w;
             this.h = h;
+            hit = new Rectangle((int)((GameConst.SCREEN_WIDTH / 20) * pos.X),
+                       (int)((GameConst.SCREEN_HEIGHT / 20) * pos.Y),
+                       w, h);
+        }
+
+        public bool Hovering(Vector2 pos)
+        {
+            Rectangle testRect = new Rectangle((int)pos.X, (int)pos.Y, 1, 1);
+            if (testRect.Intersects(hit))
+            {
+                return true;
+            }
+            return false;
         }
 
         public void ChangeText(string t)

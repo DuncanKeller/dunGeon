@@ -20,6 +20,7 @@ namespace MultiDungeon.Menus
         protected MenuManager menuManager;
         protected const double THRESHHOLD = 0.2;
         protected GamePadState oldGamepad;
+        protected MouseState oldMouse;
 
         public Menu(Game1 g, MenuManager mm)
         {
@@ -29,7 +30,7 @@ namespace MultiDungeon.Menus
 
         public virtual void BackOut()
         {
-
+            menuItems[xIndex][yIndex].Selected = false;
         }
 
         /// <summary>
@@ -65,8 +66,10 @@ namespace MultiDungeon.Menus
 
         public virtual void Update()
         {
+
             // get input
             GamePadState gs = GamePad.GetState(PlayerIndex.One);
+            MouseState mouse = Mouse.GetState();
             // pause after action is taken
             if (timer == 0)
             {
@@ -116,6 +119,28 @@ namespace MultiDungeon.Menus
                 timer--;
             }
 
+            foreach (List<MenuItem> items in menuItems)
+            {
+                foreach (MenuItem item in items)
+                {
+                    Vector2 pos = new Vector2(mouse.X, mouse.Y);
+                    if (item.Hovering(pos))
+                    {
+                        item.Select();
+
+                        if (mouse.LeftButton == ButtonState.Pressed &&
+                            oldMouse.LeftButton == ButtonState.Released)
+                        {
+                            item.Invoke();
+                        }
+                    }
+                    else
+                    {
+                        item.Deselect();
+                    }
+                }
+            }
+
             if (gs.Buttons.A == ButtonState.Pressed &&
                 oldGamepad.Buttons.A == ButtonState.Released)
             {
@@ -130,9 +155,16 @@ namespace MultiDungeon.Menus
                     }
                 }
             }
-
+            // gamepad
             if (gs.Buttons.B == ButtonState.Pressed &&
                 oldGamepad.Buttons.B == ButtonState.Released)
+            {
+                BackOut();
+            }
+
+            //mouse
+             if (mouse.RightButton == ButtonState.Pressed &&
+                 oldMouse.RightButton == ButtonState.Released)      
             {
                 BackOut();
             }
@@ -140,6 +172,7 @@ namespace MultiDungeon.Menus
             prevIndex.Y = yIndex;
             prevIndex.X = xIndex;
             oldGamepad = gs;
+            oldMouse = mouse;
         }
 
         public virtual void Init()

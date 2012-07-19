@@ -57,5 +57,6 @@ Content\Items\Potions\vampire.xnb
 Content\Items\Potions\warp.xnb
 Content\floor.xnb
 Content\Effects\sword-slice.xnb
+Content\Effects\purpleBubble.xnb
 Animation.cs
 Animator.cs
