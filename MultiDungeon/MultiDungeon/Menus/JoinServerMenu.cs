@@ -34,6 +34,12 @@ namespace MultiDungeon.Menus
             menuItems[0][0].Select();
         }
 
+        public override void BackOut()
+        {
+            base.BackOut();
+            menuManager.SwitchMenu(menuManager.main);
+        }
+
         public void ConnectToServer(string ip)
         {
             if (World.InitNetwork(ip))

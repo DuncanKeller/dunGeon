@@ -54,6 +54,12 @@ namespace MultiDungeon.Menus
             
         }
 
+        public override void BackOut()
+        {
+            base.BackOut();
+            menuManager.SwitchMenu(menuManager.main);
+        }
+
         public void StartServer()
         {
             server = new GameServer();

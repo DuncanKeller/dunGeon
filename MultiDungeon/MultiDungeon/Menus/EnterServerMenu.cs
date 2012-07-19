@@ -29,8 +29,12 @@ namespace MultiDungeon.Menus
 
             AddMenuItem("DONE", new Vector2(1, 7),
                 0, delegate() { menuItems[0][2].Deselect(); menuManager.SwitchMenu(menuManager.join); });
+        }
 
-            
+        public override void BackOut()
+        {
+            base.BackOut();
+            menuManager.SwitchMenu(menuManager.join);
         }
 
         public override void Init()

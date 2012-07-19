@@ -23,6 +23,11 @@ namespace MultiDungeon.Menus
 
         public bool hidden = false;
 
+        public string Text
+        {
+            get { return text; }
+        }
+
         public MenuItem(string text, Vector2 pos, MenuAction action)
         {
             this.text = text;

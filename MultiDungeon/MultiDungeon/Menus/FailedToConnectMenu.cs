@@ -19,6 +19,12 @@ namespace MultiDungeon.Menus
                 delegate() { menuManager.SwitchMenu(menuManager.main); } );
         }
 
+        public override void BackOut()
+        {
+            base.BackOut();
+            menuManager.SwitchMenu(menuManager.main);
+        }
+
         public override void Init()
         {
             yIndex = 0; xIndex = 0;

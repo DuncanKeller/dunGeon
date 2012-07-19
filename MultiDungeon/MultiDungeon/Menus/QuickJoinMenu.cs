@@ -26,6 +26,12 @@ namespace MultiDungeon.Menus
                 0, delegate() { menuItems[0][1].Deselect(); menuManager.join.ConnectToServer(ip); });
         }
 
+        public override void BackOut()
+        {
+            base.BackOut();
+            menuManager.SwitchMenu(menuManager.main);
+        }
+
         public override void Init()
         {
             ip = "";

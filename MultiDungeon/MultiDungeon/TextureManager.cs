@@ -31,6 +31,9 @@ namespace MultiDungeon
             textures.Add("chest-closed", c.Load<Texture2D>("Items\\chestClosed"));
             textures.Add("chest-open", c.Load<Texture2D>("Items\\chestOpen"));
 
+            // icons
+            textures.Add("cursor", c.Load<Texture2D>("Icons\\cursor"));
+
             // items
             textures.Add("potion", c.Load<Texture2D>("Items\\potion"));
             textures.Add("stoneskin", c.Load<Texture2D>("Items\\stoneskin"));

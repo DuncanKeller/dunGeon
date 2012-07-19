@@ -21,6 +21,9 @@ namespace MultiDungeon.Menus
         protected const double THRESHHOLD = 0.2;
         protected GamePadState oldGamepad;
         protected MouseState oldMouse;
+        bool mouseActive = true;
+        float mouseVeloc = 0;
+        float maxVeloc = 1;
 
         public Menu(Game1 g, MenuManager mm)
         {
@@ -79,11 +82,13 @@ namespace MultiDungeon.Menus
                 {
                     yIndex = yIndex == 0 ? menuItems[xIndex].Count - 1 : yIndex - 1;
                     action = true;
+                    mouseActive = false;
                 }
                 else if (gs.ThumbSticks.Left.Y < -THRESHHOLD)
                 {
                     yIndex = yIndex == menuItems[xIndex].Count - 1 ? 0 : yIndex + 1;
                     action = true;
+                    mouseActive = false;
                 }
                 else
                 {
@@ -94,11 +99,13 @@ namespace MultiDungeon.Menus
                         {
                             xIndex = xIndex == menuItems.Count - 1 ? 0 : xIndex + 1;
                             action = true;
+                            mouseActive = false;
                         }
                         else if (gs.ThumbSticks.Left.X < -THRESHHOLD)
                         {
                             xIndex = xIndex == 0 ? menuItems.Count - 1 : xIndex - 1;
                             action = true;
+                            mouseActive = false;
                         }
                     }
                 }
@@ -118,29 +125,72 @@ namespace MultiDungeon.Menus
             {
                 timer--;
             }
-
-            foreach (List<MenuItem> items in menuItems)
+            if (mouseActive)
             {
-                foreach (MenuItem item in items)
-                {
-                    Vector2 pos = new Vector2(mouse.X, mouse.Y);
-                    if (item.Hovering(pos))
-                    {
-                        item.Select();
+                mouseVeloc += (mouse.X - oldMouse.X) / 20;
 
-                        if (mouse.LeftButton == ButtonState.Pressed &&
-                            oldMouse.LeftButton == ButtonState.Released)
+                foreach (List<MenuItem> items in menuItems)
+                {
+                    foreach (MenuItem item in items)
+                    {
+                        Vector2 pos = new Vector2(mouse.X, mouse.Y);
+                        if (item.Hovering(pos))
                         {
-                            item.Invoke();
+                            item.Select();
+
+                            foreach (List<MenuItem> subItemList in menuItems)
+                            {
+                                foreach (MenuItem subItem in subItemList)
+                                {
+                                    if (subItem != item)
+                                    {
+                                        subItem.Deselect();
+                                    }
+                                }
+                            }
+
+                            if (mouse.LeftButton == ButtonState.Pressed &&
+                                oldMouse.LeftButton == ButtonState.Released)
+                            {
+                                item.Invoke();
+                            }
+                        }
+                        else
+                        {
+                            if (!item.Text.Contains('>'))
+                            {
+                                item.Deselect();
+                            }
                         }
                     }
-                    else
-                    {
-                        item.Deselect();
-                    }
+                }
+
+                if (mouseVeloc > maxVeloc)
+                {
+                    mouseVeloc = maxVeloc;
+                }
+                else if (mouseVeloc < -maxVeloc)
+                {
+                    mouseVeloc = -maxVeloc;
+                }
+
+                if (mouseVeloc > 0)
+                {
+                    mouseVeloc -= mouseVeloc / 5;
+                }
+                else
+                {
+                    mouseVeloc += mouseVeloc / -5;
                 }
             }
-
+            else
+            {
+                // mouse inactive
+                if (Math.Abs(mouseVeloc) > maxVeloc / 3)
+                {
+                    mouseActive = true;
+                }
+            }
             if (gs.Buttons.A == ButtonState.Pressed &&
                 oldGamepad.Buttons.A == ButtonState.Released)
             {
@@ -151,6 +201,7 @@ namespace MultiDungeon.Menus
                         if (menuItems[xIndex][yIndex] != null)
                         {
                             menuItems[xIndex][yIndex].Invoke();
+                            mouseActive = false;
                         }
                     }
                 }
@@ -192,6 +243,13 @@ namespace MultiDungeon.Menus
             foreach (MenuItem item in nonSelectableItems)
             {
                 item.Draw(sb);
+            }
+            if (mouseActive)
+            {
+                sb.Draw(TextureManager.Map["cursor"],
+                    new Rectangle(oldMouse.X - 2, oldMouse.Y - 2, 30, 40),
+                    new Rectangle(0, 0, TextureManager.Map["cursor"].Width, TextureManager.Map["cursor"].Height),
+                    Color.White, mouseVeloc, new Vector2(0, 0), SpriteEffects.None, 0);
             }
         }
     }
