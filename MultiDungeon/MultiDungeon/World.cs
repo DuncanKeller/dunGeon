@@ -119,7 +119,8 @@ namespace MultiDungeon
         {
             if (filename == "random")
             {
-                map.GenerateMap(45, 45);
+                //map.GenerateMap(45, 45);
+                map.GenerateDungeon(45, 45);
             }
             else
             {

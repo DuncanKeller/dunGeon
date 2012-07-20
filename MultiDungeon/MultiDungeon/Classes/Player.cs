@@ -279,14 +279,17 @@ namespace MultiDungeon
 
         public void Die()
         {
-            alive = false;
-            timer = 0;
-            statusEffect = MultiDungeon.StatusEffect.none;
-            item = null;
-            gold -= 50;
-            if (gold < 0)
+            if (alive)
             {
-                gold = 0;
+                alive = false;
+                timer = 0;
+                statusEffect = MultiDungeon.StatusEffect.none;
+                item = null;
+                gold -= 50;
+                if (gold < 0)
+                {
+                    gold = 0;
+                }
             }
         }
 
@@ -310,9 +313,9 @@ namespace MultiDungeon
         {
             if (!alive)
             {
-                timer += deltaTime;
+                timer += deltaTime / 1000;
 
-                if (timer > 1000)
+                if (timer > 1.2)
                 {
                     Spawn();
                     timer = 0;

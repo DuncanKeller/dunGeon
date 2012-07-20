@@ -96,6 +96,293 @@ namespace MultiDungeon.Map
         }
   
         #region DungeonGeneration
+
+        public void GenerateDungeon(int w, int h)
+        {
+            bool[,] map = new bool[w, h];
+            width = w;
+            height = h;
+            int i = 0;
+            int num = numRooms;
+
+            int maxWidth = width / 6;
+            int maxHeight = height / 6;
+            int maxArea = (width * height) / 5;
+
+            while (i < num)
+            {
+                bool passage = false;
+                bool add = true;
+                int randW = 0;
+                int randH = 0;
+                int randX = 0;
+                int randY = 0;
+
+                if (rooms.Count == 0 && cooridors.Count == 0)
+                {
+                    randW = GameConst.rand.Next(maxWidth - 3 - 1) + 1 + 3;
+                    randH = GameConst.rand.Next(maxHeight - 3 - 1) + 1 + 3;
+                    randX = GameConst.rand.Next(width - 1) + 1;
+                    randY = GameConst.rand.Next(height - 1) + 1;
+                }
+                else
+                {
+                    try
+                    {
+                        int index = GameConst.rand.Next(rooms.Count + cooridors.Count);
+
+                        if (index < rooms.Count)
+                        {
+                            passage = true;
+                            int chooseWall = GameConst.rand.Next(4);
+
+                            switch (chooseWall)
+                            {
+                                case 0:
+                                    for (int x = rooms[index].X; x < rooms[index].X + rooms[index].Width; x++)
+                                    {
+                                        if (map[x, rooms[index].Y - 1] == true)
+                                        {
+                                            add = false;
+                                            break;
+                                        }
+                                    }
+                                    randW = 1;
+                                    randH = GameConst.rand.Next(3) + 3;
+                                    randX = GameConst.rand.Next(rooms[index].Width - 1) + rooms[index].X;
+                                    randY = rooms[index].Y - randH;
+                                    break;
+                                case 1:
+                                    for (int y = rooms[index].Y; y < rooms[index].Y + rooms[index].Height; y++)
+                                    {
+                                        if (map[rooms[index].X + rooms[index].Width + 1, y] == true)
+                                        {
+                                            add = false;
+                                            break;
+                                        }
+                                    }
+                                    randX = rooms[index].X + rooms[index].Width;
+                                    randY = GameConst.rand.Next(rooms[index].Height - 1) + rooms[index].Y;
+                                    randW = GameConst.rand.Next(3) + 3;
+                                    randH = 1;
+                                    break;
+                                case 2:
+                                    for (int x = rooms[index].X; x < rooms[index].X + rooms[index].Width; x++)
+                                    {
+                                        if (map[x, rooms[index].Y + rooms[index].Height + 1] == true)
+                                        {
+                                            add = false;
+                                            break;
+                                        }
+                                    }
+                                    randX = GameConst.rand.Next(rooms[index].Width - 1) + rooms[index].X;
+                                    randY = rooms[index].Y + rooms[index].Height;
+                                    randW = 1;
+                                    randH = GameConst.rand.Next(3) + 3;
+                                    break;
+                                case 3:
+                                    for (int y = rooms[index].Y; y < rooms[index].Y + rooms[index].Height; y++)
+                                    {
+                                        if (map[rooms[index].X - 1, y] == true)
+                                        {
+                                            add = false;
+                                            break;
+                                        }
+                                    }
+                                    randW = GameConst.rand.Next(3) + 3;
+                                    randH = 1;
+                                    randX = rooms[index].X - randW;
+                                    randY = GameConst.rand.Next(rooms[index].Height - 1) + rooms[index].Y;
+                                    break;
+                            }
+                        }
+                        else
+                        {
+                            index -= rooms.Count;
+
+                            if (cooridors[index].Width > 1)
+                            {
+                                int chooseWall = GameConst.rand.Next(2);
+
+                                switch (chooseWall)
+                                {
+                                    case 0:
+                                        if (map[cooridors[index].X - 1, cooridors[index].Y] == true)
+                                        {
+                                            add = false;
+                                            break;
+                                        }
+                                        randW = GameConst.rand.Next(maxWidth - 3 - 1) + 1 + 3;
+                                        randH = GameConst.rand.Next(maxHeight - 3 - 1) + 1 + 3;
+                                        randX = cooridors[index].X - randW;
+                                        randY = cooridors[index].Y - GameConst.rand.Next(randH);
+                                        break;
+                                    case 1:
+                                        if (map[cooridors[index].X + cooridors[index].Width + 1, cooridors[index].Y] == true)
+                                        {
+                                            add = false;
+                                            break;
+                                        }
+                                        randW = GameConst.rand.Next(maxWidth - 3 - 1) + 1 + 3;
+                                        randH = GameConst.rand.Next(maxHeight - 3 - 1) + 1 + 3;
+                                        randX = cooridors[index].X + cooridors[index].Width;
+                                        randY = cooridors[index].Y - GameConst.rand.Next(randH);
+                                        break;
+                                }
+                            }
+                            else
+                            {
+                                int chooseWall = GameConst.rand.Next(2);
+
+                                switch (chooseWall)
+                                {
+                                    case 0:
+                                        if (map[cooridors[index].X, cooridors[index].Y + cooridors[index].Height + 1] == true)
+                                        {
+                                            add = false;
+                                            break;
+                                        }
+                                        randW = GameConst.rand.Next(maxWidth - 3 - 1) + 1 + 3;
+                                        randH = GameConst.rand.Next(maxHeight - 3 - 1) + 1 + 3;
+                                        randX = cooridors[index].X - GameConst.rand.Next(randW);
+                                        randY = cooridors[index].Y + cooridors[index].Height;
+                                        break;
+                                    case 1:
+                                        if (map[cooridors[index].X, cooridors[index].Y - 1] == true)
+                                        {
+                                            add = false;
+                                            break;
+                                        }
+                                        randW = GameConst.rand.Next(maxWidth - 3 - 1) + 1 + 3;
+                                        randH = GameConst.rand.Next(maxHeight - 3 - 1) + 1 + 3;
+                                        randX = cooridors[index].X - GameConst.rand.Next(randW);
+                                        randY = cooridors[index].Y - cooridors[index].Height;
+                                        break;
+                                }
+                            }
+
+                        }
+                    }
+                    catch (IndexOutOfRangeException) { }
+                }
+
+
+                if (randX > maxArea ||
+                    randY > maxArea)
+                {
+                    continue;
+                }
+                else
+                {
+
+                    Rectangle room = new Rectangle(randX, randY, randW, randH);
+                    if (room.X + room.Width >= width ||
+                        room.Y + room.Height >= height ||
+                        room.X <= 0 ||
+                        room.Y <= 0)
+                    {
+                        add = false;
+                    }
+
+                    if (add)
+                    {
+                        foreach (Rectangle r in rooms)
+                        {
+                            if (!passage)
+                            {
+                                Rectangle testRoom = new Rectangle(r.X - 1, r.Y - 1, r.Width + 2, r.Height + 2);
+                                if (testRoom.Intersects(room) && r != room)
+                                { add = false; }
+                            }
+                        }
+                    }
+
+                    if (add)
+                    {
+                        if (passage)
+                        {
+                            cooridors.Add(room);
+                        }
+                        else
+                        {
+                            rooms.Add(room);
+                        }
+                        for (int x = room.X; x < room.X + room.Width; x++)
+                        {
+                            for (int y = room.Y; y < room.Y + room.Height; y++)
+                            {
+                                map[x, y] = true;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+                if (!passage)
+                {
+                    i++;
+                }
+            }
+
+            for (int x = 0; x < width; x++)
+            {
+                for (int y = 0; y < width; y++)
+                {
+                    map[x, y] = false;
+                }
+            }
+
+            foreach (Rectangle r in rooms)
+            {
+                for (int a = r.X; a < r.X + r.Width; a++)
+                {
+                    for (int b = r.Y; b < r.Y + r.Height; b++)
+                    {
+                        map[a, b] = true;
+                    }
+                }
+            }
+            foreach (Rectangle r in cooridors)
+            {
+                if (r.X < 0 || r.Y < 0 ||
+                    r.X + r.Width >= width || r.Y + r.Height >= height)
+                {
+                    continue;
+                }
+                if (r.Width > 1)
+                {
+                    if (map[r.X - 1, r.Y] == false ||
+                        map[r.X + r.Width, r.Y] == false)
+                    {
+                        continue;
+                    }
+                }
+                else
+                {
+                    if (map[r.X, r.Y + r.Height] == false ||
+                        map[r.X, r.Y - 1] == false)
+                    {
+                        continue;
+                    }
+                }
+                for (int a = r.X; a < r.X + r.Width; a++)
+                {
+                    for (int b = r.Y; b < r.Y + r.Height; b++)
+                    {
+                        map[a, b] = true;
+                    }
+                }
+            }
+
+            GenerateTeamRooms();
+            Populate();
+            CreateTiles(map, width, height);
+            InitColorPalets();
+        }
+
+        #region depricated
         private Rectangle MakeRoom(ref bool[,] map, int mwidth, int mheight, int rwidth, int rheight)
         {
             Rectangle room = Rectangle.Empty;
@@ -383,6 +670,7 @@ namespace MultiDungeon.Map
 
             return hall;
         }
+        #endregion
         #endregion
 
         public void Populate()
