@@ -277,12 +277,17 @@ namespace MultiDungeon
             p.statusEffect = StatusEffect.none;
         }
 
-        private void Die()
+        public void Die()
         {
             alive = false;
             timer = 0;
             statusEffect = MultiDungeon.StatusEffect.none;
             item = null;
+            gold -= 50;
+            if (gold < 0)
+            {
+                gold = 0;
+            }
         }
 
         public void Spawn()

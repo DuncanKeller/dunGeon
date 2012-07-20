@@ -9,6 +9,7 @@ using MultiDungeon.Map;
 using System.Timers;
 using MultiDungeon.Items;
 using MultiDungeon.Menus;
+using MultiDungeon.Traps;
 
 namespace MultiDungeon
 {
@@ -38,6 +39,7 @@ namespace MultiDungeon
         static int timer = 0;
         static BulletManager bulletManager = new BulletManager();
         static ItemManager itemManager = new ItemManager();
+        static TrapManager trapManager = new TrapManager();
         static Camera cam;
         static Game1 game;
         
@@ -58,6 +60,11 @@ namespace MultiDungeon
         public static BulletManager BulletManager
         {
             get { return bulletManager; }
+        }
+
+        public static TrapManager TrapManager
+        {
+            get { return trapManager; }
         }
 
         public static ItemManager ItemManager
@@ -416,6 +423,7 @@ namespace MultiDungeon
             UpdateNetwork(deltaTime);
             bulletManager.Update(map, deltaTime);
             itemManager.Update(deltaTime);
+            trapManager.Update(deltaTime);
 
             lock (players)
             {
@@ -457,6 +465,7 @@ namespace MultiDungeon
             //DrawWallTiles(sb);
             itemManager.Draw(sb);
             bulletManager.Draw(sb);
+            trapManager.Draw(sb);
         }
 
         public static void DrawPlayers(SpriteBatch sb)

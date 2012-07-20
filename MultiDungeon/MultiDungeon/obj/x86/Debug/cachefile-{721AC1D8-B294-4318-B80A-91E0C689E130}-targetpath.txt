@@ -59,5 +59,8 @@ Content\floor.xnb
 Content\Effects\sword-slice.xnb
 Content\Effects\purpleBubble.xnb
 Content\Icons\cursor.xnb
+Content\Traps\spikes-large.xnb
+Content\Traps\spikes-retracted.xnb
+Content\Traps\spikes-tiny.xnb
 Content\Maps\catacombs.txt
 Content\Maps\raceways.txt

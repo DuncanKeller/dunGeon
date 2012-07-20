@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using MultiDungeon.Items;
+using MultiDungeon.Traps;
 
 namespace MultiDungeon.Map
 {
@@ -386,7 +387,8 @@ namespace MultiDungeon.Map
 
         public void Populate()
         {
-            int numItems = rooms.Count / 2;
+            // chests
+            int numItems = rooms.Count / 4;
             List<int> usedRooms = new List<int>();
 
             for (int i = 0; i < numItems; i++)
@@ -410,6 +412,38 @@ namespace MultiDungeon.Map
                 Item item = Chest.RandomItem();
 
                 World.ItemManager.Chests.Add(new Chest(i, chestPos, item));
+            }
+
+            //spikes
+            int numSpikes = rooms.Count / 2;
+
+            for (int i = 0; i < numItems; i++)
+            {
+                int roomId = GameConst.rand.Next(numItems);
+                while (usedRooms.Contains(roomId)
+                    || rooms[roomId] == teamRooms[0]
+                     || rooms[roomId] == teamRooms[1])
+                {
+                    roomId = GameConst.rand.Next(rooms.Count);
+                }
+                usedRooms.Add(roomId);
+
+                int x = GameConst.rand.Next(rooms[roomId].Width - 1)
+                    * Tile.TILE_SIZE + (rooms[roomId].X * Tile.TILE_SIZE);
+                int y = GameConst.rand.Next(rooms[roomId].Height - 1)
+                     * Tile.TILE_SIZE + (rooms[roomId].Y * Tile.TILE_SIZE);
+
+                Vector2 spikePos = new Vector2(x, y);
+
+                bool retracting = true;
+                if (GameConst.rand.Next(2) == 0)
+                {
+                    retracting = false;
+                }
+
+                Spike spike = new Spike((int)spikePos.X, (int)spikePos.Y, retracting);
+
+                World.TrapManager.Traps.Add(spike);
             }
         }
 

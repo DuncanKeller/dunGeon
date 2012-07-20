@@ -550,6 +550,33 @@
       <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Icons\cursor.xnb</Output>
       <Time>2012-07-18T19:10:29.7495321-07:00</Time>
     </Item>
+    <Item>
+      <Source>Traps\spikes-large.png</Source>
+      <Name>Traps\spikes-large</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Traps\spikes-large.xnb</Output>
+      <Time>2012-07-19T21:37:44.112441-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Traps\spikes-retracted.png</Source>
+      <Name>Traps\spikes-retracted</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Traps\spikes-retracted.xnb</Output>
+      <Time>2012-07-19T21:37:44.1134411-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Traps\spikes-tiny.png</Source>
+      <Name>Traps\spikes-tiny</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Traps\spikes-tiny.xnb</Output>
+      <Time>2012-07-19T21:37:44.1144412-07:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{721AC1D8-B294-4318-B80A-91E0C689E130}</ContentProjectGUID>

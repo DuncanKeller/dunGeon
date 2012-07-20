@@ -150,6 +150,8 @@
     <Compile Include="Menus\ServerSetupMenu.cs" />
     <Compile Include="Menus\TeamChestMenu.cs" />
     <Compile Include="Traps\Spike.cs" />
+    <Compile Include="Traps\Trap.cs" />
+    <Compile Include="Traps\TrapManager.cs" />
     <Compile Include="Weapons\Bullets\Arrow.cs" />
     <Compile Include="Weapons\Bullets\Bullet.cs" />
     <Compile Include="Weapons\BulletManager.cs" />

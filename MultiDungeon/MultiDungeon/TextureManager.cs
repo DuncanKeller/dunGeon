@@ -43,6 +43,11 @@ namespace MultiDungeon
             textures.Add("mag", c.Load<Texture2D>("Items\\mag"));
             textures.Add("ingredient", c.Load<Texture2D>("Items\\ingredients"));
 
+            // traps
+            textures.Add("spikes-low", c.Load<Texture2D>("Traps\\spikes-tiny"));
+            textures.Add("spikes-high", c.Load<Texture2D>("Traps\\spikes-large"));
+            textures.Add("spikes-retracted", c.Load<Texture2D>("Traps\\spikes-retracted"));
+
             // potions
             textures.Add("potion-confuse", c.Load<Texture2D>("Items\\Potions\\confusion"));
             textures.Add("potion-midas", c.Load<Texture2D>("Items\\Potions\\midas"));

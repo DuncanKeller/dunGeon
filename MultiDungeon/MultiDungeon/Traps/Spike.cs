@@ -8,14 +8,14 @@ using MultiDungeon.Map;
 
 namespace MultiDungeon.Traps
 {
-    class Spike
+    class Spike : Trap
     {
         bool retracting;
         bool spikesOut = false;
 
-        Texture2D tRetracted;
-        Texture2D tPrimed;
-        Texture2D tOut;
+        static Texture2D tRetracted = TextureManager.Map["spikes-retracted"];
+        static Texture2D tPrimed = TextureManager.Map["spikes-low"];
+        static Texture2D tOut = TextureManager.Map["spikes-high"];
         Rectangle rect;
 
         float timer;
@@ -33,6 +33,17 @@ namespace MultiDungeon.Traps
             timer = inTime;
         }
 
+        public void TestHit(Player p)
+        {
+            if (spikesOut)
+            {
+                if (p.DrawRect.Intersects(rect))
+                {
+                    p.Die();
+                }
+            }
+        }
+
         public Texture2D Texture
         {
             get
@@ -43,7 +54,7 @@ namespace MultiDungeon.Traps
                 }
                 else
                 {
-                    if (timer < inTime / 10)
+                    if (timer < inTime / 7)
                     {
                         return tPrimed;
                     }
@@ -74,7 +85,7 @@ namespace MultiDungeon.Traps
             }
         }
 
-        public void Update(float deltaTime)
+        public override void Update(float deltaTime)
         {
             if (retracting)
             {
@@ -105,7 +116,7 @@ namespace MultiDungeon.Traps
             }
         }
 
-        public void Draw(SpriteBatch sb)
+        public override void Draw(SpriteBatch sb)
         {
             sb.Draw(Texture, DrawRect, Color.White);
         }
