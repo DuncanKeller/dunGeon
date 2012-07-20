@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Content;
 using MultiDungeon.Items;
 
 namespace MultiDungeon.Map
@@ -449,6 +451,30 @@ namespace MultiDungeon.Map
             }
         }
 
+        private void GenerateCustomTeamRooms()
+        {
+            Rectangle room1 = teamRooms[0];
+            Rectangle room2 = teamRooms[1];
+
+            if (room1 == Rectangle.Empty ||
+                room2 == Rectangle.Empty)
+            {
+                throw new Exception("Team rooms not found");
+            }
+
+            int x1 = GameConst.rand.Next(room1.Width - 2)
+                    * Tile.TILE_SIZE + (room1.X * Tile.TILE_SIZE);
+            int y1 = GameConst.rand.Next(room1.Height - 2)
+                    * Tile.TILE_SIZE + (room1.Y * Tile.TILE_SIZE);
+            int x2 = GameConst.rand.Next(room2.Width - 2)
+                    * Tile.TILE_SIZE + (room2.X * Tile.TILE_SIZE);
+            int y2 = GameConst.rand.Next(room2.Height - 2)
+                    * Tile.TILE_SIZE + (room2.Y * Tile.TILE_SIZE);
+
+            World.ItemManager.Add(new TeamChest(0, new Vector2(x1, y1)));
+            World.ItemManager.Add(new TeamChest(1, new Vector2(x2, y2)));
+        }
+
         private void GenerateTeamRooms()
         {
             Rectangle room1 = Rectangle.Empty;
@@ -519,6 +545,86 @@ namespace MultiDungeon.Map
                 {
 
                 }
+            }
+        }
+
+        public void ReadMap(string filename, ContentManager c)
+        {
+            StreamReader sr = new StreamReader(c.RootDirectory + "\\Maps\\" + filename + ".txt");
+            int width = Int32.Parse(sr.ReadLine());
+            int height = Int32.Parse(sr.ReadLine());
+
+            bool[,] map = new bool[width, height];
+
+            for (int xi = 1; xi < width; xi++)
+            {
+                for (int yi = 1; yi < height; yi++)
+                {
+                    map[xi, yi] = false;
+                }
+            }
+
+            this.width = width;
+            this.height = height;
+
+            while (!sr.EndOfStream)
+            {
+                string line = sr.ReadLine();
+                if (line == String.Empty)
+                { continue; }
+
+                string[] args = line.Split('.');
+                if (args[0].Equals("r", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    int x = Int32.Parse(args[1]);
+                    int y = Int32.Parse(args[2]);
+                    int rWidth = Int32.Parse(args[3]);
+                    int rHeight = Int32.Parse(args[4]);
+
+                    string team = args[5];
+                    Rectangle r = new Rectangle(x, y, rWidth, rHeight);
+                    if (team.Equals("t", StringComparison.CurrentCultureIgnoreCase))
+                    {
+                        teamRooms.Add(r);
+                    }
+                    else
+                    {
+                        rooms.Add(r);
+                    }
+
+                    for (x = r.X; x < r.X + r.Width; x++)
+                    {
+                        for (y = r.Y; y < r.Y + r.Height; y++)
+                        {
+                            map[x, y] = true;
+                        }
+                    }
+                }
+                else if (args[0].Equals("c", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    int x = Int32.Parse(args[1]);
+                    int y = Int32.Parse(args[2]);
+                    int rWidth = Int32.Parse(args[3]);
+                    int rHeight = Int32.Parse(args[4]);
+                    Rectangle r = new Rectangle(x, y, rWidth, rHeight);
+                    cooridors.Add(r);
+
+                    for (x = r.X; x < r.X + r.Width; x++)
+                    {
+                        for (y = r.Y; y < r.Y + r.Height; y++)
+                        {
+                            map[x, y] = true;
+                        }
+                    }
+                }
+            }
+            sr.Close();
+            lock (tiles)
+            {
+                GenerateCustomTeamRooms();
+                Populate();
+                CreateTiles(map, width, height);
+                InitColorPalets();
             }
         }
 

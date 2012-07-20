@@ -58,7 +58,7 @@ namespace MultiDungeon
             graphics.ApplyChanges();
 
             TextureManager.Initialize(Content);
-            World.Init(graphics, this);
+            World.Init(graphics, Content, this);
             Shadowmap.Init(this, graphics.GraphicsDevice, Content);
             Hud.Init();
             menu = new MenuManager(this);

@@ -59,3 +59,4 @@ Content\floor.xnb
 Content\Effects\sword-slice.xnb
 Content\Effects\purpleBubble.xnb
 Content\Icons\cursor.xnb
+Content\Maps\catacombs.txt

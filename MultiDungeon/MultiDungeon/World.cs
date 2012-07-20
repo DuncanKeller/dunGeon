@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Content;
 using MultiDungeon.Map;
 using System.Timers;
 using MultiDungeon.Items;
@@ -26,6 +27,7 @@ namespace MultiDungeon
 
     class World
     {
+        static ContentManager content;
         public static Random rand = new Random();
         public static int gameId;
         public static MenuManager menuManager;
@@ -89,12 +91,13 @@ namespace MultiDungeon
             get { return map; }
         }
 
-        public static void Init(GraphicsDeviceManager g, Game1 g1)
+        public static void Init(GraphicsDeviceManager g, ContentManager c, Game1 g1)
         {
             game = g1;
             map = new TileSet();
             cam = new Camera(g);
             menuManager = new MenuManager(game);
+            content = c;
 
             InitEndgameStruct();
         }
@@ -107,7 +110,8 @@ namespace MultiDungeon
 
         public static void StartGame()
         {
-            map.GenerateMap(45, 45);
+            //map.GenerateMap(45, 45);
+            map.ReadMap("catacombs", content);
             Player.Spawn();
             MultiDungeon.HUD.Map.Init(World.Map);
             game.state = Game1.GameState.game;
