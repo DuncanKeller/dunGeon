@@ -111,7 +111,7 @@ namespace MultiDungeon
         public static void StartGame()
         {
             //map.GenerateMap(45, 45);
-            map.ReadMap("catacombs", content);
+            map.ReadMap("raceways", content);
             Player.Spawn();
             MultiDungeon.HUD.Map.Init(World.Map);
             game.state = Game1.GameState.game;
