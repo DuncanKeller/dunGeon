@@ -115,10 +115,16 @@ namespace MultiDungeon
             endgame.maxTeamGold = 100;
         }
 
-        public static void StartGame()
+        public static void StartGame(string filename)
         {
-            //map.GenerateMap(45, 45);
-            map.ReadMap("raceways", content);
+            if (filename == "random")
+            {
+                map.GenerateMap(45, 45);
+            }
+            else
+            {
+                map.ReadMap(filename, content);
+            }
             Player.Spawn();
             MultiDungeon.HUD.Map.Init(World.Map);
             game.state = Game1.GameState.game;
@@ -198,7 +204,7 @@ namespace MultiDungeon
                             p.Init(pi.Value.team);
                             PlayerHash.Add(pi.Key, p);
                         }
-                        StartGame();
+                        StartGame(info[1]);
                     }
                     else if (info[0] == "xbox")
                     {

@@ -13,7 +13,7 @@ namespace MultiDungeon.Menus
     {
         int gametype = 0;
         int players = 1;
-        int map = 0;
+        string map = "random";
         GameServer server = null;
 
         public GameServer Server
@@ -47,7 +47,11 @@ namespace MultiDungeon.Menus
             AddFlavorItem("Map", new Vector2(13, 6));
             AddFlavorItem("_________", new Vector2(13, 7));
             AddMenuItem("Random", new Vector2(13, 8), 2,
-                delegate() { map = 0; });
+                delegate() { map = "random"; });
+            AddMenuItem("Raceways", new Vector2(13, 9), 2,
+                            delegate() { map = "raceways"; });
+            AddMenuItem("Catacombs", new Vector2(13, 10), 2,
+                delegate() { map = "catacombs"; });
 
             AddMenuItem("START\nSERVER", new Vector2(17, 8), 3,
                delegate() { StartServer();  });

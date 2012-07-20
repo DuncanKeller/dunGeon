@@ -21,7 +21,7 @@ namespace NetworkLibrary
         private int maxPlayers = 4;
         private int readyPlayers = 0;
 
-        private int mapType = 0;
+        private string mapType = "random";
 
         private int gameType = 0;
 
@@ -52,7 +52,7 @@ namespace NetworkLibrary
         /// <param name="p">Max number of players</param>
         /// <param name="m">Map Type</param>
         /// <param name="gt">Game Type</param>
-        public void InitGame(int p, int m, int gt)
+        public void InitGame(int p, string m, int gt)
         {
             maxPlayers = p;
             mapType = m;
@@ -110,7 +110,7 @@ namespace NetworkLibrary
         {
             foreach (int id in clients.Keys)
             {
-                Send("start!", id);
+                Send("start\n"+mapType+"!", id);
             }
         }
 
