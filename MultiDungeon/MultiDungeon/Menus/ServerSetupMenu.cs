@@ -52,6 +52,8 @@ namespace MultiDungeon.Menus
                             delegate() { map = "raceways"; });
             AddMenuItem("Catacombs", new Vector2(13, 10), 2,
                 delegate() { map = "catacombs"; });
+            AddMenuItem("Piety", new Vector2(13, 11), 2,
+                delegate() { map = "piety"; });
 
             AddMenuItem("START\nSERVER", new Vector2(17, 8), 3,
                delegate() { StartServer();  });

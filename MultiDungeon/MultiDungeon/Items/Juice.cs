@@ -22,7 +22,7 @@ namespace MultiDungeon.Items
             p.Speed += p.Speed;
             p.Weakness = 1.5;
             p.StatusEffect = StatusEffect.speed;
-            p.statusColor = Color.GreenYellow;
+            p.statusColor = Color.Purple;
             return Restore;
         }
 

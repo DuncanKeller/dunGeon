@@ -67,12 +67,9 @@ namespace MultiDungeon.Graphics
 
             sb.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp,
                DepthStencilState.Default, RasterizerState.CullNone, null, cam.getTransformation());
-            World.DrawScene(sb);
-            sb.End();
-
-            sb.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp,
-               DepthStencilState.Default, RasterizerState.CullNone, null, cam.getTransformation());
+            World.DrawSceneBehindPlayer(sb);
             World.DrawPlayers(sb);
+            World.DrawSceneInFrontOfPlayer(sb);
             sb.End();
             
             BlendState blendState = new BlendState();

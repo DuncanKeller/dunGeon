@@ -467,12 +467,17 @@ namespace MultiDungeon
             map.DrawWalls(sb);
         }
 
-        public static void DrawScene(SpriteBatch sb)
+        public static void DrawSceneBehindPlayer(SpriteBatch sb)
         {
             //DrawWallTiles(sb);
             itemManager.Draw(sb);
-            bulletManager.Draw(sb);
             trapManager.Draw(sb);
+        }
+
+        public static void DrawSceneInFrontOfPlayer(SpriteBatch sb)
+        {
+            //DrawWallTiles(sb);
+            bulletManager.Draw(sb);
         }
 
         public static void DrawPlayers(SpriteBatch sb)

@@ -335,7 +335,7 @@ namespace MultiDungeon
                         EffectManager.Update(deltaTime, typeof(StarParticle), this);
                         break;
                     case MultiDungeon.StatusEffect.speed:
-                        EffectManager.Update(deltaTime, typeof(StarParticle), this);
+                        EffectManager.Update(deltaTime, typeof(SpeedParticle), this);
                         break;
                 }
 

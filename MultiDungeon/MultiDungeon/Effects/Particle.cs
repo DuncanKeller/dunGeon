@@ -39,7 +39,7 @@ namespace MultiDungeon.Effects
 
         public virtual void Draw(SpriteBatch sb)
         {
-            Rectangle rect = new Rectangle((int)(pos.X - (size.X / 2)), (int)(pos.Y - (size.Y / 2)),
+            Rectangle rect = new Rectangle((int)(pos.X - (texture.Width / 2)), (int)(pos.Y - (texture.Height / 2)),
                 (int)size.X, (int)size.Y);
             rect.X += (int)size.X / 2;
             rect.Y += (int)size.Y / 2;

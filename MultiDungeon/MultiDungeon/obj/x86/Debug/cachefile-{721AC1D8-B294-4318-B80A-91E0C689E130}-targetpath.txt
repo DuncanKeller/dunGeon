@@ -62,5 +62,6 @@ Content\Icons\cursor.xnb
 Content\Traps\spikes-large.xnb
 Content\Traps\spikes-retracted.xnb
 Content\Traps\spikes-tiny.xnb
+Content\Maps\piety.txt
 Content\Maps\catacombs.txt
 Content\Maps\raceways.txt
