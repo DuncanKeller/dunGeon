@@ -21,7 +21,7 @@ namespace MultiDungeon.Items
             toRestore = p.Speed - (p.Speed / 3);
             p.Speed -= toRestore;
             p.Weakness = 0.5;
-            p.statusColor = Color.DarkGray;
+            p.statusColor = new Color(50, 50, 50, 255);
             return Restore;
         }
 

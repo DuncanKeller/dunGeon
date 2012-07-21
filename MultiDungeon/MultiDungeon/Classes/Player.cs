@@ -414,14 +414,13 @@ namespace MultiDungeon
                     }
                 }
             }
-
         }
 
 
         public void UpdateInput(GamePadState gamePad, KeyboardState keyboard, 
             MouseState mouse, float deltaTime)
         {
-            if (World.inMenu)
+            if (World.inMenu || !World.ReadyToPlay)
             {
                 velocity.X = 0;
                 velocity.Y = 0;

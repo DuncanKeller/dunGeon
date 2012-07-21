@@ -58,6 +58,41 @@ namespace MultiDungeon.HUD
             {
                 World.Player.Item.Draw(sb, World.Player.Item.Pos );
             }
+
+            DrawCountdown(sb);
+        }
+
+        public static void DrawCountdown(SpriteBatch sb)
+        {
+            if (World.Countdown > -1)
+            {
+                Color c = Color.White;
+                Texture2D texture = null;
+                if (World.Countdown > 2)
+                {
+                    texture = TextureManager.Map["countdown-3"];
+                }
+                else if (World.Countdown > 1)
+                {
+                    texture = TextureManager.Map["countdown-2"];
+                }
+                else if (World.Countdown > 0)
+                {
+                    texture = TextureManager.Map["countdown-1"];
+                }
+                else
+                {
+                    texture = TextureManager.Map["countdown-go"];
+                    c = Color.Green;
+                }
+
+                float remainder = Math.Abs(World.Countdown - ((float)Math.Truncate(World.Countdown)));
+                int width = (int)(texture.Width * remainder);
+                int height = (int)(texture.Height * remainder);
+                Rectangle rect = new Rectangle((GameConst.SCREEN_WIDTH / 2) - (width / 2),
+                    (GameConst.SCREEN_HEIGHT / 4) - (height / 2), width, height);
+                sb.Draw(texture, rect, c);
+            }
         }
     }
 }

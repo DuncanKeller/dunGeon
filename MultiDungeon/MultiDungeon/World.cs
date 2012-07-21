@@ -42,6 +42,7 @@ namespace MultiDungeon
         static TrapManager trapManager = new TrapManager();
         static Camera cam;
         static Game1 game;
+        static float countdown;
         
         static Dictionary<int, PlayerInfo> playerInfo = new Dictionary<int, PlayerInfo>();
 
@@ -55,6 +56,16 @@ namespace MultiDungeon
         {
             get { return game; }
             set { game = value; }
+        }
+
+        public static bool ReadyToPlay
+        {
+            get { return countdown <= 0; }
+        }
+
+        public static float Countdown
+        {
+            get { return countdown; }
         }
 
         public static BulletManager BulletManager
@@ -129,6 +140,7 @@ namespace MultiDungeon
             Player.Spawn();
             MultiDungeon.HUD.Map.Init(World.Map);
             game.state = Game1.GameState.game;
+            countdown = 3;
         }
 
         #region NetworkClient
@@ -427,6 +439,27 @@ namespace MultiDungeon
 
         public static void Update(float deltaTime)
         {
+            if (countdown > -1)
+            {
+                if (countdown == 3)
+                {
+
+                }
+                else if (countdown == 2)
+                {
+
+                }
+                else if (countdown == 1)
+                {
+
+                }
+                countdown -= deltaTime / 1000;
+            }
+            else
+            {
+                countdown = -1;
+            }
+
             UpdateNetwork(deltaTime);
             bulletManager.Update(map, deltaTime);
             itemManager.Update(deltaTime);

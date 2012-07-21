@@ -577,6 +577,42 @@
       <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Traps\spikes-tiny.xnb</Output>
       <Time>2012-07-19T21:37:44.1144412-07:00</Time>
     </Item>
+    <Item>
+      <Source>Icons\countdown1.png</Source>
+      <Name>Icons\countdown1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Icons\countdown1.xnb</Output>
+      <Time>2012-07-21T12:35:14.7260676-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Icons\countdown2.png</Source>
+      <Name>Icons\countdown2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Icons\countdown2.xnb</Output>
+      <Time>2012-07-21T12:35:14.7280678-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Icons\countdown3.png</Source>
+      <Name>Icons\countdown3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Icons\countdown3.xnb</Output>
+      <Time>2012-07-21T12:35:14.7340681-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Icons\countdownGo.png</Source>
+      <Name>Icons\countdownGo</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Icons\countdownGo.xnb</Output>
+      <Time>2012-07-21T12:35:14.7540692-07:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{721AC1D8-B294-4318-B80A-91E0C689E130}</ContentProjectGUID>
