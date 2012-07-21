@@ -21,7 +21,7 @@ namespace MultiDungeon
             rateOfFire = 0.07;
             damage = 0.2;
             clip = maxClip;
-            icon = TextureManager.Map["assault-rifle"];
+            icon = TextureManager.Map["flames"];
         }
 
         public override void Update(double deltaTime)

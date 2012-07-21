@@ -66,6 +66,7 @@ namespace MultiDungeon
             textures.Add("grenade-launcher", c.Load<Texture2D>("Guns\\grenadeLauncher"));
             textures.Add("rocket-launcher", c.Load<Texture2D>("Guns\\rocketLauncher"));
             textures.Add("dartgun", c.Load<Texture2D>("Guns\\dartGun"));
+            textures.Add("flames", c.Load<Texture2D>("Guns\\fire"));
 
             // bullets
             textures.Add("flame", c.Load<Texture2D>("Effects\\explosion2"));

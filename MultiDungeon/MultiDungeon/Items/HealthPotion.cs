@@ -26,16 +26,23 @@ namespace MultiDungeon.Items
         {
             amount = (int)a;
             texture = TextureManager.Map["potion"];
+            effectTime = 1;
         }
 
         public override RestoreAction Use(Player p)
         {
+            p.StatusEffect = StatusEffect.health;
             p.Health += p.MaxHealth / amount;
             if (p.Health > p.MaxHealth)
             {
                 p.Health = p.MaxHealth;
             }
-            return null;
+            return Restore;
+        }
+
+        public void Restore(Player p)
+        {
+            p.StatusEffect = StatusEffect.none;
         }
     }
 }

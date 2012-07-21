@@ -486,7 +486,6 @@ namespace MultiDungeon
             {
                 p.Value.Draw(sb);
             }
-            
         }
 
     }

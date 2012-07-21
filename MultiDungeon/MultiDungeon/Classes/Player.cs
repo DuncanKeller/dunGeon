@@ -38,7 +38,8 @@ namespace MultiDungeon
         midas,
         homing,
         confuse,
-        speed
+        speed,
+        health
     }
 
     public abstract class Player
@@ -336,6 +337,9 @@ namespace MultiDungeon
                         break;
                     case MultiDungeon.StatusEffect.speed:
                         EffectManager.Update(deltaTime, typeof(SpeedParticle), this);
+                        break;
+                    case MultiDungeon.StatusEffect.health:
+                        EffectManager.Update(deltaTime, typeof(HealthParticle), this);
                         break;
                 }
 
