@@ -23,7 +23,7 @@ namespace MultiDungeon.Menus
         protected MouseState oldMouse;
         bool mouseActive = true;
         float mouseVeloc = 0;
-        float maxVeloc = 1;
+        float maxVeloc = 1.5f;
 
         public Menu(Game1 g, MenuManager mm)
         {
@@ -65,6 +65,16 @@ namespace MultiDungeon.Menus
         public void AddFlavorItem(Texture2D texture, Vector2 pos, int w, int h)
         {
             nonSelectableItems.Add(new MenuItem(texture, pos, w, h, delegate() { }));
+        }
+
+        public void ActivateItem(int item, int x)
+        {
+            int length = menuItems[x].Count;
+            for (int i = 0; i < length; i++)
+            {
+                menuItems[x][i].Activated = false;
+            }
+            menuItems[x][item].Activated = true;
         }
 
         public virtual void Update()
@@ -176,11 +186,11 @@ namespace MultiDungeon.Menus
 
                 if (mouseVeloc > 0)
                 {
-                    mouseVeloc -= mouseVeloc / 5;
+                    mouseVeloc -= mouseVeloc / 10;
                 }
                 else
                 {
-                    mouseVeloc += mouseVeloc / -5;
+                    mouseVeloc += mouseVeloc / -10;
                 }
             }
             else

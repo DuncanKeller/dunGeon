@@ -21,11 +21,19 @@ namespace MultiDungeon.Menus
         int h;
         Color color = Color.White;
 
+        bool activated = false;
+
         public bool hidden = false;
 
         public string Text
         {
             get { return text; }
+        }
+
+        public bool Activated
+        {
+            get { return activated; }
+            set { activated = value; }
         }
 
         public MenuItem(string text, Vector2 pos, MenuAction action)
@@ -99,6 +107,8 @@ namespace MultiDungeon.Menus
             if (!hidden)
             {
                 Color c = selected ? Color.White : new Color(100, 100, 100);
+                if (activated)
+                { c = Color.Yellow; }
                 string append = selected ? " " : "";
                 Vector2 position = new Vector2((GameConst.SCREEN_WIDTH / 20) * pos.X,
                     (GameConst.SCREEN_HEIGHT / 20) * pos.Y);

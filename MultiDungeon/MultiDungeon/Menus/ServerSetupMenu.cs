@@ -29,36 +29,38 @@ namespace MultiDungeon.Menus
             AddFlavorItem("Game Type", new Vector2(1, 6));
             AddFlavorItem("_________", new Vector2(1, 7));
             AddMenuItem("Standard", new Vector2(1, 8), 0,
-                delegate() { gametype = 0; });
+                delegate() { gametype = 0; ActivateItem(0, 0); });
             
             AddFlavorItem("Number of Players", new Vector2(6, 6));
             AddFlavorItem("_________", new Vector2(6, 7));
             AddMenuItem("2", new Vector2(6, 8), 1,
-                delegate() { players = 2; });
+                delegate() { players = 2; ActivateItem(0, 1); });
             AddMenuItem("3", new Vector2(6, 9), 1,
-                delegate() { players = 3; });
+                delegate() { players = 3; ActivateItem(1, 1); });
             AddMenuItem("4", new Vector2(6, 10), 1,
-                delegate() { players = 4; });
+                delegate() { players = 4; ActivateItem(2, 1); });
             AddMenuItem("5", new Vector2(6, 11), 1,
-                delegate() { players = 5; });
+                delegate() { players = 5; ActivateItem(3, 1); });
             AddMenuItem("6", new Vector2(6, 12), 1,
-                delegate() { players = 6; });
+                delegate() { players = 6; ActivateItem(4, 1); });
 
             AddFlavorItem("Map", new Vector2(13, 6));
             AddFlavorItem("_________", new Vector2(13, 7));
             AddMenuItem("Random", new Vector2(13, 8), 2,
-                delegate() { map = "random"; });
+                delegate() { map = "random"; ActivateItem(0, 2); });
             AddMenuItem("Raceways", new Vector2(13, 9), 2,
-                            delegate() { map = "raceways"; });
+                            delegate() { map = "raceways"; ActivateItem(1, 2); });
             AddMenuItem("Catacombs", new Vector2(13, 10), 2,
-                delegate() { map = "catacombs"; });
+                delegate() { map = "catacombs"; ActivateItem(2, 2); });
             AddMenuItem("Piety", new Vector2(13, 11), 2,
-                delegate() { map = "piety"; });
+                delegate() { map = "piety"; ActivateItem(3, 2); });
 
             AddMenuItem("START\nSERVER", new Vector2(17, 8), 3,
                delegate() { StartServer();  });
             
         }
+
+        
 
         public override void BackOut()
         {
