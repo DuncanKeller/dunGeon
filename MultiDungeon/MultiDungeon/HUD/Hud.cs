@@ -33,7 +33,7 @@ namespace MultiDungeon.HUD
                     (int)v.X , (int)v.Y, World.Player.DrawRect.Width, World.Player.DrawRect.Height);
             }
             int healthWidth = (int)(((World.Player.MaxHealth - (World.Player.MaxHealth - World.Player.Health)) / World.Player.MaxHealth) * 200);
-            healthRect = new Rectangle(20, 20, healthWidth, 20);
+            healthRect = new Rectangle(45, 20, healthWidth, 20);
         }
 
         public static void Draw(SpriteBatch sb)
@@ -42,12 +42,14 @@ namespace MultiDungeon.HUD
             Map.Draw(sb, new Vector2(20, 80));
             Map.DrawPlayers(sb, new Vector2(20, 80));
             // health
-            sb.Draw(TextureManager.Map["blank"], healthRect, Color.Red);
+            sb.Draw(TextureManager.Map["health-icon"], new Rectangle(10, 20, 25, 20), Color.White);
+            sb.Draw(TextureManager.Map["health-bar"], healthRect, Color.Red);
             sb.DrawString(TextureManager.Fonts["console"], Math.Round(World.Player.Health, 1).ToString() + "/" + World.Player.MaxHealth,
                 new Vector2(healthRect.Right + 5, healthRect.Top - (TextureManager.Fonts["console"].MeasureString("0").Y / 5)), Color.Red);
             // money
-            Rectangle goldRect = new Rectangle(20, 40, World.Player.Gold / 2, 20);
-            sb.Draw(TextureManager.Map["blank"], goldRect, Color.Gold);
+            sb.Draw(TextureManager.Map["gold-icon"], new Rectangle(10, 40, 25, 20), Color.White);
+            Rectangle goldRect = new Rectangle(45, 40, World.Player.Gold / 2, 20);
+            sb.Draw(TextureManager.Map["gold-bar"], goldRect, Color.Gold);
             sb.DrawString(TextureManager.Fonts["console"], World.Player.Gold.ToString(),
                new Vector2(goldRect.Right + 5, goldRect.Top - (TextureManager.Fonts["console"].MeasureString("0").Y / 5)), Color.Gold);
             // guns & ammo

@@ -613,6 +613,42 @@
       <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Icons\countdownGo.xnb</Output>
       <Time>2012-07-21T12:35:14.7540692-07:00</Time>
     </Item>
+    <Item>
+      <Source>Icons\coin.png</Source>
+      <Name>Icons\coin</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Icons\coin.xnb</Output>
+      <Time>2012-07-21T17:44:21.2538684-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Icons\goldbar.png</Source>
+      <Name>Icons\goldbar</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Icons\goldbar.xnb</Output>
+      <Time>2012-07-21T17:44:21.2548684-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Icons\health.png</Source>
+      <Name>Icons\health</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Icons\health.xnb</Output>
+      <Time>2012-07-21T17:44:21.2558685-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Icons\healthbar.png</Source>
+      <Name>Icons\healthbar</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Icons\healthbar.xnb</Output>
+      <Time>2012-07-21T17:44:21.2568685-07:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{721AC1D8-B294-4318-B80A-91E0C689E130}</ContentProjectGUID>

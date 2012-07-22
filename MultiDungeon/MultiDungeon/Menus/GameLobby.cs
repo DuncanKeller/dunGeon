@@ -42,6 +42,8 @@ namespace MultiDungeon.Menus
 
             AddMenuItem("OK", new Vector2(15, 8), 2,
                delegate() { SendReady();  });
+
+            
             
         }
 
@@ -69,6 +71,7 @@ namespace MultiDungeon.Menus
             base.Init();
             Thread.Sleep(150);
             Client.Send("connect" + "\n" + World.gameId );
+            SendClass();
         }
 
         public override void Update()

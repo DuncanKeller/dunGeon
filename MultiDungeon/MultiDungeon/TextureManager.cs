@@ -37,6 +37,10 @@ namespace MultiDungeon
             textures.Add("countdown-2", c.Load<Texture2D>("Icons\\countdown2"));
             textures.Add("countdown-3", c.Load<Texture2D>("Icons\\countdown3"));
             textures.Add("countdown-go", c.Load<Texture2D>("Icons\\countdownGo"));
+            textures.Add("health-icon", c.Load<Texture2D>("Icons\\health"));
+            textures.Add("gold-icon", c.Load<Texture2D>("Icons\\coin"));
+            textures.Add("health-bar", c.Load<Texture2D>("Icons\\healthbar"));
+            textures.Add("gold-bar", c.Load<Texture2D>("Icons\\goldbar"));
 
             // items
             textures.Add("potion", c.Load<Texture2D>("Items\\potion"));
