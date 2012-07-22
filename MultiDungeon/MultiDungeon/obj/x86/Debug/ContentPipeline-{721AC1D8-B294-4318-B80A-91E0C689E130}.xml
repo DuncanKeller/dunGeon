@@ -26,7 +26,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\circle.xnb</Output>
-      <Time>2012-05-20T00:02:31.4790921-07:00</Time>
+      <Time>2012-07-22T00:28:01.0731628-07:00</Time>
     </Item>
     <Item>
       <Source>Fonts\ConsoleFont.spritefont</Source>
@@ -666,6 +666,33 @@
       <Options>None</Options>
       <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Icons\check-true.xnb</Output>
       <Time>2012-07-21T20:05:18.3125844-07:00</Time>
+    </Item>
+    <Item>
+      <Source>arrow.png</Source>
+      <Name>arrow</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\arrow.xnb</Output>
+      <Time>2012-05-20T00:02:31.4790921-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Effects\bones.png</Source>
+      <Name>Effects\bones</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Effects\bones.xnb</Output>
+      <Time>2012-07-22T12:21:55.3570031-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Effects\skull.png</Source>
+      <Name>Effects\skull</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Effects\skull.xnb</Output>
+      <Time>2012-07-22T12:21:55.4180066-07:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

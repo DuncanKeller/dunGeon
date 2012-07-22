@@ -72,6 +72,9 @@ Content\Icons\health.xnb
 Content\Icons\healthbar.xnb
 Content\Icons\check-false.xnb
 Content\Icons\check-true.xnb
+Content\arrow.xnb
+Content\Effects\bones.xnb
+Content\Effects\skull.xnb
 Content\Maps\piety.txt
 Content\Maps\catacombs.txt
 Content\Maps\raceways.txt

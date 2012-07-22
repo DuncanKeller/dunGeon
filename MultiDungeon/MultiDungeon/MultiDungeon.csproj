@@ -103,11 +103,13 @@
     <Compile Include="CrashForm.Designer.cs">
       <DependentUpon>CrashForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Effects\BloodParticle.cs" />
     <Compile Include="Effects\EffectManager.cs" />
     <Compile Include="Effects\ExplosionParticle.cs" />
     <Compile Include="Effects\HealthParticle.cs" />
     <Compile Include="Effects\Particle.cs" />
     <Compile Include="Effects\PoisinParticle.cs" />
+    <Compile Include="Effects\SkullParticle.cs" />
     <Compile Include="Effects\SparkleParticle.cs" />
     <Compile Include="Effects\SpeedParticle.cs" />
     <Compile Include="Effects\StarParticle.cs" />

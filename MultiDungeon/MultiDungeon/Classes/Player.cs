@@ -256,18 +256,28 @@ namespace MultiDungeon
             {
                 health -= b.Damage + (Weakness * b.Damage);
             }
-            
+
             if (health < 0 && alive)
             {
                 Die();
                 if (teamNum != World.PlayerHash[b.PlayerID].Team)
                 {
                     int bonus = World.PlayerHash[b.PlayerID].StatusEffect == MultiDungeon.StatusEffect.midas ? 50 : 0;
-                    World.PlayerHash[b.PlayerID].Gold += 50 + bonus; 
+                    World.PlayerHash[b.PlayerID].Gold += 50 + bonus;
                 }
                 else
                 {
                     World.PlayerHash[b.PlayerID].Gold -= 50;
+                }
+            }
+            else
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    int x = DrawRect.Left + GameConst.rand.Next(DrawRect.Width);
+                    int y = DrawRect.Top + GameConst.rand.Next(DrawRect.Height);
+                    World.BulletManager.AddParticle(new BloodParticle(new
+                        Vector2(x, y)));
                 }
             }
         }
@@ -291,6 +301,21 @@ namespace MultiDungeon
                 {
                     gold = 0;
                 }
+                itemTimer = 0;
+                if (restore != null)
+                {
+                    restore(this);
+                    restore = null;
+                }
+                for (int i = 0; i < 50; i++)
+                {
+                    int x = DrawRect.Left + GameConst.rand.Next(DrawRect.Width);
+                    int y = DrawRect.Top + GameConst.rand.Next(DrawRect.Height);
+                    World.BulletManager.AddParticle(new BloodParticle(new
+                        Vector2(x, y)));
+                }
+                World.BulletManager.AddParticle(new SkullParticle(new
+                       Vector2(DrawRect.Center.X, DrawRect.Top)));
             }
         }
 
@@ -640,11 +665,11 @@ namespace MultiDungeon
             if (alive)
             {
                 Color c = statusColor == Color.White ? color : statusColor;
-                Vector2 origin = new Vector2(TextureManager.Map["circle"].Width / 2, TextureManager.Map["circle"].Height / 2);
+                Vector2 origin = new Vector2(TextureManager.Map["arrow"].Width / 2, TextureManager.Map["arrow"].Height / 2);
                 //sb.Draw(TextureManager.Map["blank"], Rect, Color.Red);
                 Rectangle charRect = new Rectangle(Rect.X - 5, Rect.Y - 30, Rect.Width + 10, Rect.Height + 20);
 
-                sb.Draw(TextureManager.Map["circle"], DrawRect, null, color, angle, origin, SpriteEffects.None, 0);
+                sb.Draw(TextureManager.Map["arrow"], DrawRect, null, color, angle, origin, SpriteEffects.None, 0);
                 if (statusEffect == MultiDungeon.StatusEffect.confuse)
                 {
                     for (int i = 0; i < 3; i++)

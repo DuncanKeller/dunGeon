@@ -29,6 +29,10 @@ namespace MultiDungeon.Effects
             {
                 maxTimer = 0.8f;
             }
+            else if (t == typeof(BloodParticle))
+            {
+                maxTimer = 0.1f;
+            }
 
             if (timer > 0)
             {
@@ -53,7 +57,11 @@ namespace MultiDungeon.Effects
                 {
                     World.BulletManager.AddParticle(new HealthParticle(new Vector2(x, y)));
                 }
-                else if (t == typeof(StarParticle))
+                if (t == typeof(BloodParticle))
+                {
+                    World.BulletManager.AddParticle(new BloodParticle(new Vector2(x, y)));
+                }
+                if (t == typeof(StarParticle))
                 {
                     World.BulletManager.AddParticle(new StarParticle(new Vector2(x, y)));
                     int x2 = p.DrawRect.Left + GameConst.rand.Next(p.DrawRect.Width);
