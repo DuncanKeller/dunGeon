@@ -153,7 +153,7 @@ namespace MultiDungeon
                     continue;
                 }
                 string[] info = data.Split("\n".ToCharArray());
-                //try
+                try
                 {
                     if (info[0] == "id")
                     {
@@ -337,10 +337,10 @@ namespace MultiDungeon
                         throw new Exception("command \"" + info[0] +"\" not found");
                     }
                 }
-                //catch (Exception e)
-                //{
-                //    Console.Write(e.Message, MessageType.urgent);
-                //}
+                catch (Exception e)
+                {
+                    Console.Write(e.Message, MessageType.urgent);
+                }
 
                 // print all non-position commands to the console
                 if (info[0] != "p")

@@ -43,7 +43,8 @@ namespace MultiDungeon.Menus
             AddMenuItem("OK", new Vector2(15, 12), 2,
                delegate() { SendReady();  });
 
-            
+            AddFlavorItem("____________________________________________________________________", new Vector2(0, 9.5f));
+        
             
         }
 
@@ -87,19 +88,66 @@ namespace MultiDungeon.Menus
             return new Vector2((GameConst.SCREEN_WIDTH / 20f) * x, (GameConst.SCREEN_HEIGHT / 20f) * y);
         }
 
+        public Texture2D GetTexture(string classType, int t)
+        {
+            string team = t == 0 ? "blue" : "red";
+            return TextureManager.Map[classType + "-" + team];
+        }
+
+        private void DrawPlayerIcon(SpriteBatch sb, KeyValuePair<int, PlayerInfo> player, 
+            ref int spacingB, ref int spacingR)
+        {
+            Texture2D texture = GetTexture(player.Value.classType, player.Value.team);
+            int spacingX = player.Value.team == 0 ? spacingB : spacingR;
+            int spacingY = player.Value.team == World.PlayerInfo[World.gameId].team ?
+                120 : 200;
+            int sizex = player.Key == World.gameId ?
+                100 : 50;
+            int sizey = player.Key == World.gameId ?
+               120 : 60;
+
+            if (player.Key != World.gameId)
+            {
+                spacingY += 60;
+            }
+
+            Rectangle rect = new Rectangle(spacingX, spacingY, sizex, sizey);
+
+            sb.Draw(TextureManager.Map["blank"], new Rectangle(spacingX + 3, spacingY + 3,
+                sizex - 6, sizey - 6), new Color(5, 5, 5, 10));
+            sb.Draw(texture, rect, Color.White);
+
+            if (player.Value.team == 0)
+            {
+                spacingB += sizex + 20;
+            }
+            else
+            {
+                spacingR += sizex + 20;
+            }
+        }
+
+
         public override void Draw(SpriteBatch sb)
         {
-            int count = 0;
+            int spacingR = 50;
+            int spacingB = 50;
             lock (World.PlayerInfo)
             {
                 try
                 {
+                    sb.DrawString(TextureManager.Fonts["console"], "Lobby", new Vector2(
+                        GameConst.SCREEN_WIDTH / 20, GameConst.SCREEN_HEIGHT / 20), Color.White);
+
+                    var p =  new KeyValuePair<int, PlayerInfo>(World.gameId, World.PlayerInfo[World.gameId]);
+                    DrawPlayerIcon(sb, p, ref spacingR, ref spacingB);
+
                     foreach (var player in World.PlayerInfo)
                     {
-                        Color c = player.Value.team == 0 ? Color.Blue : Color.Red;
-                        sb.DrawString(TextureManager.Fonts["console"], player.Key.ToString(),
-                            GetPos(1, count + 1), c);
-                        count++;
+                        if (player.Key != World.gameId)
+                        {
+                            DrawPlayerIcon(sb, player, ref spacingR, ref spacingB);
+                        }
                     }
                     Rectangle checkRect = new Rectangle(
                         (int)((GameConst.SCREEN_WIDTH / 20) * 14.8f), (GameConst.SCREEN_HEIGHT / 20) * 13,
