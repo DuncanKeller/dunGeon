@@ -41,6 +41,8 @@ namespace MultiDungeon
             textures.Add("gold-icon", c.Load<Texture2D>("Icons\\coin"));
             textures.Add("health-bar", c.Load<Texture2D>("Icons\\healthbar"));
             textures.Add("gold-bar", c.Load<Texture2D>("Icons\\goldbar"));
+            textures.Add("check-true", c.Load<Texture2D>("Icons\\check-true"));
+            textures.Add("check-false", c.Load<Texture2D>("Icons\\check-false"));
 
             // items
             textures.Add("potion", c.Load<Texture2D>("Items\\potion"));

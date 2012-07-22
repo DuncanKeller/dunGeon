@@ -18,29 +18,29 @@ namespace MultiDungeon.Menus
             : base(g, mm)
         {
             // pos is proportional to screen size (IE, SCREENWIDTH / 20 * pos)
-            AddFlavorItem("Class Type", new Vector2(1, 6));
-            AddFlavorItem("_________", new Vector2(1, 7));
-            AddMenuItem("Mapmaker", new Vector2(1, 8), 0,
+            AddFlavorItem("Class Type", new Vector2(1, 11));
+            AddFlavorItem("_________", new Vector2(1, 12));
+            AddMenuItem("Mapmaker", new Vector2(1, 13), 0,
                 delegate() { classType = "mapmaker"; SendClass(); ActivateItem(0, 0); });
-            AddMenuItem("Ninja", new Vector2(1, 9), 0,
+            AddMenuItem("Ninja", new Vector2(1, 14), 0,
                 delegate() { classType = "ninja"; SendClass(); ActivateItem(1, 0); });
-            AddMenuItem("Powdermonkey", new Vector2(1, 10), 0,
+            AddMenuItem("Powdermonkey", new Vector2(1, 15), 0,
                 delegate() { classType = "powdermonkey"; SendClass(); ActivateItem(2, 0); });
-            AddMenuItem("Capitalist", new Vector2(1, 11), 0,
+            AddMenuItem("Capitalist", new Vector2(1, 16), 0,
                 delegate() { classType = "capitalist"; SendClass(); ActivateItem(3, 0); });
-            AddMenuItem("Apothecary", new Vector2(1, 12), 0,
+            AddMenuItem("Apothecary", new Vector2(1, 17), 0,
                 delegate() { classType = "apothecary"; SendClass(); ActivateItem(4, 0); });
-            AddMenuItem("Mystic", new Vector2(1, 13), 0,
+            AddMenuItem("Mystic", new Vector2(1, 18), 0,
                delegate() { classType = "mystic"; SendClass(); ActivateItem(5, 0); });
 
-            AddFlavorItem("Team", new Vector2(7, 6));
-            AddFlavorItem("_________", new Vector2(7, 7));
-            AddMenuItem("Blue", new Vector2(7, 8), 1,
+            AddFlavorItem("Team", new Vector2(7, 11));
+            AddFlavorItem("_________", new Vector2(7, 12));
+            AddMenuItem("Blue", new Vector2(7, 13), 1,
                 delegate() { team = 0; SendTeam(); ActivateItem(0, 1); });
-            AddMenuItem("Red", new Vector2(7, 9), 1,
+            AddMenuItem("Red", new Vector2(7, 14), 1,
                 delegate() { team = 1; SendTeam(); ActivateItem(1, 1); });
 
-            AddMenuItem("OK", new Vector2(15, 8), 2,
+            AddMenuItem("OK", new Vector2(15, 12), 2,
                delegate() { SendReady();  });
 
             
@@ -89,8 +89,6 @@ namespace MultiDungeon.Menus
 
         public override void Draw(SpriteBatch sb)
         {
-            base.Draw(sb);
-
             int count = 0;
             lock (World.PlayerInfo)
             {
@@ -103,9 +101,16 @@ namespace MultiDungeon.Menus
                             GetPos(1, count + 1), c);
                         count++;
                     }
+                    Rectangle checkRect = new Rectangle(
+                        (int)((GameConst.SCREEN_WIDTH / 20) * 14.8f), (GameConst.SCREEN_HEIGHT / 20) * 13,
+                        GameConst.SCREEN_WIDTH / 12, GameConst.SCREEN_HEIGHT / 15);
+                    Texture2D checkTexture = ready ? TextureManager.Map["check-true"] : TextureManager.Map["check-false"];
+                    sb.Draw(checkTexture, checkRect, Color.White);
                 }
                 catch (Exception e) { }
             }
+
+            base.Draw(sb);
         }
     }
 }

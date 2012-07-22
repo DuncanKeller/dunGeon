@@ -649,6 +649,24 @@
       <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Icons\healthbar.xnb</Output>
       <Time>2012-07-21T17:44:21.2568685-07:00</Time>
     </Item>
+    <Item>
+      <Source>Icons\check-false.png</Source>
+      <Name>Icons\check-false</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Icons\check-false.xnb</Output>
+      <Time>2012-07-21T20:05:18.3115844-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Icons\check-true.png</Source>
+      <Name>Icons\check-true</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Icons\check-true.xnb</Output>
+      <Time>2012-07-21T20:05:18.3125844-07:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{721AC1D8-B294-4318-B80A-91E0C689E130}</ContentProjectGUID>
