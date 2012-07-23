@@ -164,6 +164,13 @@ namespace MultiDungeon
                         if (b.Rect.Intersects(p.Rect))
                         {
                             p.Hit(b);
+
+                            if (b is Rocket)
+                            {
+                                HandleExplosion(b.Position, b);
+                                AddExplosionParticles(b.Position);
+                            }
+
                             if (!(p.StatusEffect == StatusEffect.invinsible) &&
                                 !(b is Flame))
                             {
@@ -173,6 +180,8 @@ namespace MultiDungeon
                             {
                                 p.StatusEffect = StatusEffect.cursed;
                             }
+
+
                         }
                     }
                 }

@@ -50,6 +50,7 @@ namespace MultiDungeon
                     {
                         bytesRead = stream.Read(message, 0, size);
                         data += encoder.GetString(message, 0, bytesRead);
+
                     }
 
                     //while (!data.Contains('!'))

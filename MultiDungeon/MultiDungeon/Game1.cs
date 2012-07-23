@@ -66,6 +66,13 @@ namespace MultiDungeon
             base.Initialize();
         }
 
+        protected override void OnExiting(object sender, EventArgs args)
+        {
+            base.OnExiting(sender, args);
+
+            menu.serverSetup.Server.Close();
+        }
+
         /// <summary>
         /// LoadContent will be called once per game and is the place to load
         /// all of your content.
