@@ -112,6 +112,7 @@ namespace MultiDungeon
             textures.Add("slice", c.Load<Texture2D>("Effects\\sword-slice"));
             textures.Add("bones", c.Load<Texture2D>("Effects\\bones"));
             textures.Add("skull", c.Load<Texture2D>("Effects\\skull"));
+            textures.Add("rocks", c.Load<Texture2D>("Effects\\rocks"));
 
             // menu shit
             textures.Add("menu-main", c.Load<Texture2D>("Menus\\titleScreen"));

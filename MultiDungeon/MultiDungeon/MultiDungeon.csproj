@@ -127,6 +127,7 @@
     <Compile Include="Items\Apothecary\MidasPotion.cs" />
     <Compile Include="Items\Apothecary\VampirePotion.cs" />
     <Compile Include="Items\Apothecary\WarpPotion.cs" />
+    <Compile Include="Items\Backdrop.cs" />
     <Compile Include="Items\Chest.cs" />
     <Compile Include="Items\CoinPurse.cs" />
     <Compile Include="Items\HealthPotion.cs" />

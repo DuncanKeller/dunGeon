@@ -397,6 +397,7 @@ namespace MultiDungeon
             map.Reset();
             HUD.Map.initialized = false;
             itemManager.Reset();
+            countdown = 3;
             Client.Send("reset!");
         }
 
@@ -441,18 +442,6 @@ namespace MultiDungeon
         {
             if (countdown > -1)
             {
-                if (countdown == 3)
-                {
-
-                }
-                else if (countdown == 2)
-                {
-
-                }
-                else if (countdown == 1)
-                {
-
-                }
                 countdown -= deltaTime / 1000;
             }
             else
@@ -503,6 +492,7 @@ namespace MultiDungeon
         public static void DrawSceneBehindPlayer(SpriteBatch sb)
         {
             //DrawWallTiles(sb);
+            itemManager.DrawBackdrop(sb);
             itemManager.Draw(sb);
             trapManager.Draw(sb);
         }

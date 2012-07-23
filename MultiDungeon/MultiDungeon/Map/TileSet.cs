@@ -681,7 +681,7 @@ namespace MultiDungeon.Map
 
             for (int i = 0; i < numItems; i++)
             {
-                int roomId = GameConst.rand.Next(numItems);
+                int roomId = GameConst.rand.Next(rooms.Count);
                 while (usedRooms.Contains(roomId)
                     || rooms[roomId] == teamRooms[0]
                      || rooms[roomId] == teamRooms[1])
@@ -705,9 +705,9 @@ namespace MultiDungeon.Map
             //spikes
             int numSpikes = rooms.Count / 2;
 
-            for (int i = 0; i < numItems; i++)
+            for (int i = 0; i < numSpikes; i++)
             {
-                int roomId = GameConst.rand.Next(numItems);
+                int roomId = GameConst.rand.Next(rooms.Count);
                 while (usedRooms.Contains(roomId)
                     || rooms[roomId] == teamRooms[0]
                      || rooms[roomId] == teamRooms[1])
@@ -724,7 +724,7 @@ namespace MultiDungeon.Map
                 Vector2 spikePos = new Vector2(x, y);
 
                 bool retracting = true;
-                if (GameConst.rand.Next(2) == 0)
+                if (GameConst.rand.Next(3) == 0)
                 {
                     retracting = false;
                 }
@@ -732,6 +732,31 @@ namespace MultiDungeon.Map
                 Spike spike = new Spike((int)spikePos.X, (int)spikePos.Y, retracting);
 
                 World.TrapManager.Traps.Add(spike);
+            }
+
+            int numBackdrop = rooms.Count - rooms.Count / 3;
+            usedRooms.Clear();
+            for (int i = 0; i < numBackdrop; i++)
+            {
+                if (rooms.Count == usedRooms.Count)
+                {
+                    usedRooms.Clear();
+                }
+                int roomId = GameConst.rand.Next(rooms.Count);
+                while (usedRooms.Contains(roomId)
+                    || rooms[roomId] == teamRooms[0]
+                     || rooms[roomId] == teamRooms[1])
+                {
+                    roomId = GameConst.rand.Next(rooms.Count);
+                }
+                //usedRooms.Add(roomId);
+
+                int x = GameConst.rand.Next(rooms[roomId].Width - 1)
+                    * Tile.TILE_SIZE + (rooms[roomId].X * Tile.TILE_SIZE);
+                int y = GameConst.rand.Next(rooms[roomId].Height - 1)
+                     * Tile.TILE_SIZE + (rooms[roomId].Y * Tile.TILE_SIZE);
+
+                World.ItemManager.AddBackdrop(x, y);
             }
         }
 

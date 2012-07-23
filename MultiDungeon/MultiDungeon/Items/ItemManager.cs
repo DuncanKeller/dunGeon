@@ -12,6 +12,7 @@ namespace MultiDungeon.Items
         List<Chest> chests = new List<Chest>();
         List<Chest> toRemove = new List<Chest>();
         List<Chest> toAdd = new List<Chest>();
+        List<Backdrop> backdrops = new List<Backdrop>();
 
         public List<Chest> Chests
         {
@@ -24,6 +25,11 @@ namespace MultiDungeon.Items
             {
                 toRemove.Add(c);
             }
+        }
+
+        public void AddBackdrop(int x, int y)
+        {
+            backdrops.Add(new Backdrop(x, y));
         }
 
         public void Update(float deltaTime)
@@ -107,6 +113,14 @@ namespace MultiDungeon.Items
             foreach (Chest chest in chests)
             {
                 chest.Draw(sb);
+            }
+        }
+
+        public void DrawBackdrop(SpriteBatch sb)
+        {
+            foreach (Backdrop backdrop in backdrops)
+            {
+                backdrop.Draw(sb);
             }
         }
     }

@@ -272,7 +272,7 @@ namespace MultiDungeon
             }
             else
             {
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < 4; i++)
                 {
                     int x = DrawRect.Left + GameConst.rand.Next(DrawRect.Width);
                     int y = DrawRect.Top + GameConst.rand.Next(DrawRect.Height);
