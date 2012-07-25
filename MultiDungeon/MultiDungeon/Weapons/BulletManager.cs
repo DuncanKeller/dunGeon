@@ -163,7 +163,10 @@ namespace MultiDungeon
                     {
                         if (b.Rect.Intersects(p.Rect))
                         {
-                            p.Hit(b);
+                            if (!(b is Grenade))
+                            {
+                                p.Hit(b);
+                            }
 
                             if (b is Rocket)
                             {

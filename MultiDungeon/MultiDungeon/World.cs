@@ -294,13 +294,6 @@ namespace MultiDungeon
                                 players[id].Angle = float.Parse(info[4]);
                             }
                         }
-                        else
-                        {
-                            lock (players)
-                            {
-                                players.Add(id, new Mapmaker(float.Parse(info[2]), float.Parse(info[3]), id));
-                            }
-                        }
                     }
                     else if (info[0] == "b")
                     {
@@ -313,6 +306,16 @@ namespace MultiDungeon
                             Vector2 p = new Vector2(players[id].DrawRect.X, players[id].DrawRect.Y);
                             b.Init(p, players[id].Angle - (float)(Math.PI / 2), b.Damage, id);
                             bulletManager.Add(b);
+                        }
+                    }
+                    else if (info[0] == "slice")
+                    {
+                        int id = Int32.Parse(info[1]);
+
+                        if (gameId != id)
+                        {
+                            (players[id] as Ninja).Sword.Slice(
+                                players[id].Angle, players[id].Position);
                         }
                     }
                     else if (info[0] == "chest")
@@ -334,7 +337,7 @@ namespace MultiDungeon
                     }
                     else
                     {
-                        throw new Exception("command \"" + info[0] +"\" not found");
+                        throw new Exception("command \"" + info[0] + "\" not found");
                     }
                 }
                 catch (Exception e)

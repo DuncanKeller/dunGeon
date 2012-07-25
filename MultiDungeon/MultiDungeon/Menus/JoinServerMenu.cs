@@ -29,7 +29,6 @@ namespace MultiDungeon.Menus
                 delegate() { menuManager.SwitchMenu(menuManager.quickJoin); });
             AddMenuItem("Add Server", new Vector2(1, 4), 0,
                 delegate() { menuManager.SwitchMenu(menuManager.enterServer); });
-
           
             menuItems[0][0].Select();
         }
@@ -59,6 +58,7 @@ namespace MultiDungeon.Menus
             {
                 names.Add(menuManager.enterServer.Name);
                 ips.Add(menuManager.enterServer.IP);
+                menuManager.enterServer.Clear();
             }
             if (menuItems.Count > 1)
             {

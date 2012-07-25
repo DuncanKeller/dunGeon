@@ -53,10 +53,12 @@ namespace MultiDungeon
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            Window.AllowUserResizing = false;
             graphics.PreferredBackBufferWidth = GameConst.SCREEN_WIDTH;
             graphics.PreferredBackBufferHeight = GameConst.SCREEN_HEIGHT;
             graphics.ApplyChanges();
-
+            if (Console.Enabled)
+            { Console.Init(); }
             TextureManager.Initialize(Content);
             World.Init(graphics, Content, this);
             Shadowmap.Init(this, graphics.GraphicsDevice, Content);
@@ -69,8 +71,9 @@ namespace MultiDungeon
         protected override void OnExiting(object sender, EventArgs args)
         {
             base.OnExiting(sender, args);
-
-            menu.serverSetup.Server.Close();
+            Console.sw.Flush();
+            Console.sw.Close();
+            //menu.serverSetup.Server.Close();
         }
 
         /// <summary>

@@ -46,31 +46,29 @@ namespace MultiDungeon
 
                     data = encoder.GetString(message, 0, bytesRead);
 
+                    while (data[data.Length - 1] != '!')
+                    {
+                        bytesRead = stream.Read(message, 0, size);
+                        data += encoder.GetString(message, 0, bytesRead);
+                    }
+
                     //while (data[data.Length - 1] != '!')
                     //{
                     //    bytesRead = stream.Read(message, 0, size);
                     //    data += encoder.GetString(message, 0, bytesRead);
 
+                    //    while (!data.Contains('!'))
+                    //    {
+                    //        bytesRead = stream.Read(message, 0, size);
+                    //        data += encoder.GetString(message, 0, bytesRead);
+                    //    }
+
+                    //    string parseMe = data.Substring(0, data.LastIndexOf("!"));
+                    //    ParseAndRecieve(parseMe);
+
+                    //    data = data.Substring(data.LastIndexOf("!"));
+
                     //}
-
-                    while (data[data.Length - 1] != '!')
-                    {
-                        bytesRead = stream.Read(message, 0, size);
-                        data += encoder.GetString(message, 0, bytesRead);
-
-                        while (!data.Contains('!'))
-                        {
-
-                            bytesRead = stream.Read(message, 0, size);
-                            data += encoder.GetString(message, 0, bytesRead);
-                        }
-
-                        string parseMe = data.Substring(0, data.LastIndexOf("!"));
-                        ParseAndRecieve(parseMe);
-
-                        data = data.Substring(data.LastIndexOf("!"));
-                        
-                    }
 
                     //while (!data.Contains('!'))
                     //{

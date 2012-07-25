@@ -29,7 +29,8 @@ namespace MultiDungeon.Weapons
         
         public bool HasHit(Player p)
         {
-            return hasHit.Contains(p);
+            //return hasHit.Contains(p);
+            return p.DrawRect.Intersects(hitRect) ;
         }
 
         public void Hit(Player p)

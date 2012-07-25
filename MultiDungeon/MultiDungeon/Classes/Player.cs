@@ -649,6 +649,7 @@ namespace MultiDungeon
                     oldMouse.LeftButton == ButtonState.Released)
                 {
                     sword.Slice(angle, pos);
+                    Client.Send("slice\n" + World.gameId + "!");
                 }
             }
 
@@ -690,10 +691,34 @@ namespace MultiDungeon
 
                 if (World.Player is Mystic && item != null && World.Player != this)
                 {
-                    sb.Draw(Item.Texture, new Rectangle(DrawRect.X, DrawRect.Y - DrawRect.Width - 10, DrawRect.Width, DrawRect.Width), 
+                    sb.Draw(Item.Texture, new Rectangle(DrawRect.X, DrawRect.Y - DrawRect.Width - 10, DrawRect.Width, DrawRect.Width),
                         new Color(100, 100, 100, 100));
                 }
                 CurrentGun.Draw(sb);
+            }
+            if (World.inMenu == false)
+            {
+                int mousex = Mouse.GetState().X;
+                int mousey = Mouse.GetState().Y;
+
+                //sb.Draw(TextureManager.Map["circle"], new Rectangle(mousex - 3, mousey - 3, 6, 6), Color.Red);
+                Vector2 mouse = new Vector2(oldMouse.X, oldMouse.Y);
+                mouse = World.Camera.ToWorldLocation(mouse);
+                float dist = Vector2.Distance(mouse, pos);
+
+                int maxDist = 100;
+
+                if (dist > maxDist)
+                {
+                    if (alive)
+                    {
+                        int x = (int)(Math.Cos(angle - Math.PI / 2) * maxDist);
+                        int y = (int)(Math.Sin(angle - Math.PI / 2) * maxDist);
+                        Vector2 translate = new Vector2(x, y);
+                        translate = World.Camera.ToLocalLocation(translate);
+                        Mouse.SetPosition(x + GameConst.SCREEN_WIDTH / 2, y + GameConst.SCREEN_WIDTH / 2);
+                    }
+                }
             }
         }
     }

@@ -33,8 +33,16 @@ namespace MultiDungeon.Menus
 
         public override void BackOut()
         {
+            ip = "";
+            name = "";
             base.BackOut();
             menuManager.SwitchMenu(menuManager.join);
+        }
+
+        public void Clear()
+        {
+            name = "";
+            ip = "";
         }
 
         public override void Init()

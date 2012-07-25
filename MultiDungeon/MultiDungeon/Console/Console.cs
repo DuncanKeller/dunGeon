@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.IO;
 
 namespace MultiDungeon
 {
@@ -16,12 +17,19 @@ namespace MultiDungeon
         static List<Message> messages = new List<Message>();
         static Queue<Message> toAdd = new Queue<Message>();
 
+        public static StreamWriter sw;
+        
         static bool enabled = true;
 
         public static bool Enabled
         {
             get { return enabled; }
             set { enabled = value; }
+        }
+
+        public static void Init()
+        {
+            sw = new StreamWriter("debugLog.txt");
         }
 
         static int GetNumMessages()
@@ -89,6 +97,8 @@ namespace MultiDungeon
             { return; }
             Message message = new Message(m, t);
             toAdd.Enqueue(message);
+
+            sw.WriteLine(m + "     ----- " + t.ToString());
         }
 
         public static void Draw(SpriteBatch sb)
