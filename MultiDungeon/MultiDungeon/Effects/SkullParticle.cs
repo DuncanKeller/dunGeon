@@ -21,8 +21,13 @@ namespace MultiDungeon.Effects
             : base(pos)
         {
             texture = TextureManager.Map["skull"];
-            rotSpeed = (float)(GameConst.rand.NextDouble() * Math.PI * 2);
-            rotSpeed -= (float)Math.PI;
+            rotSpeed = -(float)(GameConst.rand.NextDouble() * Math.PI * 8);
+            rotSpeed -= (float)Math.PI * 2;
+            if (GameConst.rand.Next(1) == 0)
+            {
+                rotSpeed = (float)(GameConst.rand.NextDouble() * Math.PI * 8);
+                rotSpeed += (float)Math.PI * 2;
+            }
             //angle = (float)(GameConst.rand.NextDouble() * Math.PI * 2);
             xspeed = -75;
             xspeed += GameConst.rand.Next(150);

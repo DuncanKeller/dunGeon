@@ -71,8 +71,11 @@ namespace MultiDungeon
         protected override void OnExiting(object sender, EventArgs args)
         {
             base.OnExiting(sender, args);
-            Console.sw.Flush();
-            Console.sw.Close();
+            if (Console.sw != null)
+            {
+                Console.sw.Flush();
+                Console.sw.Close();
+            }
             //menu.serverSetup.Server.Close();
         }
 
