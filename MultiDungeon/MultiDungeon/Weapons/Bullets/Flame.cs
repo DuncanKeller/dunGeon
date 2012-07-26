@@ -25,7 +25,7 @@ namespace MultiDungeon
         public Flame()
         {
             lifeTime = 1.7f + (float)(GameConst.rand.NextDouble() * 0.4) - .2f;
-            damage = .015;
+            damage = .015f;
             speed = 250 + (float)(GameConst.rand.NextDouble() * 100) - 50; ;
         }
 

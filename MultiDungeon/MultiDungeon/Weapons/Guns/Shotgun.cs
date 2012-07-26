@@ -19,7 +19,7 @@ namespace MultiDungeon
             maxClip = 6;
             reloadTime = 1.6;
             rateOfFire = 0.4;
-            damage = 0.4;
+            damage = 0.4f;
             clip = maxClip;
             numShots = clip;
             icon = TextureManager.Map["shotgun"];

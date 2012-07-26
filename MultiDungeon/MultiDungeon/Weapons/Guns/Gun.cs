@@ -19,7 +19,7 @@ namespace MultiDungeon
         protected int maxClip;
         protected double reloadTime;
         protected double rateOfFire;
-        protected double damage;
+        protected float damage;
 
         protected int clip;
         protected double reloadTimer;
@@ -135,7 +135,7 @@ namespace MultiDungeon
                 fireTimer = rateOfFire;
             }
             //ServerClient.SendBullet(player.ID);
-            Client.Send("b" + "\n" + player.ID.ToString() + "\n" + bulletType.ToString());
+            Client.Send("b" + "\n" + player.ID.ToString() + "\n" + bulletType.ToString() + "\n" + damage);
         }
 
         public override void Draw(SpriteBatch sb)

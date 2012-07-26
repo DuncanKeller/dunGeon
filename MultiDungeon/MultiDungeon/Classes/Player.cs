@@ -247,19 +247,26 @@ namespace MultiDungeon
                 itemTime = 10; // seconds
             }
 
-
             if (World.PlayerHash[b.PlayerID].statusEffect == StatusEffect.invinsible)
             {
                 b.Angle += (float)(Math.PI + ((GameConst.rand.NextDouble() * (Math.PI / 7)) - Math.PI / 14));
             }
             else
             {
-                health -= b.Damage + (Weakness * b.Damage);
+                if (World.gameId == id)
+                {
+                    health -= b.Damage + (Weakness * b.Damage);
+                }
             }
 
-            if (health < 0 && alive)
+            if (health <= 0 && alive)
             {
-                Die();
+                Client.Send("kill\n" + id);
+                if (World.gameId == id)
+                {
+                    Die();
+                }
+                
                 if (teamNum != World.PlayerHash[b.PlayerID].Team)
                 {
                     int bonus = World.PlayerHash[b.PlayerID].StatusEffect == MultiDungeon.StatusEffect.midas ? 50 : 0;

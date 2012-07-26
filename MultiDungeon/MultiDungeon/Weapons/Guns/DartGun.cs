@@ -16,7 +16,7 @@ namespace MultiDungeon
             maxClip = 3;
             reloadTime = 1;
             rateOfFire = 0.3;
-            damage = 0.2;
+            damage = 0.2f;
             clip = maxClip;
             icon = TextureManager.Map["dartgun"];
         }

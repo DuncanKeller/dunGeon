@@ -188,6 +188,17 @@ namespace MultiDungeon
                             }
                         }
                     }
+                    else if (info[0] == "kill")
+                    {
+                        lock (players)
+                        {
+                            int id = Int32.Parse(info[1]);
+                            if (!playerInfo.ContainsKey(id))
+                            {
+                                PlayerHash[id].Die();
+                            }
+                        }
+                    }
                     else if (info[0] == "start")
                     {
                         foreach (var pi in playerInfo)
@@ -299,12 +310,13 @@ namespace MultiDungeon
                     {
                         int id = Int32.Parse(info[1]);
                         Type type = Type.GetType(info[2]);
-                        
+                        float damage = float.Parse(info[3]);
+
                         if (gameId != id)
                         {
                             Bullet b = (Bullet)Activator.CreateInstance(type);
                             Vector2 p = new Vector2(players[id].DrawRect.X, players[id].DrawRect.Y);
-                            b.Init(p, players[id].Angle - (float)(Math.PI / 2), b.Damage, id);
+                            b.Init(p, players[id].Angle - (float)(Math.PI / 2), damage, id);
                             bulletManager.Add(b);
                         }
                     }

@@ -11,7 +11,7 @@ namespace MultiDungeon
     {
         protected Vector2 pos;
         protected float angle;
-        protected double damage;
+        protected float damage;
         protected float speed = 750;
         protected int pid;
         public Vector2 flip = new Vector2(1, 1);
@@ -57,7 +57,7 @@ namespace MultiDungeon
             flip.Y *= -1;
         }
 
-        public virtual void Init(Vector2 pos, float angle, double damage, int pid)
+        public virtual void Init(Vector2 pos, float angle, float damage, int pid)
         {
             this.pos = pos;
             this.angle = angle;

@@ -16,7 +16,7 @@ namespace MultiDungeon
             maxClip = 60;
             reloadTime = 3.0;
             rateOfFire = 0.05;
-            damage = 0.2;
+            damage = 0.2f;
             clip = maxClip;
             icon = TextureManager.Map["assault-rifle"];
         }
