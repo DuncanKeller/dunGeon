@@ -261,7 +261,7 @@ namespace MultiDungeon
 
             if (health <= 0 && alive)
             {
-                Client.Send("kill\n" + id);
+                Client.Send("kill\n" + id + "!");
                 if (World.gameId == id)
                 {
                     Die();
@@ -271,10 +271,12 @@ namespace MultiDungeon
                 {
                     int bonus = World.PlayerHash[b.PlayerID].StatusEffect == MultiDungeon.StatusEffect.midas ? 50 : 0;
                     World.PlayerHash[b.PlayerID].Gold += 50 + bonus;
+                    Client.Send("gold\n" + id + "\n" + "50!");
                 }
                 else
                 {
                     World.PlayerHash[b.PlayerID].Gold -= 50;
+                    Client.Send("gold\n" + id + "\n" + "-50!");
                 }
             }
             else

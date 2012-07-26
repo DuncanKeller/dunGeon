@@ -335,6 +335,12 @@ namespace MultiDungeon
                         int id = Int32.Parse(info[1]);
                         itemManager.OpenChest(id);
                     }
+                    else if (info[0] == "gold")
+                    {
+                        int id = Int32.Parse(info[1]);
+                        int gold = Int32.Parse(info[2]);
+                        PlayerHash[id].Gold += gold;
+                    }
                     else if (info[0] == "rand")
                     {
                         int seed = Int32.Parse(info[1]);
