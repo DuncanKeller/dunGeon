@@ -10,7 +10,8 @@ namespace MultiDungeon.Map
     public enum TileType
     {
         floor,
-        wall
+        wall,
+        sidewall
     }
 
     public struct ColorScheme
@@ -28,9 +29,14 @@ namespace MultiDungeon.Map
         TileType type;
         Vector2 pos;
 
+        public Rectangle DrawRect
+        {
+            get { return new Rectangle((int)pos.X, (int)pos.Y , TILE_SIZE, TILE_SIZE); }
+        }
+
         public Rectangle Rect
         {
-            get { return new Rectangle((int)pos.X, (int)pos.Y, TILE_SIZE, TILE_SIZE); }
+            get { return new Rectangle((int)pos.X, (int)(pos.Y + (TILE_SIZE * (2.0f / 3.0f))), TILE_SIZE, TILE_SIZE); }
         }
 
         public TileType Type
@@ -49,23 +55,49 @@ namespace MultiDungeon.Map
             type = t;
         }
 
-        public void Draw(SpriteBatch sb, ColorScheme colorScheme)
+        public void Draw(SpriteBatch sb, ColorScheme colorScheme, Vector2 source, short ahead = 0)
         {
-            Color color = Color.White;
-
-            Texture2D texture = null;
-            switch (type)
+            if (DrawRect.Right > source.X - GameConst.SCREEN_WIDTH / 2 &&
+                    DrawRect.Left < source.X + GameConst.SCREEN_WIDTH / 2 &&
+                    DrawRect.Bottom > -100 - source.Y - GameConst.SCREEN_HEIGHT / 2 &&
+                    DrawRect.Top < source.Y + GameConst.SCREEN_HEIGHT / 2)
             {
-                case TileType.floor:
-                    texture = TextureManager.Map["floor"];
-                    color = colorScheme.floor;
-                    break;
-                case TileType.wall:
-                    texture = TextureManager.Map["tile"];
-                    color = colorScheme.wall;
-                    break;
+                Color color = Color.White;
+
+                Texture2D texture = null;
+                switch (type)
+                {
+                    case TileType.floor:
+                        texture = TextureManager.Map["floor"];
+                        color = colorScheme.floor;
+                        break;
+                    case TileType.wall:
+                        texture = TextureManager.Map["tile"];
+                        color = colorScheme.wall;
+                        break;
+                    case TileType.sidewall:
+                        texture = TextureManager.Map["wall"];
+                        color = colorScheme.wall;
+                        break;
+                }
+                if (ahead == 0)
+                {
+                    sb.Draw(texture, DrawRect, color);
+                }
+                if (type == TileType.wall)
+                {
+                    if (source.Y > DrawRect.Top && ahead == 1)
+                    {
+                        sb.Draw(texture, DrawRect, color);
+                    }
+                    else if (source.Y <= DrawRect.Top && ahead == 2)
+                    {
+                        sb.Draw(texture, DrawRect, color);
+                    }
+                }
+
             }
-            sb.Draw(texture, Rect, color);
         }
+
     }
 }

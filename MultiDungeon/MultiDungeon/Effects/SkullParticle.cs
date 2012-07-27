@@ -31,7 +31,7 @@ namespace MultiDungeon.Effects
             //angle = (float)(GameConst.rand.NextDouble() * Math.PI * 2);
             xspeed = -75;
             xspeed += GameConst.rand.Next(150);
-            yspeed = -50 - GameConst.rand.Next(175);
+            yspeed = -150 - GameConst.rand.Next(175);
             life = 5.75f;
             size = new Vector2(25, 20);
             color = Color.White;

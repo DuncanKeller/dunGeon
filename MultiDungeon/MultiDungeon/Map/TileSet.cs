@@ -886,6 +886,24 @@ namespace MultiDungeon.Map
                 }
             }
 
+            for (int x = 0; x < WidthIndex; x++)
+            {
+                for (int y = 0; y < HeightIndex; y++)
+                {
+                    if (tileMap[x, y].Type == TileType.floor)
+                    {
+                        if (y > 0)
+                        {
+                            if (tileMap[x, y - 1].Type == TileType.wall)
+                            {
+                                Tile t = new Tile(TileType.sidewall, x, y);
+                                tiles.Add(t);
+                            }
+                        }
+                    }
+                }
+            }
+
             for (int x = -10; x < 10; x++)
             {
                 for (int y = -10; y < 10; y++)
@@ -1008,32 +1026,44 @@ namespace MultiDungeon.Map
             colorScheme.floor = colorScheme.floors[rand];
         }
 
-        public void Draw(SpriteBatch sb)
+        public void Draw(SpriteBatch sb, Vector2 source)
         {
             foreach (Tile t in tiles)
             {
-                t.Draw(sb, colorScheme);
+                t.Draw(sb, colorScheme, source);
             }
         }
 
-        public void DrawGround(SpriteBatch sb)
+        public void DrawGround(SpriteBatch sb, Vector2 source)
         {
             foreach (Tile t in tiles)
             {
-                if (t.Type == TileType.floor)
+                if (t.Type == TileType.floor ||
+                    t.Type == TileType.sidewall)
                 {
-                    t.Draw(sb, colorScheme);
+                    t.Draw(sb, colorScheme, source);
                 }
             }
         }
 
-        public void DrawWalls(SpriteBatch sb)
+        public void DrawSides(SpriteBatch sb, Vector2 source)
+        {
+            foreach (Tile t in tiles)
+            {
+                if (t.Type == TileType.sidewall)
+                {
+                    t.Draw(sb, colorScheme, source);
+                }
+            }
+        }
+
+        public void DrawWalls(SpriteBatch sb, Vector2 source, short ahead = 0)
         {
             foreach (Tile t in tiles)
             {
                 if (t.Type == TileType.wall)
                 {
-                    t.Draw(sb, colorScheme);
+                    t.Draw(sb, colorScheme, source, ahead);
                 }
             }
         }

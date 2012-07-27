@@ -500,14 +500,14 @@ namespace MultiDungeon
             cam.pos = players[gameId].LightPosition;
         }
 
-        public static void DrawGroundTiles(SpriteBatch sb)
+        public static void DrawGroundTiles(SpriteBatch sb, Vector2 source)
         {
-            map.DrawGround(sb);
+            map.DrawGround(sb, source);
         }
 
-        public static void DrawWallTiles(SpriteBatch sb)
+        public static void DrawWallTiles(SpriteBatch sb, Vector2 source, short ahead = 0)
         {
-            map.DrawWalls(sb);
+            map.DrawWalls(sb, source, ahead);
         }
 
         public static void DrawSceneBehindPlayer(SpriteBatch sb)
