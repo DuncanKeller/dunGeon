@@ -17,6 +17,7 @@ namespace MultiDungeon.Weapons
         float timer;
         float swordTime = 0.2f; // seconds
         float angle = 0;
+        float damage;
         List<Player> hasHit = new List<Player>();
         Animator animator;
 
@@ -25,12 +26,22 @@ namespace MultiDungeon.Weapons
             icon = TextureManager.Map["sword"];
             animator = new Animator(TextureManager.Map["slice"], 1, 4);
             animator.AddAnimation(A_SLICE, 0, 3, 18, false);
+            damage = 1.5f;
         }
         
         public bool HasHit(Player p)
         {
-            //return hasHit.Contains(p);
-            return p.DrawRect.Intersects(hitRect) ;
+            return hasHit.Contains(p);
+        }
+
+        public bool CollidingWithEnemy(Player p)
+        {
+            return p.DrawRect.Intersects(hitRect);
+        }
+
+        public void DealDamage(Player p)
+        {
+            p.Health -= damage;
         }
 
         public void Hit(Player p)

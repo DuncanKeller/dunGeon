@@ -137,7 +137,7 @@ namespace MultiDungeon
             get { return health; }
             set
             {
-                if (value > 0 && value <= 999)
+                if (value <= 999)
                 { health = value; }
             }
         }

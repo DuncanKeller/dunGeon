@@ -197,9 +197,13 @@ namespace MultiDungeon
                         {
                             if (enemy != p)
                             {
-                                if (n.Sword.HasHit(enemy))
+                                if (n.Sword.CollidingWithEnemy(enemy))
                                 {
-                                    n.Sword.Hit(enemy);
+                                    if (!n.Sword.HasHit(enemy))
+                                    {
+                                        n.Sword.DealDamage(enemy);
+                                        n.Sword.Hit(enemy);
+                                    }
                                 }
                             }
                         }
