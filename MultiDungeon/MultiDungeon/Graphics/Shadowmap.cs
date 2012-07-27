@@ -33,7 +33,7 @@ namespace MultiDungeon.Graphics
 
         public static void Update(Vector2 p)
         {
-            light.LightPosition = new Vector2(p.X, p.Y + (Tile.TILE_SIZE * (2.0f / 3.0f)));
+            light.LightPosition = new Vector2(p.X, p.Y);
         }
 
         public static void Draw(SpriteBatch sb, Camera cam, Color c)
@@ -43,7 +43,7 @@ namespace MultiDungeon.Graphics
 
             sb.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp,
                    DepthStencilState.Default, RasterizerState.CullNone, null, cam.getTransformation());
-            World.DrawWallTiles(sb, light.LightPosition);
+            World.Map.DrawShadowWalls(sb, light.LightPosition);
             //World.Map.DrawSides(sb);
             sb.End();
 

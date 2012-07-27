@@ -1068,5 +1068,16 @@ namespace MultiDungeon.Map
             }
         }
 
+        public void DrawShadowWalls(SpriteBatch sb, Vector2 source)
+        {
+            foreach (Tile t in tiles)
+            {
+                if (t.Type == TileType.wall)
+                {
+                    t.Draw(sb, colorScheme, source, 0, true);
+                }
+            }
+        }
+
     }
 }

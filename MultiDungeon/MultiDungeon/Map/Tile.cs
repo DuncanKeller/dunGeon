@@ -55,12 +55,13 @@ namespace MultiDungeon.Map
             type = t;
         }
 
-        public void Draw(SpriteBatch sb, ColorScheme colorScheme, Vector2 source, short ahead = 0)
+        public void Draw(SpriteBatch sb, ColorScheme colorScheme, Vector2 source, short ahead = 0, bool shadow = false)
         {
-            if (DrawRect.Right > source.X - GameConst.SCREEN_WIDTH / 2 &&
-                    DrawRect.Left < source.X + GameConst.SCREEN_WIDTH / 2 &&
-                    DrawRect.Bottom > -100 - source.Y - GameConst.SCREEN_HEIGHT / 2 &&
-                    DrawRect.Top < source.Y + GameConst.SCREEN_HEIGHT / 2)
+            Rectangle rect = shadow ? Rect : DrawRect;
+            if (rect.Right > source.X - GameConst.SCREEN_WIDTH / 2 &&
+                    rect.Left < source.X + GameConst.SCREEN_WIDTH / 2 &&
+                    rect.Bottom > -100 - source.Y - GameConst.SCREEN_HEIGHT / 2 &&
+                    rect.Top < source.Y + GameConst.SCREEN_HEIGHT / 2)
             {
                 Color color = Color.White;
 
@@ -82,17 +83,17 @@ namespace MultiDungeon.Map
                 }
                 if (ahead == 0)
                 {
-                    sb.Draw(texture, DrawRect, color);
+                    sb.Draw(texture, rect, color);
                 }
                 if (type == TileType.wall)
                 {
-                    if (source.Y > DrawRect.Top && ahead == 1)
+                    if (source.Y > rect.Top && ahead == 1)
                     {
-                        sb.Draw(texture, DrawRect, color);
+                        sb.Draw(texture, rect, color);
                     }
-                    else if (source.Y <= DrawRect.Top && ahead == 2)
+                    else if (source.Y <= rect.Top && ahead == 2)
                     {
-                        sb.Draw(texture, DrawRect, color);
+                        sb.Draw(texture, rect, color);
                     }
                 }
 
