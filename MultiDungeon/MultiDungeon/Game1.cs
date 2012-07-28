@@ -76,6 +76,7 @@ namespace MultiDungeon
                 Console.sw.Flush();
                 Console.sw.Close();
             }
+            Stats.PrintStats();
             //menu.serverSetup.Server.Close();
         }
 

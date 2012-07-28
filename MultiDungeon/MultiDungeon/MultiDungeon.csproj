@@ -152,6 +152,7 @@
     <Compile Include="Menus\QuickJoinMenu.cs" />
     <Compile Include="Menus\ServerSetupMenu.cs" />
     <Compile Include="Menus\TeamChestMenu.cs" />
+    <Compile Include="Stats.cs" />
     <Compile Include="Traps\Spike.cs" />
     <Compile Include="Traps\Trap.cs" />
     <Compile Include="Traps\TrapManager.cs" />

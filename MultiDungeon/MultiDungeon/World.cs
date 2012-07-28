@@ -203,6 +203,7 @@ namespace MultiDungeon
                     {
                         foreach (var pi in playerInfo)
                         {
+                            Stats.classType = pi.Value.classType;
                             Player p = null;
                             switch (pi.Value.classType)
                             {
@@ -340,6 +341,10 @@ namespace MultiDungeon
                         int id = Int32.Parse(info[1]);
                         int gold = Int32.Parse(info[2]);
                         PlayerHash[id].Gold += gold;
+                        if (gold > 0)
+                        {
+                            Stats.kills++;
+                        }
                     }
                     else if (info[0] == "rand")
                     {

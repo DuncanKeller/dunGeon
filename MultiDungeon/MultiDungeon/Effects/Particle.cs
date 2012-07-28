@@ -40,7 +40,18 @@ namespace MultiDungeon.Effects
         public virtual void Draw(SpriteBatch sb)
         {
             Rectangle rect = new Rectangle((int)(pos.X - (texture.Width / 2)), (int)(pos.Y - (texture.Height / 2)),
-                (int)size.X, (int)size.Y);
+               (int)size.X, (int)size.Y);
+
+            if (rect.X < World.Camera.pos.X - GameConst.SCREEN_WIDTH / 2 ||
+               rect.Right > World.Camera.pos.X + GameConst.SCREEN_WIDTH / 2 ||
+               rect.Y < World.Camera.pos.Y - GameConst.SCREEN_HEIGHT / 2 ||
+               rect.Y < World.Camera.pos.Y + GameConst.SCREEN_HEIGHT / 2)
+            {
+                life = 0;
+                speed = 0;
+                return;
+            }
+
             rect.X += (int)size.X / 2;
             rect.Y += (int)size.Y / 2;
             Rectangle source = new Rectangle(0, 0, texture.Width, texture.Height);

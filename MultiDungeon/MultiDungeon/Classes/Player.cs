@@ -240,7 +240,6 @@ namespace MultiDungeon
             veloc *= 3;
             velocity += veloc;
 
-            
             // special potions
             if (World.PlayerHash[b.PlayerID].statusEffect == StatusEffect.vampire)
             {
@@ -331,6 +330,10 @@ namespace MultiDungeon
                 }
                 World.BulletManager.AddParticle(new SkullParticle(new
                        Vector2(DrawRect.Center.X, DrawRect.Top)));
+                if (World.gameId == id)
+                {
+                    Stats.deaths++;
+                }
             }
         }
 
