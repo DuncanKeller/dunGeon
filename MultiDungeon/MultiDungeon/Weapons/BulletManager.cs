@@ -181,10 +181,9 @@ namespace MultiDungeon
                             }
                             if (b is Dart)
                             {
-                                p.StatusEffect = StatusEffect.cursed;
+                                p.StatusEffect = StatusEffect.curse;
+                                p.ResetStatusTimer();
                             }
-
-
                         }
                     }
                 }

@@ -68,6 +68,8 @@ namespace MultiDungeon
         int gold = 0;
         public Upgrade upgrade;
         StatusEffect statusEffect = StatusEffect.none;
+        float poisinTimer = 0;
+        float poisinTime = 4;
 
         bool alive = true;
 
@@ -225,6 +227,11 @@ namespace MultiDungeon
             pos.Y = y;
         }
 
+        public void ResetStatusTimer()
+        {
+            poisinTimer = poisinTime;
+        }
+
         public void Hit(Bullet b)
         {
             Vector2 veloc = new Vector2((float)Math.Cos(b.Angle),
@@ -239,12 +246,11 @@ namespace MultiDungeon
             {
                 World.PlayerHash[b.PlayerID].Health += b.Damage / 3;
             }
-            else if (World.PlayerHash[b.PlayerID].statusEffect == StatusEffect.curse)
+            if (World.PlayerHash[b.PlayerID].statusEffect == StatusEffect.curse)
             {
                 statusColor = Color.DarkGreen;
                 statusEffect = MultiDungeon.StatusEffect.cursed;
-                restore = RestoreCurse;
-                itemTime = 10; // seconds
+                ResetStatusTimer();
             }
 
             if (World.PlayerHash[b.PlayerID].statusEffect == StatusEffect.invinsible)
@@ -361,6 +367,10 @@ namespace MultiDungeon
                 switch (statusEffect)
                 {
                     case MultiDungeon.StatusEffect.curse:
+                        if (poisinTime > 0)
+                        { poisinTime -= deltaTime / 1000; }
+                        else
+                        { poisinTime = 0; statusEffect = MultiDungeon.StatusEffect.none; }
                         health -= deltaTime / 3200;
                         if (health < 0 && alive)
                         { Die(); }
