@@ -41,26 +41,28 @@ namespace MultiDungeon
 
         public override void Update(float deltaTime)
         {
-            gamePad = GamePad.GetState(PlayerIndex.One);
-            keyboard = Keyboard.GetState();
-
-            if (gamePad.Buttons.Y == ButtonState.Pressed &&
-                oldGamePad.Buttons.Y == ButtonState.Released &&
-                World.inMenu == false ||
-                keyboard.IsKeyDown(Keys.Tab) &&
-                oldKeyboard.IsKeyUp(Keys.Tab) &&
-                World.inMenu == false)
+            if (id == World.gameId)
             {
-                World.inMenu = true;
-                World.menuManager.SwitchMenu(World.menuManager.potion);
-            }
-            else if (keyboard.IsKeyDown(Keys.Tab) &&
-                oldKeyboard.IsKeyUp(Keys.Tab) &&
-                World.inMenu == true)
-            {
-                World.menuManager.CurrentMenu.BackOut();
-            }
+                gamePad = GamePad.GetState(PlayerIndex.One);
+                keyboard = Keyboard.GetState();
 
+                if (gamePad.Buttons.Y == ButtonState.Pressed &&
+                    oldGamePad.Buttons.Y == ButtonState.Released &&
+                    World.inMenu == false ||
+                    keyboard.IsKeyDown(Keys.Tab) &&
+                    oldKeyboard.IsKeyUp(Keys.Tab) &&
+                    World.inMenu == false)
+                {
+                    World.inMenu = true;
+                    World.menuManager.SwitchMenu(World.menuManager.potion);
+                }
+                else if (keyboard.IsKeyDown(Keys.Tab) &&
+                    oldKeyboard.IsKeyUp(Keys.Tab) &&
+                    World.inMenu == true)
+                {
+                    World.menuManager.CurrentMenu.BackOut();
+                }
+            }
             oldKeyboard = keyboard;
             oldGamePad = gamePad;
             base.Update(deltaTime);

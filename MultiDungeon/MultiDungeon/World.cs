@@ -123,7 +123,7 @@ namespace MultiDungeon
         private static void InitEndgameStruct()
         {
             endgame.teamGold = new int[2];
-            endgame.maxTeamGold = 100;
+            endgame.maxTeamGold = 1000;
         }
 
         public static void StartGame(string filename)

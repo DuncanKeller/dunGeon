@@ -64,9 +64,9 @@ namespace MultiDungeon.Menus
             cost.Add(typeof(VampirePotion), vampire);
             cost.Add(typeof(CursePotion), curse);
 
-            ingredients.red = 10;
-            ingredients.blue = 10;
-            ingredients.green = 10;
+            ingredients.red = 0;
+            ingredients.blue = 0;
+            ingredients.green = 0;
         }
 
         public void InitMenuItems()

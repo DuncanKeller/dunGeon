@@ -44,7 +44,7 @@ namespace MultiDungeon
 
     public abstract class Player
     {
-        int id;
+        protected int id;
         int teamNum;
         Vector2 pos;
         Vector2 velocity;
