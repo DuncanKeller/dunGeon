@@ -18,7 +18,7 @@ namespace MultiDungeon
             maxClip = 12;
             reloadTime = 1.35;
             rateOfFire = 0.05;
-            damage = 0.5f;
+            damage = 0.75f;
             clip = maxClip;
             secondGun = g;
             icon = TextureManager.Map["pistols"];

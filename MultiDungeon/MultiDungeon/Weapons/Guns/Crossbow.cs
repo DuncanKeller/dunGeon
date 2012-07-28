@@ -16,7 +16,7 @@ namespace MultiDungeon
             maxClip = 1;
             reloadTime = 3.0;
             rateOfFire = 0.0;
-            damage = 15;
+            damage = 3;
             clip = maxClip;
             icon = TextureManager.Map["crossbow"];
         }

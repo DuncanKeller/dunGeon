@@ -29,31 +29,31 @@ namespace MultiDungeon.Menus
                 AddFlavorItem("Weapons", new Vector2(2, 4));
                 AddFlavorItem("________", new Vector2(2, 5));
 
-                AddMenuItem("Revolver", new Vector2(2, 6), 0,
+                AddMenuItem("100G -Revolver", new Vector2(2, 6), 0,
                     delegate() { BuyGun(new Revolver(World.BulletManager, player), 100); });
-                AddMenuItem("Sawed-Off Shotgun", new Vector2(2, 7), 0,
+                AddMenuItem("150G -Sawed-Off Shotgun", new Vector2(2, 7), 0,
                    delegate() { BuyGun(new Shotgun(World.BulletManager, player), 150); });
-                AddMenuItem("Auto Shotgun", new Vector2(2, 8), 0,
+                AddMenuItem("150G -Auto Shotgun", new Vector2(2, 8), 0,
                    delegate() { BuyGun(new Shotgun(World.BulletManager, player), 150); });
-                AddMenuItem("Crossbow", new Vector2(2, 9), 0,
+                AddMenuItem("200G -Crossbow", new Vector2(2, 9), 0,
                    delegate() { BuyGun(new Crossbow(World.BulletManager, player), 200); });
-                AddMenuItem("Grenade Launcher", new Vector2(2, 10), 0,
+                AddMenuItem("200G -Grenade Launcher", new Vector2(2, 10), 0,
                    delegate() { BuyGun(new GrenadeLauncher(World.BulletManager, player), 200); });
-                AddMenuItem("Rocket Launcher", new Vector2(2, 11), 0,
+                AddMenuItem("250G -Rocket Launcher", new Vector2(2, 11), 0,
                    delegate() { BuyGun(new RocketLauncher(World.BulletManager, player), 250); });
 
                 AddFlavorItem("Items", new Vector2(12, 4));
                 AddFlavorItem("________", new Vector2(12, 5));
 
-                AddMenuItem("Health Potion", new Vector2(12, 6), 1,
+                AddMenuItem("100G -Health Potion", new Vector2(12, 6), 1,
                    delegate() { BuyItem(new HealthPotion(HealingLevel.regular), 100); });
-                AddMenuItem("Stoneskin Potion", new Vector2(12, 7), 1,
+                AddMenuItem("75G -Stoneskin Potion", new Vector2(12, 7), 1,
                   delegate() { BuyItem(new Stoneskin(), 75); });
-                AddMenuItem("The Acumen", new Vector2(12, 8), 1,
+                AddMenuItem("75G -The Acumen", new Vector2(12, 8), 1,
                  delegate() { BuyItem(new SeeingEye(), 75); });
-                AddMenuItem("Juice", new Vector2(12, 9), 1,
+                AddMenuItem("50G -Juice", new Vector2(12, 9), 1,
                   delegate() { BuyItem(new Juice(), 50); });
-                AddMenuItem("Spare Mag", new Vector2(12, 10), 1,
+                AddMenuItem("50G -Spare Mag", new Vector2(12, 10), 1,
                   delegate() { BuyItem(new SpareMag(), 50); });
                 initialized = true;
             }

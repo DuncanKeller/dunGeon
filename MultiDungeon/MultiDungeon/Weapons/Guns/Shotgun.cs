@@ -11,7 +11,7 @@ namespace MultiDungeon
     class Shotgun : Gun
     {
         int numShots;
-        public float spread = 0.75f;
+        public float spread = 0.7f;
 
         public Shotgun(BulletManager bm, Player p)
             : base(bm, typeof(Shell), p)
@@ -19,7 +19,7 @@ namespace MultiDungeon
             maxClip = 6;
             reloadTime = 1.6;
             rateOfFire = 0.4;
-            damage = 0.4f;
+            damage = 1.0f;
             clip = maxClip;
             numShots = clip;
             icon = TextureManager.Map["shotgun"];

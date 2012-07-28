@@ -97,8 +97,10 @@ namespace MultiDungeon
             { return; }
             Message message = new Message(m, t);
             toAdd.Enqueue(message);
-
-            sw.WriteLine(m + "     ----- " + t.ToString());
+            if (sw != null)
+            {
+                sw.WriteLine(m + "     ----- " + t.ToString());
+            }
         }
 
         public static void Draw(SpriteBatch sb)
