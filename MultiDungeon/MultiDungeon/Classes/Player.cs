@@ -265,18 +265,18 @@ namespace MultiDungeon
                 if (World.gameId == id)
                 {
                     Die();
-                }
-                
-                if (teamNum != World.PlayerHash[b.PlayerID].Team)
-                {
-                    int bonus = World.PlayerHash[b.PlayerID].StatusEffect == MultiDungeon.StatusEffect.midas ? 50 : 0;
-                    World.PlayerHash[b.PlayerID].Gold += 50 + bonus;
-                    Client.Send("gold\n" + id + "\n" + "50!");
-                }
-                else
-                {
-                    World.PlayerHash[b.PlayerID].Gold -= 50;
-                    Client.Send("gold\n" + id + "\n" + "-50!");
+
+                    if (teamNum != World.PlayerHash[b.PlayerID].Team)
+                    {
+                        int bonus = World.PlayerHash[b.PlayerID].StatusEffect == MultiDungeon.StatusEffect.midas ? 50 : 0;
+                        World.PlayerHash[b.PlayerID].Gold += 50 + bonus;
+                        Client.Send("gold\n" + b.PlayerID + "\n" + "50!");
+                    }
+                    else
+                    {
+                        World.PlayerHash[b.PlayerID].Gold -= 50;
+                        Client.Send("gold\n" + b.PlayerID + "\n" + "-50!");
+                    }
                 }
             }
             else
