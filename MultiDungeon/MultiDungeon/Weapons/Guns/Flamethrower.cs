@@ -13,6 +13,9 @@ namespace MultiDungeon
         bool shooting = false;
         public float spread = 0.75f;
 
+        float range = 140; // px
+        float arc = (float)(Math.PI / 4.0); // radians
+
         public Flamethrower(BulletManager bm, Player p)
             : base(bm, typeof(Flame), p)
         {

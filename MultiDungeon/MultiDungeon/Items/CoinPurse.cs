@@ -13,6 +13,7 @@ namespace MultiDungeon.Items
             : base()
         {
             amount = a;
+            texture = TextureManager.Map["gold-icon"];
         }
 
         public override RestoreAction Use(Player p)

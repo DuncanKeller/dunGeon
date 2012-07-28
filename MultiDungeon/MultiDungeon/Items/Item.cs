@@ -35,8 +35,20 @@ namespace MultiDungeon.Items
             get { return texture; }
         }
 
+        public bool AtDestination
+        {
+            get { return (Vector2.Distance(pos, dest) < 5); }
+        }
+
         public void Update(float deltaTime, int x, int y, int w, int h)
         {
+            if (this is CoinPurse)
+            {
+                if (dest.X == GameConst.SCREEN_WIDTH - 80)
+                {
+                    dest = new Vector2(10,40);
+                }
+            }
             if (timer > 0)
             {
                 timer -= deltaTime / 1000;
@@ -48,6 +60,7 @@ namespace MultiDungeon.Items
                 pos = Vector2.Lerp(pos, dest, 0.15f);
             }
         }
+
 
         public abstract RestoreAction Use(Player p);
 

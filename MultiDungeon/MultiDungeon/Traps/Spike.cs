@@ -37,7 +37,7 @@ namespace MultiDungeon.Traps
         {
             if (spikesOut)
             {
-                if (p.DrawRect.Intersects(rect))
+                if (p.Rect.Intersects(rect))
                 {
                     p.Die();
                 }

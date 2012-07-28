@@ -400,6 +400,18 @@ namespace MultiDungeon
                     UpdateInput(gamePad, keyboard, mouse, deltaTime);
 
                     pos += velocity;
+
+                    if (item != null)
+                    {
+                        if (item is CoinPurse)
+                        {
+                            if (item.AtDestination)
+                            {
+                                item.Use(this);
+                                item = null;
+                            }
+                        }
+                    }
                 }
 
                 CurrentGun.Update(deltaTime);
@@ -575,11 +587,6 @@ namespace MultiDungeon
                     !(overlappingChest is TeamChest))
                 {
                     item = overlappingChest.Open(this);
-                    if (item is CoinPurse)
-                    {
-                        item.Use(this);
-                        item = null;
-                    }
 
                     Client.Send("chest" + "\n" + overlappingChest.ID);
                 }
