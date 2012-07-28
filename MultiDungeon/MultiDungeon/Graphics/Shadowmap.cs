@@ -71,11 +71,6 @@ namespace MultiDungeon.Graphics
             blendState.ColorSourceBlend = Blend.DestinationColor;
             blendState.ColorDestinationBlend = Blend.SourceColor;
 
-            sb.Begin(SpriteSortMode.Immediate, blendState, SamplerState.PointClamp,
-                    DepthStencilState.Default, RasterizerState.CullNone, null);
-            sb.Draw(screenShadows, new Vector2(0, 0), Color.White);
-            sb.End();
-
             sb.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp,
                DepthStencilState.Default, RasterizerState.CullNone, null, cam.getTransformation());
             World.DrawWallTiles(sb, light.LightPosition, 2);
@@ -86,7 +81,19 @@ namespace MultiDungeon.Graphics
                DepthStencilState.Default, RasterizerState.CullNone, null, cam.getTransformation());
             World.DrawSceneBehindPlayer(sb);
             World.DrawPlayers(sb);
+            sb.End();
+          
+            Texture2D shadows = World.Map.GetNewShadowMap(screenShadows, light.LightPosition);
+            
+            sb.Begin(SpriteSortMode.Immediate, blendState, SamplerState.PointClamp,
+                    DepthStencilState.Default, RasterizerState.CullNone, null);
+            sb.Draw(shadows, new Vector2(0, 0), Color.White);
+            sb.End();
+
+            sb.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp,
+            DepthStencilState.Default, RasterizerState.CullNone, null, cam.getTransformation());
             World.DrawWallTiles(sb, light.LightPosition, 1);
+            World.DrawWallTiles(sb, light.LightPosition, 2);
             World.DrawSceneInFrontOfPlayer(sb);
             sb.End();
 

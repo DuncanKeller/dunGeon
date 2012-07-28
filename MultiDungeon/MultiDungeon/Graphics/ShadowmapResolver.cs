@@ -111,7 +111,6 @@ namespace MultiDungeon.Graphics
             graphicsDevice.SetRenderTarget(null);
         }
 
-
         private void ApplyHorizontalReduction(RenderTarget2D source, RenderTarget2D destination)
         {
             int step = reductionChainCount - 1;

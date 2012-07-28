@@ -26,10 +26,12 @@ namespace MultiDungeon.Map
 
         List<Rectangle> teamRooms = new List<Rectangle>();
         ColorScheme colorScheme;
+        ColorScheme blankScheme = new ColorScheme();
 
         public TileSet()
         {
-            
+            blankScheme.floor = Color.Red;
+            blankScheme.wall = Color.Red;
         }
 
         public Tile this[int x, int y]
@@ -718,7 +720,7 @@ namespace MultiDungeon.Map
 
                 int x = GameConst.rand.Next(rooms[roomId].Width - 1)
                     * Tile.TILE_SIZE + (rooms[roomId].X * Tile.TILE_SIZE);
-                int y = GameConst.rand.Next(rooms[roomId].Height - 1)
+                int y = (GameConst.rand.Next(rooms[roomId].Height - 2) + 1)
                      * Tile.TILE_SIZE + (rooms[roomId].Y * Tile.TILE_SIZE);
 
                 Vector2 spikePos = new Vector2(x, y);
@@ -753,7 +755,7 @@ namespace MultiDungeon.Map
 
                 int x = GameConst.rand.Next(rooms[roomId].Width - 1)
                     * Tile.TILE_SIZE + (rooms[roomId].X * Tile.TILE_SIZE);
-                int y = GameConst.rand.Next(rooms[roomId].Height - 1)
+                int y = (GameConst.rand.Next(rooms[roomId].Height - 2) + 1)
                      * Tile.TILE_SIZE + (rooms[roomId].Y * Tile.TILE_SIZE);
 
                 World.ItemManager.AddBackdrop(x, y);
@@ -1019,6 +1021,59 @@ namespace MultiDungeon.Map
             GetColorScheme();
         }
 
+        public Texture2D GetNewShadowMap(Texture2D map, Vector2 source)
+        {
+            Color[] data = new Color[map.Width * map.Height];
+            map.GetData<Color>(data);
+
+            foreach (Tile t in tiles)
+            {
+                if (t.Type == TileType.sidewall)
+                {
+                    if (t.Rect.Right > (source.X - GameConst.SCREEN_WIDTH / 2) - 0 &&
+                    t.Rect.Left < (source.X + GameConst.SCREEN_WIDTH / 2) + 0 &&
+                    t.Rect.Bottom > (source.Y - GameConst.SCREEN_HEIGHT / 2) - 0 &&
+                    t.Rect.Top < (source.Y + GameConst.SCREEN_HEIGHT / 2) + 0)
+                    {
+                        int sizex = t.DrawRect.X - (int)(World.Camera.pos.X - (GameConst.SCREEN_WIDTH / 2));
+                        int sizey = t.DrawRect.Y - (int)(World.Camera.pos.Y - (GameConst.SCREEN_HEIGHT / 2));
+                        int tileHieght = (int)((Tile.TILE_SIZE * (2.0f / 3.0f)));
+                        int tileWidth = Tile.TILE_SIZE;
+
+                        if (sizey < 0)
+                        {
+                            tileHieght = tileHieght + sizey;
+                            sizey = 0;
+                        }
+                        else if (sizey + tileHieght >= map.Height)
+                        {
+                            tileHieght = tileHieght - ((sizey + tileHieght) - map.Height);
+                        }
+                        if (sizex < 0)
+                        {
+                            tileWidth = tileWidth + sizex;
+                            sizex = 0;
+                        }
+                        else if (sizex + tileWidth >= map.Width)
+                        {
+                            tileWidth = tileWidth - ((sizex + tileWidth) - map.Width);
+                        }
+
+                        for (int x = sizex; x < sizex + tileWidth; x++)
+                        {
+                            for (int y = sizey; y < sizey + tileHieght; y++)
+                            {
+                                data[(y * map.Width) + x] = new Color(255, 255, 255, 255);
+                            }
+                        }
+                    }
+                }
+            }
+
+            map.SetData<Color>(data);
+            return map;
+        }
+
         public void GetColorScheme()
         {
             int rand = GameConst.rand.Next(colorScheme.walls.Count);
@@ -1074,7 +1129,7 @@ namespace MultiDungeon.Map
             {
                 if (t.Type == TileType.wall)
                 {
-                    t.Draw(sb, colorScheme, source, 0, true);
+                    t.Draw(sb, blankScheme, source, 0, true);
                 }
             }
         }
