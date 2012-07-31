@@ -20,13 +20,15 @@ namespace MultiDungeon.Weapons
         float damage;
         List<Player> hasHit = new List<Player>();
         Animator animator;
+        Player player;
 
-        public Sword()
+        public Sword(Player p)
         {
             icon = TextureManager.Map["sword"];
             animator = new Animator(TextureManager.Map["slice"], 1, 4);
             animator.AddAnimation(A_SLICE, 0, 3, 18, false);
             damage = 1.5f;
+            player = p;
         }
         
         public bool HasHit(Player p)
@@ -42,6 +44,14 @@ namespace MultiDungeon.Weapons
         public void DealDamage(Player p)
         {
             p.Health -= damage;
+
+            if (p.ID == World.gameId)
+            {
+                if (p.Health <= 0)
+                {
+                    player.Gold += 50;
+                }
+            }
         }
 
         public void Hit(Player p)
@@ -54,18 +64,10 @@ namespace MultiDungeon.Weapons
             get { return timer > 0; }
         }
 
-        public void Slice(float angle, Vector2 pos)
+        public void Slice()
         {
-            angle -= 90 * (float)(Math.PI / 180);
-            this.angle = angle - (90 * (float)(Math.PI / 180));
             if (timer == 0)
             {
-                int centerX = (int)pos.X + (int)(Math.Cos(angle) * reach);
-                int centerY = (int)pos.Y + (int)(Math.Sin(angle) * reach);
-
-                hitRect.X = centerX;
-                hitRect.Y = centerY;
-
                 timer = swordTime;
 
                 animator.Play(A_SLICE);
@@ -74,6 +76,16 @@ namespace MultiDungeon.Weapons
 
         public override void Update(double dt)
         {
+            float angle = player.Angle;
+            float size = player.DrawRect.Height / 2;
+            Vector2 pos = new Vector2(player.Position.X, player.Position.Y - size);
+            angle -= 90 * (float)(Math.PI / 180);
+            this.angle = angle - (90 * (float)(Math.PI / 180));
+            int centerX = (int)pos.X + (int)(Math.Cos(angle) * reach);
+            int centerY = (int)pos.Y + (int)(Math.Sin(angle) * reach);
+
+            hitRect.X = centerX;
+            hitRect.Y = centerY;
             if (timer > 0)
             {
                 timer -= (float)(dt / 1000);

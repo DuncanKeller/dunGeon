@@ -269,19 +269,22 @@ namespace MultiDungeon
                 Client.Send("kill\n" + id + "!");
                 if (World.gameId == id)
                 {
+                    
+                    if (alive)
+                    {
+                        if (teamNum != World.PlayerHash[b.PlayerID].Team)
+                        {
+                            int bonus = World.PlayerHash[b.PlayerID].StatusEffect == MultiDungeon.StatusEffect.midas ? 100 : 50;
+                            World.PlayerHash[b.PlayerID].Gold += 50 + bonus;
+                            Client.Send("gold\n" + b.PlayerID + "\n" + "50!");
+                        }
+                        else
+                        {
+                            World.PlayerHash[b.PlayerID].Gold -= 50;
+                            Client.Send("gold\n" + b.PlayerID + "\n" + "-50!");
+                        }
+                    }
                     Die();
-
-                    if (teamNum != World.PlayerHash[b.PlayerID].Team)
-                    {
-                        int bonus = World.PlayerHash[b.PlayerID].StatusEffect == MultiDungeon.StatusEffect.midas ? 50 : 0;
-                        World.PlayerHash[b.PlayerID].Gold += 50 + bonus;
-                        Client.Send("gold\n" + b.PlayerID + "\n" + "50!");
-                    }
-                    else
-                    {
-                        World.PlayerHash[b.PlayerID].Gold -= 50;
-                        Client.Send("gold\n" + b.PlayerID + "\n" + "-50!");
-                    }
                 }
             }
             else
@@ -375,7 +378,7 @@ namespace MultiDungeon
                         else
                         { poisinTime = 0; statusEffect = MultiDungeon.StatusEffect.none; }
                         health -= deltaTime / 3200;
-                        if (health < 0 && alive)
+                        if (health <= 0 && alive)
                         { Die(); }
                         EffectManager.Update(deltaTime, typeof(PoisinParticle), this);
                         break;
@@ -481,6 +484,21 @@ namespace MultiDungeon
         {
             if (World.inMenu || !World.ReadyToPlay)
             {
+                if (keyboard.IsKeyDown(Keys.E) &&
+                    oldKeyboard.IsKeyUp(Keys.E) ||
+                    mouse.LeftButton == ButtonState.Pressed &&
+                    oldMouse.LeftButton == ButtonState.Released)
+                {
+                    if (World.menuManager.CurrentMenu == World.menuManager.teamChest)
+                    {
+                        World.menuManager.teamChest.AddGold();
+                    }
+                }
+
+                oldKeyboard = keyboard;
+                oldMouse = mouse;
+                oldGamePad = gamePad;
+                
                 velocity.X = 0;
                 velocity.Y = 0;
                 return;
@@ -597,7 +615,6 @@ namespace MultiDungeon
                     overlappingChest.Open(this);
                 }
             }
-            
 
             if (item != null)
             {
@@ -677,7 +694,7 @@ namespace MultiDungeon
                     mouse.LeftButton == ButtonState.Pressed &&
                     oldMouse.LeftButton == ButtonState.Released)
                 {
-                    sword.Slice(angle, pos);
+                    sword.Slice();
                     Client.Send("slice\n" + World.gameId + "!");
                 }
             }

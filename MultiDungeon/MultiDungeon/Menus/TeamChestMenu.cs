@@ -32,7 +32,7 @@ namespace MultiDungeon.Menus
             menuItems[0][0].Select();
         }
 
-        private void AddGold()
+        public void AddGold()
         {
             if (player != null)
             {

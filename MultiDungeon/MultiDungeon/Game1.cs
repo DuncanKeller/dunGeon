@@ -20,7 +20,7 @@ namespace MultiDungeon
     public class Game1 : Microsoft.Xna.Framework.Game
     {
         GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        public SpriteBatch spriteBatch;
         public MenuManager menu;
         public Color shadowColor = Color.Black;
 
@@ -77,7 +77,7 @@ namespace MultiDungeon
                 Console.sw.Close();
             }
             Stats.PrintStats();
-            //menu.serverSetup.Server.Close();
+            World.Disconnect();
         }
 
         /// <summary>

@@ -208,7 +208,21 @@ namespace MultiDungeon
                         }
                     }
                 }
-
+                if (p is Mystic)
+                {
+                    Flamethrower f = ((p as Mystic).CurrentGun as Flamethrower);
+                    foreach (Player enemy in World.Players)
+                    {
+                        if (f.Overlapping(enemy))
+                        {
+                            if (f.Shooting)
+                            {
+                                Flame b = new Flame();
+                                enemy.Hit(b);
+                            }
+                        }
+                    }
+                }
             }
         }
 

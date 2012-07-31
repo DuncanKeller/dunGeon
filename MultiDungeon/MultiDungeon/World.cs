@@ -327,8 +327,7 @@ namespace MultiDungeon
 
                         if (gameId != id)
                         {
-                            (players[id] as Ninja).Sword.Slice(
-                                players[id].Angle, players[id].Position);
+                            (players[id] as Ninja).Sword.Slice();
                         }
                     }
                     else if (info[0] == "chest")

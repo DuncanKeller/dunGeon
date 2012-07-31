@@ -11,10 +11,9 @@ namespace MultiDungeon
 {
     public abstract class Gun : Weapon
     {
-        BulletManager manager;
-        Type bulletType;
-        Player player;
-
+        protected BulletManager manager;
+        protected Type bulletType;
+        protected Player player;
 
         protected int maxClip;
         protected double reloadTime;

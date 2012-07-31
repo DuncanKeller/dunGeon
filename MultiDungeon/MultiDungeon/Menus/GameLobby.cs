@@ -13,6 +13,9 @@ namespace MultiDungeon.Menus
         string classType = "mapmaker";
         int team = 0;
         bool ready = false;
+        Rectangle checkRect = new Rectangle(
+                        (int)((GameConst.SCREEN_WIDTH / 20) * 14.8f), (GameConst.SCREEN_HEIGHT / 20) * 13,
+                        GameConst.SCREEN_WIDTH / 12, GameConst.SCREEN_HEIGHT / 15);
 
         public GameLobby(Game1 g, MenuManager mm)
             : base(g, mm)
@@ -149,9 +152,7 @@ namespace MultiDungeon.Menus
                             DrawPlayerIcon(sb, player, ref spacingR, ref spacingB);
                         }
                     }
-                    Rectangle checkRect = new Rectangle(
-                        (int)((GameConst.SCREEN_WIDTH / 20) * 14.8f), (GameConst.SCREEN_HEIGHT / 20) * 13,
-                        GameConst.SCREEN_WIDTH / 12, GameConst.SCREEN_HEIGHT / 15);
+                    
                     Texture2D checkTexture = ready ? TextureManager.Map["check-true"] : TextureManager.Map["check-false"];
                     sb.Draw(checkTexture, checkRect, Color.White);
                 }

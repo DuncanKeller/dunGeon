@@ -19,7 +19,7 @@ namespace MultiDungeon
             : base(x, y, id)
         {
             upgrade.maxSpeed = 4;
-            guns.Add(new Weapons.Sword());
+            guns.Add(new Weapons.Sword(this));
             guns.Add(new Crossbow(World.BulletManager, this));
             characterTest = TextureManager.Map["ninja-blue"];
         }

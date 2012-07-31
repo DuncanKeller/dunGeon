@@ -68,7 +68,7 @@ namespace MultiDungeon.Menus
                 if (currentMenu == teamChest)
                 {
                     sb.Draw(TextureManager.Map["blank"], new Rectangle(0, 0,
-                   GameConst.SCREEN_WIDTH, GameConst.SCREEN_HEIGHT), new Color(210,180,140,100));
+                   GameConst.SCREEN_WIDTH, GameConst.SCREEN_HEIGHT), new Color(210, 180, 140, 210));
                 }
                 else
                 {
