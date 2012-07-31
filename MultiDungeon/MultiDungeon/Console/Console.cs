@@ -29,7 +29,7 @@ namespace MultiDungeon
 
         public static void Init()
         {
-            sw = new StreamWriter("debugLog.txt");
+            //sw = new StreamWriter("debugLog.txt");
         }
 
         static int GetNumMessages()

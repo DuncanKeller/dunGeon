@@ -330,6 +330,15 @@ namespace MultiDungeon
                             (players[id] as Ninja).Sword.Slice();
                         }
                     }
+                    else if (info[0] == "flames")
+                    {
+                        int id = Int32.Parse(info[1]);
+
+                        if (gameId != id)
+                        {
+                            ((players[id] as Mystic).CurrentGun as Flamethrower).Flames();
+                        }
+                    }
                     else if (info[0] == "chest")
                     {
                         int id = Int32.Parse(info[1]);

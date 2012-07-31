@@ -12,9 +12,21 @@ namespace MultiDungeon
     {
         bool shooting = false;
         public float spread = 0.75f;
+        float maxTimer = 0.3f;
+        float timer = 0;
 
         float range = 140; // px
         float arc = (float)(Math.PI / 4.0); // radians
+
+        public int Id
+        {
+            get {return player.ID;}
+        }
+
+        public float Damage
+        {
+            get { return damage; }
+        }
 
         public bool Shooting
         {
@@ -30,7 +42,7 @@ namespace MultiDungeon
             maxClip = 80;
             reloadTime = 3.0;
             rateOfFire = 0.07;
-            damage = 0.2f;
+            damage = 0.35f;
             clip = maxClip;
             icon = TextureManager.Map["flames"];
         }
@@ -40,8 +52,8 @@ namespace MultiDungeon
 
             if (Vector2.Distance(p.Position, player.Position) < range)
             {
-                float minArc = player.Angle - arc;
-                float maxArc = player.Angle + arc;
+                float minArc = player.Angle - (float)(Math.PI / 2) - arc;
+                float maxArc = player.Angle - (float)(Math.PI / 2) + arc;
                 float direction = (float)Math.Atan2(player.Position.Y - p.Position.Y, 
                     player.Position.X - p.Position.X);
                 if (direction > minArc && direction < maxArc)
@@ -61,7 +73,37 @@ namespace MultiDungeon
             {
                 clip += 1;
             }
+
+            if (shooting)
+            {
+                if (timer > 0)
+                {
+                    timer -= (float)deltaTime / 1000;
+                }
+                else
+                {
+                    if (World.gameId == player.ID)
+                    {
+                        Client.Send("flames\n" + player.ID + "!");
+                    }
+                    timer = maxTimer;
+                }
+            }
+
             shooting = false;
+        }
+
+        public void Flames()
+        {
+            if (primed)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    //FireBullet();
+                    
+                }
+            }
+            shooting = true;
         }
 
         public override void Reload()
