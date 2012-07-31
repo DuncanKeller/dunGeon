@@ -106,6 +106,7 @@
     <Compile Include="Effects\BloodParticle.cs" />
     <Compile Include="Effects\EffectManager.cs" />
     <Compile Include="Effects\ExplosionParticle.cs" />
+    <Compile Include="Effects\FlameParticle.cs" />
     <Compile Include="Effects\HealthParticle.cs" />
     <Compile Include="Effects\Particle.cs" />
     <Compile Include="Effects\PoisinParticle.cs" />

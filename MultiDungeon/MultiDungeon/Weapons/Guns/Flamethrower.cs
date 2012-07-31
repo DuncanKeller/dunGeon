@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
+using MultiDungeon.Effects;
 
 namespace MultiDungeon
 {
@@ -97,10 +98,12 @@ namespace MultiDungeon
         {
             if (primed)
             {
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < 2; i++)
                 {
                     //FireBullet();
-                    
+                    FlameParticle fp = new FlameParticle(player.Position, player.Angle - 
+                        (float)(Math.PI / 2));
+                    World.BulletManager.AddParticle(fp);
                 }
             }
             shooting = true;
@@ -115,9 +118,14 @@ namespace MultiDungeon
         {
             if (primed)
             {
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < 2; i++)
                 {
-                    //FireBullet();
+                    float minArc = player.Angle - arc;
+                    float maxArc = player.Angle + arc;
+                    float direction = (float)(minArc + GameConst.rand.NextDouble() * arc) - (float)(Math.PI / 2);
+                    FlameParticle fp = new FlameParticle(new Vector2(player.Position.X + player.Rect.Width / 2,
+                        player.Position.Y + player.Rect.Height / 2), direction );
+                    World.BulletManager.AddParticle(fp);
                 }
             }
         }
