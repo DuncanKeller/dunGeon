@@ -100,7 +100,6 @@ namespace MultiDungeon
             {
                 for (int i = 0; i < 2; i++)
                 {
-                    //FireBullet();
                     FlameParticle fp = new FlameParticle(player.Position, player.Angle - 
                         (float)(Math.PI / 2));
                     World.BulletManager.AddParticle(fp);
@@ -127,6 +126,7 @@ namespace MultiDungeon
                         player.Position.Y + player.Rect.Height / 2), direction );
                     World.BulletManager.AddParticle(fp);
                 }
+                clip--;
             }
         }
 

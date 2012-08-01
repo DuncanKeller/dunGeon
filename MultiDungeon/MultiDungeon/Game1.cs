@@ -75,6 +75,7 @@ namespace MultiDungeon
             {
                 Console.sw.Flush();
                 Console.sw.Close();
+                Console.sw = null;
             }
             Stats.PrintStats();
             World.Disconnect();
