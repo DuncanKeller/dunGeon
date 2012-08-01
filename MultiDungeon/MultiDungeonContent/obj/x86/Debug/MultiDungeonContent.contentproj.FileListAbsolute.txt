@@ -1,1 +1,1 @@
-c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeonContent\obj\x86\Debug\MultiDungeonContent.contentprojResolveAssemblyReference.cache
+C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeonContent\obj\x86\Debug\MultiDungeonContent.contentprojResolveAssemblyReference.cache

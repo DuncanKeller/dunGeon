@@ -1,12 +1,8 @@
 Content\tile.xnb
 Content\white.xnb
-Content\circle.xnb
-Content\Fonts\ConsoleFont.xnb
-Content\Shaders\reductionEffect.xnb
-Content\Shaders\resolveShadowsEffect.xnb
+Content\Items\potion.xnb
 Content\Items\chestClosed.xnb
 Content\Items\chestOpen.xnb
-Content\Items\potion.xnb
 Content\Guns\crossbow.xnb
 Content\Guns\pistols.xnb
 Content\Guns\revolver.xnb
@@ -16,6 +12,7 @@ Content\Characters\mapmaker-blue.xnb
 Content\Characters\mapmaker-red.xnb
 Content\Characters\ninja-blue.xnb
 Content\Characters\ninja-red.xnb
+Content\arrow.xnb
 Content\Menus\titleScreen.xnb
 Content\test.xnb
 Content\Menus\menu.xnb
@@ -72,11 +69,14 @@ Content\Icons\health.xnb
 Content\Icons\healthbar.xnb
 Content\Icons\check-false.xnb
 Content\Icons\check-true.xnb
-Content\arrow.xnb
+Content\circle.xnb
 Content\Effects\bones.xnb
 Content\Effects\skull.xnb
 Content\Effects\rocks.xnb
 Content\wall.xnb
+Content\Fonts\ConsoleFont.xnb
+Content\Shaders\reductionEffect.xnb
+Content\Shaders\resolveShadowsEffect.xnb
 Content\Maps\piety.txt
 Content\Maps\catacombs.txt
 Content\Maps\raceways.txt

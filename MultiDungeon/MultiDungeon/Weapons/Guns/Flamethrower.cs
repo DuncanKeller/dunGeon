@@ -121,7 +121,7 @@ namespace MultiDungeon
                 {
                     float minArc = player.Angle - arc;
                     float maxArc = player.Angle + arc;
-                    float direction = (float)(minArc + GameConst.rand.NextDouble() * arc) - (float)(Math.PI / 2);
+                    float direction = (float)(minArc + GameConst.rand.NextDouble() * arc) + (float)(Math.PI / 2);
                     FlameParticle fp = new FlameParticle(new Vector2(player.Position.X + player.Rect.Width / 2,
                         player.Position.Y + player.Rect.Height / 2), direction );
                     World.BulletManager.AddParticle(fp);

@@ -11,10 +11,11 @@ namespace MultiDungeon.Effects
     {
         float xspeed;
         float yspeed;
+        bool stopped = false;
 
         public override bool Alive
         {
-            get { return yspeed < 250; }
+            get { return true; }
         }
 
         public SkullParticle(Vector2 pos)
@@ -40,13 +41,14 @@ namespace MultiDungeon.Effects
 
         public override void Update(float deltaTime)
         {
-            life -= deltaTime / 1000;
-            pos.X += xspeed * (deltaTime / 1000);
-            pos.Y += yspeed * (deltaTime / 1000);
-            yspeed += 300 * (deltaTime / 1000);
-
-            rotation += rotSpeed * (deltaTime / 1000);
-
+            if (yspeed < 250)
+            {
+                //life -= deltaTime / 1000;
+                pos.X += xspeed * (deltaTime / 1000);
+                pos.Y += yspeed * (deltaTime / 1000);
+                yspeed += 300 * (deltaTime / 1000);
+                rotation += rotSpeed * (deltaTime / 1000);
+            }
         }
 
         public override void Draw(SpriteBatch sb)

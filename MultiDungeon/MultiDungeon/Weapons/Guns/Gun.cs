@@ -127,7 +127,7 @@ namespace MultiDungeon
 
             if (clip == 0)
             {
-                Reload();
+                //Reload();
             }
             else
             {

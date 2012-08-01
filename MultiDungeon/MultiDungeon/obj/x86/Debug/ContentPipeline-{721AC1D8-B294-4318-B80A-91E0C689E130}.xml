@@ -7,7 +7,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\tile.xnb</Output>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\tile.xnb</Output>
       <Time>2012-05-04T12:32:51.4032307-07:00</Time>
     </Item>
     <Item>
@@ -16,44 +16,17 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\white.xnb</Output>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\white.xnb</Output>
       <Time>2012-05-04T16:30:16.0649788-07:00</Time>
     </Item>
     <Item>
-      <Source>circle.png</Source>
-      <Name>circle</Name>
+      <Source>Items\potion.png</Source>
+      <Name>Items\potion</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\circle.xnb</Output>
-      <Time>2012-07-22T00:28:01.0731628-07:00</Time>
-    </Item>
-    <Item>
-      <Source>Fonts\ConsoleFont.spritefont</Source>
-      <Name>Fonts\ConsoleFont</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
-      <Options>None</Options>
-      <Output>c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Fonts\ConsoleFont.xnb</Output>
-      <Time>2012-05-08T15:37:04.3206108-07:00</Time>
-    </Item>
-    <Item>
-      <Source>Shaders\reductionEffect.fx</Source>
-      <Name>Shaders\reductionEffect</Name>
-      <Importer>EffectImporter</Importer>
-      <Processor>EffectProcessor</Processor>
-      <Options>None</Options>
-      <Output>c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Shaders\reductionEffect.xnb</Output>
-      <Time>2012-05-12T15:46:02.7038901-07:00</Time>
-    </Item>
-    <Item>
-      <Source>Shaders\resolveShadowsEffect.fx</Source>
-      <Name>Shaders\resolveShadowsEffect</Name>
-      <Importer>EffectImporter</Importer>
-      <Processor>EffectProcessor</Processor>
-      <Options>None</Options>
-      <Output>c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Shaders\resolveShadowsEffect.xnb</Output>
-      <Time>2012-05-12T15:46:02.7058902-07:00</Time>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Items\potion.xnb</Output>
+      <Time>2012-05-18T19:19:28.6169306-07:00</Time>
     </Item>
     <Item>
       <Source>Items\chestClosed.png</Source>
@@ -61,7 +34,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Items\chestClosed.xnb</Output>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Items\chestClosed.xnb</Output>
       <Time>2012-05-15T20:58:29.3543294-07:00</Time>
     </Item>
     <Item>
@@ -70,17 +43,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Items\chestOpen.xnb</Output>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Items\chestOpen.xnb</Output>
       <Time>2012-05-15T20:58:29.3553294-07:00</Time>
-    </Item>
-    <Item>
-      <Source>Items\potion.png</Source>
-      <Name>Items\potion</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Items\potion.xnb</Output>
-      <Time>2012-05-18T19:19:28.6169306-07:00</Time>
     </Item>
     <Item>
       <Source>Guns\crossbow.png</Source>
@@ -88,7 +52,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Guns\crossbow.xnb</Output>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Guns\crossbow.xnb</Output>
       <Time>2012-05-19T20:04:19.6506463-07:00</Time>
     </Item>
     <Item>
@@ -97,7 +61,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Guns\pistols.xnb</Output>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Guns\pistols.xnb</Output>
       <Time>2012-05-19T20:04:19.6506463-07:00</Time>
     </Item>
     <Item>
@@ -106,7 +70,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Guns\revolver.xnb</Output>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Guns\revolver.xnb</Output>
       <Time>2012-05-19T20:04:19.6516463-07:00</Time>
     </Item>
     <Item>
@@ -115,7 +79,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Guns\shotgun.xnb</Output>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Guns\shotgun.xnb</Output>
       <Time>2012-05-19T20:04:19.6526464-07:00</Time>
     </Item>
     <Item>
@@ -124,7 +88,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Guns\ar.xnb</Output>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Guns\ar.xnb</Output>
       <Time>2012-05-19T22:39:54.183551-07:00</Time>
     </Item>
     <Item>
@@ -133,7 +97,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Characters\mapmaker-blue.xnb</Output>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Characters\mapmaker-blue.xnb</Output>
       <Time>2012-05-19T23:52:11.0486055-07:00</Time>
     </Item>
     <Item>
@@ -142,7 +106,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Characters\mapmaker-red.xnb</Output>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Characters\mapmaker-red.xnb</Output>
       <Time>2012-05-19T23:52:11.0496056-07:00</Time>
     </Item>
     <Item>
@@ -151,7 +115,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Characters\ninja-blue.xnb</Output>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Characters\ninja-blue.xnb</Output>
       <Time>2012-05-19T23:52:11.0506056-07:00</Time>
     </Item>
     <Item>
@@ -160,8 +124,17 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>c:\users\duncan\documents\visual studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Characters\ninja-red.xnb</Output>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Characters\ninja-red.xnb</Output>
       <Time>2012-05-19T23:52:11.0516057-07:00</Time>
+    </Item>
+    <Item>
+      <Source>arrow.png</Source>
+      <Name>arrow</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\arrow.xnb</Output>
+      <Time>2012-05-20T00:02:31.4790921-07:00</Time>
     </Item>
     <Item>
       <Source>Menus\titleScreen.jpg</Source>
@@ -668,13 +641,13 @@
       <Time>2012-07-21T20:05:18.3125844-07:00</Time>
     </Item>
     <Item>
-      <Source>arrow.png</Source>
-      <Name>arrow</Name>
+      <Source>circle.png</Source>
+      <Name>circle</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\arrow.xnb</Output>
-      <Time>2012-05-20T00:02:31.4790921-07:00</Time>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\circle.xnb</Output>
+      <Time>2012-07-22T00:28:01.0731628-07:00</Time>
     </Item>
     <Item>
       <Source>Effects\bones.png</Source>
@@ -711,6 +684,33 @@
       <Options>None</Options>
       <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\wall.xnb</Output>
       <Time>2012-07-26T20:52:04.5672099-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Fonts\ConsoleFont.spritefont</Source>
+      <Name>Fonts\ConsoleFont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Fonts\ConsoleFont.xnb</Output>
+      <Time>2012-05-08T15:37:04.3206108-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Shaders\reductionEffect.fx</Source>
+      <Name>Shaders\reductionEffect</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Shaders\reductionEffect.xnb</Output>
+      <Time>2012-05-12T15:46:02.7038901-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Shaders\resolveShadowsEffect.fx</Source>
+      <Name>Shaders\resolveShadowsEffect</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Shaders\resolveShadowsEffect.xnb</Output>
+      <Time>2012-05-12T15:46:02.7058902-07:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

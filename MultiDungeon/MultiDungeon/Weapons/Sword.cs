@@ -50,7 +50,7 @@ namespace MultiDungeon.Weapons
                 if (p.Health <= 0)
                 {
                     player.Gold += 50;
-                    Die();
+                    p.Die();
                 }
             }
         }
