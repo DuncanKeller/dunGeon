@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Duncanimation;
+using MultiDungeon.Effects;
 
 namespace MultiDungeon.Weapons
 {
@@ -51,6 +52,16 @@ namespace MultiDungeon.Weapons
                 {
                     player.Gold += 50;
                     p.Die();
+                }
+                else
+                {
+                    for (int i = 0; i < 4; i++)
+                    {
+                        int x = p.DrawRect.Left + GameConst.rand.Next(p.DrawRect.Width);
+                        int y = p.DrawRect.Top + GameConst.rand.Next(p.DrawRect.Height);
+                        World.BulletManager.AddParticle(new BloodParticle(new
+                            Vector2(x, y)));
+                    }
                 }
             }
         }

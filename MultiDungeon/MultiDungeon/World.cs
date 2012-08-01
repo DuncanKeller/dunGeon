@@ -529,12 +529,13 @@ namespace MultiDungeon
             itemManager.DrawBackdrop(sb);
             itemManager.Draw(sb);
             trapManager.Draw(sb);
+            bulletManager.Draw(sb);
         }
 
         public static void DrawSceneInFrontOfPlayer(SpriteBatch sb)
         {
             //DrawWallTiles(sb);
-            bulletManager.Draw(sb);
+            
         }
 
         public static void DrawPlayers(SpriteBatch sb)
