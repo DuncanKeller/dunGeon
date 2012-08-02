@@ -21,12 +21,14 @@ namespace MultiDungeon
                 {
                     string d = World.Player.Item.Description;
 
-                    int len = 0;
+                    float len = 0;
                     int lastSpace = 0;
                     for (int i = 0; i < d.Length; i++)
                     {
-                        len += (int)(TextureManager.Fonts["tooltip"].MeasureString(d[i].ToString()).X);
+                        len += TextureManager.Fonts["tooltip"].MeasureString(d[i].ToString()).X + 
+                            TextureManager.Fonts["tooltip"].Spacing;
 
+                        char yuk = d[i];
                         if (d[i] == ' ')
                         {
                             lastSpace = i;
@@ -34,9 +36,9 @@ namespace MultiDungeon
 
                         if (len >= w - 20)
                         {
-                            len = 0;
+                            len = TextureManager.Fonts["tooltip"].MeasureString(d.Substring(lastSpace + 1, i - (lastSpace))).X;
                             d = d.Insert(lastSpace + 1, "\r\n");
-                            i += 4;
+                            
                         }
                     }
 
