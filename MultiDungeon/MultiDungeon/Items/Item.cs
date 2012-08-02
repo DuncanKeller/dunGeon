@@ -16,9 +16,16 @@ namespace MultiDungeon.Items
         protected Vector2 dest = new Vector2(GameConst.SCREEN_WIDTH - 80, 20);
         protected double effectTime = 0;
 
+        protected static string description = String.Empty;
+
         int size = 60;
 
         float timer = 0.84f;
+
+        public string Description
+        {
+            get { return description; }
+        }
 
         public Vector2 Pos
         {

@@ -46,7 +46,7 @@ namespace MultiDungeon.Weapons
         {
             p.Health -= damage;
 
-            if (p.ID == World.gameId)
+            if (player.ID == World.gameId)
             {
                 if (p.Health <= 0)
                 {

@@ -248,6 +248,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Fonts\TooltipFont.spritefont">
+      <Name>TooltipFont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <SubType>Designer</SubType>
+    </Compile>
     <None Include="Maps\piety.txt">
       <Name>piety</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

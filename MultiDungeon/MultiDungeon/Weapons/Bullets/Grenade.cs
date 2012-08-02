@@ -17,7 +17,6 @@ namespace MultiDungeon
             get { return explosionTimer == 0; }
         }
 
-
         public new Rectangle Rect
         {
             get { return new Rectangle((int)pos.X - 6, (int)pos.Y - 6, 12, 12); }

@@ -44,7 +44,7 @@ namespace MultiDungeon.HUD
             // health
             sb.Draw(TextureManager.Map["health-icon"], new Rectangle(10, 20, 25, 20), Color.White);
             sb.Draw(TextureManager.Map["health-bar"], healthRect, Color.Red);
-            sb.DrawString(TextureManager.Fonts["console"], Math.Max(Math.Round(World.Player.Health, 1), 0.5).ToString() + "/" + World.Player.MaxHealth,
+            sb.DrawString(TextureManager.Fonts["console"], Math.Max(Math.Round(World.Player.Health, 1), 0.1).ToString() + "/" + World.Player.MaxHealth,
                 new Vector2(healthRect.Right + 5, healthRect.Top - (TextureManager.Fonts["console"].MeasureString("0").Y / 5)), Color.Red);
             // money
             sb.Draw(TextureManager.Map["gold-icon"], new Rectangle(10, 40, 25, 20), Color.White);
@@ -61,6 +61,7 @@ namespace MultiDungeon.HUD
                 World.Player.Item.Draw(sb, World.Player.Item.Pos );
             }
 
+            Tooltip.Draw(sb);
             DrawCountdown(sb);
         }
 
@@ -70,6 +71,7 @@ namespace MultiDungeon.HUD
             {
                 Color c = Color.White;
                 Texture2D texture = null;
+
                 if (World.Countdown > 2)
                 {
                     texture = TextureManager.Map["countdown-3"];

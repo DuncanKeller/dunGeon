@@ -27,6 +27,8 @@ namespace MultiDungeon.Items
             amount = (int)a;
             texture = TextureManager.Map["potion"];
             effectTime = 1;
+
+            description = "refill 2/3 health";
         }
 
         public override RestoreAction Use(Player p)

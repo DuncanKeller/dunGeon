@@ -121,6 +121,7 @@ namespace MultiDungeon
 
             // fonts
             fonts.Add("console", c.Load<SpriteFont>("Fonts\\ConsoleFont"));
+            fonts.Add("tooltip", c.Load<SpriteFont>("Fonts\\TooltipFont"));
         }
     }
 }

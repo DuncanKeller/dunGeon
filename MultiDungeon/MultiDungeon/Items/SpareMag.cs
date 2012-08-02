@@ -13,6 +13,7 @@ namespace MultiDungeon.Items
         {
             texture = TextureManager.Map["mag"];
             effectTime = 0.1;
+            description = "a substitute for reloading, and 4 times faster";
         }
 
         public override RestoreAction Use(Player p)

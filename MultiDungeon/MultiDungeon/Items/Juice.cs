@@ -14,6 +14,7 @@ namespace MultiDungeon.Items
             : base()
         {
             texture = TextureManager.Map["juice"];
+            description = "superhuman speed, lower defense";
         }
 
         public override RestoreAction Use(Player p)

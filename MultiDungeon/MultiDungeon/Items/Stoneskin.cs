@@ -14,13 +14,14 @@ namespace MultiDungeon.Items
             : base()
         {
             texture = TextureManager.Map["stoneskin"];
+            description = "increased defense, slower momement";
         }
 
         public override RestoreAction Use(Player p)
         {
             toRestore = p.Speed - (p.Speed / 3);
             p.Speed -= toRestore;
-            p.Weakness = 0.5;
+            p.Weakness = 2;
             p.statusColor = new Color(50, 50, 50, 255);
             return Restore;
         }

@@ -43,7 +43,7 @@ namespace MultiDungeon
             maxClip = 80;
             reloadTime = 3.0;
             rateOfFire = 0.07;
-            damage = 0.35f;
+            damage = 0.75f;
             clip = maxClip;
             icon = TextureManager.Map["flames"];
         }
@@ -53,8 +53,8 @@ namespace MultiDungeon
 
             if (Vector2.Distance(p.Position, player.Position) < range)
             {
-                float minArc = player.Angle - (float)(Math.PI / 2) - arc;
-                float maxArc = player.Angle - (float)(Math.PI / 2) + arc;
+                float minArc = player.Angle - (float)(Math.PI) - arc;
+                float maxArc = player.Angle - (float)(Math.PI) + arc;
                 float direction = (float)Math.Atan2(player.Position.Y - p.Position.Y, 
                     player.Position.X - p.Position.X);
                 if (direction > minArc && direction < maxArc)
@@ -100,8 +100,11 @@ namespace MultiDungeon
             {
                 for (int i = 0; i < 2; i++)
                 {
-                    FlameParticle fp = new FlameParticle(player.Position, player.Angle - 
-                        (float)(Math.PI / 2));
+                    float minArc = player.Angle - arc;
+                    float maxArc = player.Angle + arc;
+                    float direction = (float)(minArc + GameConst.rand.NextDouble() * arc) + (float)(Math.PI / 2);
+                    direction -= (float)(Math.PI);
+                    FlameParticle fp = new FlameParticle(player.Position, direction);
                     World.BulletManager.AddParticle(fp);
                 }
             }
@@ -122,6 +125,7 @@ namespace MultiDungeon
                     float minArc = player.Angle - arc;
                     float maxArc = player.Angle + arc;
                     float direction = (float)(minArc + GameConst.rand.NextDouble() * arc) + (float)(Math.PI / 2);
+                    direction -= (float)(Math.PI);
                     FlameParticle fp = new FlameParticle(new Vector2(player.Position.X + player.Rect.Width / 2,
                         player.Position.Y + player.Rect.Height / 2), direction );
                     World.BulletManager.AddParticle(fp);

@@ -13,6 +13,7 @@ namespace MultiDungeon.Items
         {
             texture = TextureManager.Map["eye"];
             effectTime = 15;
+            description = "see beyond the veil of shadow";
         }
 
         public override RestoreAction Use(Player p)

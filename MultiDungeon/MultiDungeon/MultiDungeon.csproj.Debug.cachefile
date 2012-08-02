@@ -77,6 +77,7 @@ Content\wall.xnb
 Content\Fonts\ConsoleFont.xnb
 Content\Shaders\reductionEffect.xnb
 Content\Shaders\resolveShadowsEffect.xnb
+Content\Fonts\TooltipFont.xnb
 Content\Maps\piety.txt
 Content\Maps\catacombs.txt
 Content\Maps\raceways.txt

@@ -260,7 +260,7 @@ namespace MultiDungeon
             {
                 if (World.gameId == id)
                 {
-                    health -= b.Damage + (Weakness * b.Damage);
+                    health -= b.Damage / Weakness;
                 }
             }
 

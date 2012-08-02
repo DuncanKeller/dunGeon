@@ -168,7 +168,7 @@ namespace MultiDungeon
                         lock (PlayerInfo)
                         {
                             int id = Int32.Parse(info[1]);
-                            if (!playerInfo.ContainsKey(id) && gameId != id)
+                            if (!playerInfo.ContainsKey(id))
                             {
                                 PlayerInfo.Add(id, new PlayerInfo());
                                 Client.Send("response" + "\n" + gameId);
@@ -182,7 +182,7 @@ namespace MultiDungeon
                         lock (PlayerInfo)
                         {
                             int id = Int32.Parse(info[1]);
-                            if (!playerInfo.ContainsKey(id))
+                            if (!playerInfo.ContainsKey(id) && gameId != id)
                             {
                                 PlayerInfo.Add(id, new PlayerInfo());
                             }

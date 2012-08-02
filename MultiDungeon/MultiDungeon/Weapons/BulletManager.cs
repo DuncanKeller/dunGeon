@@ -163,7 +163,7 @@ namespace MultiDungeon
                     {
                         if (b.Rect.Intersects(p.Rect))
                         {
-                            if (!(b is Grenade))
+                            if (!(b is Grenade) && !(b is Rocket))
                             {
                                 p.Hit(b);
                             }
@@ -175,7 +175,7 @@ namespace MultiDungeon
                             }
 
                             if (!(p.StatusEffect == StatusEffect.invinsible) &&
-                                !(b is Flame))
+                                !(b is Flame) && !(b is Grenade))
                             {
                                 Remove(b);
                             }
