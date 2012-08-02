@@ -36,7 +36,7 @@ namespace MultiDungeon.HUD
             healthRect = new Rectangle(45, 20, healthWidth, 20);
         }
 
-        public static void Draw(SpriteBatch sb)
+        public static void Draw(SpriteBatch sb, float deltaTime)
         {
             // draw map
             Map.Draw(sb, new Vector2(20, 80));
@@ -61,7 +61,7 @@ namespace MultiDungeon.HUD
                 World.Player.Item.Draw(sb, World.Player.Item.Pos );
             }
 
-            Tooltip.Draw(sb);
+            Tooltip.Draw(sb, deltaTime);
             DrawCountdown(sb);
         }
 

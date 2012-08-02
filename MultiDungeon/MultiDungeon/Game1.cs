@@ -62,6 +62,7 @@ namespace MultiDungeon
             TextureManager.Initialize(Content);
             World.Init(graphics, Content, this);
             Shadowmap.Init(this, graphics.GraphicsDevice, Content);
+            Tooltip.Init();
             Hud.Init();
             menu = new MenuManager(this);
 
@@ -144,7 +145,7 @@ namespace MultiDungeon
                 case GameState.game:
                     Shadowmap.Draw(spriteBatch, World.Camera, shadowColor);
                     spriteBatch.Begin();
-                    Hud.Draw(spriteBatch);
+                    Hud.Draw(spriteBatch, gameTime.ElapsedGameTime.Milliseconds);
                     spriteBatch.End();
                     break;
             }
