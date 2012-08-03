@@ -22,6 +22,7 @@ namespace MultiDungeon.Menus
         public ServerSetupMenu serverSetup;
         public SettingsMenu settings;
         public EndgameMenu endgame;
+        public CreditsMenu credits;
 
         public TeamChestMenu teamChest;
         public CapitalistMenu shop;
@@ -38,6 +39,7 @@ namespace MultiDungeon.Menus
             serverSetup = new ServerSetupMenu(game, this);
             endgame = new EndgameMenu(game, this);
             settings = new SettingsMenu(game, this);
+            credits = new CreditsMenu(game, this);
 
             teamChest = new TeamChestMenu(game, this);
             shop = new CapitalistMenu(game, this);

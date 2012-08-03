@@ -141,6 +141,7 @@
     <Compile Include="Items\TeamChest.cs" />
     <Compile Include="Menus\ApothecaryMenu.cs" />
     <Compile Include="Menus\CapitalistMenu.cs" />
+    <Compile Include="Menus\CreditsMenu.cs" />
     <Compile Include="Menus\EndgameMenu.cs" />
     <Compile Include="Menus\EnterServerMenu.cs" />
     <Compile Include="Menus\FailedToConnectMenu.cs" />

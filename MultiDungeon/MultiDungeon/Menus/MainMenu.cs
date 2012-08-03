@@ -13,12 +13,14 @@ namespace MultiDungeon.Menus
         public MainMenu(Game1 g, MenuManager mm) : base(g, mm)
         {
             // pos is proportional to screen size (IE, SCREENWIDTH / 20 * pos)
-            AddMenuItem("Start Server", new Vector2(1, 15), 0,
+            AddMenuItem("Start Server", new Vector2(1, 14), 0,
                 delegate() { menuManager.SwitchMenu(menuManager.serverSetup); });
-            AddMenuItem("Join Server", new Vector2(1, 16), 0,
+            AddMenuItem("Join Server", new Vector2(1, 15), 0,
                 delegate() { menuManager.SwitchMenu(menuManager.join); });
-            AddMenuItem("Game Settings", new Vector2(1, 17), 0,
+            AddMenuItem("Game Settings", new Vector2(1, 16), 0,
                 delegate() { menuManager.SwitchMenu(menuManager.settings); });
+            AddMenuItem("Credits", new Vector2(1, 17), 0,
+                delegate() { menuManager.SwitchMenu(menuManager.credits); });
             AddMenuItem("Quit", new Vector2(1, 18), 0,
                 delegate() { game.Exit(); });
 
