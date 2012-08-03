@@ -238,7 +238,13 @@ namespace MultiDungeon.Menus
 
         public virtual void Init()
         {
-
+            foreach (List<MenuItem> list in menuItems)
+            {
+                foreach (MenuItem item in list)
+                {
+                    item.Init();
+                }
+            }
         }
 
         public virtual void Draw(SpriteBatch sb)

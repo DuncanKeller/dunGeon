@@ -36,16 +36,30 @@ namespace MultiDungeon.Menus
             set { activated = value; }
         }
 
+        public void Init()
+        {
+            if (texture != null)
+            {
+                hit = new Rectangle((int)((GameConst.SCREEN_WIDTH / 20) * pos.X),
+                      (int)((GameConst.SCREEN_HEIGHT / 20) * pos.Y),
+                      w, h);
+            }
+            else
+            {
+                hit = new Rectangle((int)((GameConst.SCREEN_WIDTH / 20) * pos.X),
+                    (int)((GameConst.SCREEN_HEIGHT / 20) * pos.Y),
+                    (int)TextureManager.Fonts["console"].MeasureString(text).X,
+                    (int)TextureManager.Fonts["console"].MeasureString(text).Y);
+            }
+        }
+
         public MenuItem(string text, Vector2 pos, MenuAction action)
         {
             this.text = text;
             this.pos = pos;
             this.action = action;
             texture = null;
-            hit = new Rectangle((int)((GameConst.SCREEN_WIDTH / 20) * pos.X),
-                (int)((GameConst.SCREEN_HEIGHT / 20) * pos.Y),
-                (int)TextureManager.Fonts["console"].MeasureString(text).X,
-                (int)TextureManager.Fonts["console"].MeasureString(text).Y);
+            Init();
         }
 
         public MenuItem(Texture2D texture, Vector2 pos, int w, int h, MenuAction action)
@@ -56,9 +70,7 @@ namespace MultiDungeon.Menus
             this.texture = texture;
             this.w = w;
             this.h = h;
-            hit = new Rectangle((int)((GameConst.SCREEN_WIDTH / 20) * pos.X),
-                       (int)((GameConst.SCREEN_HEIGHT / 20) * pos.Y),
-                       w, h);
+            Init();
         }
 
         public bool Hovering(Vector2 pos)

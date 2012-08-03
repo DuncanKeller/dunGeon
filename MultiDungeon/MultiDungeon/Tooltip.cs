@@ -9,6 +9,8 @@ namespace MultiDungeon
 {
     class Tooltip
     {
+        public static bool activated = true;
+
         static int iw = GameConst.SCREEN_WIDTH / 6;
         static int ih = GameConst.SCREEN_HEIGHT / 4;
         static Rectangle itemRect = new Rectangle(GameConst.SCREEN_WIDTH - iw - 20, 150, iw, ih);
@@ -75,6 +77,7 @@ namespace MultiDungeon
                 {
                     len = TextureManager.Fonts["tooltip"].MeasureString(d.Substring(lastSpace + 1, i - (lastSpace))).X;
                     d = d.Insert(lastSpace + 1, "\r\n");
+                    i++;
                 }
             }
 
@@ -83,6 +86,11 @@ namespace MultiDungeon
 
         public static void Draw(SpriteBatch sb, float deltaTime)
         {
+            if (!activated)
+            {
+                return;
+            }
+
             if (timer > 0)
             {
                 timer -= deltaTime / 1000;
@@ -119,7 +127,7 @@ namespace MultiDungeon
                 if (World.Player.Item.Description != String.Empty)
                 {
                     string d = World.Player.Item.Description;
-                    //if (d != oldItemTip)
+                    if (d != oldItemTip)
                     {
                         d = FormatText(d, itemRect);
                     }

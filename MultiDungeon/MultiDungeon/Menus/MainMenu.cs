@@ -18,7 +18,7 @@ namespace MultiDungeon.Menus
             AddMenuItem("Join Server", new Vector2(1, 16), 0,
                 delegate() { menuManager.SwitchMenu(menuManager.join); });
             AddMenuItem("Game Settings", new Vector2(1, 17), 0,
-                delegate() { Console.Enabled = true; Console.Init(); });
+                delegate() { menuManager.SwitchMenu(menuManager.settings); });
             AddMenuItem("Quit", new Vector2(1, 18), 0,
                 delegate() { game.Exit(); });
 

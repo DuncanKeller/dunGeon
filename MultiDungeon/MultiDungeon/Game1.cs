@@ -24,6 +24,12 @@ namespace MultiDungeon
         public MenuManager menu;
         public Color shadowColor = Color.Black;
 
+        public GraphicsDeviceManager Graphics
+        {
+            get { return graphics; }
+            set { graphics = value; }
+        }
+
         public enum GameState
         {
             menu,
@@ -65,6 +71,7 @@ namespace MultiDungeon
             Tooltip.Init();
             Hud.Init();
             menu = new MenuManager(this);
+            //menu.settings.Init();
 
             base.Initialize();
         }

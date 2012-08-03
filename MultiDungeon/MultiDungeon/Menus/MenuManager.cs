@@ -20,6 +20,7 @@ namespace MultiDungeon.Menus
         public GameLobby lobby;
         public QuickJoin quickJoin;
         public ServerSetupMenu serverSetup;
+        public SettingsMenu settings;
         public EndgameMenu endgame;
 
         public TeamChestMenu teamChest;
@@ -36,6 +37,7 @@ namespace MultiDungeon.Menus
             quickJoin = new QuickJoin(game, this);
             serverSetup = new ServerSetupMenu(game, this);
             endgame = new EndgameMenu(game, this);
+            settings = new SettingsMenu(game, this);
 
             teamChest = new TeamChestMenu(game, this);
             shop = new CapitalistMenu(game, this);
