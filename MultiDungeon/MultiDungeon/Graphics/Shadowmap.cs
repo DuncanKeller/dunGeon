@@ -20,11 +20,21 @@ namespace MultiDungeon.Graphics
 
         public static void Init(Game game, GraphicsDevice g, ContentManager c) 
         {
+            ShadowmapSize size = ShadowmapSize.Size1024;
+            if (GameConst.effectSetting == 0)
+            {
+                size = ShadowmapSize.Size256;
+            }
+            else if (GameConst.effectSetting == 0)
+            {
+                size = ShadowmapSize.Size512;
+            }
+
             graphics = g;
             quadRender = new QuadRenderComponent(game);
             game.Components.Add(quadRender);
             shadowmapResolver = new ShadowmapResolver(g, quadRender,
-                ShadowmapSize.Size1024, ShadowmapSize.Size1024);
+                size, size);
             shadowmapResolver.LoadContent(c);
             light = new LightArea(g, ShadowmapSize.Size1024);
             screenShadows = new RenderTarget2D(g, 

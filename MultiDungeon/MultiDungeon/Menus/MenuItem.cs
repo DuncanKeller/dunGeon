@@ -137,6 +137,5 @@ namespace MultiDungeon.Menus
                 }
             }
         }
-        
     }
 }

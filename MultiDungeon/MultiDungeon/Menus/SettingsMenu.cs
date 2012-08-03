@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MultiDungeon.Graphics;
 
 namespace MultiDungeon.Menus
 {
@@ -117,6 +118,7 @@ namespace MultiDungeon.Menus
                 game.Graphics.PreferredBackBufferWidth = newW;
                 game.Graphics.PreferredBackBufferHeight = newH;
                 game.Graphics.ApplyChanges();
+                Graphics.Shadowmap.Init(game, game.Graphics.GraphicsDevice, game.Content);
             }
 
             menuManager.SwitchMenu(menuManager.main);
