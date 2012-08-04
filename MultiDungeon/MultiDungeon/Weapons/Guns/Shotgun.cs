@@ -34,6 +34,7 @@ namespace MultiDungeon
         {
             if (primed)
             {
+                SoundManager.PlaySound("shotgun");
                 for (int i = 0; i < numShots; i++)
                 {
                     FireBullet();

@@ -35,8 +35,10 @@ namespace MultiDungeon
 
         public override void Shoot()
         {
+            
             if (primed)
             {
+                SoundManager.PlaySound("gunshot");
                 FireBullet();
             }
         }
