@@ -14,7 +14,7 @@ namespace MultiDungeon.Menus
             : base(g, mm)
         {
             // pos is proportional to screen size (IE, SCREENWIDTH / 20 * pos)
-            AddFlavorItem("Game Settings", new Vector2(1, 1));
+            AddFlavorItem("Attribution", new Vector2(1, 1));
 
             AddFlavorItem("Featuring the Musical Stylings of", new Vector2(2, 3));
             AddFlavorItem("Somebody", new Vector2(4, 4));
@@ -30,7 +30,6 @@ namespace MultiDungeon.Menus
                 delegate() { BackOut(); });
         }
 
-     
         public override void Init()
         {
             yIndex = 0; xIndex = 0;

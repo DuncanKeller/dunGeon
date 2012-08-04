@@ -142,6 +142,7 @@ namespace MultiDungeon
 
         public void HandleExplosion(Vector2 pos, Bullet b)
         {
+            SoundManager.PlaySound("explosion");
             foreach (Player p in World.Players)
             {
                 float dist = Vector2.Distance(p.Position, pos);

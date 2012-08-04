@@ -721,6 +721,33 @@
       <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Fonts\TooltipFont.xnb</Output>
       <Time>2012-08-01T22:51:49.5852405-07:00</Time>
     </Item>
+    <Item>
+      <Source>Sound\explosion.wav</Source>
+      <Name>Sound\explosion</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Sound\explosion.xnb</Output>
+      <Time>2012-08-03T23:41:15.7225878-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Sound\gunshot.wav</Source>
+      <Name>Sound\gunshot</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Sound\gunshot.xnb</Output>
+      <Time>2012-08-03T23:41:15.7235879-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Sound\shotgun.wav</Source>
+      <Name>Sound\shotgun</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Sound\shotgun.xnb</Output>
+      <Time>2012-08-03T23:41:15.7205877-07:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{721AC1D8-B294-4318-B80A-91E0C689E130}</ContentProjectGUID>

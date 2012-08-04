@@ -70,6 +70,7 @@ namespace MultiDungeon
             Shadowmap.Init(this, graphics.GraphicsDevice, Content);
             Tooltip.Init();
             Hud.Init();
+            SoundManager.Init(Content);
             menu = new MenuManager(this);
             //menu.settings.Init();
 
@@ -97,7 +98,6 @@ namespace MultiDungeon
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
             // TODO: use this.Content to load your game content here
         }
 
@@ -130,6 +130,7 @@ namespace MultiDungeon
                     break;
             }
 
+            SoundManager.Update();
             Console.Update(gameTime.ElapsedGameTime.Milliseconds);
             base.Update(gameTime);
         }

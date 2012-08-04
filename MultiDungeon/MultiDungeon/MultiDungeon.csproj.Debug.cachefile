@@ -78,6 +78,12 @@ Content\Fonts\ConsoleFont.xnb
 Content\Shaders\reductionEffect.xnb
 Content\Shaders\resolveShadowsEffect.xnb
 Content\Fonts\TooltipFont.xnb
+Content\Sound\explosion.xnb
+Content\Sound\gunshot.xnb
+Content\Sound\shotgun.xnb
+Content\Sound\dungeon-sounds.xgs
+Content\Sound\Wave Bank.xwb
+Content\Sound\Sound Bank.xsb
 Content\Maps\piety.txt
 Content\Maps\catacombs.txt
 Content\Maps\raceways.txt
