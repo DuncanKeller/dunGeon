@@ -16,8 +16,8 @@ Global Settings
     Header File = dungeon-sounds.h;
     Exclude Category Names = 0;
     Exclude Variable Names = 0;
-    Last Modified Low = 0;
-    Last Modified High = 0;
+    Last Modified Low = 1405344277;
+    Last Modified High = 30241842;
 
     Category
     {
@@ -225,8 +225,8 @@ Wave Bank
     Windows Bank Path Edited = 0;
     Seek Tables = 1;
     Compression Preset Name = <none>;
-    Bank Last Revised Low = 141337447;
-    Bank Last Revised High = 30241264;
+    Bank Last Revised Low = 450208009;
+    Bank Last Revised High = 30241843;
 
     Wave
     {
@@ -285,15 +285,107 @@ Wave Bank
         {
             Format Tag = 0;
             Channels = 1;
-            Sampling Rate = 96000;
+            Sampling Rate = 44100;
             Bits Per Sample = 1;
             Play Region Offset = 44;
-            Play Region Length = 286094;
+            Play Region Length = 131426;
             Loop Region Offset = 0;
             Loop Region Length = 0;
             File Type = 1;
-            Last Modified Low = 451917970;
-            Last Modified High = 30241244;
+            Last Modified Low = 138071399;
+            Last Modified High = 30241292;
+        }
+    }
+
+    Wave
+    {
+        Name = reload;
+        File = reload.wav;
+        Build Settings Last Modified Low = 4177096268;
+        Build Settings Last Modified High = 30241401;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 86634;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 185296668;
+            Last Modified High = 30241477;
+        }
+    }
+
+    Wave
+    {
+        Name = die;
+        File = die.wav;
+        Build Settings Last Modified Low = 495236534;
+        Build Settings Last Modified High = 30241606;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 2;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 267924;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 3810235640;
+            Last Modified High = 30241476;
+        }
+    }
+
+    Wave
+    {
+        Name = purchase;
+        File = purchase.wav;
+        Build Settings Last Modified Low = 1309338786;
+        Build Settings Last Modified High = 30241842;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 2;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 294188;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 2057497189;
+            Last Modified High = 30241418;
+        }
+    }
+
+    Wave
+    {
+        Name = potion;
+        File = potion.wav;
+        Build Settings Last Modified Low = 434407105;
+        Build Settings Last Modified High = 30241843;
+
+        Cache
+        {
+            Format Tag = 0;
+            Channels = 1;
+            Sampling Rate = 44100;
+            Bits Per Sample = 1;
+            Play Region Offset = 44;
+            Play Region Length = 46380;
+            Loop Region Offset = 0;
+            Loop Region Length = 0;
+            File Type = 1;
+            Last Modified Low = 2071365999;
+            Last Modified High = 30241407;
         }
     }
 }
@@ -447,6 +539,194 @@ Sound Bank
         }
     }
 
+    Sound
+    {
+        Name = reload;
+        Volume = -1200;
+        Pitch = 0;
+        Priority = 0;
+
+        Category Entry
+        {
+            Name = Default;
+        }
+
+        Track
+        {
+            Volume = 0;
+            Use Filter = 0;
+
+            Play Wave Event
+            {
+                Break Loop = 0;
+                Use Speaker Position = 0;
+                Use Center Speaker = 1;
+                New Speaker Position On Loop = 1;
+                Speaker Position Angle = 0.000000;
+                Speaker Position Arc = 0.000000;
+
+                Event Header
+                {
+                    Timestamp = 0;
+                    Relative = 0;
+                    Random Recurrence = 0;
+                    Random Offset = 0;
+                }
+
+                Wave Entry
+                {
+                    Bank Name = Wave Bank;
+                    Bank Index = 0;
+                    Entry Name = reload;
+                    Entry Index = 3;
+                    Weight = 255;
+                    Weight Min = 0;
+                }
+            }
+        }
+    }
+
+    Sound
+    {
+        Name = die;
+        Volume = -1200;
+        Pitch = 0;
+        Priority = 0;
+
+        Category Entry
+        {
+            Name = Default;
+        }
+
+        Track
+        {
+            Volume = 0;
+            Use Filter = 0;
+
+            Play Wave Event
+            {
+                Break Loop = 0;
+                Use Speaker Position = 0;
+                Use Center Speaker = 1;
+                New Speaker Position On Loop = 1;
+                Speaker Position Angle = 0.000000;
+                Speaker Position Arc = 0.000000;
+
+                Event Header
+                {
+                    Timestamp = 0;
+                    Relative = 0;
+                    Random Recurrence = 0;
+                    Random Offset = 0;
+                }
+
+                Wave Entry
+                {
+                    Bank Name = Wave Bank;
+                    Bank Index = 0;
+                    Entry Name = die;
+                    Entry Index = 4;
+                    Weight = 255;
+                    Weight Min = 0;
+                }
+            }
+        }
+    }
+
+    Sound
+    {
+        Name = purchase;
+        Volume = -1200;
+        Pitch = 0;
+        Priority = 0;
+
+        Category Entry
+        {
+            Name = Default;
+        }
+
+        Track
+        {
+            Volume = 0;
+            Use Filter = 0;
+
+            Play Wave Event
+            {
+                Break Loop = 0;
+                Use Speaker Position = 0;
+                Use Center Speaker = 1;
+                New Speaker Position On Loop = 1;
+                Speaker Position Angle = 0.000000;
+                Speaker Position Arc = 0.000000;
+
+                Event Header
+                {
+                    Timestamp = 0;
+                    Relative = 0;
+                    Random Recurrence = 0;
+                    Random Offset = 0;
+                }
+
+                Wave Entry
+                {
+                    Bank Name = Wave Bank;
+                    Bank Index = 0;
+                    Entry Name = purchase;
+                    Entry Index = 5;
+                    Weight = 255;
+                    Weight Min = 0;
+                }
+            }
+        }
+    }
+
+    Sound
+    {
+        Name = potion;
+        Volume = -1200;
+        Pitch = 0;
+        Priority = 0;
+
+        Category Entry
+        {
+            Name = Default;
+        }
+
+        Track
+        {
+            Volume = 0;
+            Use Filter = 0;
+
+            Play Wave Event
+            {
+                Break Loop = 0;
+                Use Speaker Position = 0;
+                Use Center Speaker = 1;
+                New Speaker Position On Loop = 1;
+                Speaker Position Angle = 0.000000;
+                Speaker Position Arc = 0.000000;
+
+                Event Header
+                {
+                    Timestamp = 0;
+                    Relative = 0;
+                    Random Recurrence = 0;
+                    Random Offset = 0;
+                }
+
+                Wave Entry
+                {
+                    Bank Name = Wave Bank;
+                    Bank Index = 0;
+                    Entry Name = potion;
+                    Entry Index = 6;
+                    Weight = 255;
+                    Weight Min = 0;
+                }
+            }
+        }
+    }
+
     Cue
     {
         Name = gunshot;
@@ -502,6 +782,86 @@ Sound Bank
         {
             Name = shotgun;
             Index = 2;
+            Weight Min = 0;
+            Weight Max = 255;
+        }
+    }
+
+    Cue
+    {
+        Name = reload;
+
+        Variation
+        {
+            Variation Type = 3;
+            Variation Table Type = 1;
+            New Variation on Loop = 0;
+        }
+
+        Sound Entry
+        {
+            Name = reload;
+            Index = 3;
+            Weight Min = 0;
+            Weight Max = 255;
+        }
+    }
+
+    Cue
+    {
+        Name = die;
+
+        Variation
+        {
+            Variation Type = 3;
+            Variation Table Type = 1;
+            New Variation on Loop = 0;
+        }
+
+        Sound Entry
+        {
+            Name = die;
+            Index = 4;
+            Weight Min = 0;
+            Weight Max = 255;
+        }
+    }
+
+    Cue
+    {
+        Name = purchase;
+
+        Variation
+        {
+            Variation Type = 3;
+            Variation Table Type = 1;
+            New Variation on Loop = 0;
+        }
+
+        Sound Entry
+        {
+            Name = purchase;
+            Index = 5;
+            Weight Min = 0;
+            Weight Max = 255;
+        }
+    }
+
+    Cue
+    {
+        Name = potion;
+
+        Variation
+        {
+            Variation Type = 3;
+            Variation Table Type = 1;
+            New Variation on Loop = 0;
+        }
+
+        Sound Entry
+        {
+            Name = potion;
+            Index = 6;
             Weight Min = 0;
             Weight Max = 255;
         }

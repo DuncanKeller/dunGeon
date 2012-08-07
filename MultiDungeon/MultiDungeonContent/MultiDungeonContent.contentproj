@@ -524,13 +524,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Sound\dungeon-sounds.xap">
-      <Name>dungeon-sounds</Name>
-      <Importer>XactImporter</Importer>
-      <Processor>XactProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Sound\explosion.wav">
       <Name>explosion</Name>
       <Importer>WavImporter</Importer>
@@ -543,6 +536,41 @@
     </Compile>
     <Compile Include="Sound\shotgun.wav">
       <Name>shotgun</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Sound\reload.wav">
+      <Name>reload</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Sound\die.wav">
+      <Name>die</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Sound\dungeon-sounds.xap">
+      <Name>dungeon-sounds</Name>
+      <Importer>XactImporter</Importer>
+      <Processor>XactProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Sound\purchase.wav">
+      <Name>purchase</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Sound\potion.wav">
+      <Name>potion</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>

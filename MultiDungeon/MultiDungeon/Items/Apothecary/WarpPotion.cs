@@ -21,6 +21,7 @@ namespace MultiDungeon.Items
                 (World.Map.GetTeamRoom(p.Team).Y * Tile.TILE_SIZE) + (World.Map.GetTeamRoom(p.Team).Height / 2));
             p.Position = v;
             World.BulletManager.WarpEffect(p);
+            SoundManager.PlaySound("potion");
             return null;
         }
 

@@ -39,6 +39,7 @@ namespace MultiDungeon.Items
             {
                 p.Health = p.MaxHealth;
             }
+            SoundManager.PlaySound("potion");
             return Restore;
         }
 

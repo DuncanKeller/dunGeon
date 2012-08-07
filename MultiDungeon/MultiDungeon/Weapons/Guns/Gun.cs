@@ -66,6 +66,7 @@ namespace MultiDungeon
         {
             if (clip < maxClip)
             {
+                SoundManager.PlaySound("reload");
                 clip = 0;
                 reloadTimer = reloadTime;
             }

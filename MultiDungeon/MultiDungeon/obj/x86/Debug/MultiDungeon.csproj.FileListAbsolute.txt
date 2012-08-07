@@ -104,3 +104,7 @@ C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\
 C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Sound\dungeon-sounds.xgs
 C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Sound\Wave Bank.xwb
 C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Sound\Sound Bank.xsb
+C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Sound\reload.xnb
+C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Sound\die.xnb
+C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Sound\purchase.xnb
+C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Sound\potion.xnb

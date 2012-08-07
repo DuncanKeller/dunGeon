@@ -23,6 +23,7 @@ namespace MultiDungeon.Items
             p.Speed -= toRestore;
             p.Weakness = 2;
             p.statusColor = new Color(50, 50, 50, 255);
+            SoundManager.PlaySound("potion");
             return Restore;
         }
 

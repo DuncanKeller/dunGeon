@@ -18,6 +18,7 @@ namespace MultiDungeon.Items
         {
             effectTime = 45; // seconds
             p.StatusEffect = StatusEffect.confuse;
+            SoundManager.PlaySound("potion");
             return Restore;
         }
 

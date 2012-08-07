@@ -19,6 +19,7 @@ namespace MultiDungeon.Items
             effectTime = 45; // seconds
             p.StatusEffect = StatusEffect.midas;
             p.statusColor = Color.Gold;
+            SoundManager.PlaySound("potion");
             return Restore;
         }
 

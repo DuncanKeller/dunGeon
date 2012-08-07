@@ -19,6 +19,7 @@ namespace MultiDungeon.Items
             effectTime = 8; // seconds
             p.StatusEffect = StatusEffect.invinsible;
             p.statusColor = Color.Gold;
+            SoundManager.PlaySound("potion");
             return Restore;
         }
 

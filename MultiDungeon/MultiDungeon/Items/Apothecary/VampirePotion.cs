@@ -23,6 +23,7 @@ namespace MultiDungeon.Items
             effectTime = 30; // seconds
             p.StatusEffect = StatusEffect.vampire;
             p.statusColor = Color.DarkRed;
+            SoundManager.PlaySound("potion");
             return Restore;
         }
 

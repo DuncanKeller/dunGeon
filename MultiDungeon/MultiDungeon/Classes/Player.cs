@@ -309,6 +309,7 @@ namespace MultiDungeon
         {
             if (alive)
             {
+                SoundManager.PlaySound("die");
                 alive = false;
                 timer = 0;
                 statusEffect = MultiDungeon.StatusEffect.none;

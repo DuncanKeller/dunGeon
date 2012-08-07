@@ -70,6 +70,7 @@ namespace MultiDungeon.Menus
         {
             if (player.Gold >= price)
             {
+                SoundManager.PlaySound("purchase");
                 player.Gold -= price;
                 player.Guns.Add(g);
             }
@@ -81,6 +82,7 @@ namespace MultiDungeon.Menus
             {
                 if (player.Gold >= price)
                 {
+                    SoundManager.PlaySound("purchase");
                     player.Gold -= price;
                     player.Item = i;
                 }

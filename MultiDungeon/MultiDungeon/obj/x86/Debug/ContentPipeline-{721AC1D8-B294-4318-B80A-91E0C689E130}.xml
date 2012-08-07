@@ -748,6 +748,42 @@
       <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Sound\shotgun.xnb</Output>
       <Time>2012-08-03T23:41:15.7205877-07:00</Time>
     </Item>
+    <Item>
+      <Source>Sound\reload.wav</Source>
+      <Name>Sound\reload</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Sound\reload.xnb</Output>
+      <Time>2012-08-05T01:22:46.0042877-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Sound\die.wav</Source>
+      <Name>Sound\die</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Sound\die.xnb</Output>
+      <Time>2012-08-05T13:09:07.0966906-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Sound\purchase.wav</Source>
+      <Name>Sound\purchase</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Sound\purchase.xnb</Output>
+      <Time>2012-08-06T17:19:48.6060368-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Sound\potion.wav</Source>
+      <Name>Sound\potion</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Sound\potion.xnb</Output>
+      <Time>2012-08-06T17:25:20.3610121-07:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{721AC1D8-B294-4318-B80A-91E0C689E130}</ContentProjectGUID>
