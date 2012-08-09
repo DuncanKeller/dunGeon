@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace MultiDungeon
@@ -35,10 +36,10 @@ namespace MultiDungeon
 
         public override void Shoot()
         {
-            
             if (primed)
             {
-                SoundManager.PlaySound("gunshot");
+                float v = (float)(GameConst.rand.NextDouble() * 0.2f) - 0.1f;
+                SoundManager.SpecialSounds["gunshot"].Play(0.75f, v, 0);
                 FireBullet();
             }
         }

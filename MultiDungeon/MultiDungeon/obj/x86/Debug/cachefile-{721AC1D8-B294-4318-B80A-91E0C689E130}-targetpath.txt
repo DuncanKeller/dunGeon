@@ -85,6 +85,10 @@ Content\Sound\reload.xnb
 Content\Sound\die.xnb
 Content\Sound\purchase.xnb
 Content\Sound\potion.xnb
+Content\Sound\flames.xnb
+Content\Sound\ricochet.xnb
+Content\Sound\chest.xnb
+Content\Sound\assault-rifle.xnb
 Content\Sound\dungeon-sounds.xgs
 Content\Sound\Wave Bank.xwb
 Content\Sound\Sound Bank.xsb

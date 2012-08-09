@@ -91,6 +91,7 @@ namespace MultiDungeon.Items
             {
                 Item returnItem = contents;
                 contents = null;
+                SoundManager.PlaySound("chest");
                 return returnItem;
             }
             return p.Item;

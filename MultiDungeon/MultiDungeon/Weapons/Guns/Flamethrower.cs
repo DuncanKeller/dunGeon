@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Audio;
 using MultiDungeon.Effects;
 
 namespace MultiDungeon
@@ -18,6 +19,9 @@ namespace MultiDungeon
 
         float range = 140; // px
         float arc = (float)(Math.PI / 4.0); // radians
+
+        Cue flameSound;
+        float volume = 0;
 
         public int Id
         {
@@ -90,6 +94,18 @@ namespace MultiDungeon
                     timer = maxTimer;
                 }
             }
+            else
+            {
+                if (flameSound != null)
+                {
+                    if (flameSound.IsPlaying)
+                    {
+                        flameSound.Stop((AudioStopOptions.Immediate));
+                        volume -= 3 * ((float)deltaTime / 1000f);
+                        
+                    }
+                }
+            }
 
             shooting = false;
         }
@@ -120,6 +136,21 @@ namespace MultiDungeon
         {
             if (primed)
             {
+                if (flameSound != null)
+                {
+                    if (!flameSound.IsPlaying)
+                    {
+                        flameSound = SoundManager.SoundBank.GetCue("flames");
+                        flameSound.Play();
+                        volume = 1;
+                    }
+                }
+                else
+                {
+                    volume = 1;
+                    flameSound = SoundManager.SoundBank.GetCue("flames");
+                    flameSound.Play();
+                }
                 for (int i = 0; i < 2; i++)
                 {
                     float minArc = player.Angle - arc;
@@ -127,10 +158,20 @@ namespace MultiDungeon
                     float direction = (float)(minArc + GameConst.rand.NextDouble() * arc) + (float)(Math.PI / 2);
                     direction -= (float)(Math.PI);
                     FlameParticle fp = new FlameParticle(new Vector2(player.Position.X + player.Rect.Width / 2,
-                        player.Position.Y + player.Rect.Height / 2), direction );
+                        player.Position.Y + player.Rect.Height / 2), direction);
                     World.BulletManager.AddParticle(fp);
                 }
                 clip--;
+            }
+            else
+            {
+                if (flameSound != null)
+                {
+                    if (flameSound.IsPlaying)
+                    {
+                        flameSound.Stop(AudioStopOptions.Immediate);
+                    }
+                }
             }
         }
 

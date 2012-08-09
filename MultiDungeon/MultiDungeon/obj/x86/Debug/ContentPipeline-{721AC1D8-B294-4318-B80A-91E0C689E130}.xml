@@ -784,6 +784,42 @@
       <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Sound\potion.xnb</Output>
       <Time>2012-08-06T17:25:20.3610121-07:00</Time>
     </Item>
+    <Item>
+      <Source>Sound\flames.wav</Source>
+      <Name>Sound\flames</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Sound\flames.xnb</Output>
+      <Time>2012-08-06T19:48:37.0727159-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Sound\ricochet.wav</Source>
+      <Name>Sound\ricochet</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Sound\ricochet.xnb</Output>
+      <Time>2012-08-06T19:48:34.1425483-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Sound\chest.wav</Source>
+      <Name>Sound\chest</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Sound\chest.xnb</Output>
+      <Time>2012-08-08T18:46:57.4769704-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Sound\assault-rifle.wav</Source>
+      <Name>Sound\assault-rifle</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Sound\assault-rifle.xnb</Output>
+      <Time>2012-08-08T19:26:53.797032-07:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{721AC1D8-B294-4318-B80A-91E0C689E130}</ContentProjectGUID>
