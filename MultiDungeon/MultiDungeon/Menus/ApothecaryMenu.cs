@@ -162,6 +162,7 @@ namespace MultiDungeon.Menus
                         ingredients.red -= cost[i.GetType()].red;
                         ingredients.green -= cost[i.GetType()].green;
                         player.Item = i;
+                        SoundManager.PlaySound("bubbles");
                         Close();
                     }
                 }
@@ -273,6 +274,7 @@ namespace MultiDungeon.Menus
                     ingredients.green++;
                 }
                 player.Item = null;
+                SoundManager.PlaySound("grind");
             }
             nonSelectableItems[1].hidden = true;
             nonSelectableItems[2].hidden = true;

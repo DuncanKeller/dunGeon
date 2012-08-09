@@ -30,6 +30,7 @@ namespace MultiDungeon
         {
             if (primed)
             {
+                SoundManager.PlaySound("grenade-fire");
                 FireBullet();
             }
         }

@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Audio;
 
 namespace MultiDungeon.HUD
 {
     static class Hud
     {
         static Rectangle healthRect;
+        static int sounds = 3;
         public static void Init()
         {
             //Map.Init(World.Map);
@@ -75,19 +77,41 @@ namespace MultiDungeon.HUD
                 if (World.Countdown > 2)
                 {
                     texture = TextureManager.Map["countdown-3"];
+                    if (sounds == 3)
+                    {
+                        SoundManager.PlaySound("ding");
+                        sounds--;
+                    }
                 }
                 else if (World.Countdown > 1)
                 {
                     texture = TextureManager.Map["countdown-2"];
+                    if (sounds == 2)
+                    {
+                        SoundManager.PlaySound("ding");
+                        sounds--;
+                    }
                 }
                 else if (World.Countdown > 0)
                 {
                     texture = TextureManager.Map["countdown-1"];
+                    if (sounds == 1)
+                    {
+                        SoundManager.PlaySound("ding");
+                        sounds--;
+                    }
                 }
                 else
                 {
                     texture = TextureManager.Map["countdown-go"];
                     c = Color.Green;
+                    if (sounds == 0)
+                    {
+                        SoundEffectInstance s = SoundManager.SpecialSounds["ding"].CreateInstance();
+                        s.Pitch = 0.5f; 
+                        s.Play();
+                        sounds--;
+                    }
                 }
 
                 float remainder = Math.Abs(World.Countdown - ((float)Math.Truncate(World.Countdown)));
@@ -96,6 +120,10 @@ namespace MultiDungeon.HUD
                 Rectangle rect = new Rectangle((GameConst.SCREEN_WIDTH / 2) - (width / 2),
                     (GameConst.SCREEN_HEIGHT / 4) - (height / 2), width, height);
                 sb.Draw(texture, rect, c);
+            }
+            else
+            {
+                sounds = 3;
             }
         }
     }

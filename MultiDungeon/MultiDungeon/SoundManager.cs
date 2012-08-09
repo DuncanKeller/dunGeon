@@ -43,6 +43,7 @@ namespace MultiDungeon
             waveBank = new WaveBank(engine, c.RootDirectory + "\\Sound\\Wave Bank.xwb");
 
             specialSounds.Add("gunshot", c.Load<SoundEffect>("Sound\\gunshot"));
+            specialSounds.Add("ding", c.Load<SoundEffect>("Sound\\ding"));
             specialSounds.Add("assault-rifle", c.Load<SoundEffect>("Sound\\assault-rifle"));
         }
 

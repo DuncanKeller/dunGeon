@@ -820,6 +820,51 @@
       <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Sound\assault-rifle.xnb</Output>
       <Time>2012-08-08T19:26:53.797032-07:00</Time>
     </Item>
+    <Item>
+      <Source>Sound\ding.wav</Source>
+      <Name>Sound\ding</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Sound\ding.xnb</Output>
+      <Time>2012-08-08T22:05:00.14262-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Sound\bubbles.wav</Source>
+      <Name>Sound\bubbles</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Sound\bubbles.xnb</Output>
+      <Time>2012-08-09T12:14:27.5901635-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Sound\coins.wav</Source>
+      <Name>Sound\coins</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Sound\coins.xnb</Output>
+      <Time>2012-08-09T12:23:14.569305-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Sound\grenade-fire.wav</Source>
+      <Name>Sound\grenade-fire</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Sound\grenade-fire.xnb</Output>
+      <Time>2012-08-09T12:33:44.6803453-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Sound\grind.wav</Source>
+      <Name>Sound\grind</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Duncan\Documents\Visual Studio 2010\Projects\MultiDungeon\MultiDungeon\MultiDungeon\bin\x86\Debug\Content\Sound\grind.xnb</Output>
+      <Time>2012-08-09T12:33:44.6823454-07:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{721AC1D8-B294-4318-B80A-91E0C689E130}</ContentProjectGUID>

@@ -38,6 +38,7 @@ namespace MultiDungeon.Menus
             {
                 int send = player.Gold >= 50 ? 50 : player.Gold;
                 player.Gold -= send;
+                SoundManager.PlaySound("coins");
                 Client.Send("teamgold\n" + player.Team + "\n" + send );
             }
             UpdateGoldAmnt();
